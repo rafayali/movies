@@ -59,14 +59,6 @@ class MovieDetailContent extends StatelessWidget {
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
-                SafeArea(
-                  child: IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ),
                 Positioned.fill(
                   child: Align(
                     alignment: Alignment.bottomCenter,
@@ -75,16 +67,15 @@ class MovieDetailContent extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: [
                             Colors.transparent,
-                            Theme.of(context).canvasColor,
+                            Theme.of(context).backgroundColor,
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           stops: [0.0, 1.0],
                         ),
                       ),
-                      height: 72,
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
@@ -116,6 +107,14 @@ class MovieDetailContent extends StatelessWidget {
                         ],
                       ),
                     ),
+                  ),
+                ),
+                SafeArea(
+                  child: IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                   ),
                 ),
               ],
@@ -214,45 +213,48 @@ class _RatingWidget extends StatelessWidget {
   _RatingWidget(this._rating);
 
   @override
-  Widget build(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            _rating.toString(),
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1
-                .copyWith(color: Color(0xfffdc432)),
-          ),
-          SizedBox(
-            width: 4,
-          ),
-          Icon(
-            Icons.star_rate_sharp,
-            size: 16,
-            color: Color(0xfffdc432),
-          ),
-          Icon(
-            Icons.star_rate_sharp,
-            size: 16,
-            color: Color(0xfffdc432),
-          ),
-          Icon(
-            Icons.star_rate_sharp,
-            size: 16,
-            color: Color(0xfffdc432),
-          ),
-          Icon(
-            Icons.star_rate_sharp,
-            size: 16,
-            color: Color(0xfffdc432),
-          ),
-          Icon(
-            Icons.star_rate_sharp,
-            size: 16,
-            color: Color(0xffa3a2a6),
-          ),
-        ],
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(top: 8.0, left: 16, right: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              _rating.toString(),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1
+                  .copyWith(color: Color(0xfffdc432)),
+            ),
+            SizedBox(
+              width: 4,
+            ),
+            Icon(
+              Icons.star_rate_sharp,
+              size: 16,
+              color: Color(0xfffdc432),
+            ),
+            Icon(
+              Icons.star_rate_sharp,
+              size: 16,
+              color: Color(0xfffdc432),
+            ),
+            Icon(
+              Icons.star_rate_sharp,
+              size: 16,
+              color: Color(0xfffdc432),
+            ),
+            Icon(
+              Icons.star_rate_sharp,
+              size: 16,
+              color: Color(0xfffdc432),
+            ),
+            Icon(
+              Icons.star_rate_sharp,
+              size: 16,
+              color: Color(0xffa3a2a6),
+            ),
+          ],
+        ),
       );
 }
 

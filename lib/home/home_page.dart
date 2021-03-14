@@ -79,7 +79,10 @@ class _HomePageState extends State<HomePage> {
                             .copyWith(fontWeight: FontWeight.w500),
                       ),
                     ),
-                    IconButton(icon: Icon(Icons.search), onPressed: () {})
+                    IconButton(
+                      icon: Icon(Icons.nightlight_round),
+                      onPressed: () {},
+                    )
                   ],
                 ),
                 Padding(
