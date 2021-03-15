@@ -4,7 +4,7 @@ import 'package:async/async.dart' as async;
 
 import 'package:rxdart/subjects.dart';
 import 'package:movies_flutter/api/tmdb_api.dart';
-import 'package:movies_flutter/ui/movie_item_ui_model.dart';
+import 'package:movies_flutter/ui/home/models/movie_item.dart';
 import 'package:movies_flutter/ui/state.dart';
 
 class HomeBloc {

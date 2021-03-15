@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_flutter/movie_detail/models/cast.dart';
-import 'package:movies_flutter/movie_detail/movie_detail_bloc.dart';
-import 'package:movies_flutter/movie_detail/models/movie_detail.dart';
+import 'package:movies_flutter/ui/movie_detail/models/movie_detail.dart';
+import 'package:movies_flutter/ui/movie_detail/movie_detail_bloc.dart';
 import 'package:movies_flutter/ui/state.dart';
+
+import 'models/cast.dart';
 
 class MovieDetailPage extends StatefulWidget {
   static const routeName = '/detail';

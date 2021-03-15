@@ -1,4 +1,4 @@
-# MoviesFlutter
+# Movies
 
 A movie app showcase built using [The Movie Database][1] api in Flutter
 
@@ -29,4 +29,4 @@ License
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
-[1]:https://pixabay.com/api/docs/
+[1]:https://www.themoviedb.org/

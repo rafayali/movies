@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_flutter/api/tmdb_api.dart';
-import 'package:movies_flutter/movie_detail/movie_detail_bloc.dart';
-import 'package:movies_flutter/movie_detail/movie_detail_page.dart';
 import 'package:flutter/material.dart';
+import 'package:movies_flutter/api/tmdb_api.dart';
+import 'package:movies_flutter/ui/home/home_bloc.dart';
+import 'package:movies_flutter/ui/home/home_page.dart';
+import 'package:movies_flutter/ui/movie_detail/movie_detail_bloc.dart';
+import 'package:movies_flutter/ui/movie_detail/movie_detail_page.dart';
 import 'package:provider/provider.dart';
-
-import 'home/home_bloc.dart';
-import 'home/home_page.dart';
 
 void main() {
   runApp(MyApp());

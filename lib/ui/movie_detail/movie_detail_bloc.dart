@@ -1,11 +1,11 @@
 import 'package:async/async.dart' as async;
 import 'package:movies_flutter/api/models/movie.dart';
 import 'package:movies_flutter/api/models/movie_credits.dart';
-import 'package:movies_flutter/movie_detail/models/cast.dart' as ui;
 import 'package:movies_flutter/api/tmdb_api.dart';
 import 'package:movies_flutter/configs.dart';
-import 'package:movies_flutter/movie_detail/movie_detail_page.dart';
-import 'package:movies_flutter/movie_detail/models/movie_detail.dart';
+import 'package:movies_flutter/ui/movie_detail/models/movie_detail.dart';
+import 'package:movies_flutter/ui/movie_detail/models/cast.dart' as ui;
+import 'package:movies_flutter/ui/movie_detail/movie_detail_page.dart';
 import 'package:movies_flutter/ui/state.dart';
 import 'package:rxdart/rxdart.dart';
 

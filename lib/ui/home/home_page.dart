@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:movies_flutter/movie_detail/movie_detail_page.dart';
-import 'package:movies_flutter/ui/movie_item_ui_model.dart';
+import 'package:movies_flutter/ui/home/home_bloc.dart';
+import 'package:movies_flutter/ui/movie_detail/movie_detail_page.dart';
+import 'package:movies_flutter/ui/home/models/movie_item.dart';
 import 'package:movies_flutter/ui/state.dart';
 import 'package:movies_flutter/widgets/movie_widget.dart';
 import 'package:provider/provider.dart';
-
-import 'home_bloc.dart';
 
 class HomePage extends StatefulWidget {
   @override
