@@ -3,7 +3,7 @@ import 'package:movies_flutter/configs.dart';
 
 class MovieItemUiModel {
   final String name;
-  final String date;
+  final DateTime date;
   final String poster;
   final String backdrop;
   final int id;
@@ -22,9 +22,9 @@ extension MapToMovieItem on Movie {
     return MovieItemUiModel(
       id,
       title,
-      releaseDate.toUtc().toString(),
-      '${BuildConfigs.BaseImageUrlW500}${posterPath}',
-      '${BuildConfigs.BaseImageUrlOriginal}${backdropPath}',
+      releaseDate,
+      '${BuildConfigs.BaseImageUrlW500}$posterPath',
+      '${BuildConfigs.BaseImageUrlOriginal}$backdropPath',
     );
   }
 }

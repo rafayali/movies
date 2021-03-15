@@ -56,7 +56,7 @@ class MovieDetailContent extends StatelessWidget {
               children: [
                 CachedNetworkImage(
                   imageUrl: _movieDetailUiModel.backdrop,
-                  height: 345,
+                  height: 372,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -72,20 +72,22 @@ class MovieDetailContent extends StatelessWidget {
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          stops: [0.0, 1.0],
                         ),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Text(
-                            _movieDetailUiModel.title,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline5
-                                .copyWith(fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, right: 16),
+                            child: Text(
+                              _movieDetailUiModel.title,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5
+                                  .copyWith(fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                           SizedBox(height: 8),
                           Builder(builder: (context) {
@@ -99,7 +101,7 @@ class MovieDetailContent extends StatelessWidget {
                               final minutes = _movieDetailUiModel.runtime % 60;
                               final hours = _movieDetailUiModel.runtime ~/ 60;
                               return Text(
-                                '${year} • ${genre} • ${hours}h ${minutes}m',
+                                '$year • $genre • ${hours}h ${minutes}m',
                                 style: Theme.of(context).textTheme.bodyText1,
                                 textAlign: TextAlign.center,
                               );
@@ -174,12 +176,13 @@ class _CastWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(left: 16, right: 16, top: 8),
+          padding: EdgeInsets.only(top: 8),
           child: SizedBox(
-            height: 128,
+            height: 86,
             child: ListView.separated(
+              padding: EdgeInsets.only(left: 16, right: 16),
               scrollDirection: Axis.horizontal,
-              itemCount: 15,
+              itemCount: _cast.length,
               itemBuilder: (context, index) => Column(
                 children: [
                   Container(
@@ -196,7 +199,7 @@ class _CastWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 8),
-                  Text(_cast[index].name),
+                  Text(_cast[index].name, ),
                 ],
               ),
               separatorBuilder: (context, index) => SizedBox(width: 16),

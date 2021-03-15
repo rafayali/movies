@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:intl/intl.dart';
 import 'package:movies_flutter/ui/home/home_bloc.dart';
-import 'package:movies_flutter/ui/movie_detail/movie_detail_page.dart';
 import 'package:movies_flutter/ui/home/models/movie_item.dart';
+import 'package:movies_flutter/ui/movie_detail/movie_detail_page.dart';
 import 'package:movies_flutter/ui/state.dart';
 import 'package:movies_flutter/widgets/movie_widget.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +28,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var bloc = Provider.of<HomeBloc>(context, listen: false);
-
     return Scaffold(
       body: StreamBuilder(
         initialData: Loading(),
@@ -62,8 +62,8 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 SafeArea(
-                  child: SizedBox(),
                   bottom: false,
+                  child: SizedBox(),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,17 +101,16 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(
                   height: 284,
-                  child: ListView.builder(
+                  child: ListView.separated(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
                     scrollDirection: Axis.horizontal,
                     itemCount: _movies.length,
                     itemBuilder: (context, index) {
-                      Widget _widget;
-
-                      final _movieItem = MovieWidget(
+                      return MovieWidget(
                         _movies[index].id,
                         _movies[index].name,
                         _movies[index].poster,
-                        _movies[index].date,
+                        DateFormat.yMMMMd('en_US').format(_movies[index].date),
                         onClickListener: (movieId) =>
                             Navigator.of(context).pushNamed(
                           MovieDetailPage.routeName,
@@ -122,38 +121,9 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       );
-
-                      if (index == 0 && _items.length == 1) {
-                        _widget = Padding(
-                          padding: EdgeInsets.only(
-                            left: 8,
-                            right: 8,
-                          ),
-                          child: _movieItem,
-                        );
-                      }
-
-                      if (index == 0) {
-                        _widget = Padding(
-                          padding: EdgeInsets.only(left: 8),
-                          child: _movieItem,
-                        );
-                      }
-
-                      if (index == _items.length - 1) {
-                        _widget = Padding(
-                          padding: EdgeInsets.only(left: 8, right: 8),
-                          child: _movieItem,
-                        );
-                      }
-
-                      _widget = Padding(
-                        padding: EdgeInsets.only(left: 8),
-                        child: _movieItem,
-                      );
-
-                      return _widget;
                     },
+                    separatorBuilder: (BuildContext context, int index) =>
+                        SizedBox(width: 8),
                   ),
                 ),
                 SizedBox(height: 8),
@@ -174,17 +144,16 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(
                   height: 284,
-                  child: ListView.builder(
+                  child: ListView.separated(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
                     scrollDirection: Axis.horizontal,
                     itemCount: _items.length,
                     itemBuilder: (context, index) {
-                      Widget _widget;
-
-                      final _movieItem = MovieWidget(
+                      return MovieWidget(
                         _movies[index].id,
                         _movies[index].name,
                         _movies[index].poster,
-                        _movies[index].date,
+                        DateFormat.yMMMMd('en_US').format(_movies[index].date),
                         onClickListener: (movieId) =>
                             Navigator.of(context).pushNamed(
                           MovieDetailPage.routeName,
@@ -195,38 +164,9 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       );
-
-                      if (index == 0 && _items.length == 1) {
-                        _widget = Padding(
-                          padding: EdgeInsets.only(
-                            left: 8,
-                            right: 8,
-                          ),
-                          child: _movieItem,
-                        );
-                      }
-
-                      if (index == 0) {
-                        _widget = Padding(
-                          padding: EdgeInsets.only(left: 8),
-                          child: _movieItem,
-                        );
-                      }
-
-                      if (index == _items.length - 1) {
-                        _widget = Padding(
-                          padding: EdgeInsets.only(left: 8, right: 8),
-                          child: _movieItem,
-                        );
-                      }
-
-                      _widget = Padding(
-                        padding: EdgeInsets.only(left: 8),
-                        child: _movieItem,
-                      );
-
-                      return _widget;
                     },
+                    separatorBuilder: (BuildContext context, int index) =>
+                        SizedBox(width: 8),
                   ),
                 ),
                 SizedBox(height: 8),
@@ -245,17 +185,16 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(
                   height: 284,
-                  child: ListView.builder(
+                  child: ListView.separated(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
                     scrollDirection: Axis.horizontal,
                     itemCount: _items.length,
                     itemBuilder: (context, index) {
-                      Widget _widget;
-
-                      final _movieItem = MovieWidget(
+                      return MovieWidget(
                         _movies[index].id,
                         _movies[index].name,
                         _movies[index].poster,
-                        _movies[index].date,
+                        DateFormat.yMMMMd('en_US').format(_movies[index].date),
                         onClickListener: (movieId) =>
                             Navigator.of(context).pushNamed(
                           MovieDetailPage.routeName,
@@ -266,41 +205,15 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       );
-
-                      if (index == 0 && _items.length == 1) {
-                        _widget = Padding(
-                          padding: EdgeInsets.only(
-                            left: 8,
-                            right: 8,
-                          ),
-                          child: _movieItem,
-                        );
-                      }
-
-                      if (index == 0) {
-                        _widget = Padding(
-                          padding: EdgeInsets.only(left: 8),
-                          child: _movieItem,
-                        );
-                      }
-
-                      if (index == _items.length - 1) {
-                        _widget = Padding(
-                          padding: EdgeInsets.only(left: 8, right: 8),
-                          child: _movieItem,
-                        );
-                      }
-
-                      _widget = Padding(
-                        padding: EdgeInsets.only(left: 8),
-                        child: _movieItem,
-                      );
-
-                      return _widget;
                     },
+                    separatorBuilder: (BuildContext context, int index) =>
+                        SizedBox(width: 8),
                   ),
                 ),
-                SafeArea(child: SizedBox(), top: false),
+                SafeArea(
+                  top: false,
+                  child: SizedBox(),
+                ),
               ],
             ),
           );

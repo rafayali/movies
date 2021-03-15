@@ -32,12 +32,13 @@ dependencies:
   animations: ^1.1.2
 
   provider: ^5.0.0
-  http: ^0.12.2
+  http: ^0.13.0
   json_annotation: ^3.0.0
   cached_network_image: ^2.5.1
   quiver: ^3.0.0
   async: ^2.5.0
   rxdart: ^0.25.0
+  intl: ^0.16.0
  
 dev_dependencies:
   flutter_test:
