@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movies_flutter/api/models/movie_credits.dart';
 import 'package:movies_flutter/api/models/popular_movies.dart';
+import 'package:movies_flutter/api/models/popular_tv.dart';
 import 'package:movies_flutter/configs.dart';
 
 import 'models/movie.dart';
@@ -14,6 +15,8 @@ abstract class TmdbApi {
   Future<Movie> getMovie(int id);
 
   Future<Credits> getMovieCredits(int movieid);
+
+  Future<PopularTv> getPopularTvShows();
 }
 
 class DefaultTmdbApi implements TmdbApi {
@@ -23,7 +26,6 @@ class DefaultTmdbApi implements TmdbApi {
       Uri.parse(
           'https://api.themoviedb.org/3/movie/popular?api_key=${BuildConfigs.TmdbApiKey}&language=en-US&page=1'),
     );
-
     return PopularMovies.fromJson(
       jsonDecode(response.body) as Map<String, dynamic>,
     );
@@ -35,20 +37,29 @@ class DefaultTmdbApi implements TmdbApi {
       Uri.parse(
           'https://api.themoviedb.org/3/movie/$id?api_key=${BuildConfigs.TmdbApiKey}'),
     );
-
     return Movie.fromJson(
       jsonDecode(response.body) as Map<String, dynamic>,
     );
   }
 
   @override
-  Future<Credits> getMovieCredits(int movieid) async {
+  Future<Credits> getMovieCredits(int movieId) async {
     final response = await http.get(
       Uri.parse(
-          'https://api.themoviedb.org/3/movie/$movieid/credits?api_key=${BuildConfigs.TmdbApiKey}'),
+          'https://api.themoviedb.org/3/movie/$movieId/credits?api_key=${BuildConfigs.TmdbApiKey}'),
     );
-
     return Credits.fromJson(
+      jsonDecode(response.body) as Map<String, dynamic>,
+    );
+  }
+
+  @override
+  Future<PopularTv> getPopularTvShows() async {
+    final response = await http.get(
+      Uri.parse(
+          'https://api.themoviedb.org/3/tv/popular?api_key=${BuildConfigs.TmdbApiKey}&language=en-US&page=1'),
+    );
+    return PopularTv.fromJson(
       jsonDecode(response.body) as Map<String, dynamic>,
     );
   }

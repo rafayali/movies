@@ -60,23 +60,24 @@ class MovieDetailBloc {
   static MovieDetailUiModel _createMovieDetailUiModel(
     Movie movie,
     Credits credits,
-  ) =>
-      MovieDetailUiModel(
-        movie.id,
-        movie.title,
-        '${BuildConfigs.BaseImageUrlOriginal}${movie.backdropPath}',
-        movie.overview,
-        movie.voteAverage,
-        movie.genres.map((e) => e.name).toList(),
-        movie.runtime,
-        credits.cast
-            .map((e) => ui.Cast(
-                  e.name,
-                  '${BuildConfigs.BaseImageUrlW200}${e.profilePath}',
-                ))
-            .toList(),
-        movie.releaseDate,
-      );
+  ) {
+    return MovieDetailUiModel(
+      movie.id,
+      movie.title,
+      '${BuildConfigs.BaseImageUrlOriginal}${movie.backdropPath}',
+      movie.overview,
+      movie.voteAverage,
+      movie.genres.map((e) => e.name).toList(),
+      movie.runtime,
+      credits.cast
+          .map((e) => ui.Cast(
+                e.name,
+                '${BuildConfigs.BaseImageUrlW200}${e.profilePath}',
+              ))
+          .toList(),
+      movie.releaseDate,
+    );
+  }
 
   void dispose() {
     _state.close();
