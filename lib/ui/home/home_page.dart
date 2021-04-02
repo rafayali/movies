@@ -8,24 +8,15 @@ import 'package:movies_flutter/ui/movie_detail/movie_detail_page.dart';
 import 'package:movies_flutter/ui/state.dart';
 import 'package:movies_flutter/widgets/movie_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  HomeBloc bloc;
-
-  @override
-  void initState() {
-    super.initState();
-
-    bloc = Provider.of<HomeBloc>(context, listen: false);
-  }
+class HomePage extends StatelessWidget {
+  static const String routeName = '/home';
 
   @override
   Widget build(BuildContext context) {
+    final bloc = Provider.of<HomeBloc>(context, listen: false);
+
     return Scaffold(
       body: StreamBuilder(
         initialData: Loading(),
@@ -61,31 +52,22 @@ class _HomePageState extends State<HomePage> {
                   bottom: false,
                   child: SizedBox(),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 16),
-                      child: Text(
-                        'Movies',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline4
-                            .copyWith(fontWeight: FontWeight.w500),
+                SizedBox(
+                  height: 56,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/logo.svg',
+                        width: 156,
                       ),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.nightlight_round),
-                      onPressed: () {},
-                    )
-                  ],
+                    ],
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    top: 16,
-                    bottom: 8,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
                   ),
                   child: Text(
                     'Popular Movies',
@@ -132,11 +114,9 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(height: 8),
                 Padding(
-                  padding: EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    top: 16,
-                    bottom: 8,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
                   ),
                   child: Text(
                     'TV Shows',
@@ -182,47 +162,54 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
-                SizedBox(height: 8),
                 Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 16,
                     vertical: 8,
                   ),
                   child: Text(
-                    'TV Shows',
+                    'Discover',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),
                   ),
                 ),
-                /* SizedBox(
+                SizedBox(
                   height: 284,
-                  child: ListView.separated(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _movies.length,
-                    itemBuilder: (context, index) {
-                      return MovieWidget(
-                        _movies[index].id,
-                        _movies[index].name,
-                        _movies[index].poster,
-                        DateFormat.yMMMMd('en_US').format(_movies[index].date),
-                        onClickListener: (movieId) =>
-                            Navigator.of(context).pushNamed(
-                          MovieDetailPage.routeName,
-                          arguments: MovieDetailParams(
-                            _movies[index].id,
-                            _movies[index].name,
-                            _movies[index].backdrop,
-                          ),
-                        ),
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) =>
-                        SizedBox(width: 8),
-                  ),
-                ), */
+                  child: StreamBuilder(
+                      initialData: List<MovieItemUiModel>.empty(),
+                      stream: bloc.discoverMovies,
+                      builder: (_, snapshot) {
+                        final _data = snapshot.data as List<MovieItemUiModel>;
+
+                        return ListView.separated(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: _data.length,
+                          itemBuilder: (context, index) {
+                            return MovieWidget(
+                              _data[index].id,
+                              _data[index].name,
+                              _data[index].poster,
+                              DateFormat.yMMMMd('en_US')
+                                  .format(_data[index].date),
+                              onClickListener: (movieId) =>
+                                  Navigator.of(context).pushNamed(
+                                MovieDetailPage.routeName,
+                                arguments: MovieDetailParams(
+                                  _data[index].id,
+                                  _data[index].name,
+                                  _data[index].backdrop,
+                                ),
+                              ),
+                            );
+                          },
+                          separatorBuilder: (BuildContext context, int index) =>
+                              SizedBox(width: 8),
+                        );
+                      }),
+                ),
                 SafeArea(
                   top: false,
                   child: SizedBox(),
@@ -233,11 +220,5 @@ class _HomePageState extends State<HomePage> {
         },
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    bloc.dispose();
-    super.dispose();
   }
 }

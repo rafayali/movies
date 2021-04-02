@@ -1,7 +1,7 @@
 class UiState<T> {}
 
 class Success<T> extends UiState<T> {
-  final T result;
+  final T? result;
 
   Success(this.result);
 }

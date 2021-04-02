@@ -2,7 +2,7 @@
 
 A movie app showcase built using [The Movie Database][1] api in Flutter
 
-<img src="./Assets/1.png" width=196/> <img src="./Assets/2.png" width=196/> <img src="./Assets/3.png" width=196/> <img src="./Assets/4.png" width=196/>
+<img src="./Art/1.png" width=196/> <img src="./Art/2.png" width=196/> <img src="./Art/3.png" width=196/> <img src="./Art/4.png" width=196/>
 
 License
 -------

@@ -5,9 +5,9 @@ part 'movie_credits.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Credits {
   Credits({
-    this.id,
-    this.cast,
-    this.crew,
+    required this.id,
+    required this.cast,
+    required this.crew,
   });
 
   final int id;
@@ -23,36 +23,36 @@ class Credits {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Cast {
   Cast({
-    this.adult,
-    this.gender,
-    this.id,
-    this.knownForDepartment,
-    this.name,
-    this.originalName,
-    this.popularity,
-    this.profilePath,
-    this.castId,
-    this.character,
-    this.creditId,
-    this.order,
-    this.department,
-    this.job,
+    required this.adult,
+    required this.gender,
+    required this.id,
+    required this.knownForDepartment,
+    required this.name,
+    required this.originalName,
+    required this.popularity,
+    required this.profilePath,
+    required this.castId,
+    required this.character,
+    required this.creditId,
+    required this.order,
+    required this.department,
+    required this.job,
   });
 
-  final bool adult;
+  final bool? adult;
   final int gender;
   final int id;
-  final String knownForDepartment;
+  final String? knownForDepartment;
   final String name;
-  final String originalName;
-  final double popularity;
-  final String profilePath;
-  final int castId;
-  final String character;
-  final String creditId;
-  final int order;
-  final String department;
-  final String job;
+  final String? originalName;
+  final double? popularity;
+  final String? profilePath;
+  final int? castId;
+  final String? character;
+  final String? creditId;
+  final int? order;
+  final String? department;
+  final String? job;
 
   factory Cast.fromJson(Map<String, dynamic> json) => _$CastFromJson(json);
 

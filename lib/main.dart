@@ -14,39 +14,48 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        backgroundColor: Color(0xfffafafa),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      darkTheme: ThemeData.dark().copyWith(
-        backgroundColor: Color(0xFF303030),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      themeMode: ThemeMode.system,
-      initialRoute: '/',
-      onGenerateRoute: (settings) {
-        switch (settings.name) {
-          case '/':
-            return CupertinoPageRoute(
-              builder: (context) => Provider(
-                create: (context) => HomeBloc(DefaultTmdbApi()),
-                child: HomePage(),
-              ),
-            );
-          case MovieDetailPage.routeName:
-            return CupertinoPageRoute(
-              builder: (context) => MovieDetailPage(
-                MovieDetailBloc(
-                  settings.arguments as MovieDetailParams,
-                  DefaultTmdbApi(),
+    return MultiProvider(
+      providers: [
+        Provider<TmdbApi>(create: (context) => TmdbApi()),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          backgroundColor: Color(0xfffafafa),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        darkTheme: ThemeData.dark().copyWith(
+          backgroundColor: Color(0xFF303030),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        themeMode: ThemeMode.system,
+        initialRoute: HomePage.routeName,
+        onGenerateRoute: (settings) {
+          switch (settings.name) {
+            case HomePage.routeName:
+              return CupertinoPageRoute(
+                builder: (context) => Provider(
+                  create: (context) => HomeBloc(
+                    Provider.of(context, listen: false),
+                  ),
+                  dispose: (BuildContext context, HomeBloc value) =>
+                      value.dispose(),
+                  child: HomePage(),
                 ),
-              ),
-            );
-        }
-
-        return null;
-      },
+              );
+            case MovieDetailPage.routeName:
+              return CupertinoPageRoute(
+                builder: (context) => Provider<MovieDetailBloc>(
+                  create: (context) => MovieDetailBloc(
+                    settings.arguments as MovieDetailParams,
+                    Provider.of(context, listen: false),
+                  ),
+                  dispose: (context, value) => value.dispose(),
+                  child: MovieDetailPage(),
+                ),
+              );
+          }
+        },
+      ),
     );
   }
 }

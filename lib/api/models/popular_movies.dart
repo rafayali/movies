@@ -6,8 +6,8 @@ part 'popular_movies.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class PopularMovies {
   PopularMovies({
-    this.page,
-    this.results,
+    required this.page,
+    required this.results,
   });
 
   final int page;

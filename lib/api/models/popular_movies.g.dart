@@ -9,10 +9,9 @@ part of 'popular_movies.dart';
 PopularMovies _$PopularMoviesFromJson(Map<String, dynamic> json) {
   return PopularMovies(
     page: json['page'] as int,
-    results: (json['results'] as List)
-        ?.map(
-            (e) => e == null ? null : Movie.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    results: (json['results'] as List<dynamic>)
+        .map((e) => Movie.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 

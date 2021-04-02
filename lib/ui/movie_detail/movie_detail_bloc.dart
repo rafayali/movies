@@ -47,8 +47,8 @@ class MovieDetailBloc {
       return;
     }
 
-    final movie = movieResult.asValue.value;
-    final credits = creditsResult.asValue.value;
+    final movie = movieResult.asValue!.value;
+    final credits = creditsResult.asValue!.value;
 
     _state.add(Success(_createMovieDetailUiModel(movie, credits)));
   }
@@ -67,7 +67,7 @@ class MovieDetailBloc {
       '${BuildConfigs.BaseImageUrlOriginal}${movie.backdropPath}',
       movie.overview,
       movie.voteAverage,
-      movie.genres.map((e) => e.name).toList(),
+      movie.genres?.map((e) => e.name).toList() ?? List.empty(),
       movie.runtime,
       credits.cast
           .map((e) => ui.Cast(

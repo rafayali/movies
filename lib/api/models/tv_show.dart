@@ -5,19 +5,19 @@ part 'tv_show.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TvShow {
   TvShow({
-    this.backdropPath,
-    this.firstAirDate,
-    this.genreIds,
-    this.id,
-    this.name,
-    this.originCountry,
-    this.originalLanguage,
-    this.originalName,
-    this.overview,
-    this.popularity,
-    this.posterPath,
-    this.voteAverage,
-    this.voteCount,
+    required this.backdropPath,
+    required this.firstAirDate,
+    required this.genreIds,
+    required this.id,
+    required this.name,
+    required this.originCountry,
+    required this.originalLanguage,
+    required this.originalName,
+    required this.overview,
+    required this.popularity,
+    required this.posterPath,
+    required this.voteAverage,
+    required this.voteCount,
   });
 
   final String backdropPath;

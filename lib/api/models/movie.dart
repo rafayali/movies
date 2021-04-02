@@ -5,56 +5,56 @@ part 'movie.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Movie {
   Movie({
-    this.adult,
-    this.backdropPath,
-    this.belongsToCollection,
-    this.budget,
-    this.genres,
-    this.homepage,
-    this.id,
-    this.imdbId,
-    this.originalLanguage,
-    this.originalTitle,
-    this.overview,
-    this.popularity,
-    this.posterPath,
-    this.productionCompanies,
-    this.productionCountries,
-    this.releaseDate,
-    this.revenue,
-    this.runtime,
-    this.spokenLanguages,
-    this.status,
-    this.tagline,
-    this.title,
-    this.video,
-    this.voteAverage,
-    this.voteCount,
+    required this.adult,
+    required this.backdropPath,
+    required this.belongsToCollection,
+    required this.budget,
+    required this.genres,
+    required this.homepage,
+    required this.id,
+    required this.imdbId,
+    required this.originalLanguage,
+    required this.originalTitle,
+    required this.overview,
+    required this.popularity,
+    required this.posterPath,
+    required this.productionCompanies,
+    required this.productionCountries,
+    required this.releaseDate,
+    required this.revenue,
+    required this.runtime,
+    required this.spokenLanguages,
+    required this.status,
+    required this.tagline,
+    required this.title,
+    required this.video,
+    required this.voteAverage,
+    required this.voteCount,
   });
 
   final bool adult;
   final String backdropPath;
-  final dynamic belongsToCollection;
-  final int budget;
-  final List<Genre> genres;
-  final String homepage;
+  final dynamic? belongsToCollection;
+  final int? budget;
+  final List<Genre>? genres;
+  final String? homepage;
   final int id;
-  final String imdbId;
-  final String originalLanguage;
-  final String originalTitle;
+  final String? imdbId;
+  final String? originalLanguage;
+  final String? originalTitle;
   final String overview;
-  final double popularity;
+  final double? popularity;
   final String posterPath;
-  final List<ProductionCompany> productionCompanies;
-  final List<ProductionCountry> productionCountries;
+  final List<ProductionCompany>? productionCompanies;
+  final List<ProductionCountry>? productionCountries;
   final DateTime releaseDate;
-  final int revenue;
-  final int runtime;
-  final List<SpokenLanguage> spokenLanguages;
-  final String status;
-  final String tagline;
+  final int? revenue;
+  final int? runtime;
+  final List<SpokenLanguage>? spokenLanguages;
+  final String? status;
+  final String? tagline;
   final String title;
-  final bool video;
+  final bool? video;
   final double voteAverage;
   final int voteCount;
 
@@ -66,8 +66,8 @@ class Movie {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Genre {
   Genre({
-    this.id,
-    this.name,
+    required this.id,
+    required this.name,
   });
 
   final int id;
@@ -81,14 +81,14 @@ class Genre {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ProductionCompany {
   ProductionCompany({
-    this.id,
-    this.logoPath,
-    this.name,
-    this.originCountry,
+    required this.id,
+    required this.logoPath,
+    required this.name,
+    required this.originCountry,
   });
 
   final int id;
-  final String logoPath;
+  final String? logoPath;
   final String name;
   final String originCountry;
 
@@ -101,11 +101,11 @@ class ProductionCompany {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ProductionCountry {
   ProductionCountry({
-    this.iso31661,
-    this.name,
+    required this.iso31661,
+    required this.name,
   });
 
-  final String iso31661;
+  final String? iso31661;
   final String name;
 
   factory ProductionCountry.fromJson(Map<String, dynamic> json) =>
@@ -117,13 +117,13 @@ class ProductionCountry {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class SpokenLanguage {
   SpokenLanguage({
-    this.englishName,
-    this.iso6391,
-    this.name,
+    required this.englishName,
+    required this.iso6391,
+    required this.name,
   });
 
   final String englishName;
-  final String iso6391;
+  final String? iso6391;
   final String name;
 
   factory SpokenLanguage.fromJson(Map<String, dynamic> json) =>

@@ -3,38 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:movies_flutter/ui/movie_detail/models/movie_detail.dart';
 import 'package:movies_flutter/ui/movie_detail/movie_detail_bloc.dart';
 import 'package:movies_flutter/ui/state.dart';
+import 'package:provider/provider.dart';
 
 import 'models/cast.dart';
 
 class MovieDetailPage extends StatefulWidget {
   static const routeName = '/detail';
 
-  final MovieDetailBloc _bloc;
-
-  MovieDetailPage(this._bloc);
-
   @override
   _MovieDetailPageState createState() => _MovieDetailPageState();
 }
 
 class _MovieDetailPageState extends State<MovieDetailPage> {
+  late final MovieDetailBloc _bloc;
+
   @override
-  Widget build(BuildContext context) {
-    return StreamBuilder(
-      initialData: widget._bloc.initialState,
-      stream: widget._bloc.state,
-      builder: (context, snapshot) {
-        return MovieDetailContent(
-          (snapshot.data as Success<MovieDetailUiModel>).result,
-        );
-      },
-    );
+  void initState() {
+    super.initState();
+    _bloc = Provider.of<MovieDetailBloc>(context, listen: false);
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    widget._bloc.dispose();
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      initialData: _bloc.initialState,
+      stream: _bloc.state,
+      builder: (context, snapshot) {
+        return MovieDetailContent(
+          (snapshot.data as Success<MovieDetailUiModel>).result!,
+        );
+      },
+    );
   }
 }
 
@@ -84,7 +83,7 @@ class MovieDetailContent extends StatelessWidget {
                               _movieDetailUiModel.title,
                               style: Theme.of(context)
                                   .textTheme
-                                  .headline5
+                                  .headline5!
                                   .copyWith(fontWeight: FontWeight.bold),
                               textAlign: TextAlign.center,
                             ),
@@ -96,10 +95,11 @@ class MovieDetailContent extends StatelessWidget {
                                 _movieDetailUiModel.genre == null) {
                               return Text('');
                             } else {
-                              final year = _movieDetailUiModel.releaseDate.year;
-                              final genre = _movieDetailUiModel.genre.first;
-                              final minutes = _movieDetailUiModel.runtime % 60;
-                              final hours = _movieDetailUiModel.runtime ~/ 60;
+                              final year =
+                                  _movieDetailUiModel.releaseDate!.year;
+                              final genre = _movieDetailUiModel.genre!.first;
+                              final minutes = _movieDetailUiModel.runtime! % 60;
+                              final hours = _movieDetailUiModel.runtime! ~/ 60;
                               return Text(
                                 '$year • $genre • ${hours}h ${minutes}m',
                                 style: Theme.of(context).textTheme.bodyText1,
@@ -126,7 +126,7 @@ class MovieDetailContent extends StatelessWidget {
               if (_movieDetailUiModel.rating == null) {
                 return SizedBox();
               } else {
-                return _RatingWidget(_movieDetailUiModel.rating);
+                return _RatingWidget(_movieDetailUiModel.rating!);
               }
             }),
             Builder(builder: (context) {
@@ -136,7 +136,7 @@ class MovieDetailContent extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
                   child: Text(
-                    _movieDetailUiModel.description,
+                    _movieDetailUiModel.description!,
                     style: Theme.of(context).textTheme.bodyText1,
                     textAlign: TextAlign.center,
                   ),
@@ -147,7 +147,7 @@ class MovieDetailContent extends StatelessWidget {
               if (_movieDetailUiModel.cast == null) {
                 return SizedBox();
               } else {
-                return _CastWidget(_movieDetailUiModel.cast);
+                return _CastWidget(_movieDetailUiModel.cast!);
               }
             }),
           ],
@@ -199,7 +199,9 @@ class _CastWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 8),
-                  Text(_cast[index].name, ),
+                  Text(
+                    _cast[index].name,
+                  ),
                 ],
               ),
               separatorBuilder: (context, index) => SizedBox(width: 16),
@@ -226,7 +228,7 @@ class _RatingWidget extends StatelessWidget {
               _rating.toString(),
               style: Theme.of(context)
                   .textTheme
-                  .bodyText1
+                  .bodyText1!
                   .copyWith(color: Color(0xfffdc432)),
             ),
             SizedBox(

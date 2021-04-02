@@ -6,10 +6,10 @@ part 'popular_tv.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class PopularTv {
   PopularTv({
-    this.page,
-    this.results,
-    this.totalPages,
-    this.totalResults,
+    required this.page,
+    required this.results,
+    required this.totalPages,
+    required this.totalResults,
   });
 
   final int page;

@@ -9,14 +9,12 @@ part of 'movie_credits.dart';
 Credits _$CreditsFromJson(Map<String, dynamic> json) {
   return Credits(
     id: json['id'] as int,
-    cast: (json['cast'] as List)
-        ?.map(
-            (e) => e == null ? null : Cast.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    crew: (json['crew'] as List)
-        ?.map(
-            (e) => e == null ? null : Cast.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    cast: (json['cast'] as List<dynamic>)
+        .map((e) => Cast.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    crew: (json['crew'] as List<dynamic>)
+        .map((e) => Cast.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -28,20 +26,20 @@ Map<String, dynamic> _$CreditsToJson(Credits instance) => <String, dynamic>{
 
 Cast _$CastFromJson(Map<String, dynamic> json) {
   return Cast(
-    adult: json['adult'] as bool,
+    adult: json['adult'] as bool?,
     gender: json['gender'] as int,
     id: json['id'] as int,
-    knownForDepartment: json['known_for_department'] as String,
+    knownForDepartment: json['known_for_department'] as String?,
     name: json['name'] as String,
-    originalName: json['original_name'] as String,
-    popularity: (json['popularity'] as num)?.toDouble(),
-    profilePath: json['profile_path'] as String,
-    castId: json['cast_id'] as int,
-    character: json['character'] as String,
-    creditId: json['credit_id'] as String,
-    order: json['order'] as int,
-    department: json['department'] as String,
-    job: json['job'] as String,
+    originalName: json['original_name'] as String?,
+    popularity: (json['popularity'] as num?)?.toDouble(),
+    profilePath: json['profile_path'] as String?,
+    castId: json['cast_id'] as int?,
+    character: json['character'] as String?,
+    creditId: json['credit_id'] as String?,
+    order: json['order'] as int?,
+    department: json['department'] as String?,
+    job: json['job'] as String?,
   );
 }
 

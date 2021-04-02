@@ -6,9 +6,9 @@ class MovieWidget extends StatelessWidget {
   final String coverArt;
   final String title;
   final String date;
-  final Function(int movieId) onClickListener;
+  final Function(int movieId)? onClickListener;
 
-  const MovieWidget(
+  MovieWidget(
     this.movieId,
     this.title,
     this.coverArt,
@@ -21,7 +21,7 @@ class MovieWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (onClickListener != null) {
-          onClickListener(movieId);
+          onClickListener?.call(movieId);
         }
       },
       child: SizedBox(
@@ -44,14 +44,17 @@ class MovieWidget extends StatelessWidget {
               ),
             ),
             SizedBox(height: 4),
-            Text(
-              title,
-              style: TextStyle(fontWeight: FontWeight.bold),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
+            Padding(
+              padding: const EdgeInsets.only(left: 8, right: 8),
+              child: Text(
+                title,
+                style: TextStyle(fontWeight: FontWeight.bold),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(top: 4, left: 8, right: 8),
               child: Text(
                 date,
                 textAlign: TextAlign.start,

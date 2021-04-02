@@ -21,6 +21,9 @@ class HomeBloc {
   final _popularTvShows = BehaviorSubject<List<TvShowUiModel>>();
   Stream<List<TvShowUiModel>> get popularTvShows => _popularTvShows.stream;
 
+  final _discoverMovies = BehaviorSubject<List<MovieItemUiModel>>();
+  Stream<List<MovieItemUiModel>> get discoverMovies => _discoverMovies.stream;
+
   HomeBloc(this.tmdbApi) {
     _load();
   }
@@ -35,17 +38,24 @@ class HomeBloc {
         await async.Result.capture(tmdbApi.getPopularMovies());
     final _tvShowsResult =
         await async.Result.capture(tmdbApi.getPopularTvShows());
+    final _discoverMoviesResult =
+        await async.Result.capture(tmdbApi.discoverMovies());
 
-    if (_moviesResult.isError || _tvShowsResult.isError) {
-      _state.add(Error('Error loading movies list'));
+    if (_moviesResult.isError ||
+        _tvShowsResult.isError ||
+        _discoverMoviesResult.isError) {
+      _state.add(Error('Error loading data list'));
       return;
     }
 
-    _popularMovies.add(_moviesResult.asValue.value.results
+    _popularMovies.add(_moviesResult.asValue!.value.results
         .map((e) => e.toMovieItem())
         .toList());
-    _popularTvShows.add(_tvShowsResult.asValue.value.results
+    _popularTvShows.add(_tvShowsResult.asValue!.value.results
         .map((e) => e.toTvShowUiModel())
+        .toList());
+    _discoverMovies.add(_discoverMoviesResult.asValue!.value.results
+        .map((e) => e.toMovieItem())
         .toList());
 
     _state.add(Success(null));
@@ -55,5 +65,6 @@ class HomeBloc {
     _state.close();
     _popularMovies.close();
     _popularTvShows.close();
+    _discoverMovies.close();
   }
 }
