@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'dart:ffi';
 
-import 'package:async/async.dart' as async;
+import 'package:movies_flutter/api/models/discover/discover_movies.dart';
+import 'package:movies_flutter/api/models/popular_movies.dart';
+import 'package:movies_flutter/api/models/popular_tv.dart';
 import 'package:movies_flutter/ui/home/models/tv_item.dart';
+import 'package:rxdart/rxdart.dart';
 
 import 'package:rxdart/subjects.dart';
 import 'package:movies_flutter/api/tmdb_api.dart';
@@ -24,6 +27,8 @@ class HomeBloc {
   final _discoverMovies = BehaviorSubject<List<MovieItemUiModel>>();
   Stream<List<MovieItemUiModel>> get discoverMovies => _discoverMovies.stream;
 
+  final _compositeSubscription = CompositeSubscription();
+
   HomeBloc(this.tmdbApi) {
     _load();
   }
@@ -34,34 +39,28 @@ class HomeBloc {
   }
 
   void _load() async {
-    final _moviesResult =
-        await async.Result.capture(tmdbApi.getPopularMovies());
-    final _tvShowsResult =
-        await async.Result.capture(tmdbApi.getPopularTvShows());
-    final _discoverMoviesResult =
-        await async.Result.capture(tmdbApi.discoverMovies());
-
-    if (_moviesResult.isError ||
-        _tvShowsResult.isError ||
-        _discoverMoviesResult.isError) {
-      _state.add(Error('Error loading data list'));
-      return;
-    }
-
-    _popularMovies.add(_moviesResult.asValue!.value.results
-        .map((e) => e.toMovieItem())
-        .toList());
-    _popularTvShows.add(_tvShowsResult.asValue!.value.results
-        .map((e) => e.toTvShowUiModel())
-        .toList());
-    _discoverMovies.add(_discoverMoviesResult.asValue!.value.results
-        .map((e) => e.toMovieItem())
-        .toList());
-
-    _state.add(Success(null));
+    ZipStream.zip3<PopularMovies, PopularTv, DiscoverMovies, dynamic>(
+      tmdbApi.getPopularMovies().asStream(),
+      tmdbApi.getPopularTvShows().asStream(),
+      tmdbApi.discoverMovies().asStream(),
+      (a, b, c) {
+        _popularMovies.add(a.results.map((e) => e.toMovieItem()).toList());
+        _popularTvShows.add(b.results.map((e) => e.toTvShowUiModel()).toList());
+        _discoverMovies.add(c.results.map((e) => e.toMovieItem()).toList());
+        return null;
+      },
+    ).listen(
+      (value) {
+        _state.add(Success(null));
+      },
+      onError: (error, trace) {
+        _state.add(Error('Error loading data list'));
+      },
+    ).addTo(_compositeSubscription);
   }
 
   void dispose() {
+    _compositeSubscription.dispose();
     _state.close();
     _popularMovies.close();
     _popularTvShows.close();
