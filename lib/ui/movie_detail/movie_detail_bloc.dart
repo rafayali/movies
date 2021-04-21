@@ -1,4 +1,3 @@
-import 'package:async/async.dart' as async;
 import 'package:movies_flutter/api/models/movie.dart';
 import 'package:movies_flutter/api/models/movie_credits.dart';
 import 'package:movies_flutter/api/tmdb_api.dart';
@@ -38,19 +37,18 @@ class MovieDetailBloc {
   }
 
   void _load(int id) async {
-    final movieResult = await async.Result.capture(tmdbApi.getMovie(params.id));
-    final creditsResult =
-        await async.Result.capture(tmdbApi.getMovieCredits(params.id));
-
-    if (movieResult.isError || creditsResult.isError) {
-      _error.add('Error loading movie details. Please try again.');
-      return;
-    }
-
-    final movie = movieResult.asValue!.value;
-    final credits = creditsResult.asValue!.value;
-
-    _state.add(Success(_createMovieDetailUiModel(movie, credits)));
+    ZipStream.zip2<Movie, Credits, MovieDetailUiModel>(
+      tmdbApi.getMovie(params.id).asStream(),
+      tmdbApi.getMovieCredits(params.id).asStream(),
+      (movie, credit) => _createMovieDetailUiModel(movie, credit),
+    ).listen(
+      (value) {
+        _state.add(Success(value));
+      },
+      onError: (error, trace) {
+        _error.add('Error loading movie details. Please try again.');
+      },
+    );
   }
 
   void retry() {

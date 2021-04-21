@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_flutter/api/tmdb_api.dart';
 import 'package:movies_flutter/ui/home/home_bloc.dart';
@@ -17,6 +21,14 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<TmdbApi>(create: (context) => TmdbApi()),
+        Provider<Dio>(create: (context) {
+          final dio = Dio(BaseOptions(baseUrl: 'https://api.themoviedb.org/'));
+          (dio.transformer as DefaultTransformer).jsonDecodeCallback =
+              _parseJson;
+          dio.interceptors
+              .add(LogInterceptor(requestBody: true, responseBody: true));
+          return dio;
+        }),
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -58,4 +70,12 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+dynamic parseAndDecode(String response) {
+  return jsonDecode(response);
+}
+
+Future _parseJson(String text) {
+  return compute(parseAndDecode, text);
 }
