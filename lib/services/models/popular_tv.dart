@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:movies_flutter/api/models/tv_show.dart';
+
+import 'tv_show.dart';
 
 part 'popular_tv.g.dart';
 

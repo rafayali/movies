@@ -1,5 +1,5 @@
-import 'package:movies_flutter/api/models/tv_show.dart';
 import 'package:movies_flutter/configs.dart';
+import 'package:movies_flutter/services/models/tv_show.dart';
 
 class TvShowUiModel {
   final String name;

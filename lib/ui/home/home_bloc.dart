@@ -1,19 +1,20 @@
 import 'dart:async';
 import 'dart:ffi';
 
-import 'package:movies_flutter/api/models/discover/discover_movies.dart';
-import 'package:movies_flutter/api/models/popular_movies.dart';
-import 'package:movies_flutter/api/models/popular_tv.dart';
+import 'package:movies_flutter/services/models/discover/discover_movies.dart';
+import 'package:movies_flutter/services/models/popular_movies.dart';
+import 'package:movies_flutter/services/models/popular_tv.dart';
+import 'package:movies_flutter/services/tmdb_service.dart';
+
 import 'package:movies_flutter/ui/home/models/tv_item.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'package:rxdart/subjects.dart';
-import 'package:movies_flutter/api/tmdb_api.dart';
 import 'package:movies_flutter/ui/home/models/movie_item.dart';
 import 'package:movies_flutter/ui/state.dart';
 
 class HomeBloc {
-  final TmdbApi tmdbApi;
+  final TmdbService tmdbApi;
 
   final _state = PublishSubject<UiState<Void>>();
   Stream<UiState<Void>> get state => _state.stream;

@@ -4,12 +4,14 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_flutter/api/tmdb_api.dart';
+import 'package:movies_flutter/configs.dart';
 import 'package:movies_flutter/ui/home/home_bloc.dart';
 import 'package:movies_flutter/ui/home/home_page.dart';
 import 'package:movies_flutter/ui/movie_detail/movie_detail_bloc.dart';
 import 'package:movies_flutter/ui/movie_detail/movie_detail_page.dart';
 import 'package:provider/provider.dart';
+
+import 'services/tmdb_service.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,15 +22,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<TmdbApi>(create: (context) => TmdbApi()),
         Provider<Dio>(create: (context) {
-          final dio = Dio(BaseOptions(baseUrl: 'https://api.themoviedb.org/'));
+          final dio = Dio(BaseOptions(
+            baseUrl: BuildConfigs.BaseUrl,
+            sendTimeout: Duration(seconds: 10).inMilliseconds,
+            connectTimeout: Duration(seconds: 10).inMilliseconds,
+            receiveTimeout: Duration(seconds: 10).inMilliseconds,
+          ));
           (dio.transformer as DefaultTransformer).jsonDecodeCallback =
               _parseJson;
           dio.interceptors
               .add(LogInterceptor(requestBody: true, responseBody: true));
           return dio;
         }),
+        Provider(
+          create: (context) => TmdbService(
+            Provider.of(context, listen: false),
+          ),
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(

@@ -1,5 +1,5 @@
-import 'package:movies_flutter/api/models/movie.dart';
 import 'package:movies_flutter/configs.dart';
+import 'package:movies_flutter/services/models/movie.dart';
 
 class MovieItemUiModel {
   final String name;

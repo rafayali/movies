@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:movies_flutter/api/models/movie.dart';
+
+import '../movie.dart';
 
 part 'discover_movies.g.dart';
 
