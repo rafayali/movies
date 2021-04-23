@@ -1,5 +1,5 @@
 name: movies_flutter
-description: A new Flutter project.
+description: A movies showcase app using TMDB Api.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -30,7 +30,6 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   provider: ^5.0.0
-  http: ^0.13.1
   json_annotation: ^4.0.1
   cached_network_image: ^3.0.0
   quiver: ^3.0.0
