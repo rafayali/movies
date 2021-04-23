@@ -1,5 +1,7 @@
 # Movies
 
+[![Deploy](https://github.com/rafayali/movies/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/rafayali/movies/actions/workflows/deploy.yml)
+
 A movie app showcase built using [The Movie Database][1] api in Flutter
 
 **Note:** Requires flutter v2.0.0 or higher
