@@ -18,162 +18,176 @@ class HomePage extends StatelessWidget {
     final bloc = Provider.of<HomeBloc>(context, listen: false);
 
     return Scaffold(
-      body: StreamBuilder(
+      body: StreamBuilder<UiState<dynamic>>(
         initialData: Loading(),
         stream: bloc.state,
         builder: (context, snapshot) {
-          if (snapshot.data is Loading) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-
-          if (snapshot.data is Error) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Error loading movies. Please try again.'),
-                  ElevatedButton(
-                    onPressed: () => bloc.retry(),
-                    child: Text('Retry'),
-                  )
-                ],
-              ),
-            );
-          }
-
-          return SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SafeArea(
-                  bottom: false,
-                  child: SizedBox(
-                    height: 16,
-                  ),
+          return snapshot.data!.when(
+            success: (data) {
+              return Center(
+                child: _HomePageContent(bloc: bloc),
+              );
+            },
+            loading: () {
+              return CircularProgressIndicator();
+            },
+            error: (message) {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Error loading movies. Please try again.'),
+                    ElevatedButton(
+                      onPressed: () => bloc.retry(),
+                      child: Text('Retry'),
+                    )
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: _MainHeader(),
-                ),
-                SizedBox(height: 16),
-                _SectionHeader(
-                  headerTitle: 'Popular Movies',
-                  onPress: () {},
-                ),
-                SizedBox(
-                  height: 196,
-                  child: StreamBuilder<List<MovieItemUiModel>>(
-                    stream: bloc.popularMovies,
-                    initialData: [],
-                    builder: (context, snapshot) {
-                      final data = snapshot.data!;
-
-                      return ListView.separated(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: data.length,
-                        separatorBuilder: (context, index) => SizedBox(
-                          width: 8,
-                        ),
-                        itemBuilder: (context, index) {
-                          return _PopularMoviesCarouselItem(movie: data[index]);
-                        },
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(height: 8),
-                _SectionHeader(
-                  headerTitle: 'Tv Shows',
-                  onPress: () {},
-                ),
-                SizedBox(
-                  height: 284,
-                  child: StreamBuilder(
-                    initialData: List<TvShowUiModel>.empty(),
-                    stream: bloc.popularTvShows,
-                    builder: (context, snapshot) {
-                      final _data = snapshot.data as List<TvShowUiModel>;
-
-                      return ListView.separated(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: _data.length,
-                        itemBuilder: (context, index) {
-                          return MovieWidget(
-                            _data[index].id,
-                            _data[index].name,
-                            _data[index].poster,
-                            DateFormat.yMMMMd('en_US')
-                                .format(_data[index].date),
-                            onClickListener: (movieId) =>
-                                Navigator.of(context).pushNamed(
-                              MovieDetailPage.routeName,
-                              arguments: MovieDetailParams(
-                                _data[index].id,
-                                _data[index].name,
-                                _data[index].backdrop,
-                              ),
-                            ),
-                          );
-                        },
-                        separatorBuilder: (BuildContext context, int index) =>
-                            SizedBox(width: 8),
-                      );
-                    },
-                  ),
-                ),
-                _SectionHeader(
-                  headerTitle: 'Discover',
-                  onPress: () {},
-                ),
-                SizedBox(
-                  height: 284,
-                  child: StreamBuilder(
-                      initialData: List<MovieItemUiModel>.empty(),
-                      stream: bloc.discoverMovies,
-                      builder: (_, snapshot) {
-                        final _data = snapshot.data as List<MovieItemUiModel>;
-
-                        return ListView.separated(
-                          padding: EdgeInsets.symmetric(horizontal: 8),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: _data.length,
-                          itemBuilder: (context, index) {
-                            return MovieWidget(
-                              _data[index].id,
-                              _data[index].name,
-                              _data[index].poster,
-                              DateFormat.yMMMMd('en_US')
-                                  .format(_data[index].date),
-                              onClickListener: (movieId) =>
-                                  Navigator.of(context).pushNamed(
-                                MovieDetailPage.routeName,
-                                arguments: MovieDetailParams(
-                                  _data[index].id,
-                                  _data[index].name,
-                                  _data[index].backdrop,
-                                ),
-                              ),
-                            );
-                          },
-                          separatorBuilder: (BuildContext context, int index) =>
-                              SizedBox(width: 8),
-                        );
-                      }),
-                ),
-                SafeArea(
-                  top: false,
-                  child: SizedBox(),
-                ),
-              ],
-            ),
+              );
+            },
           );
         },
+      ),
+    );
+  }
+}
+
+class _HomePageContent extends StatelessWidget {
+  const _HomePageContent({
+    Key? key,
+    required this.bloc,
+  }) : super(key: key);
+
+  final HomeBloc bloc;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SafeArea(
+            bottom: false,
+            child: SizedBox(
+              height: 16,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: _MainHeader(),
+          ),
+          SizedBox(height: 16),
+          _SectionHeader(
+            headerTitle: 'Popular Movies',
+            onPress: () {},
+          ),
+          SizedBox(
+            height: 196,
+            child: StreamBuilder<List<MovieItemUiModel>>(
+              stream: bloc.popularMovies,
+              initialData: [],
+              builder: (context, snapshot) {
+                final data = snapshot.data!;
+
+                return ListView.separated(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: data.length,
+                  separatorBuilder: (context, index) => SizedBox(
+                    width: 8,
+                  ),
+                  itemBuilder: (context, index) {
+                    return _PopularMoviesCarouselItem(movie: data[index]);
+                  },
+                );
+              },
+            ),
+          ),
+          SizedBox(height: 8),
+          _SectionHeader(
+            headerTitle: 'Tv Shows',
+            onPress: () {},
+          ),
+          SizedBox(
+            height: 284,
+            child: StreamBuilder(
+              initialData: List<TvShowUiModel>.empty(),
+              stream: bloc.popularTvShows,
+              builder: (context, snapshot) {
+                final _data = snapshot.data as List<TvShowUiModel>;
+
+                return ListView.separated(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _data.length,
+                  itemBuilder: (context, index) {
+                    return MovieWidget(
+                      _data[index].id,
+                      _data[index].name,
+                      _data[index].poster,
+                      DateFormat.yMMMMd('en_US').format(_data[index].date),
+                      onClickListener: (movieId) =>
+                          Navigator.of(context).pushNamed(
+                        MovieDetailPage.routeName,
+                        arguments: MovieDetailParams(
+                          _data[index].id,
+                          _data[index].name,
+                          _data[index].backdrop,
+                        ),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      SizedBox(width: 8),
+                );
+              },
+            ),
+          ),
+          _SectionHeader(
+            headerTitle: 'Discover',
+            onPress: () {},
+          ),
+          SizedBox(
+            height: 284,
+            child: StreamBuilder(
+                initialData: List<MovieItemUiModel>.empty(),
+                stream: bloc.discoverMovies,
+                builder: (_, snapshot) {
+                  final _data = snapshot.data as List<MovieItemUiModel>;
+
+                  return ListView.separated(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: _data.length,
+                    itemBuilder: (context, index) {
+                      return MovieWidget(
+                        _data[index].id,
+                        _data[index].name,
+                        _data[index].poster,
+                        DateFormat.yMMMMd('en_US').format(_data[index].date),
+                        onClickListener: (movieId) =>
+                            Navigator.of(context).pushNamed(
+                          MovieDetailPage.routeName,
+                          arguments: MovieDetailParams(
+                            _data[index].id,
+                            _data[index].name,
+                            _data[index].backdrop,
+                          ),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, int index) =>
+                        SizedBox(width: 8),
+                  );
+                }),
+          ),
+          SafeArea(
+            top: false,
+            child: SizedBox(),
+          ),
+        ],
       ),
     );
   }

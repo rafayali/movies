@@ -25,12 +25,16 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
+    return StreamBuilder<UiState<MovieDetailUiModel>>(
       initialData: _bloc.initialState,
       stream: _bloc.state,
       builder: (context, snapshot) {
-        return MovieDetailContent(
-          (snapshot.data as Success<MovieDetailUiModel>).result!,
+        return snapshot.data!.when(
+          success: (data) => MovieDetailContent(
+            data!,
+          ),
+          loading: () => SizedBox(),
+          error: (message) => SizedBox(),
         );
       },
     );

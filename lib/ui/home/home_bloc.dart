@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ffi';
 
 import 'package:movies_flutter/services/models/discover/discover_movies.dart';
 import 'package:movies_flutter/services/models/genres.dart';
@@ -15,8 +14,8 @@ import 'package:rxdart/subjects.dart';
 class HomeBloc {
   final TmdbService tmdbApi;
 
-  final _state = PublishSubject<UiState<Void>>();
-  Stream<UiState<Void>> get state => _state.stream;
+  final _state = PublishSubject<UiState<dynamic>>();
+  Stream<UiState<dynamic>> get state => _state.stream;
 
   final _popularMovies = BehaviorSubject<List<MovieItemUiModel>>();
   Stream<List<MovieItemUiModel>> get popularMovies => _popularMovies.stream;

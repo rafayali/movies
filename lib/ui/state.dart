@@ -1,15 +1,11 @@
-class UiState<T> {}
+import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Success<T> extends UiState<T> {
-  final T? result;
+part 'state.freezed.dart';
 
-  Success(this.result);
-}
-
-class Loading<T> implements UiState<T> {}
-
-class Error<T> implements UiState<T> {
-  final String message;
-
-  Error(this.message);
+@freezed
+class UiState<T> with _$UiState<T> {
+  const factory UiState.success(T? data) = Success<T>;
+  const factory UiState.loading() = Loading;
+  const factory UiState.error(String message) = Error<T>;
 }
