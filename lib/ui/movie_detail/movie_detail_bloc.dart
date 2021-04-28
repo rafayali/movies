@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:movies_flutter/configs.dart';
 import 'package:movies_flutter/services/models/movie.dart';
 import 'package:movies_flutter/services/models/movie_credits.dart';

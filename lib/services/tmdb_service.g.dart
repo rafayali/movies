@@ -93,6 +93,22 @@ class _TmdbService implements TmdbService {
     return value;
   }
 
+  @override
+  Future<Genres> getMovieGenres() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<
+        Genres>(Options(
+            method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+        .compose(_dio.options,
+            '/3/genre/movie/list?api_key=e92ff494dbf0353926ff0be86f89d7ad&language=en-US',
+            queryParameters: queryParameters, data: _data)
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = Genres.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

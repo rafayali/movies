@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:movies_flutter/services/models/genres.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../configs.dart';
@@ -32,4 +33,7 @@ abstract class TmdbService {
     '/3/discover/movie?api_key=${BuildConfigs.TmdbApiKey}&language=en-US&page=1',
   )
   Future<DiscoverMovies> discoverMovies();
+
+  @GET('/3/genre/movie/list?api_key=${BuildConfigs.TmdbApiKey}&language=en-US')
+  Future<Genres> getMovieGenres();
 }

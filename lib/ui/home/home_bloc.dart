@@ -2,16 +2,15 @@ import 'dart:async';
 import 'dart:ffi';
 
 import 'package:movies_flutter/services/models/discover/discover_movies.dart';
+import 'package:movies_flutter/services/models/genres.dart';
 import 'package:movies_flutter/services/models/popular_movies.dart';
 import 'package:movies_flutter/services/models/popular_tv.dart';
 import 'package:movies_flutter/services/tmdb_service.dart';
-
-import 'package:movies_flutter/ui/home/models/tv_item.dart';
-import 'package:rxdart/rxdart.dart';
-
-import 'package:rxdart/subjects.dart';
 import 'package:movies_flutter/ui/home/models/movie_item.dart';
+import 'package:movies_flutter/ui/home/models/tv_item.dart';
 import 'package:movies_flutter/ui/state.dart';
+import 'package:rxdart/rxdart.dart';
+import 'package:rxdart/subjects.dart';
 
 class HomeBloc {
   final TmdbService tmdbApi;
@@ -40,14 +39,19 @@ class HomeBloc {
   }
 
   void _load() async {
-    ZipStream.zip3<PopularMovies, PopularTv, DiscoverMovies, dynamic>(
+    ZipStream.zip4<PopularMovies, PopularTv, DiscoverMovies, Genres, dynamic>(
       tmdbApi.getPopularMovies().asStream(),
       tmdbApi.getPopularTvShows().asStream(),
       tmdbApi.discoverMovies().asStream(),
-      (a, b, c) {
-        _popularMovies.add(a.results.map((e) => e.toMovieItem()).toList());
-        _popularTvShows.add(b.results.map((e) => e.toTvShowUiModel()).toList());
-        _discoverMovies.add(c.results.map((e) => e.toMovieItem()).toList());
+      tmdbApi.getMovieGenres().asStream(),
+      (popular, tvShows, discover, genres) {
+        _popularMovies.add(
+            popular.results.map((e) => e.toMovieItem(genres.genres)).toList());
+        _popularTvShows
+            .add(tvShows.results.map((e) => e.toTvShowUiModel()).toList());
+        _discoverMovies.add(
+            discover.results.map((e) => e.toMovieItem(genres.genres)).toList());
+
         return null;
       },
     ).listen(

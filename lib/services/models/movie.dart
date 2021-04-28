@@ -4,33 +4,33 @@ part 'movie.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Movie {
-  Movie({
-    required this.adult,
-    required this.backdropPath,
-    required this.belongsToCollection,
-    required this.budget,
-    required this.genres,
-    required this.homepage,
-    required this.id,
-    required this.imdbId,
-    required this.originalLanguage,
-    required this.originalTitle,
-    required this.overview,
-    required this.popularity,
-    required this.posterPath,
-    required this.productionCompanies,
-    required this.productionCountries,
-    required this.releaseDate,
-    required this.revenue,
-    required this.runtime,
-    required this.spokenLanguages,
-    required this.status,
-    required this.tagline,
-    required this.title,
-    required this.video,
-    required this.voteAverage,
-    required this.voteCount,
-  });
+  Movie(
+      {required this.adult,
+      required this.backdropPath,
+      required this.belongsToCollection,
+      required this.budget,
+      required this.genres,
+      required this.homepage,
+      required this.id,
+      required this.imdbId,
+      required this.originalLanguage,
+      required this.originalTitle,
+      required this.overview,
+      required this.popularity,
+      required this.posterPath,
+      required this.productionCompanies,
+      required this.productionCountries,
+      required this.releaseDate,
+      required this.revenue,
+      required this.runtime,
+      required this.spokenLanguages,
+      required this.status,
+      required this.tagline,
+      required this.title,
+      required this.video,
+      required this.voteAverage,
+      required this.voteCount,
+      required this.genreIds});
 
   final bool adult;
   final String backdropPath;
@@ -57,6 +57,7 @@ class Movie {
   final bool? video;
   final double voteAverage;
   final int voteCount;
+  final List<int>? genreIds;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
 
