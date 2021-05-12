@@ -1,13 +1,19 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:movies_flutter/services/models/genres.dart';
+import 'package:movies_flutter/services/models/session_request.dart';
+import 'package:movies_flutter/services/models/token.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../configs.dart';
+import 'models/account.dart';
 import 'models/discover/discover_movies.dart';
 import 'models/movie.dart';
 import 'models/movie_credits.dart';
 import 'models/popular_movies.dart';
 import 'models/popular_tv.dart';
+import 'models/session.dart';
 
 part 'tmdb_service.g.dart';
 
@@ -36,4 +42,13 @@ abstract class TmdbService {
 
   @GET('/3/genre/movie/list?api_key=${BuildConfigs.TmdbApiKey}&language=en-US')
   Future<Genres> getMovieGenres();
+
+  @GET('/3/authentication/token/new?api_key=${BuildConfigs.TmdbApiKey}')
+  Future<Token> getNewToken();
+
+  @POST('/3/authentication/session/new?api_key=${BuildConfigs.TmdbApiKey}')
+  Future<Session> newSession(@Body() SessionRequest request);
+
+  @GET('/3/account?api_key=${BuildConfigs.TmdbApiKey}&session_id={session_id}')
+  Future<Account> account(@Path('session_id') String sessionId);
 }

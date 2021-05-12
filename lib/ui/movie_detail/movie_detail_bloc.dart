@@ -9,8 +9,15 @@ import 'package:movies_flutter/ui/state.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MovieDetailBloc {
+  MovieDetailBloc(this.params, this.tmdbApi) {
+    _load(params.id);
+  }
+
   final MovieDetailParams params;
+
   final TmdbService tmdbApi;
+
+  final _compositeSubscription = CompositeSubscription();
 
   UiState<MovieDetailUiModel> get initialState => Success(
         MovieDetailUiModel(
@@ -26,15 +33,11 @@ class MovieDetailBloc {
         ),
       );
 
-  final _state = PublishSubject<UiState<MovieDetailUiModel>>();
+  final _state = BehaviorSubject<UiState<MovieDetailUiModel>>();
   Stream<UiState<MovieDetailUiModel>> get state => _state.stream;
 
   final _error = PublishSubject<String>();
   Stream<String> get error => _error.stream;
-
-  MovieDetailBloc(this.params, this.tmdbApi) {
-    _load(params.id);
-  }
 
   void _load(int id) async {
     ZipStream.zip2<Movie, Credits, MovieDetailUiModel>(
@@ -48,7 +51,7 @@ class MovieDetailBloc {
       onError: (error, trace) {
         _error.add('Error loading movie details. Please try again.');
       },
-    );
+    ).addTo(_compositeSubscription);
   }
 
   void retry() {
@@ -78,6 +81,7 @@ class MovieDetailBloc {
   }
 
   void dispose() {
+    _compositeSubscription.dispose();
     _state.close();
     _error.close();
   }

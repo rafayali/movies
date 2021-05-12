@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 import 'package:movies_flutter/ui/home/home_bloc.dart';
+import 'package:movies_flutter/ui/home/models/home_ui_model.dart';
 import 'package:movies_flutter/ui/home/models/movie_item.dart';
-import 'package:movies_flutter/ui/home/models/tv_item.dart';
 import 'package:movies_flutter/ui/movie_detail/movie_detail_page.dart';
 import 'package:movies_flutter/ui/state.dart';
 import 'package:movies_flutter/widgets/movie_widget.dart';
@@ -18,18 +18,18 @@ class HomePage extends StatelessWidget {
     final bloc = Provider.of<HomeBloc>(context, listen: false);
 
     return Scaffold(
-      body: StreamBuilder<UiState<dynamic>>(
+      body: StreamBuilder<UiState<HomeUiModel>>(
         initialData: Loading(),
-        stream: bloc.state,
+        stream: bloc.newState,
         builder: (context, snapshot) {
           return snapshot.data!.when(
             success: (data) {
               return Center(
-                child: _HomePageContent(bloc: bloc),
+                child: _HomePageContent(homeUiModel: data!),
               );
             },
             loading: () {
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator());
             },
             error: (message) {
               return Center(
@@ -55,10 +55,10 @@ class HomePage extends StatelessWidget {
 class _HomePageContent extends StatelessWidget {
   const _HomePageContent({
     Key? key,
-    required this.bloc,
+    required this.homeUiModel,
   }) : super(key: key);
 
-  final HomeBloc bloc;
+  final HomeUiModel homeUiModel;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,10 @@ class _HomePageContent extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: _MainHeader(),
+            child: _MainHeader(
+              name: homeUiModel.name,
+              imageUrl: homeUiModel.imageUrl,
+            ),
           ),
           SizedBox(height: 16),
           _SectionHeader(
@@ -83,106 +86,84 @@ class _HomePageContent extends StatelessWidget {
             onPress: () {},
           ),
           SizedBox(
-            height: 196,
-            child: StreamBuilder<List<MovieItemUiModel>>(
-              stream: bloc.popularMovies,
-              initialData: [],
-              builder: (context, snapshot) {
-                final data = snapshot.data!;
-
-                return ListView.separated(
-                  shrinkWrap: true,
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: data.length,
-                  separatorBuilder: (context, index) => SizedBox(
-                    width: 8,
-                  ),
-                  itemBuilder: (context, index) {
-                    return _PopularMoviesCarouselItem(movie: data[index]);
-                  },
-                );
-              },
-            ),
-          ),
+              height: 196,
+              child: ListView.separated(
+                shrinkWrap: true,
+                padding: EdgeInsets.symmetric(horizontal: 8),
+                scrollDirection: Axis.horizontal,
+                itemCount: homeUiModel.popularMovies.length,
+                separatorBuilder: (context, index) => SizedBox(
+                  width: 8,
+                ),
+                itemBuilder: (context, index) {
+                  return _PopularMoviesCarouselItem(
+                    movie: homeUiModel.popularMovies[index],
+                  );
+                },
+              )),
           SizedBox(height: 8),
           _SectionHeader(
             headerTitle: 'Tv Shows',
             onPress: () {},
           ),
           SizedBox(
-            height: 284,
-            child: StreamBuilder(
-              initialData: List<TvShowUiModel>.empty(),
-              stream: bloc.popularTvShows,
-              builder: (context, snapshot) {
-                final _data = snapshot.data as List<TvShowUiModel>;
-
-                return ListView.separated(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: _data.length,
-                  itemBuilder: (context, index) {
-                    return MovieWidget(
-                      _data[index].id,
-                      _data[index].name,
-                      _data[index].poster,
-                      DateFormat.yMMMMd('en_US').format(_data[index].date),
-                      onClickListener: (movieId) =>
-                          Navigator.of(context).pushNamed(
-                        MovieDetailPage.routeName,
-                        arguments: MovieDetailParams(
-                          _data[index].id,
-                          _data[index].name,
-                          _data[index].backdrop,
-                        ),
+              height: 284,
+              child: ListView.separated(
+                padding: EdgeInsets.symmetric(horizontal: 8),
+                scrollDirection: Axis.horizontal,
+                itemCount: homeUiModel.popularTvShows.length,
+                itemBuilder: (context, index) {
+                  return MovieWidget(
+                    homeUiModel.popularTvShows[index].id,
+                    homeUiModel.popularTvShows[index].name,
+                    homeUiModel.popularTvShows[index].poster,
+                    DateFormat.yMMMMd('en_US')
+                        .format(homeUiModel.popularTvShows[index].date),
+                    onClickListener: (movieId) =>
+                        Navigator.of(context).pushNamed(
+                      MovieDetailPage.routeName,
+                      arguments: MovieDetailParams(
+                        homeUiModel.popularTvShows[index].id,
+                        homeUiModel.popularTvShows[index].name,
+                        homeUiModel.popularTvShows[index].backdrop,
                       ),
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) =>
-                      SizedBox(width: 8),
-                );
-              },
-            ),
-          ),
+                    ),
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) =>
+                    SizedBox(width: 8),
+              )),
           _SectionHeader(
             headerTitle: 'Discover',
             onPress: () {},
           ),
           SizedBox(
-            height: 284,
-            child: StreamBuilder(
-                initialData: List<MovieItemUiModel>.empty(),
-                stream: bloc.discoverMovies,
-                builder: (_, snapshot) {
-                  final _data = snapshot.data as List<MovieItemUiModel>;
-
-                  return ListView.separated(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _data.length,
-                    itemBuilder: (context, index) {
-                      return MovieWidget(
-                        _data[index].id,
-                        _data[index].name,
-                        _data[index].poster,
-                        DateFormat.yMMMMd('en_US').format(_data[index].date),
-                        onClickListener: (movieId) =>
-                            Navigator.of(context).pushNamed(
-                          MovieDetailPage.routeName,
-                          arguments: MovieDetailParams(
-                            _data[index].id,
-                            _data[index].name,
-                            _data[index].backdrop,
-                          ),
-                        ),
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) =>
-                        SizedBox(width: 8),
+              height: 284,
+              child: ListView.separated(
+                padding: EdgeInsets.symmetric(horizontal: 8),
+                scrollDirection: Axis.horizontal,
+                itemCount: homeUiModel.discoverMovies.length,
+                itemBuilder: (context, index) {
+                  return MovieWidget(
+                    homeUiModel.discoverMovies[index].id,
+                    homeUiModel.discoverMovies[index].name,
+                    homeUiModel.discoverMovies[index].poster,
+                    DateFormat.yMMMMd('en_US')
+                        .format(homeUiModel.discoverMovies[index].date),
+                    onClickListener: (movieId) =>
+                        Navigator.of(context).pushNamed(
+                      MovieDetailPage.routeName,
+                      arguments: MovieDetailParams(
+                        homeUiModel.discoverMovies[index].id,
+                        homeUiModel.discoverMovies[index].name,
+                        homeUiModel.discoverMovies[index].backdrop,
+                      ),
+                    ),
                   );
-                }),
-          ),
+                },
+                separatorBuilder: (BuildContext context, int index) =>
+                    SizedBox(width: 8),
+              )),
           SafeArea(
             top: false,
             child: SizedBox(),
@@ -196,7 +177,15 @@ class _HomePageContent extends StatelessWidget {
 class _MainHeader extends StatelessWidget {
   const _MainHeader({
     Key? key,
-  }) : super(key: key);
+    required String name,
+    required String imageUrl,
+  })   : _name = name,
+        _imageUrl = imageUrl,
+        super(key: key);
+
+  final String _name;
+
+  final String _imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -209,14 +198,14 @@ class _MainHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                'Hello Rafay',
+                'Hello $_name',
                 textAlign: TextAlign.start,
                 style: Theme.of(context)
                     .textTheme
                     .headline5!
                     .copyWith(fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              SizedBox(height: 4),
               Text(
                 'Lets explore your favorite movies',
                 textAlign: TextAlign.start,
@@ -225,8 +214,12 @@ class _MainHeader extends StatelessWidget {
             ],
           ),
         ),
-        CircleAvatar(
-          radius: 24,
+        CachedNetworkImage(
+          imageUrl: _imageUrl,
+          imageBuilder: (context, imageProvider) => CircleAvatar(
+            radius: 24,
+            backgroundImage: imageProvider,
+          ),
         ),
       ],
     );

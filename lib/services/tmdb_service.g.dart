@@ -109,6 +109,55 @@ class _TmdbService implements TmdbService {
     return value;
   }
 
+  @override
+  Future<Token> getNewToken() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<
+        Token>(Options(
+            method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+        .compose(_dio.options,
+            '/3/authentication/token/new?api_key=e92ff494dbf0353926ff0be86f89d7ad',
+            queryParameters: queryParameters, data: _data)
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = Token.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<Session> newSession(request) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<
+        Session>(Options(
+            method: 'POST', headers: <String, dynamic>{}, extra: _extra)
+        .compose(_dio.options,
+            '/3/authentication/session/new?api_key=e92ff494dbf0353926ff0be86f89d7ad',
+            queryParameters: queryParameters, data: _data)
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = Session.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<Account> account(sessionId) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<
+        Account>(Options(
+            method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+        .compose(_dio.options,
+            '/3/account?api_key=e92ff494dbf0353926ff0be86f89d7ad&session_id=$sessionId',
+            queryParameters: queryParameters, data: _data)
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = Account.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||
