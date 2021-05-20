@@ -33,17 +33,7 @@ class _MoviesAppState extends State<MoviesApp> {
 
     _authStore = Provider.of(context, listen: false);
 
-    () async {
-      setState(() => _loading = true);
-
-      final hasSessionId =
-          await _authStore.getSessionId() != null ? true : false;
-
-      setState(() {
-        _isLoggedIn = hasSessionId;
-        _loading = false;
-      });
-    }.call();
+    _authenticate();
   }
 
   @override
@@ -62,7 +52,7 @@ class _MoviesAppState extends State<MoviesApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       themeMode: ThemeMode.system,
-      initialRoute: _isLoggedIn ? HomePage.routeName : LoginPage.routeName,
+      initialRoute: _resolveInitialRoute(),
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case LoginPage.routeName:
@@ -107,5 +97,28 @@ class _MoviesAppState extends State<MoviesApp> {
         }
       },
     );
+  }
+
+  void _authenticate() async {
+    setState(() => _loading = true);
+
+    final hasSessionId = await _authStore.getSessionId() != null ? true : false;
+
+    setState(() {
+      _isLoggedIn = hasSessionId;
+      _loading = false;
+    });
+  }
+
+  String? _resolveInitialRoute() {
+    if (_loading == true) {
+      return null;
+    }
+
+    if (_isLoggedIn) {
+      return HomePage.routeName;
+    } else {
+      return LoginPage.routeName;
+    }
   }
 }

@@ -7,7 +7,6 @@ class Movie {
   Movie(
       {required this.adult,
       required this.backdropPath,
-      required this.belongsToCollection,
       required this.budget,
       required this.genres,
       required this.homepage,
@@ -34,7 +33,6 @@ class Movie {
 
   final bool adult;
   final String backdropPath;
-  final dynamic? belongsToCollection;
   final int? budget;
   final List<Genre>? genres;
   final String? homepage;
