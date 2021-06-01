@@ -23,11 +23,15 @@ class LoginBloc {
   Stream<LoginNavigationEvent> get tmdbAuthEvent => _tmdbAuthEvent;
 
   void login() async {
-    _loginState.add(LoginState.loading('Please Wait...'));
+    _loginState.add(LoginState.loading());
 
     final token = await _tmdbService.getNewToken();
 
-    _tmdbAuthEvent.add(LoginNavigationEvent.authorize(token.requestToken));
+    if (token.success == true) {
+      _tmdbAuthEvent.add(LoginNavigationEvent.authorize(token.requestToken));
+    } else {
+      _loginState.add(LoginState.error());
+    }
   }
 
   void generateSessionId(String requestToken) async {
@@ -37,7 +41,7 @@ class LoginBloc {
       ),
     );
 
-    _loginState.add(LoginState.ok('Login'));
+    _loginState.add(LoginState.ok());
 
     if (!response.isValue) {
       debugPrint('error creating new session');

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_flutter/utils/auth_store.dart';
+import 'package:movies_flutter/utils/colors.dart';
 import 'package:provider/provider.dart';
 
 import 'ui/home/home_bloc.dart';
@@ -44,11 +45,11 @@ class _MoviesAppState extends State<MoviesApp> {
 
     return MaterialApp(
       theme: ThemeData(
-        backgroundColor: Color(0xfffafafa),
+        backgroundColor: backgroundColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       darkTheme: ThemeData.dark().copyWith(
-        backgroundColor: Color(0xFF303030),
+        backgroundColor: backgroundColorDark,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       themeMode: ThemeMode.system,
@@ -56,7 +57,7 @@ class _MoviesAppState extends State<MoviesApp> {
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case LoginPage.routeName:
-            return CupertinoPageRoute(
+            return MaterialPageRoute(
               builder: (context) => Provider<LoginBloc>(
                 create: (context) => LoginBloc(
                   Provider.of(context, listen: false),
@@ -67,12 +68,12 @@ class _MoviesAppState extends State<MoviesApp> {
               ),
             );
           case AuthPage.routeName:
-            return CupertinoPageRoute<String>(
+            return MaterialPageRoute<String>(
               builder: (context) =>
                   AuthPage(requestToken: settings.arguments as String),
             );
           case HomePage.routeName:
-            return CupertinoPageRoute(
+            return MaterialPageRoute(
               builder: (context) => Provider(
                 create: (context) => HomeBloc(
                   Provider.of(context, listen: false),
@@ -84,7 +85,7 @@ class _MoviesAppState extends State<MoviesApp> {
               ),
             );
           case MovieDetailPage.routeName:
-            return CupertinoPageRoute(
+            return MaterialPageRoute(
               builder: (context) => Provider<MovieDetailBloc>(
                 create: (context) => MovieDetailBloc(
                   settings.arguments as MovieDetailParams,

@@ -68,22 +68,22 @@ class _LoginPageState extends State<LoginPage> {
             ),
             StreamBuilder<LoginState>(
               stream: _loginBloc.loginState,
-              initialData: LoginState.ok('Login'),
+              initialData: LoginState.ok(),
               builder: (context, snapshot) {
                 return snapshot.data!.when(
-                  loading: (message) {
+                  loading: () {
                     return ElevatedButton(
                       onPressed: null,
-                      child: Text(message),
+                      child: Text('Please Wait...'),
                     );
                   },
-                  ok: (message) => ElevatedButton(
+                  ok: () => ElevatedButton(
                     onPressed: _onPressLogin,
-                    child: Text(message),
+                    child: Text('Login'),
                   ),
-                  error: (message) => ElevatedButton(
+                  error: () => ElevatedButton(
                     onPressed: _onPressLogin,
-                    child: Text(message),
+                    child: Text('Login'),
                   ),
                 );
               },

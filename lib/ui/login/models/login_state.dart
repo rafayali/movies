@@ -4,9 +4,9 @@ part 'login_state.freezed.dart';
 
 @freezed
 class LoginState with _$LoginState {
-  const factory LoginState.loading(String message) = Loading;
-  const factory LoginState.ok(String message) = Ok;
-  const factory LoginState.error(String message) = Error;
+  const factory LoginState.loading() = Loading;
+  const factory LoginState.ok() = Ok;
+  const factory LoginState.error() = Error;
 }
 
 @freezed

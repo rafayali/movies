@@ -16,6 +16,9 @@ jobs:
         with:
           java-version: 11
       - uses: subosito/flutter-action@v1
+
+      - name: Tests
+        run: flutter test
         
       - name: Create APK
         run: flutter pub get && flutter build apk --release

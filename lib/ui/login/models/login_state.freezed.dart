@@ -16,22 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$LoginStateTearOff {
   const _$LoginStateTearOff();
 
-  Loading loading(String message) {
-    return Loading(
-      message,
-    );
+  Loading loading() {
+    return const Loading();
   }
 
-  Ok ok(String message) {
-    return Ok(
-      message,
-    );
+  Ok ok() {
+    return const Ok();
   }
 
-  Error error(String message) {
-    return Error(
-      message,
-    );
+  Error error() {
+    return const Error();
   }
 }
 
@@ -40,20 +34,18 @@ const $LoginState = _$LoginStateTearOff();
 
 /// @nodoc
 mixin _$LoginState {
-  String get message => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String message) loading,
-    required TResult Function(String message) ok,
-    required TResult Function(String message) error,
+    required TResult Function() loading,
+    required TResult Function() ok,
+    required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? loading,
-    TResult Function(String message)? ok,
-    TResult Function(String message)? error,
+    TResult Function()? loading,
+    TResult Function()? ok,
+    TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,10 +64,6 @@ mixin _$LoginState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $LoginStateCopyWith<LoginState> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -83,7 +71,6 @@ abstract class $LoginStateCopyWith<$Res> {
   factory $LoginStateCopyWith(
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res>;
-  $Res call({String message});
 }
 
 /// @nodoc
@@ -93,26 +80,12 @@ class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
   final LoginState _value;
   // ignore: unused_field
   final $Res Function(LoginState) _then;
-
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(_value.copyWith(
-      message: message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class $LoadingCopyWith<$Res> implements $LoginStateCopyWith<$Res> {
+abstract class $LoadingCopyWith<$Res> {
   factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
       _$LoadingCopyWithImpl<$Res>;
-  @override
-  $Res call({String message});
 }
 
 /// @nodoc
@@ -123,70 +96,46 @@ class _$LoadingCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 
   @override
   Loading get _value => super._value as Loading;
-
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(Loading(
-      message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$Loading implements Loading {
-  const _$Loading(this.message);
-
-  @override
-  final String message;
+  const _$Loading();
 
   @override
   String toString() {
-    return 'LoginState.loading(message: $message)';
+    return 'LoginState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Loading &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+    return identical(this, other) || (other is Loading);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
-
-  @JsonKey(ignore: true)
-  @override
-  $LoadingCopyWith<Loading> get copyWith =>
-      _$LoadingCopyWithImpl<Loading>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String message) loading,
-    required TResult Function(String message) ok,
-    required TResult Function(String message) error,
+    required TResult Function() loading,
+    required TResult Function() ok,
+    required TResult Function() error,
   }) {
-    return loading(message);
+    return loading();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? loading,
-    TResult Function(String message)? ok,
-    TResult Function(String message)? error,
+    TResult Function()? loading,
+    TResult Function()? ok,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(message);
+      return loading();
     }
     return orElse();
   }
@@ -217,21 +166,13 @@ class _$Loading implements Loading {
 }
 
 abstract class Loading implements LoginState {
-  const factory Loading(String message) = _$Loading;
-
-  @override
-  String get message => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  $LoadingCopyWith<Loading> get copyWith => throw _privateConstructorUsedError;
+  const factory Loading() = _$Loading;
 }
 
 /// @nodoc
-abstract class $OkCopyWith<$Res> implements $LoginStateCopyWith<$Res> {
+abstract class $OkCopyWith<$Res> {
   factory $OkCopyWith(Ok value, $Res Function(Ok) then) =
       _$OkCopyWithImpl<$Res>;
-  @override
-  $Res call({String message});
 }
 
 /// @nodoc
@@ -242,69 +183,46 @@ class _$OkCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 
   @override
   Ok get _value => super._value as Ok;
-
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(Ok(
-      message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$Ok implements Ok {
-  const _$Ok(this.message);
-
-  @override
-  final String message;
+  const _$Ok();
 
   @override
   String toString() {
-    return 'LoginState.ok(message: $message)';
+    return 'LoginState.ok()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Ok &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+    return identical(this, other) || (other is Ok);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
-
-  @JsonKey(ignore: true)
-  @override
-  $OkCopyWith<Ok> get copyWith => _$OkCopyWithImpl<Ok>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String message) loading,
-    required TResult Function(String message) ok,
-    required TResult Function(String message) error,
+    required TResult Function() loading,
+    required TResult Function() ok,
+    required TResult Function() error,
   }) {
-    return ok(message);
+    return ok();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? loading,
-    TResult Function(String message)? ok,
-    TResult Function(String message)? error,
+    TResult Function()? loading,
+    TResult Function()? ok,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (ok != null) {
-      return ok(message);
+      return ok();
     }
     return orElse();
   }
@@ -335,21 +253,13 @@ class _$Ok implements Ok {
 }
 
 abstract class Ok implements LoginState {
-  const factory Ok(String message) = _$Ok;
-
-  @override
-  String get message => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  $OkCopyWith<Ok> get copyWith => throw _privateConstructorUsedError;
+  const factory Ok() = _$Ok;
 }
 
 /// @nodoc
-abstract class $ErrorCopyWith<$Res> implements $LoginStateCopyWith<$Res> {
+abstract class $ErrorCopyWith<$Res> {
   factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
       _$ErrorCopyWithImpl<$Res>;
-  @override
-  $Res call({String message});
 }
 
 /// @nodoc
@@ -360,70 +270,46 @@ class _$ErrorCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 
   @override
   Error get _value => super._value as Error;
-
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(Error(
-      message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$Error implements Error {
-  const _$Error(this.message);
-
-  @override
-  final String message;
+  const _$Error();
 
   @override
   String toString() {
-    return 'LoginState.error(message: $message)';
+    return 'LoginState.error()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Error &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+    return identical(this, other) || (other is Error);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
-
-  @JsonKey(ignore: true)
-  @override
-  $ErrorCopyWith<Error> get copyWith =>
-      _$ErrorCopyWithImpl<Error>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String message) loading,
-    required TResult Function(String message) ok,
-    required TResult Function(String message) error,
+    required TResult Function() loading,
+    required TResult Function() ok,
+    required TResult Function() error,
   }) {
-    return error(message);
+    return error();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String message)? loading,
-    TResult Function(String message)? ok,
-    TResult Function(String message)? error,
+    TResult Function()? loading,
+    TResult Function()? ok,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error();
     }
     return orElse();
   }
@@ -454,13 +340,7 @@ class _$Error implements Error {
 }
 
 abstract class Error implements LoginState {
-  const factory Error(String message) = _$Error;
-
-  @override
-  String get message => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  $ErrorCopyWith<Error> get copyWith => throw _privateConstructorUsedError;
+  const factory Error() = _$Error;
 }
 
 /// @nodoc
