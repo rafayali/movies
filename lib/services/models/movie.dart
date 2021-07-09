@@ -32,7 +32,7 @@ class Movie {
       required this.genreIds});
 
   final bool adult;
-  final String backdropPath;
+  final String? backdropPath;
   final int? budget;
   final List<Genre>? genres;
   final String? homepage;

@@ -8,14 +8,13 @@ import 'package:movies_flutter/configs.dart';
 import 'package:movies_flutter/utils/auth_store.dart';
 import 'package:provider/provider.dart';
 
-import 'app.dart';
 import 'services/tmdb_service.dart';
 
 void main() {
-  runApp(MainApplication());
+  runApp(MoviesApp());
 }
 
-class MainApplication extends StatelessWidget {
+class MoviesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(

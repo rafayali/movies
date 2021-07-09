@@ -45,7 +45,6 @@ dependencies:
   flutter_svg: ^0.22.0
  
 dev_dependencies:
-  test: ^1.16.8
   flutter_test:
     sdk: flutter
   integration_test:

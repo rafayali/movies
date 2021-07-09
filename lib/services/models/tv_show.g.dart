@@ -8,7 +8,7 @@ part of 'tv_show.dart';
 
 TvShow _$TvShowFromJson(Map<String, dynamic> json) {
   return TvShow(
-    backdropPath: json['backdrop_path'] as String,
+    backdropPath: json['backdrop_path'] as String?,
     firstAirDate: DateTime.parse(json['first_air_date'] as String),
     genreIds:
         (json['genre_ids'] as List<dynamic>).map((e) => e as int).toList(),
@@ -21,7 +21,7 @@ TvShow _$TvShowFromJson(Map<String, dynamic> json) {
     originalName: json['original_name'] as String,
     overview: json['overview'] as String,
     popularity: (json['popularity'] as num).toDouble(),
-    posterPath: json['poster_path'] as String,
+    posterPath: json['poster_path'] as String?,
     voteAverage: (json['vote_average'] as num).toDouble(),
     voteCount: json['vote_count'] as int,
   );

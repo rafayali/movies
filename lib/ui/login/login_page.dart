@@ -1,20 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:movies_flutter/services/models/token.dart';
-import 'package:movies_flutter/services/models/session_request.dart';
-import 'package:movies_flutter/services/models/session.dart';
-import 'package:movies_flutter/services/models/popular_tv.dart';
-import 'package:movies_flutter/services/models/popular_movies.dart';
-import 'package:movies_flutter/services/models/movie_credits.dart';
-import 'package:movies_flutter/services/models/movie.dart';
-import 'package:movies_flutter/services/models/genres.dart';
-import 'package:movies_flutter/services/models/discover/discover_movies.dart';
-import 'package:movies_flutter/services/models/account.dart';
-import 'package:movies_flutter/services/tmdb_service.dart';
 import 'package:movies_flutter/ui/home/home_page.dart';
 import 'package:movies_flutter/ui/login/auth_page.dart';
 import 'package:movies_flutter/ui/login/login_bloc.dart';
-import 'package:movies_flutter/utils/auth_store.dart';
 import 'package:provider/provider.dart';
 
 import 'models/login_state.dart';
@@ -78,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                     );
                   },
                   ok: () => ElevatedButton(
+                    key: ValueKey('loginOkButton'),
                     onPressed: _onPressLogin,
                     child: Text('Login'),
                   ),
@@ -96,85 +85,5 @@ class _LoginPageState extends State<LoginPage> {
 
   void _onPressLogin() {
     _loginBloc.login();
-  }
-}
-
-void main(List<String> args) {
-  runApp(
-    MaterialApp(
-      theme: ThemeData(
-        backgroundColor: Color(0xfffafafa),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      darkTheme: ThemeData.dark().copyWith(
-        backgroundColor: Color(0xFF303030),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      themeMode: ThemeMode.system,
-      home: Provider<LoginBloc>(
-        create: (context) => LoginBloc(_FakeAuthStore(), _FakeTmdbService()),
-        dispose: (context, value) => value.dispose(),
-        child: LoginPage(),
-      ),
-    ),
-  );
-}
-
-class _FakeAuthStore implements AuthStore {
-  @override
-  Future<String?> getSessionId() {
-    return Future.value(null);
-  }
-
-  @override
-  Future<void> setSessionId(String value) {
-    return Future.value();
-  }
-}
-
-class _FakeTmdbService implements TmdbService {
-  @override
-  Future<Account> account(String sessionId) {
-    return Future.value();
-  }
-
-  @override
-  Future<DiscoverMovies> discoverMovies() {
-    return Future.value();
-  }
-
-  @override
-  Future<Movie> getMovie(int id) {
-    return Future.value();
-  }
-
-  @override
-  Future<Credits> getMovieCredits(int movieId) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Genres> getMovieGenres() {
-    return Future.value();
-  }
-
-  @override
-  Future<Token> getNewToken() {
-    return Future.value();
-  }
-
-  @override
-  Future<PopularMovies> getPopularMovies() {
-    return Future.value();
-  }
-
-  @override
-  Future<PopularTv> getPopularTvShows() {
-    return Future.value();
-  }
-
-  @override
-  Future<Session> newSession(SessionRequest request) {
-    return Future.value();
   }
 }
