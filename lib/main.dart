@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:movies_flutter/app.dart';
 import 'package:movies_flutter/configs.dart';
 import 'package:movies_flutter/utils/auth_store.dart';
 import 'package:provider/provider.dart';
@@ -11,10 +12,10 @@ import 'package:provider/provider.dart';
 import 'services/tmdb_service.dart';
 
 void main() {
-  runApp(MoviesApp());
+  runApp(MainApplication());
 }
 
-class MoviesApp extends StatelessWidget {
+class MainApplication extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(

@@ -7,7 +7,7 @@ void main(List<String> args) {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets('login should have a login button', (WidgetTester tester) async {
-    await tester.pumpWidget(MoviesApp());
+    await tester.pumpWidget(MainApplication());
 
     await tester.pumpAndSettle(Duration(seconds: 5));
 

@@ -101,38 +101,38 @@ class _HomePageContent extends StatelessWidget {
                   );
                 },
               )),
-          SizedBox(height: 8),
+          /* SizedBox(height: 8),
           _SectionHeader(
             headerTitle: 'Tv Shows',
             onPress: () {},
           ),
           SizedBox(
-              height: 284,
-              child: ListView.separated(
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                scrollDirection: Axis.horizontal,
-                itemCount: homeUiModel.popularTvShows.length,
-                itemBuilder: (context, index) {
-                  return MovieWidget(
-                    homeUiModel.popularTvShows[index].id,
-                    homeUiModel.popularTvShows[index].name,
-                    homeUiModel.popularTvShows[index].poster,
-                    DateFormat.yMMMMd('en_US')
-                        .format(homeUiModel.popularTvShows[index].date),
-                    onClickListener: (movieId) =>
-                        Navigator.of(context).pushNamed(
-                      MovieDetailPage.routeName,
-                      arguments: MovieDetailParams(
-                        homeUiModel.popularTvShows[index].id,
-                        homeUiModel.popularTvShows[index].name,
-                        homeUiModel.popularTvShows[index].backdrop,
-                      ),
+            height: 284,
+            child: ListView.separated(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              scrollDirection: Axis.horizontal,
+              itemCount: homeUiModel.popularTvShows.length,
+              itemBuilder: (context, index) {
+                return MovieWidget(
+                  homeUiModel.popularTvShows[index].id,
+                  homeUiModel.popularTvShows[index].name,
+                  homeUiModel.popularTvShows[index].poster,
+                  DateFormat.yMMMMd('en_US')
+                      .format(homeUiModel.popularTvShows[index].date),
+                  onClickListener: (movieId) => Navigator.of(context).pushNamed(
+                    MovieDetailPage.routeName,
+                    arguments: MovieDetailParams(
+                      homeUiModel.popularTvShows[index].id,
+                      homeUiModel.popularTvShows[index].name,
+                      homeUiModel.popularTvShows[index].backdrop,
                     ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) =>
-                    SizedBox(width: 8),
-              )),
+                  ),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) =>
+                  SizedBox(width: 8),
+            ),
+          ), */
           _SectionHeader(
             headerTitle: 'Discover',
             onPress: () {},
@@ -179,7 +179,7 @@ class _MainHeader extends StatelessWidget {
     Key? key,
     required String name,
     required String imageUrl,
-  })   : _name = name,
+  })  : _name = name,
         _imageUrl = imageUrl,
         super(key: key);
 
