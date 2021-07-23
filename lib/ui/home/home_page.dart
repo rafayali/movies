@@ -101,7 +101,7 @@ class _HomePageContent extends StatelessWidget {
                   );
                 },
               )),
-          /* SizedBox(height: 8),
+          SizedBox(height: 8),
           _SectionHeader(
             headerTitle: 'Tv Shows',
             onPress: () {},
@@ -113,12 +113,14 @@ class _HomePageContent extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: homeUiModel.popularTvShows.length,
               itemBuilder: (context, index) {
+                final date = homeUiModel.popularTvShows[index].date;
                 return MovieWidget(
                   homeUiModel.popularTvShows[index].id,
                   homeUiModel.popularTvShows[index].name,
                   homeUiModel.popularTvShows[index].poster,
-                  DateFormat.yMMMMd('en_US')
-                      .format(homeUiModel.popularTvShows[index].date),
+                  date != null
+                      ? DateFormat.yMMMMd().format(date)
+                      : 'Not Available',
                   onClickListener: (movieId) => Navigator.of(context).pushNamed(
                     MovieDetailPage.routeName,
                     arguments: MovieDetailParams(
@@ -132,7 +134,7 @@ class _HomePageContent extends StatelessWidget {
               separatorBuilder: (BuildContext context, int index) =>
                   SizedBox(width: 8),
             ),
-          ), */
+          ),
           _SectionHeader(
             headerTitle: 'Discover',
             onPress: () {},
@@ -148,8 +150,10 @@ class _HomePageContent extends StatelessWidget {
                     homeUiModel.discoverMovies[index].id,
                     homeUiModel.discoverMovies[index].name,
                     homeUiModel.discoverMovies[index].poster,
-                    DateFormat.yMMMMd('en_US')
-                        .format(homeUiModel.discoverMovies[index].date),
+                    homeUiModel.discoverMovies[index].date == null
+                        ? 'Not Available'
+                        : DateFormat.yMMMMd()
+                            .format(homeUiModel.discoverMovies[index].date!),
                     onClickListener: (movieId) =>
                         Navigator.of(context).pushNamed(
                       MovieDetailPage.routeName,

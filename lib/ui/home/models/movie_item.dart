@@ -3,7 +3,7 @@ import 'package:movies_flutter/services/models/movie.dart';
 
 class MovieItemUiModel {
   final String name;
-  final DateTime date;
+  final DateTime? date;
   final String poster;
   final String backdrop;
   final int id;

@@ -1,9 +1,10 @@
 import 'package:movies_flutter/configs.dart';
 import 'package:movies_flutter/services/models/tv_show.dart';
+import 'package:dartx/dartx.dart';
 
 class TvShowUiModel {
   final String name;
-  final DateTime date;
+  final DateTime? date;
   final String poster;
   final String backdrop;
   final int id;
@@ -15,7 +16,7 @@ extension TvShowToUiModel on TvShow {
   TvShowUiModel toTvShowUiModel() {
     return TvShowUiModel(
       name,
-      firstAirDate,
+      firstAirDate.isNotBlank == true ? DateTime.parse(firstAirDate) : null,
       '${BuildConfigs.BaseImageUrlW500}$posterPath',
       '${BuildConfigs.BaseImageUrlOriginal}$backdropPath',
       id,

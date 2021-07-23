@@ -45,7 +45,7 @@ class Movie {
   final String posterPath;
   final List<ProductionCompany>? productionCompanies;
   final List<ProductionCountry>? productionCountries;
-  final DateTime releaseDate;
+  final DateTime? releaseDate;
   final int? revenue;
   final int? runtime;
   final List<SpokenLanguage>? spokenLanguages;

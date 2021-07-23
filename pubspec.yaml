@@ -43,6 +43,7 @@ dependencies:
   webview_flutter: ^2.0.4
   shared_preferences: ^2.0.5
   flutter_svg: ^0.22.0
+  dartx: ^0.7.1
  
 dev_dependencies:
   flutter_test:
