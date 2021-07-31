@@ -11,7 +11,7 @@ import 'package:movies_flutter/widgets/movie_widget.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-  static const String routeName = '/home';
+  static const String routeName = '/';
 
   @override
   Widget build(BuildContext context) {

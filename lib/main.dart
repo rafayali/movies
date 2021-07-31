@@ -1,21 +1,33 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
+import 'package:dio_flutter_transformer/dio_flutter_transformer.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_flutter/app.dart';
 import 'package:movies_flutter/configs.dart';
+import 'package:movies_flutter/routes.dart';
+import 'package:movies_flutter/ui/home/home_page.dart';
+import 'package:movies_flutter/ui/login/login_bloc.dart';
 import 'package:movies_flutter/utils/auth_store.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'services/tmdb_service.dart';
+import 'ui/home/home_bloc.dart';
+import 'ui/login/login_page.dart';
+import 'utils/colors.dart';
 
-void main() {
-  runApp(MainApplication());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final state = await _initializeState();
+
+  runApp(MoviesApp(state: state));
 }
 
-class MainApplication extends StatelessWidget {
+class MoviesApp extends StatelessWidget {
+  MoviesApp({required this.state});
+
+  final MoviesAppState state;
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -29,10 +41,13 @@ class MainApplication extends StatelessWidget {
               receiveTimeout: Duration(seconds: 10).inMilliseconds,
             ),
           );
-          (dio.transformer as DefaultTransformer).jsonDecodeCallback =
-              _parseJson;
-          dio.interceptors
-              .add(LogInterceptor(requestBody: true, responseBody: true));
+          dio.transformer = FlutterTransformer();
+          dio.interceptors.add(
+            LogInterceptor(
+              requestBody: true,
+              responseBody: true,
+            ),
+          );
           return dio;
         }),
         Provider(
@@ -42,15 +57,68 @@ class MainApplication extends StatelessWidget {
         ),
         Provider<AuthStore>(create: (context) => AuthStore()),
       ],
-      child: MoviesApp(),
+      child: MaterialApp(
+        theme: ThemeData(
+          backgroundColor: backgroundColor,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        darkTheme: ThemeData.dark().copyWith(
+          backgroundColor: backgroundColorDark,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        themeMode: ThemeMode.system,
+        initialRoute:
+            state.authenticated ? HomePage.routeName : LoginPage.routeName,
+        onGenerateInitialRoutes: (initialRoute) {
+          switch (initialRoute) {
+            case HomePage.routeName:
+              return [
+                MaterialPageRoute(
+                  builder: (context) => Provider(
+                    create: (context) => HomeBloc(
+                      Provider.of<TmdbService>(context, listen: false),
+                      Provider.of<AuthStore>(context, listen: false),
+                    ),
+                    dispose: (BuildContext context, HomeBloc value) =>
+                        value.dispose(),
+                    child: HomePage(),
+                  ),
+                  settings: RouteSettings(name: HomePage.routeName),
+                ),
+              ];
+            case LoginPage.routeName:
+              return [
+                MaterialPageRoute(
+                  builder: (context) => Provider(
+                    create: (context) => LoginBloc(
+                      Provider.of(context, listen: false),
+                      Provider.of(
+                        context,
+                        listen: false,
+                      ),
+                    ),
+                    child: LoginPage(),
+                  ),
+                )
+              ];
+            default:
+              return List.empty();
+          }
+        },
+        onGenerateRoute: generateRoute,
+      ),
     );
   }
 }
 
-dynamic parseAndDecode(String response) {
-  return jsonDecode(response);
+Future<MoviesAppState> _initializeState() async {
+  final sharedPreferences = await SharedPreferences.getInstance();
+  final authenticated = sharedPreferences.getString('sessionId') != null;
+  return MoviesAppState(authenticated: authenticated);
 }
 
-Future _parseJson(String text) {
-  return compute(parseAndDecode, text);
+class MoviesAppState {
+  MoviesAppState({required this.authenticated});
+
+  final bool authenticated;
 }

@@ -197,6 +197,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  dio_flutter_transformer:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: master
+      resolved-ref: "1c9ed43805e833c348c98d12000eb687b02c6971"
+      url: "https://github.com/KoderLabs/dio_flutter_transformer"
+    source: git
+    version: "4.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -334,13 +343,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
-  infinite_scroll_pagination:
-    dependency: "direct dev"
-    description:
-      name: infinite_scroll_pagination
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.1"
   integration_test:
     dependency: "direct dev"
     description: flutter
@@ -659,13 +661,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  sliver_tools:
-    dependency: transitive
-    description:
-      name: sliver_tools
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.2"
   source_gen:
     dependency: transitive
     description:

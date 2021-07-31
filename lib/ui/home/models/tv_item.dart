@@ -16,7 +16,7 @@ extension TvShowToUiModel on TvShow {
   TvShowUiModel toTvShowUiModel() {
     return TvShowUiModel(
       name,
-      firstAirDate.isNotBlank == true ? DateTime.parse(firstAirDate) : null,
+      firstAirDate?.isNotBlank == true ? DateTime.parse(firstAirDate!) : null,
       '${BuildConfigs.BaseImageUrlW500}$posterPath',
       '${BuildConfigs.BaseImageUrlOriginal}$backdropPath',
       id,

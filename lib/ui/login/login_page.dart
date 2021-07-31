@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'models/login_state.dart';
 
 class LoginPage extends StatefulWidget {
-  static const routeName = '/login';
+  static const routeName = 'login';
 
   @override
   _LoginPageState createState() => _LoginPageState();
