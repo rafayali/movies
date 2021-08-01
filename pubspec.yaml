@@ -48,6 +48,7 @@ dependencies:
     git:
       url: https://github.com/KoderLabs/dio_flutter_transformer
       ref: master
+  flutter_launcher_icons: ^0.9.1
  
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/tmdb_blue_square_2.svg
+    - assets/app_icon.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
