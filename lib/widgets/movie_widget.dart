@@ -8,13 +8,14 @@ class MovieWidget extends StatelessWidget {
   final String date;
   final Function(int movieId)? onClickListener;
 
-  MovieWidget(
+  const MovieWidget(
     this.movieId,
     this.title,
     this.coverArt,
     this.date, {
+    Key? key,
     this.onClickListener,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +44,12 @@ class MovieWidget extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Padding(
               padding: const EdgeInsets.only(left: 8, right: 8),
               child: Text(
                 title,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
               ),

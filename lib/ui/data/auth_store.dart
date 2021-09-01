@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthStore {
-  static const String KEY_SESSION_ID = 'sessionId';
+  static const String keySessionId = 'sessionId';
 
   SharedPreferences? _sharedPreferences;
 
@@ -12,11 +12,11 @@ class AuthStore {
 
   Future<String?> getSessionId() async {
     final sharedPreferences = await _getSharedPreferences();
-    return sharedPreferences.getString(KEY_SESSION_ID);
+    return sharedPreferences.getString(keySessionId);
   }
 
   Future<void> setSessionId(String value) async {
     final sharedPreferences = await _getSharedPreferences();
-    await sharedPreferences.setString(KEY_SESSION_ID, value);
+    await sharedPreferences.setString(keySessionId, value);
   }
 }

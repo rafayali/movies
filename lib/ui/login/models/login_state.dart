@@ -10,7 +10,7 @@ class LoginState with _$LoginState {
 }
 
 @freezed
-class LoginNavigationEvent with _$LoginNavigationEvent {
-  const factory LoginNavigationEvent.authorize(String requestToken) = Authorize;
-  const factory LoginNavigationEvent.success(String sessionId) = Success;
+class LoginEvent with _$LoginEvent {
+  const factory LoginEvent.authorize(String requestToken) = LoginEventAuthorize;
+  const factory LoginEvent.success(String sessionId) = LoginEventSuccess;
 }

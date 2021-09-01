@@ -1,13 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_flutter/ui/movie_detail/models/movie_detail.dart';
-import 'package:movies_flutter/ui/movie_detail/movie_detail_bloc.dart';
-import 'package:movies_flutter/ui/state.dart';
+import 'package:movies_flutter/ui/movie_detail/models/movie_detail_ui_model.dart';
+import 'package:movies_flutter/ui/movie_detail/movie_detail_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 import 'models/cast.dart';
 
 class MovieDetailPage extends StatefulWidget {
+  const MovieDetailPage({Key? key}) : super(key: key);
+
   static const routeName = '/detail';
 
   @override
@@ -15,28 +16,21 @@ class MovieDetailPage extends StatefulWidget {
 }
 
 class _MovieDetailPageState extends State<MovieDetailPage> {
-  late final MovieDetailBloc _bloc;
+  late final MovieDetailViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _bloc = Provider.of<MovieDetailBloc>(context, listen: false);
+    _viewModel = context.read();
+
+    _viewModel.events.listen((event) {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<UiState<MovieDetailUiModel>>(
-      initialData: _bloc.initialState,
-      stream: _bloc.state,
-      builder: (context, snapshot) {
-        return snapshot.data!.when(
-          success: (data) => MovieDetailContent(
-            data!,
-          ),
-          loading: () => SizedBox(),
-          error: (message) => SizedBox(),
-        );
-      },
+    return Selector<MovieDetailViewModel, MovieDetailUiModel>(
+      builder: (context, value, child) => MovieDetailContent(value),
+      selector: (context, viewModel) => viewModel.state,
     );
   }
 }
@@ -44,7 +38,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
 class MovieDetailContent extends StatelessWidget {
   final MovieDetailUiModel _movieDetailUiModel;
 
-  MovieDetailContent(this._movieDetailUiModel);
+  const MovieDetailContent(this._movieDetailUiModel, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -92,12 +87,12 @@ class MovieDetailContent extends StatelessWidget {
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Builder(builder: (context) {
                             if (_movieDetailUiModel.runtime == null ||
                                 _movieDetailUiModel.releaseDate == null ||
                                 _movieDetailUiModel.genre == null) {
-                              return Text('');
+                              return const Text('');
                             } else {
                               final year =
                                   _movieDetailUiModel.releaseDate!.year;
@@ -118,7 +113,7 @@ class MovieDetailContent extends StatelessWidget {
                 ),
                 SafeArea(
                   child: IconButton(
-                    icon: Icon(Icons.arrow_back),
+                    icon: const Icon(Icons.arrow_back),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -128,14 +123,14 @@ class MovieDetailContent extends StatelessWidget {
             ),
             Builder(builder: (context) {
               if (_movieDetailUiModel.rating == null) {
-                return SizedBox();
+                return const SizedBox();
               } else {
                 return _RatingWidget(_movieDetailUiModel.rating!);
               }
             }),
             Builder(builder: (context) {
               if (_movieDetailUiModel.description == null) {
-                return SizedBox();
+                return const SizedBox();
               } else {
                 return Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
@@ -149,7 +144,7 @@ class MovieDetailContent extends StatelessWidget {
             }),
             Builder(builder: (context) {
               if (_movieDetailUiModel.cast == null) {
-                return SizedBox();
+                return const SizedBox();
               } else {
                 return _CastWidget(_movieDetailUiModel.cast!);
               }
@@ -164,7 +159,7 @@ class MovieDetailContent extends StatelessWidget {
 class _CastWidget extends StatelessWidget {
   final List<Cast> _cast;
 
-  _CastWidget(this._cast);
+  const _CastWidget(this._cast);
 
   @override
   Widget build(BuildContext context) {
@@ -180,11 +175,11 @@ class _CastWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 8),
+          padding: const EdgeInsets.only(top: 8),
           child: SizedBox(
             height: 86,
             child: ListView.separated(
-              padding: EdgeInsets.only(left: 16, right: 16),
+              padding: const EdgeInsets.only(left: 16, right: 16),
               scrollDirection: Axis.horizontal,
               itemCount: _cast.length,
               itemBuilder: (context, index) => Column(
@@ -199,16 +194,16 @@ class _CastWidget extends StatelessWidget {
                           _cast[index].avatarUrl,
                         ),
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(56)),
+                      borderRadius: const BorderRadius.all(Radius.circular(56)),
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     _cast[index].name,
                   ),
                 ],
               ),
-              separatorBuilder: (context, index) => SizedBox(width: 16),
+              separatorBuilder: (context, index) => const SizedBox(width: 16),
             ),
           ),
         ),
@@ -220,7 +215,7 @@ class _CastWidget extends StatelessWidget {
 class _RatingWidget extends StatelessWidget {
   final double _rating;
 
-  _RatingWidget(this._rating);
+  const _RatingWidget(this._rating);
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -233,32 +228,32 @@ class _RatingWidget extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyText1!
-                  .copyWith(color: Color(0xfffdc432)),
+                  .copyWith(color: const Color(0xfffdc432)),
             ),
-            SizedBox(
+            const SizedBox(
               width: 4,
             ),
-            Icon(
+            const Icon(
               Icons.star_rate_sharp,
               size: 16,
               color: Color(0xfffdc432),
             ),
-            Icon(
+            const Icon(
               Icons.star_rate_sharp,
               size: 16,
               color: Color(0xfffdc432),
             ),
-            Icon(
+            const Icon(
               Icons.star_rate_sharp,
               size: 16,
               color: Color(0xfffdc432),
             ),
-            Icon(
+            const Icon(
               Icons.star_rate_sharp,
               size: 16,
               color: Color(0xfffdc432),
             ),
-            Icon(
+            const Icon(
               Icons.star_rate_sharp,
               size: 16,
               color: Color(0xffa3a2a6),
@@ -266,12 +261,4 @@ class _RatingWidget extends StatelessWidget {
           ],
         ),
       );
-}
-
-class MovieDetailParams {
-  final int id;
-  final String title;
-  final String backdropUrl;
-
-  MovieDetailParams(this.id, this.title, this.backdropUrl);
 }

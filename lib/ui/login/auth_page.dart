@@ -6,7 +6,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 class AuthPage extends StatefulWidget {
   static const routeName = '/auth';
 
-  AuthPage({required this.requestToken});
+  const AuthPage({Key? key, required this.requestToken}) : super(key: key);
 
   final String requestToken;
 
@@ -26,7 +26,7 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login with TMDB'),
+        title: const Text('Login with TMDB'),
       ),
       body: WebView(
         javascriptMode: JavascriptMode.unrestricted,

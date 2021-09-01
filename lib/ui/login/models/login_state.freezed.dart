@@ -344,27 +344,27 @@ abstract class Error implements LoginState {
 }
 
 /// @nodoc
-class _$LoginNavigationEventTearOff {
-  const _$LoginNavigationEventTearOff();
+class _$LoginEventTearOff {
+  const _$LoginEventTearOff();
 
-  Authorize authorize(String requestToken) {
-    return Authorize(
+  LoginEventAuthorize authorize(String requestToken) {
+    return LoginEventAuthorize(
       requestToken,
     );
   }
 
-  Success success(String sessionId) {
-    return Success(
+  LoginEventSuccess success(String sessionId) {
+    return LoginEventSuccess(
       sessionId,
     );
   }
 }
 
 /// @nodoc
-const $LoginNavigationEvent = _$LoginNavigationEventTearOff();
+const $LoginEvent = _$LoginEventTearOff();
 
 /// @nodoc
-mixin _$LoginNavigationEvent {
+mixin _$LoginEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String requestToken) authorize,
@@ -380,58 +380,59 @@ mixin _$LoginNavigationEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Authorize value) authorize,
-    required TResult Function(Success value) success,
+    required TResult Function(LoginEventAuthorize value) authorize,
+    required TResult Function(LoginEventSuccess value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Authorize value)? authorize,
-    TResult Function(Success value)? success,
+    TResult Function(LoginEventAuthorize value)? authorize,
+    TResult Function(LoginEventSuccess value)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginNavigationEventCopyWith<$Res> {
-  factory $LoginNavigationEventCopyWith(LoginNavigationEvent value,
-          $Res Function(LoginNavigationEvent) then) =
-      _$LoginNavigationEventCopyWithImpl<$Res>;
+abstract class $LoginEventCopyWith<$Res> {
+  factory $LoginEventCopyWith(
+          LoginEvent value, $Res Function(LoginEvent) then) =
+      _$LoginEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LoginNavigationEventCopyWithImpl<$Res>
-    implements $LoginNavigationEventCopyWith<$Res> {
-  _$LoginNavigationEventCopyWithImpl(this._value, this._then);
+class _$LoginEventCopyWithImpl<$Res> implements $LoginEventCopyWith<$Res> {
+  _$LoginEventCopyWithImpl(this._value, this._then);
 
-  final LoginNavigationEvent _value;
+  final LoginEvent _value;
   // ignore: unused_field
-  final $Res Function(LoginNavigationEvent) _then;
+  final $Res Function(LoginEvent) _then;
 }
 
 /// @nodoc
-abstract class $AuthorizeCopyWith<$Res> {
-  factory $AuthorizeCopyWith(Authorize value, $Res Function(Authorize) then) =
-      _$AuthorizeCopyWithImpl<$Res>;
+abstract class $LoginEventAuthorizeCopyWith<$Res> {
+  factory $LoginEventAuthorizeCopyWith(
+          LoginEventAuthorize value, $Res Function(LoginEventAuthorize) then) =
+      _$LoginEventAuthorizeCopyWithImpl<$Res>;
   $Res call({String requestToken});
 }
 
 /// @nodoc
-class _$AuthorizeCopyWithImpl<$Res>
-    extends _$LoginNavigationEventCopyWithImpl<$Res>
-    implements $AuthorizeCopyWith<$Res> {
-  _$AuthorizeCopyWithImpl(Authorize _value, $Res Function(Authorize) _then)
-      : super(_value, (v) => _then(v as Authorize));
+class _$LoginEventAuthorizeCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res>
+    implements $LoginEventAuthorizeCopyWith<$Res> {
+  _$LoginEventAuthorizeCopyWithImpl(
+      LoginEventAuthorize _value, $Res Function(LoginEventAuthorize) _then)
+      : super(_value, (v) => _then(v as LoginEventAuthorize));
 
   @override
-  Authorize get _value => super._value as Authorize;
+  LoginEventAuthorize get _value => super._value as LoginEventAuthorize;
 
   @override
   $Res call({
     Object? requestToken = freezed,
   }) {
-    return _then(Authorize(
+    return _then(LoginEventAuthorize(
       requestToken == freezed
           ? _value.requestToken
           : requestToken // ignore: cast_nullable_to_non_nullable
@@ -442,21 +443,21 @@ class _$AuthorizeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Authorize implements Authorize {
-  const _$Authorize(this.requestToken);
+class _$LoginEventAuthorize implements LoginEventAuthorize {
+  const _$LoginEventAuthorize(this.requestToken);
 
   @override
   final String requestToken;
 
   @override
   String toString() {
-    return 'LoginNavigationEvent.authorize(requestToken: $requestToken)';
+    return 'LoginEvent.authorize(requestToken: $requestToken)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Authorize &&
+        (other is LoginEventAuthorize &&
             (identical(other.requestToken, requestToken) ||
                 const DeepCollectionEquality()
                     .equals(other.requestToken, requestToken)));
@@ -468,8 +469,8 @@ class _$Authorize implements Authorize {
 
   @JsonKey(ignore: true)
   @override
-  $AuthorizeCopyWith<Authorize> get copyWith =>
-      _$AuthorizeCopyWithImpl<Authorize>(this, _$identity);
+  $LoginEventAuthorizeCopyWith<LoginEventAuthorize> get copyWith =>
+      _$LoginEventAuthorizeCopyWithImpl<LoginEventAuthorize>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -496,8 +497,8 @@ class _$Authorize implements Authorize {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Authorize value) authorize,
-    required TResult Function(Success value) success,
+    required TResult Function(LoginEventAuthorize value) authorize,
+    required TResult Function(LoginEventSuccess value) success,
   }) {
     return authorize(this);
   }
@@ -505,8 +506,8 @@ class _$Authorize implements Authorize {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Authorize value)? authorize,
-    TResult Function(Success value)? success,
+    TResult Function(LoginEventAuthorize value)? authorize,
+    TResult Function(LoginEventSuccess value)? success,
     required TResult orElse(),
   }) {
     if (authorize != null) {
@@ -516,37 +517,40 @@ class _$Authorize implements Authorize {
   }
 }
 
-abstract class Authorize implements LoginNavigationEvent {
-  const factory Authorize(String requestToken) = _$Authorize;
+abstract class LoginEventAuthorize implements LoginEvent {
+  const factory LoginEventAuthorize(String requestToken) =
+      _$LoginEventAuthorize;
 
   String get requestToken => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AuthorizeCopyWith<Authorize> get copyWith =>
+  $LoginEventAuthorizeCopyWith<LoginEventAuthorize> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SuccessCopyWith<$Res> {
-  factory $SuccessCopyWith(Success value, $Res Function(Success) then) =
-      _$SuccessCopyWithImpl<$Res>;
+abstract class $LoginEventSuccessCopyWith<$Res> {
+  factory $LoginEventSuccessCopyWith(
+          LoginEventSuccess value, $Res Function(LoginEventSuccess) then) =
+      _$LoginEventSuccessCopyWithImpl<$Res>;
   $Res call({String sessionId});
 }
 
 /// @nodoc
-class _$SuccessCopyWithImpl<$Res>
-    extends _$LoginNavigationEventCopyWithImpl<$Res>
-    implements $SuccessCopyWith<$Res> {
-  _$SuccessCopyWithImpl(Success _value, $Res Function(Success) _then)
-      : super(_value, (v) => _then(v as Success));
+class _$LoginEventSuccessCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res>
+    implements $LoginEventSuccessCopyWith<$Res> {
+  _$LoginEventSuccessCopyWithImpl(
+      LoginEventSuccess _value, $Res Function(LoginEventSuccess) _then)
+      : super(_value, (v) => _then(v as LoginEventSuccess));
 
   @override
-  Success get _value => super._value as Success;
+  LoginEventSuccess get _value => super._value as LoginEventSuccess;
 
   @override
   $Res call({
     Object? sessionId = freezed,
   }) {
-    return _then(Success(
+    return _then(LoginEventSuccess(
       sessionId == freezed
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
@@ -557,21 +561,21 @@ class _$SuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Success implements Success {
-  const _$Success(this.sessionId);
+class _$LoginEventSuccess implements LoginEventSuccess {
+  const _$LoginEventSuccess(this.sessionId);
 
   @override
   final String sessionId;
 
   @override
   String toString() {
-    return 'LoginNavigationEvent.success(sessionId: $sessionId)';
+    return 'LoginEvent.success(sessionId: $sessionId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Success &&
+        (other is LoginEventSuccess &&
             (identical(other.sessionId, sessionId) ||
                 const DeepCollectionEquality()
                     .equals(other.sessionId, sessionId)));
@@ -583,8 +587,8 @@ class _$Success implements Success {
 
   @JsonKey(ignore: true)
   @override
-  $SuccessCopyWith<Success> get copyWith =>
-      _$SuccessCopyWithImpl<Success>(this, _$identity);
+  $LoginEventSuccessCopyWith<LoginEventSuccess> get copyWith =>
+      _$LoginEventSuccessCopyWithImpl<LoginEventSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -611,8 +615,8 @@ class _$Success implements Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Authorize value) authorize,
-    required TResult Function(Success value) success,
+    required TResult Function(LoginEventAuthorize value) authorize,
+    required TResult Function(LoginEventSuccess value) success,
   }) {
     return success(this);
   }
@@ -620,8 +624,8 @@ class _$Success implements Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Authorize value)? authorize,
-    TResult Function(Success value)? success,
+    TResult Function(LoginEventAuthorize value)? authorize,
+    TResult Function(LoginEventSuccess value)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -631,10 +635,11 @@ class _$Success implements Success {
   }
 }
 
-abstract class Success implements LoginNavigationEvent {
-  const factory Success(String sessionId) = _$Success;
+abstract class LoginEventSuccess implements LoginEvent {
+  const factory LoginEventSuccess(String sessionId) = _$LoginEventSuccess;
 
   String get sessionId => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SuccessCopyWith<Success> get copyWith => throw _privateConstructorUsedError;
+  $LoginEventSuccessCopyWith<LoginEventSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
 }

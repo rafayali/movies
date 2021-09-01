@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movies_flutter/ui/home/home_page.dart';
 import 'package:movies_flutter/ui/login/auth_page.dart';
-import 'package:movies_flutter/ui/login/login_bloc.dart';
+import 'package:movies_flutter/ui/login/login_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 import 'models/login_state.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
   static const routeName = 'login';
 
   @override
@@ -15,20 +16,20 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  late final LoginBloc _loginBloc;
+  late final LoginViewModel _loginViewModel;
 
   @override
   void initState() {
     super.initState();
 
-    _loginBloc = Provider.of(context, listen: false);
+    _loginViewModel = context.read();
 
-    _loginBloc.tmdbAuthEvent.listen((event) async {
+    _loginViewModel.events.listen((event) async {
       await event.when(
         authorize: (requestToken) async {
           await Navigator.of(context)
               .pushNamed<String>(AuthPage.routeName, arguments: requestToken);
-          _loginBloc.generateSessionId(requestToken);
+          _loginViewModel.generateSessionId(requestToken);
         },
         success: (sessionId) {
           Navigator.of(context).popAndPushNamed(HomePage.routeName);
@@ -54,28 +55,25 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            StreamBuilder<LoginState>(
-              stream: _loginBloc.loginState,
-              initialData: LoginState.ok(),
-              builder: (context, snapshot) {
-                return snapshot.data!.when(
-                  loading: () {
-                    return ElevatedButton(
-                      onPressed: null,
-                      child: Text('Please Wait...'),
-                    );
-                  },
-                  ok: () => ElevatedButton(
-                    key: ValueKey('loginOkButton'),
-                    onPressed: _onPressLogin,
-                    child: Text('Login'),
-                  ),
-                  error: () => ElevatedButton(
-                    onPressed: _onPressLogin,
-                    child: Text('Login'),
-                  ),
-                );
-              },
+            Selector<LoginViewModel, LoginState>(
+              builder: (context, value, child) => value.when(
+                loading: () {
+                  return const ElevatedButton(
+                    onPressed: null,
+                    child: Text('Please Wait...'),
+                  );
+                },
+                ok: () => ElevatedButton(
+                  key: const ValueKey('loginOkButton'),
+                  onPressed: _onPressLogin,
+                  child: const Text('Login'),
+                ),
+                error: () => ElevatedButton(
+                  onPressed: _onPressLogin,
+                  child: const Text('Login'),
+                ),
+              ),
+              selector: (context, viewModel) => viewModel.state,
             ),
           ],
         ),
@@ -84,6 +82,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _onPressLogin() {
-    _loginBloc.login();
+    _loginViewModel.login();
   }
 }

@@ -1,4 +1,4 @@
-import 'package:movies_flutter/configs.dart';
+import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/services/models/movie.dart';
 
 class MovieItemUiModel {
@@ -33,9 +33,9 @@ extension MapToMovieItem on Movie {
       id,
       title,
       releaseDate,
-      '${BuildConfigs.BaseImageUrlW500}$posterPath',
-      '${BuildConfigs.BaseImageUrlOriginal}$backdropPath',
-      '${BuildConfigs.BaseImageUrlW500}$backdropPath',
+      '${BuildConfigs.baseImageUrlW500}$posterPath',
+      '${BuildConfigs.baseImageUrlOriginal}$backdropPath',
+      '${BuildConfigs.baseImageUrlW500}$backdropPath',
       genreString,
     );
   }

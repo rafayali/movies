@@ -1,89 +1,105 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:movies_flutter/services/models/session.dart';
+import 'package:movies_flutter/services/models/session_request.dart';
 import 'package:movies_flutter/services/models/token.dart';
 import 'package:movies_flutter/services/tmdb_service.dart';
-import 'package:movies_flutter/ui/login/login_bloc.dart';
+import 'package:movies_flutter/ui/login/login_viewmodel.dart';
 import 'package:movies_flutter/ui/login/models/login_state.dart';
-import 'package:movies_flutter/utils/auth_store.dart';
+import 'package:movies_flutter/ui/data/auth_store.dart';
 
-import 'login_test.mocks.dart';
 import 'utils/random_string.dart';
 
-@GenerateMocks([AuthStore, TmdbService])
 void main() {
-  test('should return success when both token and sessionId are returned', () {
+  _MockAuthStore authStore = _MockAuthStore();
+  _MockTmdbService tmdbService = _MockTmdbService();
+  late LoginViewModel loginViewModel;
+
+  setUpAll(() {
+    registerFallbackValue(_FakeSessionRequest());
+  });
+
+  setUp(() async {
+    loginViewModel = LoginViewModel(
+      tmdbService: tmdbService,
+      authStore: authStore,
+    );
+  });
+
+  test('should return success when both token and sessionId are returned',
+      () async {
     final fakeToken = randomString(8);
     final fakeSessionId = randomString(8);
 
-    final authStore = MockAuthStore();
-    final tmdbServie = MockTmdbService();
-    final loginBloc = LoginBloc(authStore, tmdbServie);
-
-    when(tmdbServie.getNewToken()).thenAnswer((_) async => Token(
+    when(() => tmdbService.getNewToken()).thenAnswer((_) async => Token(
           success: true,
-          expiresAt: '',
+          expiresAt: randomString(8),
           requestToken: fakeToken,
         ));
 
-    when(tmdbServie.newSession(any)).thenAnswer(
+    when(() => tmdbService.newSession(any())).thenAnswer(
       (_) async => Session(success: true, sessionId: fakeSessionId),
     );
 
+    when(() => authStore.setSessionId(any()))
+        .thenAnswer((_) => (Future.value()));
+
     expectLater(
-      loginBloc.loginState,
-      emitsInOrder([
-        LoginState.loading(),
-        LoginState.ok(),
-      ]),
+      loginViewModel.events,
+      emits(LoginEvent.authorize(fakeToken)),
     );
-    expectLater(
-      loginBloc.loginState,
-      emitsInOrder(
-        [
-          LoginState.loading(),
-          LoginState.ok(),
-        ],
+
+    expect(loginViewModel.state, equals(const LoginState.ok()));
+
+    await loginViewModel.login();
+
+    expect(loginViewModel.state, equals(const LoginState.loading()));
+    verify(() => tmdbService.getNewToken()).called(1);
+
+    await loginViewModel.generateSessionId(fakeToken);
+
+    expect(loginViewModel.state, equals(const LoginState.loading()));
+    verify(() => tmdbService.newSession(any())).called(1);
+  });
+
+  test('should fail when error is returned when generating new token',
+      () async {
+    final fakeToken = randomString(8);
+    final states = <LoginState>[];
+
+    when(() => tmdbService.getNewToken()).thenAnswer(
+      (_) async => Token(
+        success: false,
+        expiresAt: '',
+        requestToken: fakeToken,
       ),
     );
-    expectLater(
-      loginBloc.tmdbAuthEvent,
-      emits(LoginNavigationEvent.authorize(fakeToken)),
-    );
 
-    loginBloc.login();
+    loginViewModel.addListener(() {
+      states.add(loginViewModel.state);
+    });
 
-    verify(tmdbServie.getNewToken()).called(1);
+    await loginViewModel.login();
 
-    loginBloc.generateSessionId(fakeToken);
-
-    verify(tmdbServie.newSession(any)).called(1);
-  });
-
-  test('should fail when error is returned when generating new token', () {
-    final fakeToken = randomString(8);
-
-    final authStore = MockAuthStore();
-    final tmdbServie = MockTmdbService();
-    final loginBloc = LoginBloc(authStore, tmdbServie);
-
-    when(tmdbServie.getNewToken()).thenAnswer((_) async => Token(
-          success: false,
-          expiresAt: '',
-          requestToken: fakeToken,
-        ));
-
-    expectLater(
-      loginBloc.loginState,
-      emitsInOrder([
-        LoginState.loading(),
-        LoginState.error(),
+    verify(() => tmdbService.getNewToken()).called(1);
+    expect(
+      states,
+      containsAllInOrder([
+        const LoginState.loading(),
+        const LoginState.error(),
       ]),
     );
+  });
 
-    loginBloc.login();
-
-    verify(tmdbServie.getNewToken()).called(1);
+  tearDown(() {
+    loginViewModel.dispose();
+    reset(tmdbService);
+    reset(authStore);
   });
 }
+
+class _MockTmdbService extends Mock implements TmdbService {}
+
+class _MockAuthStore extends Mock implements AuthStore {}
+
+class _FakeSessionRequest extends Fake implements SessionRequest {}

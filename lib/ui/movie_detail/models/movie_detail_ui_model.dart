@@ -11,15 +11,15 @@ class MovieDetailUiModel {
   final List<Cast>? cast;
   final DateTime? releaseDate;
 
-  MovieDetailUiModel(
-    this.id,
-    this.title,
-    this.backdrop,
+  MovieDetailUiModel({
+    required this.id,
+    required this.title,
+    required this.backdrop,
     this.description,
     this.rating,
     this.genre,
     this.runtime,
     this.cast,
     this.releaseDate,
-  );
+  });
 }

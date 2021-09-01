@@ -7,5 +7,5 @@ part 'state.freezed.dart';
 class UiState<T> with _$UiState<T> {
   const factory UiState.success(T? data) = Success<T>;
   const factory UiState.loading() = Loading;
-  const factory UiState.error(String message) = Error<T>;
+  const factory UiState.error(String message) = Error;
 }

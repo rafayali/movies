@@ -1,52 +1,58 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
-import 'package:movies_flutter/ui/home/home_bloc.dart';
+import 'package:movies_flutter/ui/home/home_viewmodel.dart';
 import 'package:movies_flutter/ui/home/models/home_ui_model.dart';
-import 'package:movies_flutter/ui/home/models/movie_item.dart';
+import 'package:movies_flutter/ui/movie_detail/models/params.dart';
 import 'package:movies_flutter/ui/movie_detail/movie_detail_page.dart';
 import 'package:movies_flutter/ui/state.dart';
 import 'package:movies_flutter/widgets/movie_widget.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+import 'models/movie_item.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   static const String routeName = '/';
 
   @override
-  Widget build(BuildContext context) {
-    final bloc = Provider.of<HomeBloc>(context, listen: false);
+  _HomePageState createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
+  late final HomeViewModel viewModel;
+  @override
+  void initState() {
+    super.initState();
+
+    viewModel = context.read();
+    viewModel.load();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder<UiState<HomeUiModel>>(
-        initialData: Loading(),
-        stream: bloc.newState,
-        builder: (context, snapshot) {
-          return snapshot.data!.when(
-            success: (data) {
-              return Center(
-                child: _HomePageContent(homeUiModel: data!),
-              );
-            },
-            loading: () {
-              return Center(child: CircularProgressIndicator());
-            },
-            error: (message) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Error loading movies. Please try again.'),
-                    ElevatedButton(
-                      onPressed: () => bloc.retry(),
-                      child: Text('Retry'),
-                    )
-                  ],
-                ),
-              );
-            },
-          );
-        },
+      body: Selector<HomeViewModel, UiState<HomeUiModel>>(
+        builder: (_, value, child) => value.when(
+          success: (data) => Center(
+            child: _HomePageContent(homeUiModel: data!),
+          ),
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (message) => Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('Error loading movies. Please try again.'),
+                ElevatedButton(
+                  onPressed: () => context.read<HomeViewModel>().retry(),
+                  child: const Text('Retry'),
+                )
+              ],
+            ),
+          ),
+        ),
+        selector: (context, viewModel) => viewModel.state,
       ),
     );
   }
@@ -67,11 +73,9 @@ class _HomePageContent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SafeArea(
+          const SafeArea(
             bottom: false,
-            child: SizedBox(
-              height: 16,
-            ),
+            child: SizedBox(height: 16),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -80,7 +84,7 @@ class _HomePageContent extends StatelessWidget {
               imageUrl: homeUiModel.imageUrl,
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           _SectionHeader(
             headerTitle: 'Popular Movies',
             onPress: () {},
@@ -89,19 +93,17 @@ class _HomePageContent extends StatelessWidget {
               height: 196,
               child: ListView.separated(
                 shrinkWrap: true,
-                padding: EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 scrollDirection: Axis.horizontal,
                 itemCount: homeUiModel.popularMovies.length,
-                separatorBuilder: (context, index) => SizedBox(
-                  width: 8,
-                ),
+                separatorBuilder: (context, index) => const SizedBox(width: 8),
                 itemBuilder: (context, index) {
                   return _PopularMoviesCarouselItem(
                     movie: homeUiModel.popularMovies[index],
                   );
                 },
               )),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           _SectionHeader(
             headerTitle: 'Tv Shows',
             onPress: () {},
@@ -109,7 +111,7 @@ class _HomePageContent extends StatelessWidget {
           SizedBox(
             height: 284,
             child: ListView.separated(
-              padding: EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
               scrollDirection: Axis.horizontal,
               itemCount: homeUiModel.popularTvShows.length,
               itemBuilder: (context, index) {
@@ -132,7 +134,7 @@ class _HomePageContent extends StatelessWidget {
                 );
               },
               separatorBuilder: (BuildContext context, int index) =>
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
             ),
           ),
           _SectionHeader(
@@ -142,7 +144,7 @@ class _HomePageContent extends StatelessWidget {
           SizedBox(
               height: 284,
               child: ListView.separated(
-                padding: EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 scrollDirection: Axis.horizontal,
                 itemCount: homeUiModel.discoverMovies.length,
                 itemBuilder: (context, index) {
@@ -166,9 +168,9 @@ class _HomePageContent extends StatelessWidget {
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) =>
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
               )),
-          SafeArea(
+          const SafeArea(
             top: false,
             child: SizedBox(),
           ),
@@ -209,7 +211,7 @@ class _MainHeader extends StatelessWidget {
                     .headline5!
                     .copyWith(fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               Text(
                 'Lets explore your favorite movies',
                 textAlign: TextAlign.start,
@@ -261,13 +263,13 @@ class _PopularMoviesCarouselItem extends StatelessWidget {
             children: [
               Positioned.fill(
                 child: CachedNetworkImage(
-                  imageUrl: '${movie.backdropThumb}',
+                  imageUrl: movie.backdropThumb,
                   fit: BoxFit.cover,
                 ),
               ),
               Positioned.fill(
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       colors: [Colors.transparent, Colors.black54],
                       begin: Alignment.topCenter,
@@ -292,7 +294,7 @@ class _PopularMoviesCarouselItem extends StatelessWidget {
                       ),
                       Text(
                         movie.genres ?? '',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                         ),
                       ),
@@ -323,7 +325,7 @@ class _SectionHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -336,7 +338,7 @@ class _SectionHeader extends StatelessWidget {
           ),
           TextButton(
             onPressed: _onPress,
-            child: Text('See More'),
+            child: const Text('See More'),
           )
         ],
       ),

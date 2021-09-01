@@ -1,4 +1,4 @@
-import 'package:movies_flutter/configs.dart';
+import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/services/models/tv_show.dart';
 import 'package:dartx/dartx.dart';
 
@@ -17,8 +17,8 @@ extension TvShowToUiModel on TvShow {
     return TvShowUiModel(
       name,
       firstAirDate?.isNotBlank == true ? DateTime.parse(firstAirDate!) : null,
-      '${BuildConfigs.BaseImageUrlW500}$posterPath',
-      '${BuildConfigs.BaseImageUrlOriginal}$backdropPath',
+      '${BuildConfigs.baseImageUrlW500}$posterPath',
+      '${BuildConfigs.baseImageUrlOriginal}$backdropPath',
       id,
     );
   }
