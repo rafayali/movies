@@ -44,13 +44,19 @@ android {
 
     defaultConfig {
         applicationId "com.rafay.moviesflutter"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
     signingConfigs {
+        debug {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
         release{
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
@@ -59,9 +65,19 @@ android {
         }
     }
 
+    flavorDimensions "version"
+    productFlavors {
+        demo {}
+        playstore {}
+    }
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
-            signingConfig signingConfigs.release
+            productFlavors.demo.signingConfig signingConfigs.debug
+            productFlavors.playstore.signingConfig signingConfigs.release
         }
     }
 }

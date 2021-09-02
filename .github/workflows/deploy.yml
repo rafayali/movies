@@ -21,7 +21,7 @@ jobs:
         run: flutter test
         
       - name: Create APK
-        run: flutter pub get && flutter build apk --release
+        run: flutter pub get && flutter build apk --release --flavor demo
           
       - uses: actions/upload-artifact@v2
         with:
