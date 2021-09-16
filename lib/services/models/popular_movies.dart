@@ -14,6 +14,8 @@ class PopularMovies {
   final int page;
   final List<Movie> results;
 
+  static const jsonFactory = _$PopularMoviesFromJson;
+
   factory PopularMovies.fromJson(Map<String, dynamic> json) =>
       _$PopularMoviesFromJson(json);
 

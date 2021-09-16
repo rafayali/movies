@@ -47,6 +47,8 @@ dependencies:
     git:
       url: https://github.com/KoderLabs/dio_flutter_transformer
       ref: master
+  http: ^0.13.3
+  chopper: ^4.0.1
  
 dev_dependencies:
   flutter_test:
@@ -62,6 +64,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.9.1
   flutter_lints: ^1.0.4
   mocktail: ^0.1.4
+  chopper_generator: ^4.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

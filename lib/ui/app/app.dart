@@ -1,13 +1,13 @@
-import 'package:dio/dio.dart';
-import 'package:dio_flutter_transformer/dio_flutter_transformer.dart';
+import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_flutter/main.dart';
+import 'package:movies_flutter/services/chopper/tmdb_service.dart' as chopper;
+import 'package:movies_flutter/ui/app/providers/http_client.dart';
 import 'package:movies_flutter/ui/home/home_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../config.dart';
 import 'routes.dart';
-import '../../services/tmdb_service.dart';
 import '../login/login_page.dart';
 import '../data/auth_store.dart';
 import '../../utils/colors.dart';
@@ -31,28 +31,13 @@ class MoviesApp extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-        Provider<Dio>(create: (context) {
-          final dio = Dio(
-            BaseOptions(
-              baseUrl: BuildConfigs.baseUrl,
-              sendTimeout: const Duration(seconds: 10).inMilliseconds,
-              connectTimeout: const Duration(seconds: 10).inMilliseconds,
-              receiveTimeout: const Duration(seconds: 10).inMilliseconds,
-            ),
-          );
-          dio.transformer = FlutterTransformer();
-          dio.interceptors.add(
-            LogInterceptor(
-              requestBody: true,
-              responseBody: true,
-            ),
-          );
-          return dio;
-        }),
         Provider(
-          create: (context) => TmdbService(
-            Provider.of(context, listen: false),
-          ),
+          create: (context) => ChopperHttpClient(BuildConfigs.baseUrl).client,
+        ),
+        Provider(
+          create: (context) => context
+              .read<ChopperClient>()
+              .getService<chopper.TmdbServiceChopper>(),
         ),
         Provider<AuthStore>(create: (context) => AuthStore()),
       ],
@@ -61,6 +46,11 @@ class MoviesApp extends StatelessWidget {
           brightness: Brightness.light,
           backgroundColor: backgroundColor,
           pageTransitionsTheme: pageTransitionsTheme,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              elevation: MaterialStateProperty.all(0),
+            ),
+          ),
         ),
         darkTheme: ThemeData(
           brightness: Brightness.dark,

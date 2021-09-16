@@ -32,7 +32,7 @@ Route<dynamic>? generateRoute(RouteSettings settings) {
         builder: (context) => ChangeNotifierProvider<LoginViewModel>(
           create: (context) => LoginViewModel(
             authStore: context.read(),
-            tmdbService: context.read(),
+            chopperTmdbSerivce: context.read(),
           ),
           child: const LoginPage(),
         ),

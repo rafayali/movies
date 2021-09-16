@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
+import 'package:movies_flutter/services/chopper/tmdb_service.dart';
 import 'package:movies_flutter/services/models/account.dart';
 import 'package:movies_flutter/services/models/discover/discover_movies.dart';
 import 'package:movies_flutter/services/models/genres.dart';
 import 'package:movies_flutter/services/models/popular_movies.dart';
 import 'package:movies_flutter/services/models/popular_tv.dart';
-import 'package:movies_flutter/services/tmdb_service.dart';
 import 'package:movies_flutter/ui/home/models/home_ui_model.dart';
 import 'package:movies_flutter/ui/state.dart';
 import 'package:movies_flutter/ui/data/auth_store.dart';
@@ -14,12 +14,13 @@ import 'package:movies_flutter/ui/home/models/movie_item.dart';
 import 'package:movies_flutter/ui/home/models/tv_item.dart';
 
 class HomeViewModel extends ChangeNotifier {
-  HomeViewModel(
-      {required TmdbService tmdbService, required AuthStore authStore})
-      : _tmdbService = tmdbService,
+  HomeViewModel({
+    required TmdbServiceChopper tmdbService,
+    required AuthStore authStore,
+  })  : _tmdbService = tmdbService,
         _authStore = authStore;
 
-  final TmdbService _tmdbService;
+  final TmdbServiceChopper _tmdbService;
 
   final AuthStore _authStore;
 
@@ -30,11 +31,11 @@ class HomeViewModel extends ChangeNotifier {
     final sessionId = (await _authStore.getSessionId())!;
 
     try {
-      final popularMovies = await _tmdbService.getPopularMovies();
-      final popularTv = await _tmdbService.getPopularTvShows();
-      final discoverMovies = await _tmdbService.discoverMovies();
-      final genres = await _tmdbService.getMovieGenres();
-      final account = await _tmdbService.account(sessionId);
+      final popularMovies = (await _tmdbService.getPopularMovies()).body!;
+      final popularTv = (await _tmdbService.getPopularTvShows()).body!;
+      final discoverMovies = (await _tmdbService.discoverMovies()).body!;
+      final genres = (await _tmdbService.getMovieGenres()).body!;
+      final account = (await _tmdbService.account(sessionId)).body!;
 
       final uiModel = _createHomeUiModel(
         popularMovies,

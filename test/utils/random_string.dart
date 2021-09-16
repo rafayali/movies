@@ -8,3 +8,8 @@ String randomString(int length) {
 
   return String.fromCharCodes(codeUnits);
 }
+
+int randomInt(int length) {
+  var rand = Random();
+  return rand.nextInt(pow(10, length).ceil());
+}

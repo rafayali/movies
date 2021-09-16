@@ -9,6 +9,8 @@ class Session {
   final bool success;
   final String? sessionId;
 
+  static const jsonFactory = _$SessionFromJson;
+
   factory Session.fromJson(Map<String, dynamic> json) =>
       _$SessionFromJson(json);
   Map<String, dynamic> toJson() => _$SessionToJson(this);

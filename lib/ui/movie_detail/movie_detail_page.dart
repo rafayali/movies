@@ -23,6 +23,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     super.initState();
     _viewModel = context.read();
 
+    _viewModel.load();
+
     _viewModel.events.listen((event) {});
   }
 
@@ -88,35 +90,43 @@ class MovieDetailContent extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 8),
-                          Builder(builder: (context) {
-                            if (_movieDetailUiModel.runtime == null ||
-                                _movieDetailUiModel.releaseDate == null ||
-                                _movieDetailUiModel.genre == null) {
-                              return const Text('');
-                            } else {
-                              final year =
-                                  _movieDetailUiModel.releaseDate!.year;
-                              final genre = _movieDetailUiModel.genre!.first;
-                              final minutes = _movieDetailUiModel.runtime! % 60;
-                              final hours = _movieDetailUiModel.runtime! ~/ 60;
-                              return Text(
-                                '$year • $genre • ${hours}h ${minutes}m',
-                                style: Theme.of(context).textTheme.bodyText1,
-                                textAlign: TextAlign.center,
-                              );
-                            }
-                          }),
+                          Builder(
+                            builder: (context) {
+                              if (_movieDetailUiModel.runtime == null ||
+                                  _movieDetailUiModel.releaseDate == null ||
+                                  _movieDetailUiModel.genre == null) {
+                                return const Text('');
+                              } else {
+                                final year =
+                                    _movieDetailUiModel.releaseDate!.year;
+                                final genre = _movieDetailUiModel.genre!.first;
+                                final minutes =
+                                    _movieDetailUiModel.runtime! % 60;
+                                final hours =
+                                    _movieDetailUiModel.runtime! ~/ 60;
+                                return Text(
+                                  '$year • $genre • ${hours}h ${minutes}m',
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                  textAlign: TextAlign.center,
+                                );
+                              }
+                            },
+                          ),
                         ],
                       ),
                     ),
                   ),
                 ),
                 SafeArea(
-                  child: IconButton(
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: const Icon(Icons.arrow_back),
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      elevation: 4,
+                    ),
                   ),
                 ),
               ],

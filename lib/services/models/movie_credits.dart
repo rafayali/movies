@@ -14,6 +14,8 @@ class Credits {
   final List<Cast> cast;
   final List<Cast> crew;
 
+  static const jsonFactory = _$CreditsFromJson;
+
   factory Credits.fromJson(Map<String, dynamic> json) =>
       _$CreditsFromJson(json);
 
