@@ -14,6 +14,8 @@ class Token {
   final String expiresAt;
   final String requestToken;
 
+  static const jsonFactory = _$TokenFromJson;
+
   factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
 
   Map<String, dynamic> toJson() => _$TokenToJson(this);

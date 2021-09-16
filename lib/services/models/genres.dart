@@ -11,6 +11,9 @@ class Genres {
 
   final List<Genre> genres;
 
+  static const jsonFactory = _$GenresFromJson;
+
   factory Genres.fromJson(Map<String, dynamic> json) => _$GenresFromJson(json);
+
   Map<String, dynamic> toJson() => _$GenresToJson(this);
 }

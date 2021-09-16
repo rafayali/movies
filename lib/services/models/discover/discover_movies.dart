@@ -18,6 +18,8 @@ class DiscoverMovies {
   final int totalPages;
   final int totalResults;
 
+  static const jsonFactory = _$DiscoverMoviesFromJson;
+
   factory DiscoverMovies.fromJson(Map<String, dynamic> json) =>
       _$DiscoverMoviesFromJson(json);
 

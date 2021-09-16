@@ -18,6 +18,8 @@ class PopularTv {
   final int totalPages;
   final int totalResults;
 
+  static const jsonFactory = _$PopularTvFromJson;
+
   factory PopularTv.fromJson(Map<String, dynamic> json) =>
       _$PopularTvFromJson(json);
 

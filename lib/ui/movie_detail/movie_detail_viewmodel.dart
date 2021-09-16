@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:movies_flutter/services/chopper/tmdb_service.dart';
 import 'package:movies_flutter/services/models/movie.dart';
 import 'package:movies_flutter/services/models/movie_credits.dart';
-import 'package:movies_flutter/services/tmdb_service.dart';
 import 'package:movies_flutter/ui/movie_detail/models/movie_detail_ui_model.dart';
 import 'package:movies_flutter/ui/movie_detail/models/movie_detail_events.dart';
 import 'package:movies_flutter/ui/movie_detail/models/params.dart';
@@ -14,20 +14,18 @@ import '../../config.dart';
 class MovieDetailViewModel extends ChangeNotifier {
   MovieDetailViewModel({
     required MovieDetailParams params,
-    required TmdbService tmdbService,
+    required TmdbServiceChopper tmdbService,
   })  : _params = params,
         _tmdbService = tmdbService,
         _state = MovieDetailUiModel(
           id: params.id,
           title: params.title,
           backdrop: params.backdropUrl,
-        ) {
-    _load(_params.id);
-  }
+        );
 
   final MovieDetailParams _params;
 
-  final TmdbService _tmdbService;
+  final TmdbServiceChopper _tmdbService;
 
   MovieDetailUiModel _state;
   MovieDetailUiModel get state => _state;
@@ -35,10 +33,10 @@ class MovieDetailViewModel extends ChangeNotifier {
   final _events = StreamController<MovieDetailEvents>.broadcast();
   Stream<MovieDetailEvents> get events => _events.stream;
 
-  Future<void> _load(int id) async {
+  Future<void> load() async {
     try {
-      final movie = await _tmdbService.getMovie(_params.id);
-      final credits = await _tmdbService.getMovieCredits(_params.id);
+      final movie = (await _tmdbService.getMovie(_params.id)).body!;
+      final credits = (await _tmdbService.getMovieCredits(_params.id)).body!;
 
       _state = _createMovieDetailUiModel(movie, credits);
 
