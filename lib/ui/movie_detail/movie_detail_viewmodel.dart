@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:movies_flutter/services/chopper/tmdb_service.dart';
+import 'package:movies_flutter/services/tmdb_service.dart';
 import 'package:movies_flutter/services/models/movie.dart';
 import 'package:movies_flutter/services/models/movie_credits.dart';
 import 'package:movies_flutter/ui/movie_detail/models/movie_detail_ui_model.dart';
@@ -14,7 +14,7 @@ import '../../config.dart';
 class MovieDetailViewModel extends ChangeNotifier {
   MovieDetailViewModel({
     required MovieDetailParams params,
-    required TmdbServiceChopper tmdbService,
+    required TmdbService tmdbService,
   })  : _params = params,
         _tmdbService = tmdbService,
         _state = MovieDetailUiModel(
@@ -25,7 +25,7 @@ class MovieDetailViewModel extends ChangeNotifier {
 
   final MovieDetailParams _params;
 
-  final TmdbServiceChopper _tmdbService;
+  final TmdbService _tmdbService;
 
   MovieDetailUiModel _state;
   MovieDetailUiModel get state => _state;

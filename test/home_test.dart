@@ -5,7 +5,7 @@ import 'package:chopper/chopper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
-import 'package:movies_flutter/services/chopper/tmdb_service.dart';
+import 'package:movies_flutter/services/tmdb_service.dart';
 import 'package:movies_flutter/services/models/account.dart';
 import 'package:movies_flutter/services/models/discover/discover_movies.dart';
 import 'package:movies_flutter/services/models/genres.dart';
@@ -132,6 +132,6 @@ Future<Response<Account>> _getFakeAccount() async {
   );
 }
 
-class _MockTmdbService extends Mock implements TmdbServiceChopper {}
+class _MockTmdbService extends Mock implements TmdbService {}
 
 class _MockAuthStore extends Mock implements AuthStore {}

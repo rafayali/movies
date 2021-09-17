@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:async/async.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_flutter/services/chopper/tmdb_service.dart';
+import 'package:movies_flutter/services/tmdb_service.dart';
 import 'package:movies_flutter/services/models/session_request.dart';
 import 'package:movies_flutter/ui/data/auth_store.dart';
 import 'package:movies_flutter/ui/login/models/login_state.dart';
@@ -10,11 +10,11 @@ import 'package:movies_flutter/ui/login/models/login_state.dart';
 class LoginViewModel extends ChangeNotifier {
   LoginViewModel({
     required AuthStore authStore,
-    required TmdbServiceChopper chopperTmdbSerivce,
+    required TmdbService chopperTmdbSerivce,
   })  : _authStore = authStore,
         _chopperTmdbService = chopperTmdbSerivce;
 
-  final TmdbServiceChopper _chopperTmdbService;
+  final TmdbService _chopperTmdbService;
 
   final AuthStore _authStore;
 

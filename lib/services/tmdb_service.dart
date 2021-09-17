@@ -1,54 +1,59 @@
-import 'dart:async';
-
-import 'package:dio/dio.dart';
+import 'package:chopper/chopper.dart';
+import 'package:movies_flutter/services/models/account.dart';
+import 'package:movies_flutter/services/models/discover/discover_movies.dart';
 import 'package:movies_flutter/services/models/genres.dart';
+import 'package:movies_flutter/services/models/movie.dart';
+import 'package:movies_flutter/services/models/movie_credits.dart';
+import 'package:movies_flutter/services/models/popular_movies.dart';
+import 'package:movies_flutter/services/models/popular_tv.dart';
+import 'package:movies_flutter/services/models/session.dart';
 import 'package:movies_flutter/services/models/session_request.dart';
 import 'package:movies_flutter/services/models/token.dart';
-import 'package:retrofit/retrofit.dart';
 
 import '../config.dart';
-import 'models/account.dart';
-import 'models/discover/discover_movies.dart';
-import 'models/movie.dart';
-import 'models/movie_credits.dart';
-import 'models/popular_movies.dart';
-import 'models/popular_tv.dart';
-import 'models/session.dart';
 
-part 'tmdb_service.g.dart';
+part 'tmdb_service.chopper.dart';
 
-@RestApi()
-abstract class TmdbService {
-  factory TmdbService(Dio dio) => _TmdbService(dio);
+@ChopperApi()
+abstract class TmdbService extends ChopperService {
+  static TmdbService create() => _$TmdbService();
 
-  @GET(
-    '/3/movie/popular?api_key=${BuildConfigs.tmdbApiKey}&language=en-US&page=1',
+  @Get(
+    path:
+        '3/movie/popular?api_key=${BuildConfigs.tmdbApiKey}&language=en-US&page=1',
   )
-  Future<PopularMovies> getPopularMovies();
+  Future<Response<PopularMovies>> getPopularMovies();
 
-  @GET('/3/movie/{id}?api_key=${BuildConfigs.tmdbApiKey}')
-  Future<Movie> getMovie(@Path('id') int id);
+  @Get(path: '3/movie/{id}?api_key=${BuildConfigs.tmdbApiKey}')
+  Future<Response<Movie>> getMovie(@Path('id') int id);
 
-  @GET('/3/movie/{movieId}/credits?api_key=${BuildConfigs.tmdbApiKey}')
-  Future<Credits> getMovieCredits(@Path('movieId') int movieId);
+  @Get(path: '3/movie/{movieId}/credits?api_key=${BuildConfigs.tmdbApiKey}')
+  Future<Response<Credits>> getMovieCredits(@Path('movieId') int movieId);
 
-  @GET('/3/tv/popular?api_key=${BuildConfigs.tmdbApiKey}&language=en-US&page=1')
-  Future<PopularTv> getPopularTvShows();
+  @Get(
+      path:
+          '3/tv/popular?api_key=${BuildConfigs.tmdbApiKey}&language=en-US&page=1')
+  Future<Response<PopularTv>> getPopularTvShows();
 
-  @GET(
-    '/3/discover/movie?api_key=${BuildConfigs.tmdbApiKey}&language=en-US&page=1',
+  @Get(
+    path:
+        '3/discover/movie?api_key=${BuildConfigs.tmdbApiKey}&language=en-US&page=1',
   )
-  Future<DiscoverMovies> discoverMovies();
+  Future<Response<DiscoverMovies>> discoverMovies();
 
-  @GET('/3/genre/movie/list?api_key=${BuildConfigs.tmdbApiKey}&language=en-US')
-  Future<Genres> getMovieGenres();
+  @Get(
+      path:
+          '3/genre/movie/list?api_key=${BuildConfigs.tmdbApiKey}&language=en-US')
+  Future<Response<Genres>> getMovieGenres();
 
-  @GET('/3/authentication/token/new?api_key=${BuildConfigs.tmdbApiKey}')
-  Future<Token> getNewToken();
+  @Get(path: '3/authentication/token/new?api_key=${BuildConfigs.tmdbApiKey}')
+  Future<Response<Token>> getNewToken();
 
-  @POST('/3/authentication/session/new?api_key=${BuildConfigs.tmdbApiKey}')
-  Future<Session> newSession(@Body() SessionRequest request);
+  @Post(path: '3/authentication/session/new?api_key=${BuildConfigs.tmdbApiKey}')
+  Future<Response<Session>> newSession(@Body() SessionRequest request);
 
-  @GET('/3/account?api_key=${BuildConfigs.tmdbApiKey}&session_id={session_id}')
-  Future<Account> account(@Path('session_id') String sessionId);
+  @Get(
+      path:
+          '3/account?api_key=${BuildConfigs.tmdbApiKey}&session_id={session_id}')
+  Future<Response<Account>> account(@Path('session_id') String sessionId);
 }

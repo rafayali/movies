@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:movies_flutter/services/chopper/tmdb_service.dart';
+import 'package:movies_flutter/services/tmdb_service.dart';
 import 'package:movies_flutter/services/models/account.dart';
 import 'package:movies_flutter/services/models/discover/discover_movies.dart';
 import 'package:movies_flutter/services/models/genres.dart';
@@ -15,12 +15,12 @@ import 'package:movies_flutter/ui/home/models/tv_item.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel({
-    required TmdbServiceChopper tmdbService,
+    required TmdbService tmdbService,
     required AuthStore authStore,
   })  : _tmdbService = tmdbService,
         _authStore = authStore;
 
-  final TmdbServiceChopper _tmdbService;
+  final TmdbService _tmdbService;
 
   final AuthStore _authStore;
 

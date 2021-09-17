@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:chopper/chopper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movies_flutter/services/chopper/tmdb_service.dart';
+import 'package:movies_flutter/services/tmdb_service.dart';
 import 'package:movies_flutter/services/models/movie.dart';
 import 'package:http/http.dart' as http;
 import 'package:movies_flutter/services/models/movie_credits.dart';
@@ -36,7 +36,7 @@ void main() {
       viewModel.dispose();
     });
 
-    test('is should load movie detail successfully', () async {
+    test('it should load movie detail successfully', () async {
       final states = <MovieDetailUiModel>[];
 
       when(() => tmdbService.getMovie(any())).thenAnswer(
@@ -91,4 +91,4 @@ Future<Response<Credits>> _getFakeMovieCredits() async {
   );
 }
 
-class _MockTmdbService extends Mock implements TmdbServiceChopper {}
+class _MockTmdbService extends Mock implements TmdbService {}

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:chopper/chopper.dart';
-import 'package:movies_flutter/services/chopper/tmdb_service.dart';
+import 'package:movies_flutter/services/tmdb_service.dart';
 import 'package:movies_flutter/services/models/account.dart';
 import 'package:movies_flutter/services/models/discover/discover_movies.dart';
 import 'package:movies_flutter/services/models/genres.dart';

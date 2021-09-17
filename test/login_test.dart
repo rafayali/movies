@@ -7,7 +7,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:movies_flutter/services/models/session.dart';
 import 'package:movies_flutter/services/models/session_request.dart';
 import 'package:movies_flutter/services/models/token.dart';
-import 'package:movies_flutter/services/chopper/tmdb_service.dart' as chopper;
+import 'package:movies_flutter/services/tmdb_service.dart' as chopper;
 import 'package:movies_flutter/ui/login/login_viewmodel.dart';
 import 'package:movies_flutter/ui/login/models/login_state.dart';
 import 'package:movies_flutter/ui/data/auth_store.dart';
@@ -112,6 +112,6 @@ void main() {
 
 class _MockAuthStore extends Mock implements AuthStore {}
 
-class _MockTmdbService extends Mock implements chopper.TmdbServiceChopper {}
+class _MockTmdbService extends Mock implements chopper.TmdbService {}
 
 class _FakeSessionRequest extends Fake implements SessionRequest {}

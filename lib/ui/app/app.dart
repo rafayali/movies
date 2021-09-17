@@ -1,7 +1,7 @@
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_flutter/main.dart';
-import 'package:movies_flutter/services/chopper/tmdb_service.dart' as chopper;
+import 'package:movies_flutter/services/tmdb_service.dart' as chopper;
 import 'package:movies_flutter/ui/app/providers/http_client.dart';
 import 'package:movies_flutter/ui/home/home_page.dart';
 import 'package:provider/provider.dart';
@@ -35,9 +35,8 @@ class MoviesApp extends StatelessWidget {
           create: (context) => ChopperHttpClient(BuildConfigs.baseUrl).client,
         ),
         Provider(
-          create: (context) => context
-              .read<ChopperClient>()
-              .getService<chopper.TmdbServiceChopper>(),
+          create: (context) =>
+              context.read<ChopperClient>().getService<chopper.TmdbService>(),
         ),
         Provider<AuthStore>(create: (context) => AuthStore()),
       ],
