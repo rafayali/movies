@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:movies_flutter/ui/app/app.dart';
+import 'package:movies_flutter/app/app.dart';
 import 'package:movies_flutter/main.dart';
 
 void main(List<String> args) {

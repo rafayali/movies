@@ -4,13 +4,14 @@ import 'dart:io';
 import 'package:chopper/chopper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movies_flutter/services/tmdb_service.dart';
-import 'package:movies_flutter/services/models/movie.dart';
+import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
+import 'package:movies_flutter/data/remote/services/entities/movie/movie.dart';
 import 'package:http/http.dart' as http;
-import 'package:movies_flutter/services/models/movie_credits.dart';
-import 'package:movies_flutter/ui/movie_detail/models/movie_detail_ui_model.dart';
-import 'package:movies_flutter/ui/movie_detail/models/params.dart';
-import 'package:movies_flutter/ui/movie_detail/movie_detail_viewmodel.dart';
+import 'package:movies_flutter/data/remote/services/entities/movie_credits/movie_credits.dart';
+import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
+import 'package:movies_flutter/domain/detail/load_movie_detail_usecase.dart';
+import 'package:movies_flutter/domain/detail/load_tv_show_detail_usecase.dart';
+import 'package:movies_flutter/ui/movie_detail/viewmodel/movie_detail_viewmodel.dart';
 
 import 'utils/random_string.dart';
 
@@ -19,7 +20,12 @@ void main() {
     final id = randomInt(8);
     final title = randomString(8);
     final backdropUrl = randomString(8);
-    final params = MovieDetailParams(id, title, backdropUrl);
+    final params = MovieDetailParams(
+      id: id,
+      title: title,
+      backdropUrl: backdropUrl,
+      type: Type.movie,
+    );
 
     final _MockTmdbService tmdbService = _MockTmdbService();
 
@@ -28,7 +34,10 @@ void main() {
     setUp(() {
       viewModel = MovieDetailViewModel(
         params: params,
-        tmdbService: tmdbService,
+        loadMovieDetailUsecase:
+            LoadMovieDetailUsecase(tmdbService: tmdbService),
+        loadTvShowDetailUsecase:
+            LoadTvShowDetailUsecase(tmdbService: tmdbService),
       );
     });
 
@@ -37,7 +46,7 @@ void main() {
     });
 
     test('it should load movie detail successfully', () async {
-      final states = <MovieDetailUiModel>[];
+      final states = <MovieDetail>[];
 
       when(() => tmdbService.getMovie(any())).thenAnswer(
         (_) => _getFakeMovie(),
@@ -51,7 +60,7 @@ void main() {
 
       expect(
         viewModel.state,
-        equals(MovieDetailUiModel(id: id, title: title, backdrop: backdropUrl)),
+        equals(MovieDetail(id: id, title: title, backdrop: backdropUrl)),
       );
 
       await viewModel.load();
@@ -60,7 +69,7 @@ void main() {
       verify(() => tmdbService.getMovieCredits(any(that: equals(id))))
           .called(1);
       expect(states.length, equals(1));
-      expect(states.first, isA<MovieDetailUiModel>());
+      expect(states.first, isA<MovieDetail>());
 
       assert(true);
     });

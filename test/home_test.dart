@@ -5,16 +5,17 @@ import 'package:chopper/chopper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
-import 'package:movies_flutter/services/tmdb_service.dart';
-import 'package:movies_flutter/services/models/account.dart';
-import 'package:movies_flutter/services/models/discover/discover_movies.dart';
-import 'package:movies_flutter/services/models/genres.dart';
-import 'package:movies_flutter/services/models/popular_movies.dart';
-import 'package:movies_flutter/services/models/popular_tv.dart';
-import 'package:movies_flutter/ui/data/auth_store.dart';
-import 'package:movies_flutter/ui/home/home_viewmodel.dart';
+import 'package:movies_flutter/data/auth_store.dart';
+import 'package:movies_flutter/domain/home/load_home_usecase.dart';
 import 'package:movies_flutter/ui/home/models/home_ui_model.dart';
-import 'package:movies_flutter/ui/state.dart';
+import 'package:movies_flutter/ui/home/viewmodel/home_viewmodel.dart';
+import 'package:movies_flutter/core/ui_state.dart';
+import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
+import 'package:movies_flutter/data/remote/services/entities/account/account.dart';
+import 'package:movies_flutter/data/remote/services/entities/discover_movies/discover_movies.dart';
+import 'package:movies_flutter/data/remote/services/entities/genres/genres.dart';
+import 'package:movies_flutter/data/remote/services/entities/popular_movies/popular_movies.dart';
+import 'package:movies_flutter/data/remote/services/entities/popular_tv/popular_tv.dart';
 
 import 'utils/random_string.dart';
 
@@ -25,8 +26,10 @@ void main() {
 
   setUp(() {
     homeViewModel = HomeViewModel(
-      tmdbService: tmdbService,
-      authStore: authStore,
+      loadHomeUsecase: LoadHomeUsecase(
+        tmdbService: tmdbService,
+        authStore: authStore,
+      ),
     );
   });
 
@@ -64,7 +67,7 @@ void main() {
     // verify
     verify(() => tmdbService.account(any(that: equals(sessionId)))).called(1);
     expect(stateValues, hasLength(1));
-    expect(stateValues.first, isA<Success<HomeUiModel>>());
+    expect(stateValues.first, isA<Success<HomeModel>>());
   });
 
   tearDown(() {

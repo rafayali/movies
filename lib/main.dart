@@ -4,9 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:logging/logging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_flutter/ui/data/auth_store.dart';
+import 'package:movies_flutter/data/auth_store.dart';
 
-import 'ui/app/app.dart';
+import 'app/app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

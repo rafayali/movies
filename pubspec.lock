@@ -232,15 +232,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
-  dio_flutter_transformer:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: master
-      resolved-ref: "1c9ed43805e833c348c98d12000eb687b02c6971"
-      url: "https://github.com/KoderLabs/dio_flutter_transformer"
-    source: git
-    version: "4.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -933,7 +924,7 @@ packages:
       name: webview_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.12"
+    version: "2.0.14"
   win32:
     dependency: transitive
     description:
@@ -963,5 +954,5 @@ packages:
     source: hosted
     version: "3.1.0"
 sdks:
-  dart: ">=2.13.0 <3.0.0"
-  flutter: ">=2.0.0"
+  dart: ">=2.14.0 <3.0.0"
+  flutter: ">=2.5.0"

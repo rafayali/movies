@@ -1,7 +1,7 @@
 import 'package:movies_flutter/config.dart';
-import 'package:movies_flutter/services/models/movie.dart';
+import 'package:movies_flutter/data/remote/services/entities/movie/movie.dart';
 
-class MovieItemUiModel {
+class MovieItem {
   final String name;
   final DateTime? date;
   final String poster;
@@ -10,7 +10,7 @@ class MovieItemUiModel {
   final String backdropThumb;
   final String? genres;
 
-  MovieItemUiModel(
+  MovieItem(
     this.id,
     this.name,
     this.date,
@@ -21,15 +21,15 @@ class MovieItemUiModel {
   );
 }
 
-extension MapToMovieItem on Movie {
-  MovieItemUiModel toMovieItem(List<Genre> externalGenres) {
+extension MovieExtensions on Movie {
+  MovieItem toMovieItem(List<Genre> externalGenres) {
     final genreString = externalGenres
         .where((element) => genreIds!.any((id) => element.id == id))
         .map((e) => e.name)
         .take(3)
         .toList()
         .join(',');
-    return MovieItemUiModel(
+    return MovieItem(
       id,
       title,
       releaseDate,

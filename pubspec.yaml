@@ -39,14 +39,10 @@ dependencies:
   logger: ^1.0.0
   shimmer: ^2.0.0
   freezed_annotation: ^0.14.1
-  webview_flutter: ^2.0.12
+  webview_flutter: ^2.0.14
   shared_preferences: ^2.0.7
   flutter_svg: ^0.22.0
   dartx: ^0.7.1
-  dio_flutter_transformer:
-    git:
-      url: https://github.com/KoderLabs/dio_flutter_transformer
-      ref: master
   http: ^0.13.3
   chopper: ^4.0.1
  

@@ -8,15 +8,20 @@ class BuildConfigs {
   static const String gavatarBaseUrl = 'https://www.gravatar.com/avatar/';
 }
 
-/* class BuildConfig {
-  BuildConfig._({required this.baseUrl, required this.tmdbApiKey});
-
-  factory BuildConfig.debug() => BuildConfig._(
-        baseUrl: 'https://api.themoviedb.org/',
-        tmdbApiKey: 'e92ff494dbf0353926ff0be86f89d7ad',
-      );
+class BuildConfig {
+  BuildConfig({
+    required this.baseImageUrlW500,
+    required this.baseImageUrlW200,
+    required this.baseUrl,
+    required this.tmdbApiKey,
+    required this.baseImageUrlOriginal,
+    required this.gavatarBaseUrl,
+  });
 
   final String baseUrl;
-
   final String tmdbApiKey;
-} */
+  final String baseImageUrlW500;
+  final String baseImageUrlW200;
+  final String baseImageUrlOriginal;
+  final String gavatarBaseUrl;
+}

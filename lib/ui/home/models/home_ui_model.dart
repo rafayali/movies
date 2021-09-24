@@ -6,12 +6,12 @@ import 'tv_item.dart';
 part 'home_ui_model.freezed.dart';
 
 @freezed
-class HomeUiModel with _$HomeUiModel {
-  factory HomeUiModel({
+class HomeModel with _$HomeModel {
+  factory HomeModel({
     required String name,
     required String imageUrl,
-    required List<MovieItemUiModel> popularMovies,
-    required List<TvShowUiModel> popularTvShows,
-    required List<MovieItemUiModel> discoverMovies,
-  }) = _HomeUiModel;
+    required List<MovieItem> popularMovies,
+    required List<TvShowItem> popularTvShows,
+    required List<MovieItem> discoverMovies,
+  }) = _HomeModel;
 }
