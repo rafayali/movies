@@ -9,7 +9,7 @@ import 'package:movies_flutter/domain/login/new_auth_token_usecase.dart';
 import 'package:movies_flutter/domain/search/multi_search_usecase.dart';
 import 'package:movies_flutter/ui/landing/discover/view/discover_page.dart';
 import 'package:movies_flutter/ui/landing/landing_page.dart';
-import 'package:movies_flutter/ui/landing/discover/viewmodel/home_viewmodel.dart';
+import 'package:movies_flutter/ui/landing/discover/viewmodel/discover_viewmodel.dart';
 import 'package:movies_flutter/ui/landing/search/view/search_page.dart';
 import 'package:movies_flutter/ui/landing/search/viewmodel/search_viewmodel.dart';
 import 'package:movies_flutter/ui/login/view/auth_page.dart';

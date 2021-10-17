@@ -44,6 +44,9 @@ class _HomePageTabsState extends State<HomePageTabs> {
         body: PageView(
           children: pages,
           controller: pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          onPageChanged: (index) =>
+              WidgetsBinding.instance?.focusManager.primaryFocus?.unfocus(),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: bottomNavigationBarItems,

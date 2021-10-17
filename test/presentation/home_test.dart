@@ -8,7 +8,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:movies_flutter/data/auth_store.dart';
 import 'package:movies_flutter/domain/home/load_home_usecase.dart';
 import 'package:movies_flutter/ui/landing/discover/models/home_ui_model.dart';
-import 'package:movies_flutter/ui/landing/discover/viewmodel/home_viewmodel.dart';
+import 'package:movies_flutter/ui/landing/discover/viewmodel/discover_viewmodel.dart';
 import 'package:movies_flutter/core/ui_state.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
 import 'package:movies_flutter/data/remote/services/entities/account/account.dart';

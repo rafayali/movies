@@ -7,7 +7,7 @@ import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
 import 'package:movies_flutter/widgets/movie_widget.dart';
 import 'package:provider/provider.dart';
 
-import '../viewmodel/home_viewmodel.dart';
+import '../viewmodel/discover_viewmodel.dart';
 import '../models/home_ui_model.dart';
 import '../models/movie_item.dart';
 
