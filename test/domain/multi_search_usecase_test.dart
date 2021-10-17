@@ -13,8 +13,9 @@ import '../utils/random_string.dart';
 
 main() {
   group('when MultiSearchUsecase is invoked', () {
-    test('''with same query multiple times, it should paginate increamentally 
-    and page should reset when executed with new query''', () async {
+    test(
+        '''page number should reset to 1 if it was increamented by a previous query''',
+        () async {
       final mockTmdbService = _MockTmdbService();
       final usecase = MultiSearchUsecase(tmdbService: mockTmdbService);
 
@@ -42,6 +43,35 @@ main() {
       final newResult = await usecase.invoke(randomString(8));
       expect(newResult.isValue, equals(true));
       expect(newResult.asValue!.value.page, equals(1));
+    });
+
+    test('''it should return aggregated data of all pages''', () async {
+      final mockTmdbService = _MockTmdbService();
+      final usecase = MultiSearchUsecase(tmdbService: mockTmdbService);
+
+      final fakeMultiSearchResponse = await _getFakeMultiSearchResponse();
+
+      when(() => mockTmdbService.multiSearch(any(), any()))
+          .thenAnswer((invocation) async => fakeMultiSearchResponse);
+
+      final query = randomString(10);
+
+      // when query is performed it should return result for first page
+      final pageOneResults = await usecase.invoke(query);
+      expect(pageOneResults.isValue, true);
+      final searchResultsOne = pageOneResults.asValue!.value;
+      expect(searchResultsOne.results.length,
+          fakeMultiSearchResponse.body!.results.length);
+      expect(searchResultsOne.page, equals(1));
+
+      // should increament to second page when same query is passed
+      final pageTwoResults = await usecase.invoke(query);
+      expect(pageTwoResults.isValue, equals(true));
+      expect(pageTwoResults.asValue!.value.page, equals(2));
+      expect(
+          pageTwoResults.asValue!.value.results.length,
+          equals(searchResultsOne.results.length +
+              searchResultsOne.results.length));
     });
 
     test('with empty query, it should return empty results', () async {

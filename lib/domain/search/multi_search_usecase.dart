@@ -76,7 +76,7 @@ class MultiSearchUsecase extends Usecase<String, SearchResult> {
 
     _data.addAll(items);
 
-    final results = SearchResult(page: _page, results: _data);
+    final results = SearchResult(page: _page, results: _data.toList());
 
     if (response.totalPages == _page) {
       _shouldLoad = false;

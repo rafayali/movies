@@ -12,33 +12,38 @@ class SearchViewModel extends ViewModel<SearchUiState> {
   String _query = '';
 
   Future<void> search(String query) async {
-    if (query.isEmpty) return;
+    if (query.isEmpty) {
+      _query = query;
+      setState(const SearchUiState.searchForMovies());
+      return;
+    }
 
     if (_query != query) {
       setState(const SearchUiState.loading());
       _query = query;
     }
 
+    _query = query;
+
     final result = await searchMovieUsecase.invoke(query);
 
     if (result.isValue) {
-      final searchResult = result.asValue!.value.results;
-      if (state is SuccessSearchUiState) {
-        final currentState = state as SuccessSearchUiState;
-        setState(
-          SearchUiState.success([...currentState.items, ...searchResult]),
-        );
-        return;
-      } else {
-        if (searchResult.isEmpty) {
-          setState(const SearchUiState.noResults());
-          return;
-        }
-
-        setState(SearchUiState.success(searchResult));
-      }
+      final searchItems = result.asValue!.value.results;
+      state.maybeWhen(
+        orElse: () {
+          if (searchItems.isEmpty) {
+            setState(const SearchUiState.noResults());
+          }
+          setState(SearchUiState.success(searchItems));
+        },
+        success: (items) {
+          setState(SearchUiState.success(searchItems.toList()));
+        },
+      );
     } else {
-      setState(const SearchUiState.noResults());
+      if (state is! SuccessSearchUiState) {
+        setState(const SearchUiState.noResults());
+      }
     }
   }
 
