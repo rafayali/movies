@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'movie_detail_events.dart';
 
@@ -36,6 +37,11 @@ mixin _$MovieDetailEvents {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String message)? message,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? message,
     required TResult orElse(),
@@ -44,6 +50,11 @@ mixin _$MovieDetailEvents {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MovieDetailEventsMessage value) message,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(MovieDetailEventsMessage value)? message,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -139,14 +150,13 @@ class _$MovieDetailEventsMessage implements MovieDetailEventsMessage {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is MovieDetailEventsMessage &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+        (other.runtimeType == runtimeType &&
+            other is MovieDetailEventsMessage &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -160,6 +170,14 @@ class _$MovieDetailEventsMessage implements MovieDetailEventsMessage {
     required TResult Function(String message) message,
   }) {
     return message(this.message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String message)? message,
+  }) {
+    return message?.call(this.message);
   }
 
   @override
@@ -184,6 +202,14 @@ class _$MovieDetailEventsMessage implements MovieDetailEventsMessage {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(MovieDetailEventsMessage value)? message,
+  }) {
+    return message?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MovieDetailEventsMessage value)? message,
     required TResult orElse(),
@@ -200,7 +226,7 @@ abstract class MovieDetailEventsMessage implements MovieDetailEvents {
       _$MovieDetailEventsMessage;
 
   @override
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
   @JsonKey(ignore: true)
   $MovieDetailEventsMessageCopyWith<MovieDetailEventsMessage> get copyWith =>

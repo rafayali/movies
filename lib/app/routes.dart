@@ -2,9 +2,9 @@ part of 'app.dart';
 
 List<Route<dynamic>> _generateInitialRoute(String initialRoute) {
   switch (initialRoute) {
-    case HomePage.routeName:
+    case HomePageTabs.routeName:
       return [
-        _generateRoute(const RouteSettings(name: HomePage.routeName))!,
+        _generateRoute(const RouteSettings(name: HomePageTabs.routeName))!,
       ];
     case LoginPage.routeName:
       return [
@@ -37,18 +37,6 @@ Route<dynamic>? _generateRoute(RouteSettings settings) {
             AuthPage(requestToken: settings.arguments as String),
         settings: settings,
       );
-    case HomePage.routeName:
-      return MaterialPageRoute(
-          builder: (_) => ChangeNotifierProvider(
-                create: (context) => HomeViewModel(
-                  loadHomeUsecase: LoadHomeUsecase(
-                    tmdbService: context.read(),
-                    authStore: context.read(),
-                  ),
-                ),
-                child: const HomePage(),
-              ),
-          settings: const RouteSettings());
     case MovieDetailPage.routeName:
       return MaterialPageRoute(
         builder: (context) => ChangeNotifierProvider<MovieDetailViewModel>(
@@ -62,6 +50,39 @@ Route<dynamic>? _generateRoute(RouteSettings settings) {
             ),
           ),
           child: const MovieDetailPage(),
+        ),
+        settings: settings,
+      );
+    case HomePageTabs.routeName:
+      return MaterialPageRoute(
+        builder: (context) => HomePageTabs(
+          tabs: [
+            HomePageTab(
+              icon: Icons.home,
+              title: 'Discover',
+              screen: ChangeNotifierProvider(
+                create: (context) => HomeViewModel(
+                  loadHomeUsecase: LoadHomeUsecase(
+                    tmdbService: context.read(),
+                    authStore: context.read(),
+                  ),
+                ),
+                child: const HomePage(),
+              ),
+            ),
+            HomePageTab(
+              icon: Icons.search,
+              title: 'Search',
+              screen: ChangeNotifierProvider(
+                create: (context) => SearchViewModel(
+                  searchMovieUsecase: MultiSearchUsecase(
+                    tmdbService: context.read(),
+                  ),
+                ),
+                child: const SearchPage(),
+              ),
+            )
+          ],
         ),
         settings: settings,
       );

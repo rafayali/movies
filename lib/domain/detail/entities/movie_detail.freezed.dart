@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'movie_detail.dart';
 
@@ -122,19 +123,15 @@ class _$_Cast implements _Cast {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Cast &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Cast &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.avatarUrl, avatarUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.avatarUrl, avatarUrl)));
+                other.avatarUrl == avatarUrl));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(avatarUrl);
+  int get hashCode => Object.hash(runtimeType, name, avatarUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -146,9 +143,9 @@ abstract class _Cast implements Cast {
   factory _Cast({required String name, required String avatarUrl}) = _$_Cast;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get avatarUrl => throw _privateConstructorUsedError;
+  String get avatarUrl;
   @override
   @JsonKey(ignore: true)
   _$CastCopyWith<_Cast> get copyWith => throw _privateConstructorUsedError;
@@ -403,43 +400,34 @@ class _$_MovieDetail implements _MovieDetail {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _MovieDetail &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
+        (other.runtimeType == runtimeType &&
+            other is _MovieDetail &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.backdrop, backdrop) ||
-                const DeepCollectionEquality()
-                    .equals(other.backdrop, backdrop)) &&
+                other.backdrop == backdrop) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.rating, rating) ||
-                const DeepCollectionEquality().equals(other.rating, rating)) &&
-            (identical(other.genre, genre) ||
-                const DeepCollectionEquality().equals(other.genre, genre)) &&
-            (identical(other.runtime, runtime) ||
-                const DeepCollectionEquality()
-                    .equals(other.runtime, runtime)) &&
-            (identical(other.cast, cast) ||
-                const DeepCollectionEquality().equals(other.cast, cast)) &&
+                other.description == description) &&
+            (identical(other.rating, rating) || other.rating == rating) &&
+            const DeepCollectionEquality().equals(other.genre, genre) &&
+            (identical(other.runtime, runtime) || other.runtime == runtime) &&
+            const DeepCollectionEquality().equals(other.cast, cast) &&
             (identical(other.releaseDate, releaseDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.releaseDate, releaseDate)));
+                other.releaseDate == releaseDate));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(backdrop) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(rating) ^
-      const DeepCollectionEquality().hash(genre) ^
-      const DeepCollectionEquality().hash(runtime) ^
-      const DeepCollectionEquality().hash(cast) ^
-      const DeepCollectionEquality().hash(releaseDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      backdrop,
+      description,
+      rating,
+      const DeepCollectionEquality().hash(genre),
+      runtime,
+      const DeepCollectionEquality().hash(cast),
+      releaseDate);
 
   @JsonKey(ignore: true)
   @override
@@ -460,23 +448,23 @@ abstract class _MovieDetail implements MovieDetail {
       DateTime? releaseDate}) = _$_MovieDetail;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get backdrop => throw _privateConstructorUsedError;
+  String get backdrop;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  double? get rating => throw _privateConstructorUsedError;
+  double? get rating;
   @override
-  List<String>? get genre => throw _privateConstructorUsedError;
+  List<String>? get genre;
   @override
-  int? get runtime => throw _privateConstructorUsedError;
+  int? get runtime;
   @override
-  List<Cast>? get cast => throw _privateConstructorUsedError;
+  List<Cast>? get cast;
   @override
-  DateTime? get releaseDate => throw _privateConstructorUsedError;
+  DateTime? get releaseDate;
   @override
   @JsonKey(ignore: true)
   _$MovieDetailCopyWith<_MovieDetail> get copyWith =>
@@ -636,25 +624,17 @@ class _$_MovieDetailParams implements _MovieDetailParams {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _MovieDetailParams &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
+        (other.runtimeType == runtimeType &&
+            other is _MovieDetailParams &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.backdropUrl, backdropUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.backdropUrl, backdropUrl)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)));
+                other.backdropUrl == backdropUrl) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(backdropUrl) ^
-      const DeepCollectionEquality().hash(type);
+  int get hashCode => Object.hash(runtimeType, id, title, backdropUrl, type);
 
   @JsonKey(ignore: true)
   @override
@@ -670,13 +650,13 @@ abstract class _MovieDetailParams implements MovieDetailParams {
       required Type type}) = _$_MovieDetailParams;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get backdropUrl => throw _privateConstructorUsedError;
+  String get backdropUrl;
   @override
-  Type get type => throw _privateConstructorUsedError;
+  Type get type;
   @override
   @JsonKey(ignore: true)
   _$MovieDetailParamsCopyWith<_MovieDetailParams> get copyWith =>

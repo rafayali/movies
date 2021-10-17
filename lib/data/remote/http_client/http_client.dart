@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:chopper/chopper.dart';
+import 'package:movies_flutter/data/remote/services/entities/mutli_search/multi_search.dart';
 import 'package:movies_flutter/data/remote/services/entities/tv_show/tv_show.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
 import 'package:movies_flutter/data/remote/services/entities/account/account.dart';

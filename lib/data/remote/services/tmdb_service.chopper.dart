@@ -101,4 +101,12 @@ class _$TmdbService extends TmdbService {
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<Credits, Credits>($request);
   }
+
+  @override
+  Future<Response<MultiSearch>> multiSearch(String query, int page) {
+    final $url =
+        '3/search/multi?query=$query&page=$page&api_key=e92ff494dbf0353926ff0be86f89d7ad&language=en-US';
+    final $request = Request('GET', $url, client.baseUrl);
+    return client.send<MultiSearch, MultiSearch>($request);
+  }
 }

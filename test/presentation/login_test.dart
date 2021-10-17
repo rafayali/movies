@@ -14,7 +14,7 @@ import 'package:movies_flutter/data/remote/services/tmdb_service.dart'
 import 'package:movies_flutter/data/auth_store.dart';
 import 'package:movies_flutter/ui/login/viewmodel/login_viewmodel.dart';
 
-import 'utils/random_string.dart';
+import '../utils/random_string.dart';
 
 void main() {
   _MockAuthStore authStore = _MockAuthStore();

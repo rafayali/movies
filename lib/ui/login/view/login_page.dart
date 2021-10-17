@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:movies_flutter/ui/home/view/home_page.dart';
+import 'package:movies_flutter/ui/landing/landing_page.dart';
 import 'package:movies_flutter/ui/login/view/auth_page.dart';
 import 'package:movies_flutter/ui/login/viewmodel/login_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
           _loginViewModel.generateSessionId(requestToken);
         },
         success: (sessionId) {
-          Navigator.of(context).popAndPushNamed(HomePage.routeName);
+          Navigator.of(context).popAndPushNamed(HomePageTabs.routeName);
         },
       );
     });

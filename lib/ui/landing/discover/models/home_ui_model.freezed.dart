@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'home_ui_model.dart';
 
@@ -186,31 +187,27 @@ class _$_HomeModel implements _HomeModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _HomeModel &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
+        (other.runtimeType == runtimeType &&
+            other is _HomeModel &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.imageUrl, imageUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageUrl, imageUrl)) &&
-            (identical(other.popularMovies, popularMovies) ||
-                const DeepCollectionEquality()
-                    .equals(other.popularMovies, popularMovies)) &&
-            (identical(other.popularTvShows, popularTvShows) ||
-                const DeepCollectionEquality()
-                    .equals(other.popularTvShows, popularTvShows)) &&
-            (identical(other.discoverMovies, discoverMovies) ||
-                const DeepCollectionEquality()
-                    .equals(other.discoverMovies, discoverMovies)));
+                other.imageUrl == imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.popularMovies, popularMovies) &&
+            const DeepCollectionEquality()
+                .equals(other.popularTvShows, popularTvShows) &&
+            const DeepCollectionEquality()
+                .equals(other.discoverMovies, discoverMovies));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(imageUrl) ^
-      const DeepCollectionEquality().hash(popularMovies) ^
-      const DeepCollectionEquality().hash(popularTvShows) ^
-      const DeepCollectionEquality().hash(discoverMovies);
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      imageUrl,
+      const DeepCollectionEquality().hash(popularMovies),
+      const DeepCollectionEquality().hash(popularTvShows),
+      const DeepCollectionEquality().hash(discoverMovies));
 
   @JsonKey(ignore: true)
   @override
@@ -227,15 +224,15 @@ abstract class _HomeModel implements HomeModel {
       required List<MovieItem> discoverMovies}) = _$_HomeModel;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get imageUrl => throw _privateConstructorUsedError;
+  String get imageUrl;
   @override
-  List<MovieItem> get popularMovies => throw _privateConstructorUsedError;
+  List<MovieItem> get popularMovies;
   @override
-  List<TvShowItem> get popularTvShows => throw _privateConstructorUsedError;
+  List<TvShowItem> get popularTvShows;
   @override
-  List<MovieItem> get discoverMovies => throw _privateConstructorUsedError;
+  List<MovieItem> get discoverMovies;
   @override
   @JsonKey(ignore: true)
   _$HomeModelCopyWith<_HomeModel> get copyWith =>

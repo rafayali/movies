@@ -13,7 +13,7 @@ import 'package:movies_flutter/domain/detail/load_movie_detail_usecase.dart';
 import 'package:movies_flutter/domain/detail/load_tv_show_detail_usecase.dart';
 import 'package:movies_flutter/ui/movie_detail/viewmodel/movie_detail_viewmodel.dart';
 
-import 'utils/random_string.dart';
+import '../utils/random_string.dart';
 
 void main() {
   group('when a movie detail is opened', () {

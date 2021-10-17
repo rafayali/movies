@@ -4,6 +4,7 @@ import 'package:movies_flutter/data/remote/services/entities/discover_movies/dis
 import 'package:movies_flutter/data/remote/services/entities/genres/genres.dart';
 import 'package:movies_flutter/data/remote/services/entities/movie/movie.dart';
 import 'package:movies_flutter/data/remote/services/entities/movie_credits/movie_credits.dart';
+import 'package:movies_flutter/data/remote/services/entities/mutli_search/multi_search.dart';
 import 'package:movies_flutter/data/remote/services/entities/popular_movies/popular_movies.dart';
 import 'package:movies_flutter/data/remote/services/entities/popular_tv/popular_tv.dart';
 import 'package:movies_flutter/data/remote/services/entities/session/session.dart';
@@ -62,4 +63,12 @@ abstract class TmdbService extends ChopperService {
 
   @Get(path: '3/tv/{id}/credits?api_key=${BuildConfigs.tmdbApiKey}')
   Future<Response<Credits>> getTvShowCredits(@Path('id') int id);
+
+  @Get(
+      path:
+          '3/search/multi?query={query}&page={page}&api_key=${BuildConfigs.tmdbApiKey}&language=en-US')
+  Future<Response<MultiSearch>> multiSearch(
+    @Path('query') String query,
+    @Path('page') int page,
+  );
 }

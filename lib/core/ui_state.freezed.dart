@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'ui_state.dart';
 
@@ -46,6 +47,13 @@ mixin _$UiState<T> {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? data)? success,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T? data)? success,
     TResult Function()? loading,
@@ -58,6 +66,13 @@ mixin _$UiState<T> {
     required TResult Function(Success<T> value) success,
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Error<T> value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Success<T> value)? success,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Error<T> value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -138,14 +153,14 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Success<T> &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)));
+        (other.runtimeType == runtimeType &&
+            other is Success<T> &&
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -160,6 +175,16 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
     required TResult Function(String message) error,
   }) {
     return success(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? data)? success,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+  }) {
+    return success?.call(data);
   }
 
   @override
@@ -188,6 +213,16 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Success<T> value)? success,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Error<T> value)? error,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Success<T> value)? success,
     TResult Function(Loading<T> value)? loading,
@@ -204,7 +239,7 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
 abstract class Success<T> implements UiState<T> {
   const factory Success(T? data) = _$Success<T>;
 
-  T? get data => throw _privateConstructorUsedError;
+  T? get data;
   @JsonKey(ignore: true)
   $SuccessCopyWith<T, Success<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -244,7 +279,8 @@ class _$Loading<T> with DiagnosticableTreeMixin implements Loading<T> {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Loading<T>);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Loading<T>);
   }
 
   @override
@@ -258,6 +294,16 @@ class _$Loading<T> with DiagnosticableTreeMixin implements Loading<T> {
     required TResult Function(String message) error,
   }) {
     return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? data)? success,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+  }) {
+    return loading?.call();
   }
 
   @override
@@ -282,6 +328,16 @@ class _$Loading<T> with DiagnosticableTreeMixin implements Loading<T> {
     required TResult Function(Error<T> value) error,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Success<T> value)? success,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Error<T> value)? error,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -356,14 +412,13 @@ class _$Error<T> with DiagnosticableTreeMixin implements Error<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Error<T> &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+        (other.runtimeType == runtimeType &&
+            other is Error<T> &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -378,6 +433,16 @@ class _$Error<T> with DiagnosticableTreeMixin implements Error<T> {
     required TResult Function(String message) error,
   }) {
     return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T? data)? success,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+  }) {
+    return error?.call(message);
   }
 
   @override
@@ -406,6 +471,16 @@ class _$Error<T> with DiagnosticableTreeMixin implements Error<T> {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Success<T> value)? success,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Error<T> value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Success<T> value)? success,
     TResult Function(Loading<T> value)? loading,
@@ -422,7 +497,7 @@ class _$Error<T> with DiagnosticableTreeMixin implements Error<T> {
 abstract class Error<T> implements UiState<T> {
   const factory Error(String message) = _$Error<T>;
 
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @JsonKey(ignore: true)
   $ErrorCopyWith<T, Error<T>> get copyWith =>
       throw _privateConstructorUsedError;

@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 import 'package:movies_flutter/data/auth_store.dart';
 import 'package:movies_flutter/domain/home/load_home_usecase.dart';
-import 'package:movies_flutter/ui/home/models/home_ui_model.dart';
-import 'package:movies_flutter/ui/home/viewmodel/home_viewmodel.dart';
+import 'package:movies_flutter/ui/landing/discover/models/home_ui_model.dart';
+import 'package:movies_flutter/ui/landing/discover/viewmodel/home_viewmodel.dart';
 import 'package:movies_flutter/core/ui_state.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
 import 'package:movies_flutter/data/remote/services/entities/account/account.dart';
@@ -17,7 +17,7 @@ import 'package:movies_flutter/data/remote/services/entities/genres/genres.dart'
 import 'package:movies_flutter/data/remote/services/entities/popular_movies/popular_movies.dart';
 import 'package:movies_flutter/data/remote/services/entities/popular_tv/popular_tv.dart';
 
-import 'utils/random_string.dart';
+import '../utils/random_string.dart';
 
 void main() {
   final _MockAuthStore authStore = _MockAuthStore();

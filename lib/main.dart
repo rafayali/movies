@@ -28,7 +28,8 @@ void _setupLogging() {
   if (kDebugMode) {
     Logger.root.level = Level.ALL;
     Logger.root.onRecord.listen((record) {
-      debugPrint('${record.level.name}: ${record.time}: ${record.message}');
+      // ignore: avoid_print
+      print('${record.level.name}: ${record.time}: ${record.message}');
     });
   }
 }
