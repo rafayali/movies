@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_flutter/ui/landing/search/models/search_models.dart';
 import 'package:movies_flutter/ui/landing/search/viewmodel/search_viewmodel.dart';
 import 'package:provider/provider.dart';
+import 'package:quiver/strings.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -13,6 +14,10 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage>
     with AutomaticKeepAliveClientMixin<SearchPage> {
   late final SearchViewModel viewModel;
+
+  final _textEditingController = TextEditingController();
+
+  bool _showClearButton = false;
 
   @override
   void initState() {
@@ -31,17 +36,32 @@ class _SearchPageState extends State<SearchPage>
         children: [
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
               child: TextField(
+                controller: _textEditingController,
                 onChanged: (value) {
-                  debugPrint(value);
+                  value.isEmpty
+                      ? setState(() => _showClearButton = false)
+                      : setState(() => _showClearButton = true);
                   viewModel.search(value);
                 },
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.search),
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.search, size: 16),
+                  suffixIcon: _showClearButton
+                      ? IconButton(
+                          onPressed: () {
+                            _textEditingController.clear();
+                            setState(() => _showClearButton = false);
+                            viewModel.search('');
+                          },
+                          icon: const Icon(Icons.close_rounded),
+                          iconSize: 16,
+                          splashRadius: 16,
+                        )
+                      : null,
                   isDense: true,
                   hintText: 'Search Movies, TvShows and People',
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(8),
                     ),
@@ -76,7 +96,7 @@ class _SearchPageState extends State<SearchPage>
                       size: 64,
                       color: Colors.grey,
                     ),
-                    Text('Search for your favorite movies'),
+                    Text('Search for your favorite movie, tvshow and cast'),
                   ],
                 ),
               ),

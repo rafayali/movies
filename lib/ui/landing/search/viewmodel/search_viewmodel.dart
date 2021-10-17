@@ -33,15 +33,16 @@ class SearchViewModel extends ViewModel<SearchUiState> {
         orElse: () {
           if (searchItems.isEmpty) {
             setState(const SearchUiState.noResults());
+          } else {
+            setState(SearchUiState.success(searchItems));
           }
-          setState(SearchUiState.success(searchItems));
         },
         success: (items) {
           setState(SearchUiState.success(searchItems.toList()));
         },
       );
     } else {
-      if (state is! SuccessSearchUiState) {
+      if (state is LoadingSearchUiState) {
         setState(const SearchUiState.noResults());
       }
     }
