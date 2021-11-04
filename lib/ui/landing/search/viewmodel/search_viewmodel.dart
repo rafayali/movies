@@ -1,6 +1,7 @@
 import 'package:movies_flutter/core/viewmodel.dart';
 import 'package:movies_flutter/domain/search/multi_search_usecase.dart';
 import 'package:movies_flutter/ui/landing/search/models/search_models.dart';
+import 'package:movies_flutter/utils/constants.dart';
 
 class SearchViewModel extends ViewModel<SearchUiState> {
   SearchViewModel({
@@ -9,7 +10,7 @@ class SearchViewModel extends ViewModel<SearchUiState> {
 
   final MultiSearchUsecase searchMovieUsecase;
 
-  String _query = '';
+  String _query = emptyString;
 
   Future<void> search(String query) async {
     if (query.isEmpty) {
@@ -29,18 +30,15 @@ class SearchViewModel extends ViewModel<SearchUiState> {
 
     if (result.isValue) {
       final searchItems = result.asValue!.value.results;
-      state.maybeWhen(
-        orElse: () {
-          if (searchItems.isEmpty) {
-            setState(const SearchUiState.noResults());
-          } else {
-            setState(SearchUiState.success(searchItems));
-          }
-        },
-        success: (items) {
-          setState(SearchUiState.success(searchItems.toList()));
-        },
-      );
+      if (state is SuccessSearchUiState) {
+        setState(SearchUiState.success(searchItems.toList()));
+      } else {
+        if (searchItems.isEmpty) {
+          setState(const SearchUiState.noResults());
+        } else {
+          setState(SearchUiState.success(searchItems));
+        }
+      }
     } else {
       if (state is LoadingSearchUiState) {
         setState(const SearchUiState.noResults());
@@ -50,5 +48,9 @@ class SearchViewModel extends ViewModel<SearchUiState> {
 
   void loadMore() {
     search(_query);
+  }
+
+  void clear() {
+    search(emptyString);
   }
 }

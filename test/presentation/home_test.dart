@@ -59,7 +59,7 @@ void main() {
     homeViewModel.addListener(() => stateValues.add(homeViewModel.state));
 
     // verify initial state to be UiState.loading
-    expect(homeViewModel.state, equals(const UiState.loading()));
+    expect(homeViewModel.state, isA<Loading>());
 
     // then
     await homeViewModel.load();

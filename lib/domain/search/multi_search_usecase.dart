@@ -1,5 +1,6 @@
 import 'package:async/async.dart';
 import 'package:chopper/chopper.dart';
+import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/core/usecase.dart';
 import 'package:movies_flutter/data/remote/services/entities/mutli_search/multi_search.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
@@ -50,26 +51,31 @@ class MultiSearchUsecase extends Usecase<String, SearchResult> {
               date: isNotBlank(value.releaseDate)
                   ? DateTime.parse(value.releaseDate!)
                   : null,
-              poster: value.posterPath,
-              backdrop: value.backdropPath,
+              poster: '${BuildConfigs.baseImageUrlW500}${value.posterPath}',
+              backdrop:
+                  '${BuildConfigs.baseImageUrlOriginal}${value.backdropPath}',
               id: value.id,
-              backdropThumb: value.backdropPath,
+              backdropThumb:
+                  '${BuildConfigs.baseImageUrlW500}${value.backdropPath}',
             ),
             tvShow: (tvshow) => SearchItem.tvShow(
               name: tvshow.name,
               date: isNotBlank(tvshow.firstAirDate)
                   ? DateTime.parse(tvshow.firstAirDate!)
                   : null,
-              poster: tvshow.posterPath,
-              backdrop: tvshow.backdropPath,
+              poster: '${BuildConfigs.baseImageUrlW500}${tvshow.posterPath}',
+              backdrop:
+                  '${BuildConfigs.baseImageUrlOriginal}${tvshow.backdropPath}',
               id: tvshow.id,
-              backdropThumb: tvshow.backdropPath,
+              backdropThumb:
+                  '${BuildConfigs.baseImageUrlW500}${tvshow.backdropPath}',
             ),
-            person: (person) => SearchItem.person(
+            /* person: (person) => SearchItem.person(
               id: person.id,
               name: person.name,
-              profilePicture: person.profilePath,
-            ),
+              profilePicture:
+                  '${BuildConfigs.baseImageUrlOriginal}${person.profilePath}',
+            ), */
           ),
         )
         .toList();

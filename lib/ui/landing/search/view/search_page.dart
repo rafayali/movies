@@ -1,8 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
+import 'package:movies_flutter/domain/search/entities/search_movies_entities.dart';
 import 'package:movies_flutter/ui/landing/search/models/search_models.dart';
 import 'package:movies_flutter/ui/landing/search/viewmodel/search_viewmodel.dart';
+import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
+import 'package:movies_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
-import 'package:quiver/strings.dart';
+
+part 'widgets/search_item.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -52,7 +58,7 @@ class _SearchPageState extends State<SearchPage>
                           onPressed: () {
                             _textEditingController.clear();
                             setState(() => _showClearButton = false);
-                            viewModel.search('');
+                            viewModel.clear();
                           },
                           icon: const Icon(Icons.close_rounded),
                           iconSize: 16,
@@ -77,14 +83,35 @@ class _SearchPageState extends State<SearchPage>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [CircularProgressIndicator()],
               ),
-              success: (value) => ListView(
-                padding: EdgeInsets.zero,
-                children: value.items
-                    .map((item) => Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Text(item.name),
-                        ))
-                    .toList(),
+              success: (value) => ListView.separated(
+                itemBuilder: (context, index) => SearchItemWidget(
+                  searchItem: value.items[index],
+                  onPressed: () {
+                    final args = value.items[index].maybeMap(
+                      movie: (movie) => MovieDetailParams(
+                        id: movie.id,
+                        title: movie.name,
+                        backdropUrl: movie.backdrop,
+                        type: Type.movie,
+                      ),
+                      tvShow: (tvShow) => MovieDetailParams(
+                        id: tvShow.id,
+                        title: tvShow.name,
+                        backdropUrl: tvShow.backdrop,
+                        type: Type.tvShow,
+                      ),
+                      orElse: () {},
+                    );
+                    Navigator.of(context).pushNamed(
+                      MovieDetailPage.routeName,
+                      arguments: args,
+                    );
+                  },
+                ),
+                separatorBuilder: (context, index) => const SizedBox(height: 4),
+                itemCount: value.items.length,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               ),
               noResults: (value) => const Center(child: Text('No Results')),
               searchForMovies: (value) => Center(

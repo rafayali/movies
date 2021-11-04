@@ -158,7 +158,7 @@ class _$MovieDetailTearOff {
   _MovieDetail call(
       {required int id,
       required String title,
-      required String backdrop,
+      required String? backdrop,
       String? description,
       double? rating,
       List<String>? genre,
@@ -186,7 +186,7 @@ const $MovieDetail = _$MovieDetailTearOff();
 mixin _$MovieDetail {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get backdrop => throw _privateConstructorUsedError;
+  String? get backdrop => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   double? get rating => throw _privateConstructorUsedError;
   List<String>? get genre => throw _privateConstructorUsedError;
@@ -207,7 +207,7 @@ abstract class $MovieDetailCopyWith<$Res> {
   $Res call(
       {int id,
       String title,
-      String backdrop,
+      String? backdrop,
       String? description,
       double? rating,
       List<String>? genre,
@@ -248,7 +248,7 @@ class _$MovieDetailCopyWithImpl<$Res> implements $MovieDetailCopyWith<$Res> {
       backdrop: backdrop == freezed
           ? _value.backdrop
           : backdrop // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -287,7 +287,7 @@ abstract class _$MovieDetailCopyWith<$Res>
   $Res call(
       {int id,
       String title,
-      String backdrop,
+      String? backdrop,
       String? description,
       double? rating,
       List<String>? genre,
@@ -330,7 +330,7 @@ class __$MovieDetailCopyWithImpl<$Res> extends _$MovieDetailCopyWithImpl<$Res>
       backdrop: backdrop == freezed
           ? _value.backdrop
           : backdrop // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -378,7 +378,7 @@ class _$_MovieDetail implements _MovieDetail {
   @override
   final String title;
   @override
-  final String backdrop;
+  final String? backdrop;
   @override
   final String? description;
   @override
@@ -439,7 +439,7 @@ abstract class _MovieDetail implements MovieDetail {
   factory _MovieDetail(
       {required int id,
       required String title,
-      required String backdrop,
+      required String? backdrop,
       String? description,
       double? rating,
       List<String>? genre,
@@ -452,7 +452,7 @@ abstract class _MovieDetail implements MovieDetail {
   @override
   String get title;
   @override
-  String get backdrop;
+  String? get backdrop;
   @override
   String? get description;
   @override
@@ -478,7 +478,7 @@ class _$MovieDetailParamsTearOff {
   _MovieDetailParams call(
       {required int id,
       required String title,
-      required String backdropUrl,
+      required String? backdropUrl,
       required Type type}) {
     return _MovieDetailParams(
       id: id,
@@ -496,7 +496,7 @@ const $MovieDetailParams = _$MovieDetailParamsTearOff();
 mixin _$MovieDetailParams {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get backdropUrl => throw _privateConstructorUsedError;
+  String? get backdropUrl => throw _privateConstructorUsedError;
   Type get type => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -509,7 +509,7 @@ abstract class $MovieDetailParamsCopyWith<$Res> {
   factory $MovieDetailParamsCopyWith(
           MovieDetailParams value, $Res Function(MovieDetailParams) then) =
       _$MovieDetailParamsCopyWithImpl<$Res>;
-  $Res call({int id, String title, String backdropUrl, Type type});
+  $Res call({int id, String title, String? backdropUrl, Type type});
 }
 
 /// @nodoc
@@ -540,7 +540,7 @@ class _$MovieDetailParamsCopyWithImpl<$Res>
       backdropUrl: backdropUrl == freezed
           ? _value.backdropUrl
           : backdropUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -556,7 +556,7 @@ abstract class _$MovieDetailParamsCopyWith<$Res>
           _MovieDetailParams value, $Res Function(_MovieDetailParams) then) =
       __$MovieDetailParamsCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String title, String backdropUrl, Type type});
+  $Res call({int id, String title, String? backdropUrl, Type type});
 }
 
 /// @nodoc
@@ -589,7 +589,7 @@ class __$MovieDetailParamsCopyWithImpl<$Res>
       backdropUrl: backdropUrl == freezed
           ? _value.backdropUrl
           : backdropUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -612,7 +612,7 @@ class _$_MovieDetailParams implements _MovieDetailParams {
   @override
   final String title;
   @override
-  final String backdropUrl;
+  final String? backdropUrl;
   @override
   final Type type;
 
@@ -646,7 +646,7 @@ abstract class _MovieDetailParams implements MovieDetailParams {
   factory _MovieDetailParams(
       {required int id,
       required String title,
-      required String backdropUrl,
+      required String? backdropUrl,
       required Type type}) = _$_MovieDetailParams;
 
   @override
@@ -654,7 +654,7 @@ abstract class _MovieDetailParams implements MovieDetailParams {
   @override
   String get title;
   @override
-  String get backdropUrl;
+  String? get backdropUrl;
   @override
   Type get type;
   @override

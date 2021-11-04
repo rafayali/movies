@@ -59,17 +59,3 @@ Map<String, dynamic> _$$TvShowEntityToJson(_$TvShowEntity instance) =>
       'poster_path': instance.posterPath,
       'first_air_date': instance.firstAirDate,
     };
-
-_$PersonEntity _$$PersonEntityFromJson(Map<String, dynamic> json) =>
-    _$PersonEntity(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      profilePath: json['profile_path'] as String?,
-    );
-
-Map<String, dynamic> _$$PersonEntityToJson(_$PersonEntity instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'profile_path': instance.profilePath,
-    };
