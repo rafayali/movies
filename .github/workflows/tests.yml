@@ -20,7 +20,7 @@ jobs:
         run: flutter analyze
 
       - name: Format
-        run: dart format lib
+        run: dart format lib --set-exit-if-changed
 
       - name: Test
         run: flutter test
