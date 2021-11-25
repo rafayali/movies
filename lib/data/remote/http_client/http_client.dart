@@ -17,13 +17,12 @@ import 'package:movies_flutter/data/remote/services/entities/session/session.dar
 import 'package:movies_flutter/data/remote/services/entities/token/token.dart';
 
 part 'json_factories.dart';
-part 'services.dart';
 
 class ChopperHttpClient {
   ChopperHttpClient(String baseUrl) {
     client = ChopperClient(
       baseUrl: baseUrl,
-      services: _services,
+      services: [TmdbService.create()],
       interceptors: [HttpLoggingInterceptor()],
       converter: _JsonSerializableConverter(jsonFactories: _jsonFactories),
     );

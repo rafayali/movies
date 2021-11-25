@@ -1,4 +1,5 @@
 import 'package:movies_flutter/core/viewmodel.dart';
+import 'package:movies_flutter/domain/search/entities/search_movies_entities.dart';
 import 'package:movies_flutter/domain/search/multi_search_usecase.dart';
 import 'package:movies_flutter/ui/landing/search/models/search_models.dart';
 import 'package:movies_flutter/utils/constants.dart';
@@ -31,7 +32,9 @@ class SearchViewModel extends ViewModel<SearchUiState> {
     if (result.isValue) {
       final searchItems = result.asValue!.value.results;
       if (state is SuccessSearchUiState) {
-        setState(SearchUiState.success(searchItems.toList()));
+        setState(SearchUiState.success(
+          searchItems.where((e) => e is! PersonSearchItem).toList(),
+        ));
       } else {
         if (searchItems.isEmpty) {
           setState(const SearchUiState.noResults());

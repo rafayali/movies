@@ -8,26 +8,33 @@ import '../../config.dart';
 import 'entities/movie_detail.dart';
 
 class LoadMovieDetailUsecase extends Usecase<int, MovieDetail> {
-  LoadMovieDetailUsecase({required this.tmdbService});
+  LoadMovieDetailUsecase(
+      {required this.tmdbService, required this.buildConfig});
 
   final TmdbService tmdbService;
 
+  final BuildConfig buildConfig;
+
   @override
   Future<MovieDetail> execute(int params) async {
-    final movie = (await tmdbService.getMovie(params)).body!;
-    final credits = (await tmdbService.getMovieCredits(params)).body!;
-    return _createMovieDetailFromMovie(movie, credits);
+    final movie =
+        (await tmdbService.getMovie(buildConfig.tmdbApiKey, params)).body!;
+    final credits =
+        (await tmdbService.getMovieCredits(buildConfig.tmdbApiKey, params))
+            .body!;
+    return _createMovieDetailFromMovie(movie, credits, buildConfig);
   }
 }
 
 MovieDetail _createMovieDetailFromMovie(
   Movie movie,
   credits.Credits credits,
+  BuildConfig buildConfig,
 ) {
   return MovieDetail(
     id: movie.id,
     title: movie.title,
-    backdrop: '${BuildConfigs.baseImageUrlOriginal}${movie.backdropPath}',
+    backdrop: '${buildConfig.baseImageUrlOriginal}${movie.backdropPath}',
     description: movie.overview,
     rating: movie.voteAverage,
     genre: movie.genres?.map((e) => e.name).toList() ?? List.empty(),
@@ -35,7 +42,7 @@ MovieDetail _createMovieDetailFromMovie(
     cast: credits.cast
         .map((e) => Cast(
               name: e.name,
-              avatarUrl: '${BuildConfigs.baseImageUrlW200}${e.profilePath}',
+              avatarUrl: '${buildConfig.baseImageUrlW200}${e.profilePath}',
             ))
         .toList(),
     releaseDate: movie.releaseDate,

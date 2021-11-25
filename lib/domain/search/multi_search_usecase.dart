@@ -9,9 +9,11 @@ import 'package:quiver/strings.dart';
 import 'entities/search_movies_entities.dart';
 
 class MultiSearchUsecase extends Usecase<String, SearchResult> {
-  MultiSearchUsecase({required this.tmdbService});
+  MultiSearchUsecase({required this.tmdbService, required this.buildConfig});
 
   final TmdbService tmdbService;
+
+  final BuildConfig buildConfig;
 
   int _page = 1;
 
@@ -39,8 +41,9 @@ class MultiSearchUsecase extends Usecase<String, SearchResult> {
 
     _query = params;
 
-    _cancelableOperation =
-        CancelableOperation.fromFuture(tmdbService.multiSearch(params, _page));
+    _cancelableOperation = CancelableOperation.fromFuture(
+      tmdbService.multiSearch(buildConfig.tmdbApiKey, params, _page),
+    );
 
     final response = (await _cancelableOperation!.value).body!;
     final items = response.results
@@ -51,31 +54,31 @@ class MultiSearchUsecase extends Usecase<String, SearchResult> {
               date: isNotBlank(value.releaseDate)
                   ? DateTime.parse(value.releaseDate!)
                   : null,
-              poster: '${BuildConfigs.baseImageUrlW500}${value.posterPath}',
+              poster: '${buildConfig.baseImageUrlW500}${value.posterPath}',
               backdrop:
-                  '${BuildConfigs.baseImageUrlOriginal}${value.backdropPath}',
+                  '${buildConfig.baseImageUrlOriginal}${value.backdropPath}',
               id: value.id,
               backdropThumb:
-                  '${BuildConfigs.baseImageUrlW500}${value.backdropPath}',
+                  '${buildConfig.baseImageUrlW500}${value.backdropPath}',
             ),
             tvShow: (tvshow) => SearchItem.tvShow(
               name: tvshow.name,
               date: isNotBlank(tvshow.firstAirDate)
                   ? DateTime.parse(tvshow.firstAirDate!)
                   : null,
-              poster: '${BuildConfigs.baseImageUrlW500}${tvshow.posterPath}',
+              poster: '${buildConfig.baseImageUrlW500}${tvshow.posterPath}',
               backdrop:
-                  '${BuildConfigs.baseImageUrlOriginal}${tvshow.backdropPath}',
+                  '${buildConfig.baseImageUrlOriginal}${tvshow.backdropPath}',
               id: tvshow.id,
               backdropThumb:
-                  '${BuildConfigs.baseImageUrlW500}${tvshow.backdropPath}',
+                  '${buildConfig.baseImageUrlW500}${tvshow.backdropPath}',
             ),
-            /* person: (person) => SearchItem.person(
+            person: (person) => SearchItem.person(
               id: person.id,
               name: person.name,
               profilePicture:
-                  '${BuildConfigs.baseImageUrlOriginal}${person.profilePath}',
-            ), */
+                  '${buildConfig.baseImageUrlOriginal}${person.profilePath}',
+            ),
           ),
         )
         .toList();

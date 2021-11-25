@@ -50,8 +50,10 @@ class MoviesApp extends StatelessWidget {
 
     return MultiProvider(
       providers: [
+        Provider(create: (context) => BuildConfig.create()),
         Provider(
-          create: (context) => ChopperHttpClient(BuildConfigs.baseUrl).client,
+          create: (context) =>
+              ChopperHttpClient(context.read<BuildConfig>().baseUrl).client,
         ),
         Provider(
           create: (context) =>

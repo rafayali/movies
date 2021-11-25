@@ -17,95 +17,88 @@ class _$TmdbService extends TmdbService {
   final definitionType = TmdbService;
 
   @override
-  Future<Response<PopularMovies>> getPopularMovies() {
-    final $url =
-        '3/movie/popular?api_key=e92ff494dbf0353926ff0be86f89d7ad&language=en-US&page=1';
+  Future<Response<PopularMovies>> getPopularMovies(String apiKey) {
+    final $url = '3/movie/popular?api_key=$apiKey&language=en-US&page=1';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<PopularMovies, PopularMovies>($request);
   }
 
   @override
-  Future<Response<Movie>> getMovie(int id) {
-    final $url = '3/movie/$id?api_key=e92ff494dbf0353926ff0be86f89d7ad';
+  Future<Response<Movie>> getMovie(String apiKey, int id) {
+    final $url = '3/movie/$id?api_key=$apiKey';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<Movie, Movie>($request);
   }
 
   @override
-  Future<Response<Credits>> getMovieCredits(int movieId) {
-    final $url =
-        '3/movie/$movieId/credits?api_key=e92ff494dbf0353926ff0be86f89d7ad';
+  Future<Response<Credits>> getMovieCredits(String apiKey, int movieId) {
+    final $url = '3/movie/$movieId/credits?api_key=$apiKey';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<Credits, Credits>($request);
   }
 
   @override
-  Future<Response<PopularTv>> getPopularTvShows() {
-    final $url =
-        '3/tv/popular?api_key=e92ff494dbf0353926ff0be86f89d7ad&language=en-US&page=1';
+  Future<Response<PopularTv>> getPopularTvShows(String apiKey) {
+    final $url = '3/tv/popular?api_key=$apiKey&language=en-US&page=1';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<PopularTv, PopularTv>($request);
   }
 
   @override
-  Future<Response<DiscoverMovies>> discoverMovies() {
-    final $url =
-        '3/discover/movie?api_key=e92ff494dbf0353926ff0be86f89d7ad&language=en-US&page=1';
+  Future<Response<DiscoverMovies>> discoverMovies(String apiKey) {
+    final $url = '3/discover/movie?api_key=$apiKey&language=en-US&page=1';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<DiscoverMovies, DiscoverMovies>($request);
   }
 
   @override
-  Future<Response<Genres>> getMovieGenres() {
-    final $url =
-        '3/genre/movie/list?api_key=e92ff494dbf0353926ff0be86f89d7ad&language=en-US';
+  Future<Response<Genres>> getMovieGenres(String apiKey) {
+    final $url = '3/genre/movie/list?api_key=$apiKey&language=en-US';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<Genres, Genres>($request);
   }
 
   @override
-  Future<Response<Token>> getNewToken() {
-    final $url =
-        '3/authentication/token/new?api_key=e92ff494dbf0353926ff0be86f89d7ad';
+  Future<Response<Token>> getNewToken(String apiKey) {
+    final $url = '3/authentication/token/new?api_key=$apiKey';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<Token, Token>($request);
   }
 
   @override
-  Future<Response<Session>> newSession(SessionRequest request) {
-    final $url =
-        '3/authentication/session/new?api_key=e92ff494dbf0353926ff0be86f89d7ad';
+  Future<Response<Session>> newSession(String apiKey, SessionRequest request) {
+    final $url = '3/authentication/session/new?api_key=$apiKey';
     final $body = request;
     final $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<Session, Session>($request);
   }
 
   @override
-  Future<Response<Account>> account(String sessionId) {
-    final $url =
-        '3/account?api_key=e92ff494dbf0353926ff0be86f89d7ad&session_id=$sessionId';
+  Future<Response<Account>> account(String apiKey, String sessionId) {
+    final $url = '3/account?api_key=$apiKey&session_id=$sessionId';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<Account, Account>($request);
   }
 
   @override
-  Future<Response<TvShow>> getTvShow(int id) {
-    final $url = '3/tv/$id?api_key=e92ff494dbf0353926ff0be86f89d7ad';
+  Future<Response<TvShow>> getTvShow(String apiKey, int id) {
+    final $url = '3/tv/$id?api_key=$apiKey';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<TvShow, TvShow>($request);
   }
 
   @override
-  Future<Response<Credits>> getTvShowCredits(int id) {
-    final $url = '3/tv/$id/credits?api_key=e92ff494dbf0353926ff0be86f89d7ad';
+  Future<Response<Credits>> getTvShowCredits(String apiKey, int id) {
+    final $url = '3/tv/$id/credits?api_key=$apiKey';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<Credits, Credits>($request);
   }
 
   @override
-  Future<Response<MultiSearch>> multiSearch(String query, int page) {
+  Future<Response<MultiSearch>> multiSearch(
+      String apiKey, String query, int page) {
     final $url =
-        '3/search/multi?query=$query&page=$page&api_key=e92ff494dbf0353926ff0be86f89d7ad&language=en-US';
+        '3/search/multi?query=$query&page=$page&api_key=$apiKey&language=en-US';
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<MultiSearch, MultiSearch>($request);
   }

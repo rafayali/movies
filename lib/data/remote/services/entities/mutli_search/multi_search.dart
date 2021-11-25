@@ -45,14 +45,14 @@ class Entity with _$Entity {
     required String? firstAirDate,
   }) = TvShowEntity;
 
-  /* @FreezedUnionValue('person')
+  @FreezedUnionValue('person')
   // ignore: invalid_annotation_target
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Entity.person({
     required int id,
     required String name,
     required String? profilePath,
-  }) = PersonEntity; */
+  }) = PersonEntity;
 
   factory Entity.fromJson(Map<String, dynamic> json) => _$EntityFromJson(json);
 }

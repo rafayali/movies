@@ -5,6 +5,7 @@ import 'package:chopper/chopper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
+import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/data/remote/services/entities/mutli_search/multi_search.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
 import 'package:movies_flutter/domain/search/multi_search_usecase.dart';
@@ -17,11 +18,15 @@ main() {
         '''page number should reset to 1 if it was increamented by a previous query''',
         () async {
       final mockTmdbService = _MockTmdbService();
-      final usecase = MultiSearchUsecase(tmdbService: mockTmdbService);
+
+      final usecase = MultiSearchUsecase(
+        tmdbService: mockTmdbService,
+        buildConfig: BuildConfig.create(),
+      );
 
       final fakeMultiSearchResponse = await _getFakeMultiSearchResponse();
 
-      when(() => mockTmdbService.multiSearch(any(), any()))
+      when(() => mockTmdbService.multiSearch(any(), any(), any()))
           .thenAnswer((invocation) async => fakeMultiSearchResponse);
 
       final query = randomString(10);
@@ -47,11 +52,14 @@ main() {
 
     test('''it should return aggregated data of all pages''', () async {
       final mockTmdbService = _MockTmdbService();
-      final usecase = MultiSearchUsecase(tmdbService: mockTmdbService);
+      final usecase = MultiSearchUsecase(
+        tmdbService: mockTmdbService,
+        buildConfig: BuildConfig.create(),
+      );
 
       final fakeMultiSearchResponse = await _getFakeMultiSearchResponse();
 
-      when(() => mockTmdbService.multiSearch(any(), any()))
+      when(() => mockTmdbService.multiSearch(any(), any(), any()))
           .thenAnswer((invocation) async => fakeMultiSearchResponse);
 
       final query = randomString(10);
@@ -76,11 +84,14 @@ main() {
 
     test('with empty query, it should return empty results', () async {
       final mockTmdbService = _MockTmdbService();
-      final usecase = MultiSearchUsecase(tmdbService: mockTmdbService);
+      final usecase = MultiSearchUsecase(
+        tmdbService: mockTmdbService,
+        buildConfig: BuildConfig.create(),
+      );
 
       final fakeMultiSearchResponse = await _getFakeMultiSearchResponse();
 
-      when(() => mockTmdbService.multiSearch(any(), any()))
+      when(() => mockTmdbService.multiSearch(any(), any(), any()))
           .thenAnswer((invocation) async => fakeMultiSearchResponse);
 
       final result = await usecase.invoke("");
@@ -93,11 +104,14 @@ main() {
       if it was first invoked with a query which returned no results''',
       () async {
     final mockTmdbService = _MockTmdbService();
-    final usecase = MultiSearchUsecase(tmdbService: mockTmdbService);
+    final usecase = MultiSearchUsecase(
+      tmdbService: mockTmdbService,
+      buildConfig: BuildConfig.create(),
+    );
 
     final emptyResponse = await _getFakeMultiSearchEmptyResponse();
 
-    when(() => mockTmdbService.multiSearch(any(), any()))
+    when(() => mockTmdbService.multiSearch(any(), any(), any()))
         .thenAnswer((invocation) async => emptyResponse);
 
     final query = randomString(10);
@@ -112,7 +126,7 @@ main() {
     // when query is change it should return valid data
     final response = await _getFakeMultiSearchResponse();
 
-    when(() => mockTmdbService.multiSearch(any(), any()))
+    when(() => mockTmdbService.multiSearch(any(), any(), any()))
         .thenAnswer((invocation) async => response);
 
     final newResult = await usecase.invoke(randomString(8));

@@ -4,6 +4,7 @@ import 'package:chopper/chopper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
+import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/domain/login/generate_session_id_usecase.dart';
 import 'package:movies_flutter/domain/login/new_auth_token_usecase.dart';
 import 'package:movies_flutter/ui/login/models/login_models.dart';
@@ -20,6 +21,7 @@ void main() {
   _MockAuthStore authStore = _MockAuthStore();
   _MockTmdbService tmdbService = _MockTmdbService();
   late LoginViewModel loginViewModel;
+  final BuildConfig buildConfig = BuildConfig.create();
 
   group('when login button is tapped', () {
     setUpAll(() {
@@ -28,10 +30,14 @@ void main() {
 
     setUp(() {
       loginViewModel = LoginViewModel(
-        newTokenUseCase: NewTokenUsecase(tmdbService: tmdbService),
+        newTokenUseCase: NewTokenUsecase(
+          tmdbService: tmdbService,
+          buildConfig: buildConfig,
+        ),
         generateSessionIdUsecase: GenerateSessionIdUsecase(
           authStore: authStore,
           tmdbService: tmdbService,
+          buildConfig: buildConfig,
         ),
       );
     });
@@ -47,15 +53,16 @@ void main() {
       final fakeToken = randomString(8);
       final fakeSessionId = randomString(8);
 
-      when(() => tmdbService.getNewToken()).thenAnswer((_) async => Response(
-          http.StreamedResponse(const Stream.empty(), HttpStatus.ok),
-          Token(
-            success: true,
-            expiresAt: randomString(8),
-            requestToken: fakeToken,
-          )));
+      when(() => tmdbService.getNewToken(any()))
+          .thenAnswer((_) async => Response(
+              http.StreamedResponse(const Stream.empty(), HttpStatus.ok),
+              Token(
+                success: true,
+                expiresAt: randomString(8),
+                requestToken: fakeToken,
+              )));
 
-      when(() => tmdbService.newSession(any())).thenAnswer(
+      when(() => tmdbService.newSession(any(), any())).thenAnswer(
         (_) async => Response<Session>(
           http.StreamedResponse(const Stream.empty(), HttpStatus.ok),
           Session(success: true, sessionId: fakeSessionId),
@@ -75,12 +82,12 @@ void main() {
       await loginViewModel.login();
 
       expect(loginViewModel.state, equals(const LoginState.loading()));
-      verify(() => tmdbService.getNewToken()).called(1);
+      verify(() => tmdbService.getNewToken(any())).called(1);
 
       await loginViewModel.generateSessionId(fakeToken);
 
       expect(loginViewModel.state, equals(const LoginState.loading()));
-      verify(() => tmdbService.newSession(any())).called(1);
+      verify(() => tmdbService.newSession(any(), any())).called(1);
     });
 
     test('it should fail when error is returned on generating new token',
@@ -88,7 +95,7 @@ void main() {
       final fakeToken = randomString(8);
       final states = <LoginState>[];
 
-      when(() => tmdbService.getNewToken()).thenAnswer(
+      when(() => tmdbService.getNewToken(any())).thenAnswer(
         (_) async => Response<Token>(
           http.StreamedResponse(const Stream.empty(), HttpStatus.ok),
           Token(
@@ -105,7 +112,7 @@ void main() {
 
       await loginViewModel.login();
 
-      verify(() => tmdbService.getNewToken()).called(1);
+      verify(() => tmdbService.getNewToken(any())).called(1);
       expect(
         states,
         containsAllInOrder([

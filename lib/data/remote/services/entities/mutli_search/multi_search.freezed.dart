@@ -232,6 +232,8 @@ Entity _$EntityFromJson(Map<String, dynamic> json) {
       return MovieEntity.fromJson(json);
     case 'tv':
       return TvShowEntity.fromJson(json);
+    case 'person':
+      return PersonEntity.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'media_type', 'Entity',
@@ -273,6 +275,15 @@ class _$EntityTearOff {
     );
   }
 
+  PersonEntity person(
+      {required int id, required String name, required String? profilePath}) {
+    return PersonEntity(
+      id: id,
+      name: name,
+      profilePath: profilePath,
+    );
+  }
+
   Entity fromJson(Map<String, Object?> json) {
     return Entity.fromJson(json);
   }
@@ -284,8 +295,6 @@ const $Entity = _$EntityTearOff();
 /// @nodoc
 mixin _$Entity {
   int get id => throw _privateConstructorUsedError;
-  String? get backdropPath => throw _privateConstructorUsedError;
-  String? get posterPath => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -295,6 +304,7 @@ mixin _$Entity {
     required TResult Function(int id, String name, String? backdropPath,
             String? posterPath, String? firstAirDate)
         tvShow,
+    required TResult Function(int id, String name, String? profilePath) person,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -305,6 +315,7 @@ mixin _$Entity {
     TResult Function(int id, String name, String? backdropPath,
             String? posterPath, String? firstAirDate)?
         tvShow,
+    TResult Function(int id, String name, String? profilePath)? person,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -315,6 +326,7 @@ mixin _$Entity {
     TResult Function(int id, String name, String? backdropPath,
             String? posterPath, String? firstAirDate)?
         tvShow,
+    TResult Function(int id, String name, String? profilePath)? person,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -322,18 +334,21 @@ mixin _$Entity {
   TResult map<TResult extends Object?>({
     required TResult Function(MovieEntity value) movie,
     required TResult Function(TvShowEntity value) tvShow,
+    required TResult Function(PersonEntity value) person,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MovieEntity value)? movie,
     TResult Function(TvShowEntity value)? tvShow,
+    TResult Function(PersonEntity value)? person,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MovieEntity value)? movie,
     TResult Function(TvShowEntity value)? tvShow,
+    TResult Function(PersonEntity value)? person,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -346,7 +361,7 @@ mixin _$Entity {
 abstract class $EntityCopyWith<$Res> {
   factory $EntityCopyWith(Entity value, $Res Function(Entity) then) =
       _$EntityCopyWithImpl<$Res>;
-  $Res call({int id, String? backdropPath, String? posterPath});
+  $Res call({int id});
 }
 
 /// @nodoc
@@ -360,22 +375,12 @@ class _$EntityCopyWithImpl<$Res> implements $EntityCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? backdropPath = freezed,
-    Object? posterPath = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      backdropPath: backdropPath == freezed
-          ? _value.backdropPath
-          : backdropPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      posterPath: posterPath == freezed
-          ? _value.posterPath
-          : posterPath // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -501,6 +506,7 @@ class _$MovieEntity implements MovieEntity {
     required TResult Function(int id, String name, String? backdropPath,
             String? posterPath, String? firstAirDate)
         tvShow,
+    required TResult Function(int id, String name, String? profilePath) person,
   }) {
     return movie(id, title, backdropPath, posterPath, releaseDate);
   }
@@ -514,6 +520,7 @@ class _$MovieEntity implements MovieEntity {
     TResult Function(int id, String name, String? backdropPath,
             String? posterPath, String? firstAirDate)?
         tvShow,
+    TResult Function(int id, String name, String? profilePath)? person,
   }) {
     return movie?.call(id, title, backdropPath, posterPath, releaseDate);
   }
@@ -527,6 +534,7 @@ class _$MovieEntity implements MovieEntity {
     TResult Function(int id, String name, String? backdropPath,
             String? posterPath, String? firstAirDate)?
         tvShow,
+    TResult Function(int id, String name, String? profilePath)? person,
     required TResult orElse(),
   }) {
     if (movie != null) {
@@ -540,6 +548,7 @@ class _$MovieEntity implements MovieEntity {
   TResult map<TResult extends Object?>({
     required TResult Function(MovieEntity value) movie,
     required TResult Function(TvShowEntity value) tvShow,
+    required TResult Function(PersonEntity value) person,
   }) {
     return movie(this);
   }
@@ -549,6 +558,7 @@ class _$MovieEntity implements MovieEntity {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MovieEntity value)? movie,
     TResult Function(TvShowEntity value)? tvShow,
+    TResult Function(PersonEntity value)? person,
   }) {
     return movie?.call(this);
   }
@@ -558,6 +568,7 @@ class _$MovieEntity implements MovieEntity {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MovieEntity value)? movie,
     TResult Function(TvShowEntity value)? tvShow,
+    TResult Function(PersonEntity value)? person,
     required TResult orElse(),
   }) {
     if (movie != null) {
@@ -586,9 +597,7 @@ abstract class MovieEntity implements Entity {
   @override
   int get id;
   String get title;
-  @override
   String? get backdropPath;
-  @override
   String? get posterPath;
   String? get releaseDate;
   @override
@@ -718,6 +727,7 @@ class _$TvShowEntity implements TvShowEntity {
     required TResult Function(int id, String name, String? backdropPath,
             String? posterPath, String? firstAirDate)
         tvShow,
+    required TResult Function(int id, String name, String? profilePath) person,
   }) {
     return tvShow(id, name, backdropPath, posterPath, firstAirDate);
   }
@@ -731,6 +741,7 @@ class _$TvShowEntity implements TvShowEntity {
     TResult Function(int id, String name, String? backdropPath,
             String? posterPath, String? firstAirDate)?
         tvShow,
+    TResult Function(int id, String name, String? profilePath)? person,
   }) {
     return tvShow?.call(id, name, backdropPath, posterPath, firstAirDate);
   }
@@ -744,6 +755,7 @@ class _$TvShowEntity implements TvShowEntity {
     TResult Function(int id, String name, String? backdropPath,
             String? posterPath, String? firstAirDate)?
         tvShow,
+    TResult Function(int id, String name, String? profilePath)? person,
     required TResult orElse(),
   }) {
     if (tvShow != null) {
@@ -757,6 +769,7 @@ class _$TvShowEntity implements TvShowEntity {
   TResult map<TResult extends Object?>({
     required TResult Function(MovieEntity value) movie,
     required TResult Function(TvShowEntity value) tvShow,
+    required TResult Function(PersonEntity value) person,
   }) {
     return tvShow(this);
   }
@@ -766,6 +779,7 @@ class _$TvShowEntity implements TvShowEntity {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MovieEntity value)? movie,
     TResult Function(TvShowEntity value)? tvShow,
+    TResult Function(PersonEntity value)? person,
   }) {
     return tvShow?.call(this);
   }
@@ -775,6 +789,7 @@ class _$TvShowEntity implements TvShowEntity {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MovieEntity value)? movie,
     TResult Function(TvShowEntity value)? tvShow,
+    TResult Function(PersonEntity value)? person,
     required TResult orElse(),
   }) {
     if (tvShow != null) {
@@ -803,13 +818,200 @@ abstract class TvShowEntity implements Entity {
   @override
   int get id;
   String get name;
-  @override
   String? get backdropPath;
-  @override
   String? get posterPath;
   String? get firstAirDate;
   @override
   @JsonKey(ignore: true)
   $TvShowEntityCopyWith<TvShowEntity> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PersonEntityCopyWith<$Res> implements $EntityCopyWith<$Res> {
+  factory $PersonEntityCopyWith(
+          PersonEntity value, $Res Function(PersonEntity) then) =
+      _$PersonEntityCopyWithImpl<$Res>;
+  @override
+  $Res call({int id, String name, String? profilePath});
+}
+
+/// @nodoc
+class _$PersonEntityCopyWithImpl<$Res> extends _$EntityCopyWithImpl<$Res>
+    implements $PersonEntityCopyWith<$Res> {
+  _$PersonEntityCopyWithImpl(
+      PersonEntity _value, $Res Function(PersonEntity) _then)
+      : super(_value, (v) => _then(v as PersonEntity));
+
+  @override
+  PersonEntity get _value => super._value as PersonEntity;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? profilePath = freezed,
+  }) {
+    return _then(PersonEntity(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      profilePath: profilePath == freezed
+          ? _value.profilePath
+          : profilePath // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@FreezedUnionValue('person')
+@JsonSerializable(fieldRename: FieldRename.snake)
+class _$PersonEntity implements PersonEntity {
+  const _$PersonEntity(
+      {required this.id, required this.name, required this.profilePath});
+
+  factory _$PersonEntity.fromJson(Map<String, dynamic> json) =>
+      _$$PersonEntityFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+  @override
+  final String? profilePath;
+
+  @override
+  String toString() {
+    return 'Entity.person(id: $id, name: $name, profilePath: $profilePath)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PersonEntity &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.profilePath, profilePath) ||
+                other.profilePath == profilePath));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name, profilePath);
+
+  @JsonKey(ignore: true)
+  @override
+  $PersonEntityCopyWith<PersonEntity> get copyWith =>
+      _$PersonEntityCopyWithImpl<PersonEntity>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int id, String title, String? backdropPath,
+            String? posterPath, String? releaseDate)
+        movie,
+    required TResult Function(int id, String name, String? backdropPath,
+            String? posterPath, String? firstAirDate)
+        tvShow,
+    required TResult Function(int id, String name, String? profilePath) person,
+  }) {
+    return person(id, name, profilePath);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int id, String title, String? backdropPath,
+            String? posterPath, String? releaseDate)?
+        movie,
+    TResult Function(int id, String name, String? backdropPath,
+            String? posterPath, String? firstAirDate)?
+        tvShow,
+    TResult Function(int id, String name, String? profilePath)? person,
+  }) {
+    return person?.call(id, name, profilePath);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int id, String title, String? backdropPath,
+            String? posterPath, String? releaseDate)?
+        movie,
+    TResult Function(int id, String name, String? backdropPath,
+            String? posterPath, String? firstAirDate)?
+        tvShow,
+    TResult Function(int id, String name, String? profilePath)? person,
+    required TResult orElse(),
+  }) {
+    if (person != null) {
+      return person(id, name, profilePath);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MovieEntity value) movie,
+    required TResult Function(TvShowEntity value) tvShow,
+    required TResult Function(PersonEntity value) person,
+  }) {
+    return person(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(MovieEntity value)? movie,
+    TResult Function(TvShowEntity value)? tvShow,
+    TResult Function(PersonEntity value)? person,
+  }) {
+    return person?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MovieEntity value)? movie,
+    TResult Function(TvShowEntity value)? tvShow,
+    TResult Function(PersonEntity value)? person,
+    required TResult orElse(),
+  }) {
+    if (person != null) {
+      return person(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PersonEntityToJson(this)..['media_type'] = 'person';
+  }
+}
+
+abstract class PersonEntity implements Entity {
+  const factory PersonEntity(
+      {required int id,
+      required String name,
+      required String? profilePath}) = _$PersonEntity;
+
+  factory PersonEntity.fromJson(Map<String, dynamic> json) =
+      _$PersonEntity.fromJson;
+
+  @override
+  int get id;
+  String get name;
+  String? get profilePath;
+  @override
+  @JsonKey(ignore: true)
+  $PersonEntityCopyWith<PersonEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }

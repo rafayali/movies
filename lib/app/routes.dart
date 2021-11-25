@@ -21,10 +21,14 @@ Route<dynamic>? _generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => ChangeNotifierProvider<LoginViewModel>(
           create: (context) => LoginViewModel(
-            newTokenUseCase: NewTokenUsecase(tmdbService: context.read()),
+            newTokenUseCase: NewTokenUsecase(
+              tmdbService: context.read(),
+              buildConfig: context.read(),
+            ),
             generateSessionIdUsecase: GenerateSessionIdUsecase(
               tmdbService: context.read(),
               authStore: context.read(),
+              buildConfig: context.read(),
             ),
           ),
           child: const LoginPage(),
@@ -44,9 +48,11 @@ Route<dynamic>? _generateRoute(RouteSettings settings) {
             params: settings.arguments as MovieDetailParams,
             loadMovieDetailUsecase: LoadMovieDetailUsecase(
               tmdbService: context.read(),
+              buildConfig: context.read(),
             ),
             loadTvShowDetailUsecase: LoadTvShowDetailUsecase(
               tmdbService: context.read(),
+              buildConfig: context.read(),
             ),
           ),
           child: const MovieDetailPage(),
@@ -65,6 +71,7 @@ Route<dynamic>? _generateRoute(RouteSettings settings) {
                   loadHomeUsecase: LoadHomeUsecase(
                     tmdbService: context.read(),
                     authStore: context.read(),
+                    buildConfig: context.read(),
                   ),
                 ),
                 child: const HomePage(),
@@ -77,6 +84,7 @@ Route<dynamic>? _generateRoute(RouteSettings settings) {
                 create: (context) => SearchViewModel(
                   searchMovieUsecase: MultiSearchUsecase(
                     tmdbService: context.read(),
+                    buildConfig: context.read(),
                   ),
                 ),
                 child: const SearchPage(),

@@ -15,21 +15,29 @@ class LoadHomeUsecase extends Usecase<Nothing, HomeModel> {
   LoadHomeUsecase({
     required this.tmdbService,
     required this.authStore,
+    required this.buildConfig,
   });
 
   final TmdbService tmdbService;
 
   final AuthStore authStore;
 
+  final BuildConfig buildConfig;
+
   @override
   Future<HomeModel> execute(Nothing params) async {
     final sessionId = (await authStore.getSessionId())!;
 
-    final popularMovies = (await tmdbService.getPopularMovies()).body!;
-    final popularTv = (await tmdbService.getPopularTvShows()).body!;
-    final discoverMovies = (await tmdbService.discoverMovies()).body!;
-    final genres = (await tmdbService.getMovieGenres()).body!;
-    final account = (await tmdbService.account(sessionId)).body!;
+    final popularMovies =
+        (await tmdbService.getPopularMovies(buildConfig.tmdbApiKey)).body!;
+    final popularTv =
+        (await tmdbService.getPopularTvShows(buildConfig.tmdbApiKey)).body!;
+    final discoverMovies =
+        (await tmdbService.discoverMovies(buildConfig.tmdbApiKey)).body!;
+    final genres =
+        (await tmdbService.getMovieGenres(buildConfig.tmdbApiKey)).body!;
+    final account =
+        (await tmdbService.account(buildConfig.tmdbApiKey, sessionId)).body!;
 
     return _createHomeModel(
       popularMovies,
@@ -37,6 +45,7 @@ class LoadHomeUsecase extends Usecase<Nothing, HomeModel> {
       discoverMovies,
       genres,
       account,
+      buildConfig,
     );
   }
 
@@ -46,25 +55,26 @@ class LoadHomeUsecase extends Usecase<Nothing, HomeModel> {
     DiscoverMovies discoverMovies,
     Genres genres,
     Account account,
+    BuildConfig buildConfig,
   ) {
     final String? imageUrl;
     if (account.avatar.tmdb.avatarPath == null) {
-      imageUrl = '${BuildConfigs.baseUrl}${account.avatar.gravatar.hash}';
+      imageUrl = '${buildConfig.baseUrl}${account.avatar.gravatar.hash}';
     } else {
       imageUrl =
-          '${BuildConfigs.baseImageUrlW200}${account.avatar.tmdb.avatarPath}';
+          '${buildConfig.baseImageUrlW200}${account.avatar.tmdb.avatarPath}';
     }
 
     return HomeModel(
       name: account.name ?? account.username,
       imageUrl: imageUrl,
       popularMovies: popularMovies.results
-          .map((e) => e.toMovieItem(genres.genres))
+          .map((e) => e.toMovieItem(genres.genres, buildConfig))
           .toList(),
       popularTvShows:
-          popularTv.results.map((e) => e.toTvShowUiModel()).toList(),
+          popularTv.results.map((e) => e.toTvShowUiModel(buildConfig)).toList(),
       discoverMovies: discoverMovies.results
-          .map((e) => e.toMovieItem(genres.genres))
+          .map((e) => e.toMovieItem(genres.genres, buildConfig))
           .toList(),
     );
   }
