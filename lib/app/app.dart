@@ -76,6 +76,11 @@ class MoviesApp extends StatelessWidget {
           brightness: Brightness.dark,
           backgroundColor: backgroundColorDark,
           pageTransitionsTheme: pageTransitionsTheme,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              elevation: MaterialStateProperty.all(0),
+            ),
+          ),
         ),
         themeMode: ThemeMode.system,
         initialRoute:
