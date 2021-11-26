@@ -38,11 +38,6 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    lintOptions {
-        disable 'InvalidPackage'
-        checkReleaseBuilds false
-    }
-
     defaultConfig {
         applicationId "com.rafay.moviesflutter"
         minSdkVersion 21
@@ -74,6 +69,15 @@ android {
             productFlavors.demo.signingConfig signingConfigs.debug
             productFlavors.playstore.signingConfig signingConfigs.release
         }
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+        checkReleaseBuilds false
     }
 }
 
