@@ -22,7 +22,7 @@ class MovieItem {
 }
 
 extension MovieExtensions on Movie {
-  MovieItem toMovieItem(List<Genre> externalGenres) {
+  MovieItem toMovieItem(List<Genre> externalGenres, BuildConfig buildConfig) {
     final genreString = externalGenres
         .where((element) => genreIds!.any((id) => element.id == id))
         .map((e) => e.name)
@@ -33,9 +33,9 @@ extension MovieExtensions on Movie {
       id,
       title,
       releaseDate,
-      '${BuildConfigs.baseImageUrlW500}$posterPath',
-      '${BuildConfigs.baseImageUrlOriginal}$backdropPath',
-      '${BuildConfigs.baseImageUrlW500}$backdropPath',
+      '${buildConfig.baseImageUrlW500}$posterPath',
+      '${buildConfig.baseImageUrlOriginal}$backdropPath',
+      '${buildConfig.baseImageUrlW500}$backdropPath',
       genreString,
     );
   }

@@ -6,16 +6,14 @@ part of 'popular_tv.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PopularTv _$PopularTvFromJson(Map<String, dynamic> json) {
-  return PopularTv(
-    page: json['page'] as int,
-    results: (json['results'] as List<dynamic>)
-        .map((e) => TvShow.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    totalPages: json['total_pages'] as int,
-    totalResults: json['total_results'] as int,
-  );
-}
+PopularTv _$PopularTvFromJson(Map<String, dynamic> json) => PopularTv(
+      page: json['page'] as int,
+      results: (json['results'] as List<dynamic>)
+          .map((e) => TvShow.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      totalPages: json['total_pages'] as int,
+      totalResults: json['total_results'] as int,
+    );
 
 Map<String, dynamic> _$PopularTvToJson(PopularTv instance) => <String, dynamic>{
       'page': instance.page,

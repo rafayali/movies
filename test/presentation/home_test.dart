@@ -5,10 +5,11 @@ import 'package:chopper/chopper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
+import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/data/auth_store.dart';
 import 'package:movies_flutter/domain/home/load_home_usecase.dart';
-import 'package:movies_flutter/ui/home/models/home_ui_model.dart';
-import 'package:movies_flutter/ui/home/viewmodel/home_viewmodel.dart';
+import 'package:movies_flutter/ui/landing/discover/models/home_ui_model.dart';
+import 'package:movies_flutter/ui/landing/discover/viewmodel/discover_viewmodel.dart';
 import 'package:movies_flutter/core/ui_state.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
 import 'package:movies_flutter/data/remote/services/entities/account/account.dart';
@@ -17,18 +18,20 @@ import 'package:movies_flutter/data/remote/services/entities/genres/genres.dart'
 import 'package:movies_flutter/data/remote/services/entities/popular_movies/popular_movies.dart';
 import 'package:movies_flutter/data/remote/services/entities/popular_tv/popular_tv.dart';
 
-import 'utils/random_string.dart';
+import '../utils/random_string.dart';
 
 void main() {
   final _MockAuthStore authStore = _MockAuthStore();
   final _MockTmdbService tmdbService = _MockTmdbService();
   late HomeViewModel homeViewModel;
+  final BuildConfig buildConfig = BuildConfig.create();
 
   setUp(() {
     homeViewModel = HomeViewModel(
       loadHomeUsecase: LoadHomeUsecase(
         tmdbService: tmdbService,
         authStore: authStore,
+        buildConfig: buildConfig,
       ),
     );
   });
@@ -41,31 +44,36 @@ void main() {
     when(() => authStore.getSessionId()).thenAnswer(
       (_) => Future.value(sessionId),
     );
-    when(() => tmdbService.getPopularMovies()).thenAnswer(
+    when(() => tmdbService.getPopularMovies(buildConfig.tmdbApiKey)).thenAnswer(
       (_) => _getFakePopularMovies(),
     );
-    when(() => tmdbService.getPopularTvShows()).thenAnswer(
+    when(() => tmdbService.getPopularTvShows(buildConfig.tmdbApiKey))
+        .thenAnswer(
       (_) => _getFakePopularTvShows(),
     );
-    when(() => tmdbService.discoverMovies()).thenAnswer(
+    when(() => tmdbService.discoverMovies(buildConfig.tmdbApiKey)).thenAnswer(
       (_) => _getFakeDiscoverMovies(),
     );
-    when(() => tmdbService.getMovieGenres()).thenAnswer(
+    when(() => tmdbService.getMovieGenres(buildConfig.tmdbApiKey)).thenAnswer(
       (_) => _getFakeGenres(),
     );
-    when(() => tmdbService.account(sessionId)).thenAnswer(
+    when(() => tmdbService.account(
+          buildConfig.tmdbApiKey,
+          sessionId,
+        )).thenAnswer(
       (invocation) => _getFakeAccount(),
     );
     homeViewModel.addListener(() => stateValues.add(homeViewModel.state));
 
     // verify initial state to be UiState.loading
-    expect(homeViewModel.state, equals(const UiState.loading()));
+    expect(homeViewModel.state, isA<Loading>());
 
     // then
     await homeViewModel.load();
 
     // verify
-    verify(() => tmdbService.account(any(that: equals(sessionId)))).called(1);
+    verify(() => tmdbService.account(any(), any(that: equals(sessionId))))
+        .called(1);
     expect(stateValues, hasLength(1));
     expect(stateValues.first, isA<Success<HomeModel>>());
   });

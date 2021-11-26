@@ -13,12 +13,12 @@ class TvShowItem {
 }
 
 extension TvShowExtensions on TvShow {
-  TvShowItem toTvShowUiModel() {
+  TvShowItem toTvShowUiModel(BuildConfig buildConfig) {
     return TvShowItem(
       name,
       firstAirDate?.isNotBlank == true ? DateTime.parse(firstAirDate!) : null,
-      '${BuildConfigs.baseImageUrlW500}$posterPath',
-      '${BuildConfigs.baseImageUrlOriginal}$backdropPath',
+      '${buildConfig.baseImageUrlW500}$posterPath',
+      '${buildConfig.baseImageUrlOriginal}$backdropPath',
       id,
     );
   }

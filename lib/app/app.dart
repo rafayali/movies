@@ -6,8 +6,12 @@ import 'package:movies_flutter/domain/detail/load_tv_show_detail_usecase.dart';
 import 'package:movies_flutter/domain/home/load_home_usecase.dart';
 import 'package:movies_flutter/domain/login/generate_session_id_usecase.dart';
 import 'package:movies_flutter/domain/login/new_auth_token_usecase.dart';
-import 'package:movies_flutter/ui/home/view/home_page.dart';
-import 'package:movies_flutter/ui/home/viewmodel/home_viewmodel.dart';
+import 'package:movies_flutter/domain/search/multi_search_usecase.dart';
+import 'package:movies_flutter/ui/landing/discover/view/discover_page.dart';
+import 'package:movies_flutter/ui/landing/landing_page.dart';
+import 'package:movies_flutter/ui/landing/discover/viewmodel/discover_viewmodel.dart';
+import 'package:movies_flutter/ui/landing/search/view/search_page.dart';
+import 'package:movies_flutter/ui/landing/search/viewmodel/search_viewmodel.dart';
 import 'package:movies_flutter/ui/login/view/auth_page.dart';
 import 'package:movies_flutter/ui/login/view/login_page.dart';
 import 'package:movies_flutter/ui/login/viewmodel/login_viewmodel.dart';
@@ -46,8 +50,10 @@ class MoviesApp extends StatelessWidget {
 
     return MultiProvider(
       providers: [
+        Provider(create: (context) => BuildConfig.create()),
         Provider(
-          create: (context) => ChopperHttpClient(BuildConfigs.baseUrl).client,
+          create: (context) =>
+              ChopperHttpClient(context.read<BuildConfig>().baseUrl).client,
         ),
         Provider(
           create: (context) =>
@@ -70,10 +76,15 @@ class MoviesApp extends StatelessWidget {
           brightness: Brightness.dark,
           backgroundColor: backgroundColorDark,
           pageTransitionsTheme: pageTransitionsTheme,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              elevation: MaterialStateProperty.all(0),
+            ),
+          ),
         ),
         themeMode: ThemeMode.system,
         initialRoute:
-            params.authenticated ? HomePage.routeName : LoginPage.routeName,
+            params.authenticated ? HomePageTabs.routeName : LoginPage.routeName,
         onGenerateInitialRoutes: _generateInitialRoute,
         onGenerateRoute: _generateRoute,
       ),

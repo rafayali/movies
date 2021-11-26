@@ -6,8 +6,6 @@ import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 import 'package:movies_flutter/domain/detail/load_movie_detail_usecase.dart';
 import 'package:movies_flutter/domain/detail/load_tv_show_detail_usecase.dart';
 
-import '../models/movie_detail_events.dart';
-
 class MovieDetailViewModel extends ViewModel<MovieDetail> {
   MovieDetailViewModel({
     required MovieDetailParams params,
@@ -30,9 +28,6 @@ class MovieDetailViewModel extends ViewModel<MovieDetail> {
 
   final LoadTvShowDetailUsecase _loadTvShowDetailUsecase;
 
-  final _events = StreamController<MovieDetailEvents>.broadcast();
-  Stream<MovieDetailEvents> get events => _events.stream;
-
   Future<void> load() async {
     final Result<MovieDetail> result;
 
@@ -47,15 +42,6 @@ class MovieDetailViewModel extends ViewModel<MovieDetail> {
 
     if (result.isValue) {
       setState(result.asValue!.value);
-    } else {
-      _events
-          .add(const MovieDetailEvents.message('Error getting movie detail'));
     }
-  }
-
-  @override
-  void dispose() {
-    _events.close();
-    super.dispose();
   }
 }

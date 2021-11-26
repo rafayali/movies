@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:chopper/chopper.dart';
+import 'package:movies_flutter/data/remote/services/entities/mutli_search/multi_search.dart';
 import 'package:movies_flutter/data/remote/services/entities/tv_show/tv_show.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
 import 'package:movies_flutter/data/remote/services/entities/account/account.dart';
@@ -16,13 +17,12 @@ import 'package:movies_flutter/data/remote/services/entities/session/session.dar
 import 'package:movies_flutter/data/remote/services/entities/token/token.dart';
 
 part 'json_factories.dart';
-part 'services.dart';
 
 class ChopperHttpClient {
   ChopperHttpClient(String baseUrl) {
     client = ChopperClient(
       baseUrl: baseUrl,
-      services: _services,
+      services: [TmdbService.create()],
       interceptors: [HttpLoggingInterceptor()],
       converter: _JsonSerializableConverter(jsonFactories: _jsonFactories),
     );

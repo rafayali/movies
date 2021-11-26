@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:chopper/chopper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
 import 'package:movies_flutter/data/remote/services/entities/movie/movie.dart';
 import 'package:http/http.dart' as http;
@@ -13,7 +14,7 @@ import 'package:movies_flutter/domain/detail/load_movie_detail_usecase.dart';
 import 'package:movies_flutter/domain/detail/load_tv_show_detail_usecase.dart';
 import 'package:movies_flutter/ui/movie_detail/viewmodel/movie_detail_viewmodel.dart';
 
-import 'utils/random_string.dart';
+import '../utils/random_string.dart';
 
 void main() {
   group('when a movie detail is opened', () {
@@ -31,13 +32,19 @@ void main() {
 
     late MovieDetailViewModel viewModel;
 
+    final BuildConfig buildConfig = BuildConfig.create();
+
     setUp(() {
       viewModel = MovieDetailViewModel(
         params: params,
-        loadMovieDetailUsecase:
-            LoadMovieDetailUsecase(tmdbService: tmdbService),
-        loadTvShowDetailUsecase:
-            LoadTvShowDetailUsecase(tmdbService: tmdbService),
+        loadMovieDetailUsecase: LoadMovieDetailUsecase(
+          tmdbService: tmdbService,
+          buildConfig: buildConfig,
+        ),
+        loadTvShowDetailUsecase: LoadTvShowDetailUsecase(
+          tmdbService: tmdbService,
+          buildConfig: buildConfig,
+        ),
       );
     });
 
@@ -48,11 +55,11 @@ void main() {
     test('it should load movie detail successfully', () async {
       final states = <MovieDetail>[];
 
-      when(() => tmdbService.getMovie(any())).thenAnswer(
+      when(() => tmdbService.getMovie(any(), any())).thenAnswer(
         (_) => _getFakeMovie(),
       );
 
-      when(() => tmdbService.getMovieCredits(any())).thenAnswer(
+      when(() => tmdbService.getMovieCredits(any(), any())).thenAnswer(
         (_) => _getFakeMovieCredits(),
       );
 
@@ -65,8 +72,9 @@ void main() {
 
       await viewModel.load();
 
-      verify(() => tmdbService.getMovie(any(that: equals(id)))).called(1);
-      verify(() => tmdbService.getMovieCredits(any(that: equals(id))))
+      verify(() => tmdbService.getMovie(any(), any(that: equals(id))))
+          .called(1);
+      verify(() => tmdbService.getMovieCredits(any(), any(that: equals(id))))
           .called(1);
       expect(states.length, equals(1));
       expect(states.first, isA<MovieDetail>());

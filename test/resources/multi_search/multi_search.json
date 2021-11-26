@@ -1,0 +1,61 @@
+{
+	"page": 1,
+	"results": [
+		{
+			"adult": false,
+			"backdrop_path": "/9ns9463dwOeo1CK1JU2wirL5Yi1.jpg",
+			"genre_ids": [
+				35,
+				10751,
+				16
+			],
+			"id": 587807,
+			"media_type": "movie",
+			"original_language": "en",
+			"original_title": "Tom & Jerry",
+			"overview": "Tom the cat and Jerry the mouse get kicked out of their home and relocate to a fancy New York hotel, where a scrappy employee named Kayla will lose her job if she can’t evict Jerry before a high-class wedding at the hotel. Her solution? Hiring Tom to get rid of the pesky mouse.",
+			"popularity": 280.572,
+			"poster_path": "/8XZI9QZ7Pm3fVkigWJPbrXCMzjq.jpg",
+			"release_date": "2021-02-11",
+			"title": "Tom & Jerry",
+			"video": false,
+			"vote_average": 7.1,
+			"vote_count": 1777
+		},
+		{
+			"adult": false,
+			"gender": 2,
+			"id": 2524,
+			"known_for_department": "Acting",
+			"media_type": "person",
+			"name": "Tom Hardy",
+			"popularity": 32.563,
+			"profile_path": "/sGMA6pA2D6X0gun49igJT3piHs3.jpg"
+		},
+		{
+			"backdrop_path": "/kkCBqsnas7o0icD04s3OukKO3O7.jpg",
+			"first_air_date": "1975-09-06",
+			"genre_ids": [
+				16,
+				35,
+				10762,
+				10751
+			],
+			"id": 7842,
+			"media_type": "tv",
+			"name": "The Tom and Jerry Show",
+			"origin_country": [
+				"US"
+			],
+			"original_language": "en",
+			"original_name": "The Tom and Jerry Show",
+			"overview": "The New Tom & Jerry Show is an animated television series produced for Saturday mornings by Hanna-Barbera Productions in association with Metro-Goldwyn-Mayer Television in 1975 for ABC based on the theatrical shorts and characters Tom and Jerry.",
+			"popularity": 101.338,
+			"poster_path": "/xPCQP3IiOHEtlHOz7twuVK51Kbs.jpg",
+			"vote_average": 7.7,
+			"vote_count": 872
+		}
+	],
+	"total_pages": 2,
+	"total_results": 10000
+}

@@ -11,4 +11,5 @@ final _jsonFactories = <Type, JsonFactory>{
   Account: Account.jsonFactory,
   Session: Session.jsonFactory,
   TvShow: TvShow.jsonFactory,
+  MultiSearch: MultiSearch.jsonFactory,
 };

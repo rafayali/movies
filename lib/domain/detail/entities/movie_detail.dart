@@ -15,7 +15,7 @@ class MovieDetail with _$MovieDetail {
   factory MovieDetail({
     required int id,
     required String title,
-    required String backdrop,
+    required String? backdrop,
     String? description,
     double? rating,
     List<String>? genre,
@@ -30,7 +30,7 @@ class MovieDetailParams with _$MovieDetailParams {
   factory MovieDetailParams({
     required int id,
     required String title,
-    required String backdropUrl,
+    required String? backdropUrl,
     required Type type,
   }) = _MovieDetailParams;
 }

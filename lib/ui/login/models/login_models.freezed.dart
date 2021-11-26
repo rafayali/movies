@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'login_models.dart';
 
@@ -37,6 +38,12 @@ mixin _$LoginState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? ok,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? ok,
@@ -47,6 +54,12 @@ mixin _$LoginState {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadingLoginState value) loading,
     required TResult Function(OkLoginState value) ok,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(LoadingLoginState value)? loading,
+    TResult Function(OkLoginState value)? ok,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,7 +118,8 @@ class _$LoadingLoginState implements LoadingLoginState {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is LoadingLoginState);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is LoadingLoginState);
   }
 
   @override
@@ -118,6 +132,15 @@ class _$LoadingLoginState implements LoadingLoginState {
     required TResult Function() ok,
   }) {
     return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? ok,
+  }) {
+    return loading?.call();
   }
 
   @override
@@ -140,6 +163,15 @@ class _$LoadingLoginState implements LoadingLoginState {
     required TResult Function(OkLoginState value) ok,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(LoadingLoginState value)? loading,
+    TResult Function(OkLoginState value)? ok,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -190,7 +222,8 @@ class _$OkLoginState implements OkLoginState {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is OkLoginState);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is OkLoginState);
   }
 
   @override
@@ -203,6 +236,15 @@ class _$OkLoginState implements OkLoginState {
     required TResult Function() ok,
   }) {
     return ok();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? ok,
+  }) {
+    return ok?.call();
   }
 
   @override
@@ -225,6 +267,15 @@ class _$OkLoginState implements OkLoginState {
     required TResult Function(OkLoginState value) ok,
   }) {
     return ok(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(LoadingLoginState value)? loading,
+    TResult Function(OkLoginState value)? ok,
+  }) {
+    return ok?.call(this);
   }
 
   @override
@@ -274,6 +325,12 @@ mixin _$LoginEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String requestToken)? authorize,
+    TResult Function(String sessionId)? success,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String requestToken)? authorize,
     TResult Function(String sessionId)? success,
@@ -284,6 +341,12 @@ mixin _$LoginEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoginEventAuthorize value) authorize,
     required TResult Function(LoginEventSuccess value) success,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(LoginEventAuthorize value)? authorize,
+    TResult Function(LoginEventSuccess value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -359,15 +422,14 @@ class _$LoginEventAuthorize implements LoginEventAuthorize {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is LoginEventAuthorize &&
+        (other.runtimeType == runtimeType &&
+            other is LoginEventAuthorize &&
             (identical(other.requestToken, requestToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.requestToken, requestToken)));
+                other.requestToken == requestToken));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(requestToken);
+  int get hashCode => Object.hash(runtimeType, requestToken);
 
   @JsonKey(ignore: true)
   @override
@@ -381,6 +443,15 @@ class _$LoginEventAuthorize implements LoginEventAuthorize {
     required TResult Function(String sessionId) success,
   }) {
     return authorize(requestToken);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String requestToken)? authorize,
+    TResult Function(String sessionId)? success,
+  }) {
+    return authorize?.call(requestToken);
   }
 
   @override
@@ -407,6 +478,15 @@ class _$LoginEventAuthorize implements LoginEventAuthorize {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(LoginEventAuthorize value)? authorize,
+    TResult Function(LoginEventSuccess value)? success,
+  }) {
+    return authorize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoginEventAuthorize value)? authorize,
     TResult Function(LoginEventSuccess value)? success,
@@ -423,7 +503,7 @@ abstract class LoginEventAuthorize implements LoginEvent {
   const factory LoginEventAuthorize(String requestToken) =
       _$LoginEventAuthorize;
 
-  String get requestToken => throw _privateConstructorUsedError;
+  String get requestToken;
   @JsonKey(ignore: true)
   $LoginEventAuthorizeCopyWith<LoginEventAuthorize> get copyWith =>
       throw _privateConstructorUsedError;
@@ -477,15 +557,14 @@ class _$LoginEventSuccess implements LoginEventSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is LoginEventSuccess &&
+        (other.runtimeType == runtimeType &&
+            other is LoginEventSuccess &&
             (identical(other.sessionId, sessionId) ||
-                const DeepCollectionEquality()
-                    .equals(other.sessionId, sessionId)));
+                other.sessionId == sessionId));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(sessionId);
+  int get hashCode => Object.hash(runtimeType, sessionId);
 
   @JsonKey(ignore: true)
   @override
@@ -499,6 +578,15 @@ class _$LoginEventSuccess implements LoginEventSuccess {
     required TResult Function(String sessionId) success,
   }) {
     return success(sessionId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String requestToken)? authorize,
+    TResult Function(String sessionId)? success,
+  }) {
+    return success?.call(sessionId);
   }
 
   @override
@@ -525,6 +613,15 @@ class _$LoginEventSuccess implements LoginEventSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(LoginEventAuthorize value)? authorize,
+    TResult Function(LoginEventSuccess value)? success,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoginEventAuthorize value)? authorize,
     TResult Function(LoginEventSuccess value)? success,
@@ -540,7 +637,7 @@ class _$LoginEventSuccess implements LoginEventSuccess {
 abstract class LoginEventSuccess implements LoginEvent {
   const factory LoginEventSuccess(String sessionId) = _$LoginEventSuccess;
 
-  String get sessionId => throw _privateConstructorUsedError;
+  String get sessionId;
   @JsonKey(ignore: true)
   $LoginEventSuccessCopyWith<LoginEventSuccess> get copyWith =>
       throw _privateConstructorUsedError;

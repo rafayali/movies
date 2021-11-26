@@ -5,9 +5,30 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "MoviesFlutter",
+            "name": "demo-android",
             "request": "launch",
             "type": "dart",
-        }
+            "args": [
+                "--flavor",
+                "demo",
+            ],
+            "codeLens": {
+                "for": [
+                    "debug-file",
+                ],
+                "title": "${debugType} Android(Demo)",
+            },
+        },
+        {
+            "name": "ios",
+            "request": "launch",
+            "type": "dart",
+            "codeLens": {
+                "for": [
+                    "debug-file",
+                ],
+                "title": "${debugType} iOS",
+            },
+        },
     ]
 }
