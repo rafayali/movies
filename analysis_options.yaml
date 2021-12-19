@@ -8,6 +8,7 @@ analyzer:
     implicit-casts: false
   errors:
     close_sinks: error
+    invalid_annotation_target: ignore
 
 linter:
   rules:

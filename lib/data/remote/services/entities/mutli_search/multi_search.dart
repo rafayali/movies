@@ -5,7 +5,6 @@ part 'multi_search.freezed.dart';
 
 @Freezed()
 class MultiSearch with _$MultiSearch {
-  // ignore: invalid_annotation_target
   @JsonSerializable(fieldRename: FieldRename.snake)
   factory MultiSearch({
     required int page,
@@ -23,7 +22,6 @@ class MultiSearch with _$MultiSearch {
 @Freezed(unionKey: 'media_type', unionValueCase: FreezedUnionCase.snake)
 class Entity with _$Entity {
   @FreezedUnionValue('movie')
-  // ignore: invalid_annotation_target
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Entity.movie({
     required int id,
@@ -34,7 +32,6 @@ class Entity with _$Entity {
   }) = MovieEntity;
 
   @FreezedUnionValue('tv')
-  // ignore: invalid_annotation_target
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Entity.tvShow({
     required int id,
@@ -45,7 +42,6 @@ class Entity with _$Entity {
   }) = TvShowEntity;
 
   @FreezedUnionValue('person')
-  // ignore: invalid_annotation_target
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Entity.person({
     required int id,
