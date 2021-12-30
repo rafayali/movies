@@ -2,7 +2,7 @@ import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/core/usecase.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
 
-class NewTokenUsecase extends Usecase<Nothing, String> {
+class NewTokenUsecase extends UseCase<Nothing, String> {
   NewTokenUsecase({required this.tmdbService, required this.buildConfig});
 
   final TmdbService tmdbService;

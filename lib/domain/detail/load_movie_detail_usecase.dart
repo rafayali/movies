@@ -7,7 +7,7 @@ import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
 import '../../config.dart';
 import 'entities/movie_detail.dart';
 
-class LoadMovieDetailUsecase extends Usecase<int, MovieDetail> {
+class LoadMovieDetailUsecase extends UseCase<int, MovieDetail> {
   LoadMovieDetailUsecase(
       {required this.tmdbService, required this.buildConfig});
 

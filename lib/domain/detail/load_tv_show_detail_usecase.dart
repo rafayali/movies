@@ -7,7 +7,7 @@ import 'package:movies_flutter/data/remote/services/entities/movie_credits/movie
 
 import '../../config.dart';
 
-class LoadTvShowDetailUsecase extends Usecase<int, MovieDetail> {
+class LoadTvShowDetailUsecase extends UseCase<int, MovieDetail> {
   LoadTvShowDetailUsecase({
     required this.tmdbService,
     required this.buildConfig,

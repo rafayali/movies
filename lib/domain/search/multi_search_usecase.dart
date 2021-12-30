@@ -8,7 +8,7 @@ import 'package:quiver/strings.dart';
 
 import 'entities/search_movies_entities.dart';
 
-class MultiSearchUsecase extends Usecase<String, SearchResult> {
+class MultiSearchUsecase extends UseCase<String, SearchResult> {
   MultiSearchUsecase({required this.tmdbService, required this.buildConfig});
 
   final TmdbService tmdbService;

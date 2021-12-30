@@ -11,7 +11,7 @@ import 'package:movies_flutter/ui/landing/discover/models/home_ui_model.dart';
 import 'package:movies_flutter/ui/landing/discover/models/movie_item.dart';
 import 'package:movies_flutter/ui/landing/discover/models/tv_item.dart';
 
-class LoadHomeUsecase extends Usecase<Nothing, HomeModel> {
+class LoadHomeUsecase extends UseCase<Nothing, HomeModel> {
   LoadHomeUsecase({
     required this.tmdbService,
     required this.authStore,

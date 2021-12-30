@@ -2,7 +2,7 @@ import 'package:async/async.dart';
 import 'package:flutter/foundation.dart';
 
 /// Base class for implementing usecases.
-abstract class Usecase<Input, Output> {
+abstract class UseCase<Input, Output> {
   /// Invokes usecase with implemention of [execute] with either [Result.value]
   /// or [Result.error].
   @nonVirtual

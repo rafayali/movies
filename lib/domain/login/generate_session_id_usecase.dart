@@ -4,7 +4,7 @@ import 'package:movies_flutter/core/usecase.dart';
 import 'package:movies_flutter/data/remote/services/entities/session/session.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
 
-class GenerateSessionIdUsecase extends Usecase<String, String> {
+class GenerateSessionIdUsecase extends UseCase<String, String> {
   GenerateSessionIdUsecase({
     required this.tmdbService,
     required this.authStore,
