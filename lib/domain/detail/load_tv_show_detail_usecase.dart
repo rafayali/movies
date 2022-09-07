@@ -1,11 +1,10 @@
+import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/core/usecase.dart';
 import 'package:movies_flutter/data/remote/services/entities/tv_show/tv_show.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 import 'package:movies_flutter/data/remote/services/entities/movie_credits/movie_credits.dart'
     as credits;
-
-import '../../config.dart';
 
 class LoadTvShowDetailUsecase extends UseCase<int, MovieDetail> {
   LoadTvShowDetailUsecase({

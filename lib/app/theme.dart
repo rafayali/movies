@@ -1,8 +1,8 @@
-part of 'app.dart';
+import 'package:flutter/material.dart';
+import 'package:movies_flutter/utils/colors.dart';
 
-const lightColorScheme = ColorScheme.light(
-  primary: Color(0XFFFF0000)
-);
+const lightColorScheme =
+    ColorScheme.light(primary: Color.fromARGB(255, 170, 0, 255));
 const darkColorScehem = ColorScheme.dark();
 
 final lightTheme = ThemeData(

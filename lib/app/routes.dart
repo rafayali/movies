@@ -1,21 +1,39 @@
-part of 'app.dart';
+import 'package:flutter/material.dart';
+import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
+import 'package:movies_flutter/domain/detail/load_movie_detail_usecase.dart';
+import 'package:movies_flutter/domain/detail/load_tv_show_detail_usecase.dart';
+import 'package:movies_flutter/domain/home/load_home_usecase.dart';
+import 'package:movies_flutter/domain/login/generate_session_id_usecase.dart';
+import 'package:movies_flutter/domain/login/new_auth_token_usecase.dart';
+import 'package:movies_flutter/domain/search/multi_search_usecase.dart';
+import 'package:movies_flutter/ui/landing/discover/view/discover_page.dart';
+import 'package:movies_flutter/ui/landing/discover/viewmodel/discover_viewmodel.dart';
+import 'package:movies_flutter/ui/landing/landing_page.dart';
+import 'package:movies_flutter/ui/landing/search/view/search_page.dart';
+import 'package:movies_flutter/ui/landing/search/viewmodel/search_viewmodel.dart';
+import 'package:movies_flutter/ui/login/view/auth_page.dart';
+import 'package:movies_flutter/ui/login/view/login_page.dart';
+import 'package:movies_flutter/ui/login/viewmodel/login_viewmodel.dart';
+import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
+import 'package:movies_flutter/ui/movie_detail/viewmodel/movie_detail_viewmodel.dart';
+import 'package:provider/provider.dart';
 
-List<Route<dynamic>> _generateInitialRoute(String initialRoute) {
+List<Route<dynamic>> generateInitialRoute(String initialRoute) {
   switch (initialRoute) {
     case HomePageTabs.routeName:
       return [
-        _generateRoute(const RouteSettings(name: HomePageTabs.routeName))!,
+        generateRoute(const RouteSettings(name: HomePageTabs.routeName))!,
       ];
     case LoginPage.routeName:
       return [
-        _generateRoute(const RouteSettings(name: LoginPage.routeName))!,
+        generateRoute(const RouteSettings(name: LoginPage.routeName))!,
       ];
     default:
       return List.empty();
   }
 }
 
-Route<dynamic>? _generateRoute(RouteSettings settings) {
+Route<dynamic>? generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case LoginPage.routeName:
       return MaterialPageRoute(
@@ -95,4 +113,6 @@ Route<dynamic>? _generateRoute(RouteSettings settings) {
         settings: settings,
       );
   }
+
+  return null;
 }
