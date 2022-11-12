@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
     _loginViewModel.events.listen((event) async {
       await event.when(
         authorize: (requestToken) async {
-          Navigator.of(context)
+          await Navigator.of(context)
               .pushNamed<String>(AuthPage.routeName, arguments: requestToken);
           _loginViewModel.generateSessionId(requestToken);
         },
