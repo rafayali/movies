@@ -4,14 +4,17 @@ analyzer:
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
+
   strong-mode:
     implicit-casts: false
+
   errors:
     close_sinks: error
     invalid_annotation_target: ignore
 
 linter:
   rules:
-    - close_sinks
-    - avoid_void_async
+    prefer_single_quotes: true
+    close_sinks: true
+    avoid_void_asyn: true
   

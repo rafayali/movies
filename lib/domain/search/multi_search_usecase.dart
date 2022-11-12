@@ -17,7 +17,7 @@ class MultiSearchUsecase extends UseCase<String, SearchResult> {
 
   int _page = 1;
 
-  String _query = "";
+  String _query = '';
 
   bool _shouldLoad = true;
 

@@ -13,7 +13,7 @@ class LoginPage extends StatefulWidget {
   static const routeName = 'login';
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
     _loginViewModel.events.listen((event) async {
       await event.when(
         authorize: (requestToken) async {
-          await Navigator.of(context)
+          Navigator.of(context)
               .pushNamed<String>(AuthPage.routeName, arguments: requestToken);
           _loginViewModel.generateSessionId(requestToken);
         },
@@ -42,21 +42,21 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Center(
-                child: SvgPicture.asset(
-                  'assets/tmdb_blue_square_2.svg',
-                ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            flex: 2,
+            child: Center(
+              child: SvgPicture.asset(
+                'assets/tmdb_blue_square_2.svg',
               ),
             ),
-            Selector<LoginViewModel, LoginState>(
+          ),
+          SafeArea(
+            minimum: const EdgeInsets.all(16),
+            child: Selector<LoginViewModel, LoginState>(
               builder: (context, value, child) => value.when(
                 loading: () {
                   return const ElevatedButton(
@@ -72,8 +72,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
               selector: (context, viewModel) => viewModel.state,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

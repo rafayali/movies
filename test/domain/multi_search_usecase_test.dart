@@ -94,7 +94,7 @@ main() {
       when(() => mockTmdbService.multiSearch(any(), any(), any()))
           .thenAnswer((invocation) async => fakeMultiSearchResponse);
 
-      final result = await usecase.invoke("");
+      final result = await usecase.invoke('');
       expect(result.isValue, equals(true));
       expect(result.asValue!.value.results.length, equals(0));
     });

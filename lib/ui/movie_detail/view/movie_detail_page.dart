@@ -14,7 +14,7 @@ class MovieDetailPage extends StatefulWidget {
   static const routeName = '/detail';
 
   @override
-  _MovieDetailPageState createState() => _MovieDetailPageState();
+  State<MovieDetailPage> createState() => _MovieDetailPageState();
 }
 
 class _MovieDetailPageState extends State<MovieDetailPage> {
@@ -120,13 +120,13 @@ class MovieContent extends StatelessWidget {
                 SafeArea(
                   child: ElevatedButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    child: const Icon(Icons.arrow_back),
                     style: ElevatedButton.styleFrom(
                       shape: const CircleBorder(),
                       foregroundColor: Colors.white,
                       disabledForegroundColor: Colors.black,
                       elevation: 4,
                     ),
+                    child: const Icon(Icons.arrow_back),
                   ),
                 ),
               ],

@@ -10,7 +10,7 @@ class HomePageTabs extends StatefulWidget {
   final List<HomePageTab> _tabs;
 
   @override
-  _HomePageTabsState createState() => _HomePageTabsState();
+  State<HomePageTabs> createState() => _HomePageTabsState();
 }
 
 class _HomePageTabsState extends State<HomePageTabs> {
@@ -42,11 +42,11 @@ class _HomePageTabsState extends State<HomePageTabs> {
       length: bottomNavigationBarItems.length,
       child: Scaffold(
         body: PageView(
-          children: pages,
           controller: pageController,
           physics: const NeverScrollableScrollPhysics(),
           onPageChanged: (index) =>
               WidgetsBinding.instance.focusManager.primaryFocus?.unfocus(),
+          children: pages,
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: bottomNavigationBarItems,

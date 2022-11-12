@@ -11,7 +11,7 @@ class AuthPage extends StatefulWidget {
   final String requestToken;
 
   @override
-  _AuthPageState createState() => _AuthPageState();
+  State<AuthPage> createState() => _AuthPageState();
 }
 
 class _AuthPageState extends State<AuthPage> {
