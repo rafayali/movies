@@ -1,9 +1,10 @@
-part of '../movie_detail_page.dart';
+import 'package:flutter/material.dart';
+import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 
-class _CastWidget extends StatelessWidget {
+class CastWidget extends StatelessWidget {
   final List<Cast> _cast;
 
-  const _CastWidget(this._cast);
+  const CastWidget(this._cast, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class _CastWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 16, top: 8, right: 16),
+          padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
           child: Text(
             'Cast',
             style: Theme.of(context).textTheme.headline6,

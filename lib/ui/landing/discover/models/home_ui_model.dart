@@ -8,8 +8,8 @@ part 'home_ui_model.freezed.dart';
 @freezed
 class HomeModel with _$HomeModel {
   factory HomeModel({
-    required String name,
-    required String imageUrl,
+    required String? name,
+    required String? imageUrl,
     required List<MovieItem> popularMovies,
     required List<TvShowItem> popularTvShows,
     required List<MovieItem> discoverMovies,

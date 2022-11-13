@@ -45,6 +45,7 @@ dependencies:
   http: ^0.13.4
   chopper: ^5.1.0
   logging: ^1.1.0
+  flutter_rating_bar: ^4.0.1
  
 dev_dependencies:
   flutter_test:
@@ -79,6 +80,7 @@ flutter:
   assets:
     - assets/tmdb_blue_square_2.svg
     - assets/app_icon.jpg
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

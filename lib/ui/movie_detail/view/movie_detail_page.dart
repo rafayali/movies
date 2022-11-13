@@ -5,8 +5,8 @@ import 'package:movies_flutter/ui/movie_detail/viewmodel/movie_detail_viewmodel.
 import 'package:movies_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
 
-part 'widgets/rating.dart';
-part 'widgets/cast.dart';
+import 'widgets/cast.dart';
+import 'widgets/rating.dart';
 
 class MovieDetailPage extends StatefulWidget {
   const MovieDetailPage({Key? key}) : super(key: key);
@@ -95,7 +95,7 @@ class MovieContent extends StatelessWidget {
                               if (_movieDetailUiModel.runtime == null ||
                                   _movieDetailUiModel.releaseDate == null ||
                                   _movieDetailUiModel.genre == null) {
-                                return const Text('');
+                                return const Text(emptyString);
                               } else {
                                 final year =
                                     _movieDetailUiModel.releaseDate!.year;
@@ -135,7 +135,7 @@ class MovieContent extends StatelessWidget {
               if (_movieDetailUiModel.rating == null) {
                 return const SizedBox();
               } else {
-                return _RatingWidget(_movieDetailUiModel.rating!);
+                return RatingWidget(_movieDetailUiModel.rating!);
               }
             }),
             Builder(builder: (context) {
@@ -156,7 +156,7 @@ class MovieContent extends StatelessWidget {
               if (_movieDetailUiModel.cast == null) {
                 return const SizedBox();
               } else {
-                return _CastWidget(_movieDetailUiModel.cast!);
+                return CastWidget(_movieDetailUiModel.cast!);
               }
             }),
           ],

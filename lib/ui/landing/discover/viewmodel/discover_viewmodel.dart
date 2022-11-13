@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:movies_flutter/core/ui_state.dart';
 import 'package:movies_flutter/core/usecase.dart';
 import 'package:movies_flutter/core/viewmodel.dart';
+import 'package:movies_flutter/domain/home/check_login_usecase.dart';
 import 'package:movies_flutter/domain/home/load_home_usecase.dart';
 
 import '../models/home_ui_model.dart';
@@ -8,9 +11,12 @@ import '../models/home_ui_model.dart';
 class HomeViewModel extends ViewModel<UiState<HomeModel>> {
   HomeViewModel({
     required this.loadHomeUsecase,
+    required this.checkLoginUsecase,
   }) : super(const UiState.loading());
 
   final LoadHomeUsecase loadHomeUsecase;
+
+  final CheckLoginUsecase checkLoginUsecase;
 
   Future<void> load() async {
     final homeModel = await loadHomeUsecase.invoke(Nothing());
@@ -24,5 +30,14 @@ class HomeViewModel extends ViewModel<UiState<HomeModel>> {
   void retry() {
     setState(const UiState.loading());
     load();
+  }
+
+  Future<bool> openProfile() async {
+    final check = await checkLoginUsecase.invoke(Nothing());
+    if (check.isValue) {
+      return check.asValue!.value;
+    } else {
+      return false;
+    }
   }
 }

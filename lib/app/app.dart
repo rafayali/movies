@@ -4,8 +4,7 @@ import 'package:movies_flutter/app/routes.dart';
 import 'package:movies_flutter/app/theme.dart';
 import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/data/auth_store.dart';
-import 'package:movies_flutter/ui/landing/landing_page.dart';
-import 'package:movies_flutter/ui/login/view/login_page.dart';
+import 'package:movies_flutter/ui/landing/home_page.dart';
 import 'package:movies_flutter/main.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart'
     as chopper;
@@ -36,8 +35,7 @@ class MoviesApp extends StatelessWidget {
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: ThemeMode.system,
-        initialRoute:
-            params.authenticated ? HomePageTabs.routeName : LoginPage.routeName,
+        initialRoute: HomePageTabs.routeName,
         onGenerateInitialRoutes: generateInitialRoute,
         onGenerateRoute: generateRoute,
       ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:movies_flutter/ui/landing/landing_page.dart';
 import 'package:movies_flutter/ui/login/view/auth_page.dart';
 import 'package:movies_flutter/ui/login/viewmodel/login_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -17,13 +16,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  late final LoginViewModel _loginViewModel;
+  late final LoginViewModel _loginViewModel = context.read();
 
   @override
   void initState() {
     super.initState();
-
-    _loginViewModel = context.read();
 
     _loginViewModel.events.listen((event) async {
       await event.when(
@@ -33,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
           _loginViewModel.generateSessionId(requestToken);
         },
         success: (sessionId) {
-          Navigator.of(context).popAndPushNamed(HomePageTabs.routeName);
+          Navigator.of(context).pop();
         },
       );
     });
