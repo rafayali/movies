@@ -16,5 +16,4 @@ linter:
   rules:
     prefer_single_quotes: true
     close_sinks: true
-    avoid_void_asyn: true
   
