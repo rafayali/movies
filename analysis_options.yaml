@@ -5,9 +5,6 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
 
-  strong-mode:
-    implicit-casts: false
-
   errors:
     close_sinks: error
     invalid_annotation_target: ignore

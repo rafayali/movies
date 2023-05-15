@@ -65,7 +65,7 @@ class SearchItemWidget extends StatelessWidget {
                 children: [
                   Text(
                     searchItem.name,
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleLarge,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),

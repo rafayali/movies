@@ -22,7 +22,7 @@ part 'json_serializable_converter.dart';
 class ChopperHttpClient {
   ChopperHttpClient(String baseUrl) {
     client = ChopperClient(
-      baseUrl: baseUrl,
+      baseUrl: Uri.parse(baseUrl),
       services: [TmdbService.create()],
       interceptors: [HttpLoggingInterceptor()],
       converter: _JsonSerializableConverter(jsonFactories: _jsonFactories),

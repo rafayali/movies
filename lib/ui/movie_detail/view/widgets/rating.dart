@@ -17,7 +17,7 @@ class RatingWidget extends StatelessWidget {
             _rating.toStringAsPrecision(2),
             style: Theme.of(context)
                 .textTheme
-                .bodyText1!
+                .bodyLarge!
                 .copyWith(color: const Color(0xfffdc432)),
           ),
           const SizedBox(

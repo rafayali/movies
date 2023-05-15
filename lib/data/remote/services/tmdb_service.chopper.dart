@@ -18,8 +18,8 @@ class _$TmdbService extends TmdbService {
 
   @override
   Future<Response<PopularMovies>> getPopularMovies(String apiKey) {
-    final String $url =
-        '3/movie/popular?api_key=${apiKey}&language=en-US&page=1';
+    final Uri $url =
+        Uri.parse('3/movie/popular?api_key=${apiKey}&language=en-US&page=1');
     final Request $request = Request(
       'GET',
       $url,
@@ -33,7 +33,7 @@ class _$TmdbService extends TmdbService {
     String apiKey,
     int id,
   ) {
-    final String $url = '3/movie/${id}?api_key=${apiKey}';
+    final Uri $url = Uri.parse('3/movie/${id}?api_key=${apiKey}');
     final Request $request = Request(
       'GET',
       $url,
@@ -47,7 +47,7 @@ class _$TmdbService extends TmdbService {
     String apiKey,
     int movieId,
   ) {
-    final String $url = '3/movie/${movieId}/credits?api_key=${apiKey}';
+    final Uri $url = Uri.parse('3/movie/${movieId}/credits?api_key=${apiKey}');
     final Request $request = Request(
       'GET',
       $url,
@@ -58,7 +58,8 @@ class _$TmdbService extends TmdbService {
 
   @override
   Future<Response<PopularTv>> getPopularTvShows(String apiKey) {
-    final String $url = '3/tv/popular?api_key=${apiKey}&language=en-US&page=1';
+    final Uri $url =
+        Uri.parse('3/tv/popular?api_key=${apiKey}&language=en-US&page=1');
     final Request $request = Request(
       'GET',
       $url,
@@ -69,8 +70,8 @@ class _$TmdbService extends TmdbService {
 
   @override
   Future<Response<DiscoverMovies>> discoverMovies(String apiKey) {
-    final String $url =
-        '3/discover/movie?api_key=${apiKey}&language=en-US&page=1';
+    final Uri $url =
+        Uri.parse('3/discover/movie?api_key=${apiKey}&language=en-US&page=1');
     final Request $request = Request(
       'GET',
       $url,
@@ -81,7 +82,8 @@ class _$TmdbService extends TmdbService {
 
   @override
   Future<Response<Genres>> getMovieGenres(String apiKey) {
-    final String $url = '3/genre/movie/list?api_key=${apiKey}&language=en-US';
+    final Uri $url =
+        Uri.parse('3/genre/movie/list?api_key=${apiKey}&language=en-US');
     final Request $request = Request(
       'GET',
       $url,
@@ -92,7 +94,7 @@ class _$TmdbService extends TmdbService {
 
   @override
   Future<Response<Token>> getNewToken(String apiKey) {
-    final String $url = '3/authentication/token/new?api_key=${apiKey}';
+    final Uri $url = Uri.parse('3/authentication/token/new?api_key=${apiKey}');
     final Request $request = Request(
       'GET',
       $url,
@@ -106,7 +108,8 @@ class _$TmdbService extends TmdbService {
     String apiKey,
     SessionRequest request,
   ) {
-    final String $url = '3/authentication/session/new?api_key=${apiKey}';
+    final Uri $url =
+        Uri.parse('3/authentication/session/new?api_key=${apiKey}');
     final $body = request;
     final Request $request = Request(
       'POST',
@@ -122,7 +125,8 @@ class _$TmdbService extends TmdbService {
     String apiKey,
     String sessionId,
   ) {
-    final String $url = '3/account?api_key=${apiKey}&session_id=${sessionId}';
+    final Uri $url =
+        Uri.parse('3/account?api_key=${apiKey}&session_id=${sessionId}');
     final Request $request = Request(
       'GET',
       $url,
@@ -136,7 +140,7 @@ class _$TmdbService extends TmdbService {
     String apiKey,
     int id,
   ) {
-    final String $url = '3/tv/${id}?api_key=${apiKey}';
+    final Uri $url = Uri.parse('3/tv/${id}?api_key=${apiKey}');
     final Request $request = Request(
       'GET',
       $url,
@@ -150,7 +154,7 @@ class _$TmdbService extends TmdbService {
     String apiKey,
     int id,
   ) {
-    final String $url = '3/tv/${id}/credits?api_key=${apiKey}';
+    final Uri $url = Uri.parse('3/tv/${id}/credits?api_key=${apiKey}');
     final Request $request = Request(
       'GET',
       $url,
@@ -165,8 +169,8 @@ class _$TmdbService extends TmdbService {
     String query,
     int page,
   ) {
-    final String $url =
-        '3/search/multi?query=${query}&page=${page}&api_key=${apiKey}&language=en-US';
+    final Uri $url = Uri.parse(
+        '3/search/multi?query=${query}&page=${page}&api_key=${apiKey}&language=en-US');
     final Request $request = Request(
       'GET',
       $url,

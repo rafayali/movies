@@ -68,7 +68,7 @@ class MovieContent extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: [
                             Colors.transparent,
-                            Theme.of(context).backgroundColor,
+                            Theme.of(context).colorScheme.background,
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -84,7 +84,7 @@ class MovieContent extends StatelessWidget {
                               _movieDetailUiModel.title,
                               style: Theme.of(context)
                                   .textTheme
-                                  .headline5!
+                                  .headlineSmall!
                                   .copyWith(fontWeight: FontWeight.bold),
                               textAlign: TextAlign.center,
                             ),
@@ -106,7 +106,7 @@ class MovieContent extends StatelessWidget {
                                     _movieDetailUiModel.runtime! ~/ 60;
                                 return Text(
                                   '$year • $genre • ${hours}h ${minutes}m',
-                                  style: Theme.of(context).textTheme.bodyText1,
+                                  style: Theme.of(context).textTheme.bodyLarge,
                                   textAlign: TextAlign.center,
                                 );
                               }
@@ -146,7 +146,7 @@ class MovieContent extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
                   child: Text(
                     _movieDetailUiModel.description!,
-                    style: Theme.of(context).textTheme.bodyText1,
+                    style: Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
                 );

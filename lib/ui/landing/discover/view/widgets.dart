@@ -28,7 +28,7 @@ class SectionHeader extends StatelessWidget {
             _headerTitle,
             style: Theme.of(context)
                 .textTheme
-                .headline6!
+                .titleLarge!
                 .copyWith(fontWeight: FontWeight.bold),
           ),
           TextButton(
@@ -99,7 +99,7 @@ class PopularMoviesCarouselItem extends StatelessWidget {
                         movie.name,
                         style: Theme.of(context)
                             .textTheme
-                            .headline6!
+                            .titleLarge!
                             .copyWith(color: Colors.white),
                       ),
                       Text(
@@ -167,7 +167,7 @@ class MainHeader extends StatelessWidget {
                 textAlign: TextAlign.start,
                 style: Theme.of(context)
                     .textTheme
-                    .headline5!
+                    .headlineSmall!
                     .copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 4),
@@ -176,7 +176,7 @@ class MainHeader extends StatelessWidget {
                     ? 'Login to see your favorites and recommendations'
                     : 'Lets explore your favorite movies',
                 textAlign: TextAlign.start,
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ],
           ),

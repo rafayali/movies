@@ -16,7 +16,7 @@ class CastWidget extends StatelessWidget {
           padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
           child: Text(
             'Cast',
-            style: Theme.of(context).textTheme.headline6,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
         Padding(
