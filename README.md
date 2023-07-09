@@ -6,7 +6,7 @@ A movie app showcase built using [The Movie Database][1] api in Flutter
 
 **Note:** Requires Flutter v3.3.0 or higher
 
-<img src="./art/1.png" width=196/> <img src="./art/2.png" width=196/> <img src="./art/3.png" width=196/> <img src="./art/4.png" width=196/> <img src="./art/5.png" width=196/> <img src="./art/6.png" width=196/>
+<img src="./Art/1.png" width=196/> <img src="./Art/2.png" width=196/> <img src="./Art/3.png" width=196/> <img src="./Art/4.png" width=196/> <img src="./Art/5.png" width=196/> <img src="./Art/6.png" width=196/>
 
 Setup
 -----
