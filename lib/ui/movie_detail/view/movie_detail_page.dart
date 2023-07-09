@@ -5,6 +5,7 @@ import 'package:movies_flutter/ui/movie_detail/viewmodel/movie_detail_viewmodel.
 import 'package:movies_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
 
+import '../../common/common.dart';
 import 'widgets/cast.dart';
 import 'widgets/rating.dart';
 
@@ -118,15 +119,9 @@ class MovieContent extends StatelessWidget {
                   ),
                 ),
                 SafeArea(
-                  child: ElevatedButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      foregroundColor: Colors.white,
-                      disabledForegroundColor: Colors.black,
-                      elevation: 4,
-                    ),
-                    child: const Icon(Icons.arrow_back),
+                  minimum: const EdgeInsets.only(top: 32),
+                  child: MoviesBackButton(
+                    onPressed: () => Navigator.pop(context),
                   ),
                 ),
               ],
