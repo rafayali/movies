@@ -26,7 +26,7 @@ class LoadHomeUsecase extends UseCase<Nothing, HomeModel> {
 
   @override
   Future<HomeModel> execute(Nothing params) async {
-    final sessionId = (await authStore.getSessionId())!;
+    final sessionId = (await authStore.getSessionId());
 
     final popularMovies =
         (await tmdbService.getPopularMovies(buildConfig.tmdbApiKey)).body!;
@@ -36,8 +36,12 @@ class LoadHomeUsecase extends UseCase<Nothing, HomeModel> {
         (await tmdbService.discoverMovies(buildConfig.tmdbApiKey)).body!;
     final genres =
         (await tmdbService.getMovieGenres(buildConfig.tmdbApiKey)).body!;
-    final account =
-        (await tmdbService.account(buildConfig.tmdbApiKey, sessionId)).body!;
+
+    final Account? account;
+
+    account = sessionId != null
+        ? (await tmdbService.account(buildConfig.tmdbApiKey, sessionId)).body!
+        : null;
 
     return _createHomeModel(
       popularMovies,
@@ -54,19 +58,24 @@ class LoadHomeUsecase extends UseCase<Nothing, HomeModel> {
     PopularTv popularTv,
     DiscoverMovies discoverMovies,
     Genres genres,
-    Account account,
+    Account? account,
     BuildConfig buildConfig,
   ) {
     final String? imageUrl;
-    if (account.avatar.tmdb.avatarPath == null) {
-      imageUrl = '${buildConfig.baseUrl}${account.avatar.gravatar.hash}';
+
+    if (account == null) {
+      imageUrl = null;
     } else {
-      imageUrl =
-          '${buildConfig.baseImageUrlW200}${account.avatar.tmdb.avatarPath}';
+      if (account.avatar.tmdb.avatarPath == null) {
+        imageUrl = '${buildConfig.baseUrl}${account.avatar.gravatar.hash}';
+      } else {
+        imageUrl =
+            '${buildConfig.baseImageUrlW200}${account.avatar.tmdb.avatarPath}';
+      }
     }
 
     return HomeModel(
-      name: account.name ?? account.username,
+      name: account?.name ?? account?.username,
       imageUrl: imageUrl,
       popularMovies: popularMovies.results
           .map((e) => e.toMovieItem(genres.genres, buildConfig))

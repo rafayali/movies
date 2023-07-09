@@ -1,7 +1,13 @@
-part of 'discover_page.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:movies_flutter/resources/resources.dart' as res;
 
-class _SectionHeader extends StatelessWidget {
-  const _SectionHeader({
+import '../../../../domain/detail/entities/movie_detail.dart';
+import '../../../movie_detail/view/movie_detail_page.dart';
+import '../models/movie_item.dart';
+
+class SectionHeader extends StatelessWidget {
+  const SectionHeader({
     Key? key,
     required String headerTitle,
     VoidCallback? onPress,
@@ -23,7 +29,7 @@ class _SectionHeader extends StatelessWidget {
             _headerTitle,
             style: Theme.of(context)
                 .textTheme
-                .headline6!
+                .titleLarge!
                 .copyWith(fontWeight: FontWeight.bold),
           ),
           TextButton(
@@ -36,8 +42,8 @@ class _SectionHeader extends StatelessWidget {
   }
 }
 
-class _PopularMoviesCarouselItem extends StatelessWidget {
-  const _PopularMoviesCarouselItem({
+class PopularMoviesCarouselItem extends StatelessWidget {
+  const PopularMoviesCarouselItem({
     Key? key,
     required this.movie,
   }) : super(key: key);
@@ -94,7 +100,7 @@ class _PopularMoviesCarouselItem extends StatelessWidget {
                         movie.name,
                         style: Theme.of(context)
                             .textTheme
-                            .headline6!
+                            .titleLarge!
                             .copyWith(color: Colors.white),
                       ),
                       Text(
@@ -115,23 +121,43 @@ class _PopularMoviesCarouselItem extends StatelessWidget {
   }
 }
 
-class _MainHeader extends StatelessWidget {
-  const _MainHeader({
+class MainHeader extends StatelessWidget {
+  const MainHeader({
     Key? key,
-    required String name,
-    required String imageUrl,
+    required String? name,
+    required String? imageUrl,
+    required VoidCallback onTapImage,
   })  : _name = name,
         _imageUrl = imageUrl,
+        _onTapImage = onTapImage,
         super(key: key);
 
-  final String _name;
-
-  final String _imageUrl;
+  final String? _name;
+  final String? _imageUrl;
+  final VoidCallback _onTapImage;
 
   @override
   Widget build(BuildContext context) {
+    final Widget avatar;
+
+    if (_imageUrl == null) {
+      avatar = CircleAvatar(
+        radius: 24,
+        child: Image.asset(res.Icons.icPngUser),
+      );
+    } else {
+      avatar = CachedNetworkImage(
+        imageUrl: _imageUrl!,
+        imageBuilder: (context, imageProvider) => CircleAvatar(
+          radius: 24,
+          backgroundImage: imageProvider,
+        ),
+      );
+    }
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Column(
@@ -139,29 +165,29 @@ class _MainHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                'Hello $_name',
+                'Hello ${_name ?? 'Guest User'}',
                 textAlign: TextAlign.start,
                 style: Theme.of(context)
                     .textTheme
-                    .headline5!
+                    .headlineSmall!
                     .copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 4),
               Text(
-                'Lets explore your favorite movies',
+                _name == null
+                    ? 'Login to see your favorites and recommendations'
+                    : 'Lets explore your favorite movies',
                 textAlign: TextAlign.start,
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ],
           ),
         ),
-        CachedNetworkImage(
-          imageUrl: _imageUrl,
-          imageBuilder: (context, imageProvider) => CircleAvatar(
-            radius: 24,
-            backgroundImage: imageProvider,
-          ),
-        ),
+        const SizedBox.square(dimension: 8),
+        GestureDetector(
+          onTap: _onTapImage,
+          child: avatar,
+        )
       ],
     );
   }

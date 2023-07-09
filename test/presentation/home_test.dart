@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/data/auth_store.dart';
+import 'package:movies_flutter/domain/home/check_login_usecase.dart';
 import 'package:movies_flutter/domain/home/load_home_usecase.dart';
 import 'package:movies_flutter/ui/landing/discover/models/home_ui_model.dart';
 import 'package:movies_flutter/ui/landing/discover/viewmodel/discover_viewmodel.dart';
@@ -33,6 +34,7 @@ void main() {
         authStore: authStore,
         buildConfig: buildConfig,
       ),
+      checkLoginUsecase: CheckLoginUsecase(authStore: authStore),
     );
   });
 

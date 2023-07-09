@@ -5,8 +5,8 @@ import 'package:movies_flutter/ui/movie_detail/viewmodel/movie_detail_viewmodel.
 import 'package:movies_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
 
-part 'widgets/rating.dart';
-part 'widgets/cast.dart';
+import 'widgets/cast.dart';
+import 'widgets/rating.dart';
 
 class MovieDetailPage extends StatefulWidget {
   const MovieDetailPage({Key? key}) : super(key: key);
@@ -68,7 +68,7 @@ class MovieContent extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: [
                             Colors.transparent,
-                            Theme.of(context).backgroundColor,
+                            Theme.of(context).colorScheme.background,
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -84,7 +84,7 @@ class MovieContent extends StatelessWidget {
                               _movieDetailUiModel.title,
                               style: Theme.of(context)
                                   .textTheme
-                                  .headline5!
+                                  .headlineSmall!
                                   .copyWith(fontWeight: FontWeight.bold),
                               textAlign: TextAlign.center,
                             ),
@@ -95,7 +95,7 @@ class MovieContent extends StatelessWidget {
                               if (_movieDetailUiModel.runtime == null ||
                                   _movieDetailUiModel.releaseDate == null ||
                                   _movieDetailUiModel.genre == null) {
-                                return const Text('');
+                                return const Text(emptyString);
                               } else {
                                 final year =
                                     _movieDetailUiModel.releaseDate!.year;
@@ -106,7 +106,7 @@ class MovieContent extends StatelessWidget {
                                     _movieDetailUiModel.runtime! ~/ 60;
                                 return Text(
                                   '$year • $genre • ${hours}h ${minutes}m',
-                                  style: Theme.of(context).textTheme.bodyText1,
+                                  style: Theme.of(context).textTheme.bodyLarge,
                                   textAlign: TextAlign.center,
                                 );
                               }
@@ -135,7 +135,7 @@ class MovieContent extends StatelessWidget {
               if (_movieDetailUiModel.rating == null) {
                 return const SizedBox();
               } else {
-                return _RatingWidget(_movieDetailUiModel.rating!);
+                return RatingWidget(_movieDetailUiModel.rating!);
               }
             }),
             Builder(builder: (context) {
@@ -146,7 +146,7 @@ class MovieContent extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
                   child: Text(
                     _movieDetailUiModel.description!,
-                    style: Theme.of(context).textTheme.bodyText1,
+                    style: Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
                 );
@@ -156,7 +156,7 @@ class MovieContent extends StatelessWidget {
               if (_movieDetailUiModel.cast == null) {
                 return const SizedBox();
               } else {
-                return _CastWidget(_movieDetailUiModel.cast!);
+                return CastWidget(_movieDetailUiModel.cast!);
               }
             }),
           ],

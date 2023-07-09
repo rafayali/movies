@@ -1,6 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'ui_state.dart';
 
@@ -11,31 +12,7 @@ part of 'ui_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$UiStateTearOff {
-  const _$UiStateTearOff();
-
-  Success<T> success<T>(T? data) {
-    return Success<T>(
-      data,
-    );
-  }
-
-  Loading<T> loading<T>() {
-    return Loading<T>();
-  }
-
-  Error<T> error<T>(String message) {
-    return Error<T>(
-      message,
-    );
-  }
-}
-
-/// @nodoc
-const $UiState = _$UiStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$UiState<T> {
@@ -48,9 +25,9 @@ mixin _$UiState<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? data)? success,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
+    TResult? Function(T? data)? success,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,9 +47,9 @@ mixin _$UiState<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Error<T> value)? error,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Error<T> value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -88,40 +65,44 @@ mixin _$UiState<T> {
 /// @nodoc
 abstract class $UiStateCopyWith<T, $Res> {
   factory $UiStateCopyWith(UiState<T> value, $Res Function(UiState<T>) then) =
-      _$UiStateCopyWithImpl<T, $Res>;
+      _$UiStateCopyWithImpl<T, $Res, UiState<T>>;
 }
 
 /// @nodoc
-class _$UiStateCopyWithImpl<T, $Res> implements $UiStateCopyWith<T, $Res> {
+class _$UiStateCopyWithImpl<T, $Res, $Val extends UiState<T>>
+    implements $UiStateCopyWith<T, $Res> {
   _$UiStateCopyWithImpl(this._value, this._then);
 
-  final UiState<T> _value;
   // ignore: unused_field
-  final $Res Function(UiState<T>) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $SuccessCopyWith<T, $Res> {
-  factory $SuccessCopyWith(Success<T> value, $Res Function(Success<T>) then) =
-      _$SuccessCopyWithImpl<T, $Res>;
+abstract class _$$SuccessCopyWith<T, $Res> {
+  factory _$$SuccessCopyWith(
+          _$Success<T> value, $Res Function(_$Success<T>) then) =
+      __$$SuccessCopyWithImpl<T, $Res>;
+  @useResult
   $Res call({T? data});
 }
 
 /// @nodoc
-class _$SuccessCopyWithImpl<T, $Res> extends _$UiStateCopyWithImpl<T, $Res>
-    implements $SuccessCopyWith<T, $Res> {
-  _$SuccessCopyWithImpl(Success<T> _value, $Res Function(Success<T>) _then)
-      : super(_value, (v) => _then(v as Success<T>));
+class __$$SuccessCopyWithImpl<T, $Res>
+    extends _$UiStateCopyWithImpl<T, $Res, _$Success<T>>
+    implements _$$SuccessCopyWith<T, $Res> {
+  __$$SuccessCopyWithImpl(
+      _$Success<T> _value, $Res Function(_$Success<T>) _then)
+      : super(_value, _then);
 
-  @override
-  Success<T> get _value => super._value as Success<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(Success<T>(
-      data == freezed
+    return _then(_$Success<T>(
+      freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as T?,
@@ -154,7 +135,7 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is Success<T> &&
+            other is _$Success<T> &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
@@ -164,8 +145,9 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
 
   @JsonKey(ignore: true)
   @override
-  $SuccessCopyWith<T, Success<T>> get copyWith =>
-      _$SuccessCopyWithImpl<T, Success<T>>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$SuccessCopyWith<T, _$Success<T>> get copyWith =>
+      __$$SuccessCopyWithImpl<T, _$Success<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -180,9 +162,9 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? data)? success,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
+    TResult? Function(T? data)? success,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
   }) {
     return success?.call(data);
   }
@@ -214,9 +196,9 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Error<T> value)? error,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Error<T> value)? error,
   }) {
     return success?.call(this);
   }
@@ -237,28 +219,28 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
 }
 
 abstract class Success<T> implements UiState<T> {
-  const factory Success(T? data) = _$Success<T>;
+  const factory Success(final T? data) = _$Success<T>;
 
   T? get data;
   @JsonKey(ignore: true)
-  $SuccessCopyWith<T, Success<T>> get copyWith =>
+  _$$SuccessCopyWith<T, _$Success<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoadingCopyWith<T, $Res> {
-  factory $LoadingCopyWith(Loading<T> value, $Res Function(Loading<T>) then) =
-      _$LoadingCopyWithImpl<T, $Res>;
+abstract class _$$LoadingCopyWith<T, $Res> {
+  factory _$$LoadingCopyWith(
+          _$Loading<T> value, $Res Function(_$Loading<T>) then) =
+      __$$LoadingCopyWithImpl<T, $Res>;
 }
 
 /// @nodoc
-class _$LoadingCopyWithImpl<T, $Res> extends _$UiStateCopyWithImpl<T, $Res>
-    implements $LoadingCopyWith<T, $Res> {
-  _$LoadingCopyWithImpl(Loading<T> _value, $Res Function(Loading<T>) _then)
-      : super(_value, (v) => _then(v as Loading<T>));
-
-  @override
-  Loading<T> get _value => super._value as Loading<T>;
+class __$$LoadingCopyWithImpl<T, $Res>
+    extends _$UiStateCopyWithImpl<T, $Res, _$Loading<T>>
+    implements _$$LoadingCopyWith<T, $Res> {
+  __$$LoadingCopyWithImpl(
+      _$Loading<T> _value, $Res Function(_$Loading<T>) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -274,13 +256,13 @@ class _$Loading<T> with DiagnosticableTreeMixin implements Loading<T> {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'UiState<$T>.loading'));
+    properties.add(DiagnosticsProperty('type', 'UiState<$T>.loading'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Loading<T>);
+        (other.runtimeType == runtimeType && other is _$Loading<T>);
   }
 
   @override
@@ -299,9 +281,9 @@ class _$Loading<T> with DiagnosticableTreeMixin implements Loading<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? data)? success,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
+    TResult? Function(T? data)? success,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
   }) {
     return loading?.call();
   }
@@ -333,9 +315,9 @@ class _$Loading<T> with DiagnosticableTreeMixin implements Loading<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Error<T> value)? error,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Error<T> value)? error,
   }) {
     return loading?.call(this);
   }
@@ -360,27 +342,27 @@ abstract class Loading<T> implements UiState<T> {
 }
 
 /// @nodoc
-abstract class $ErrorCopyWith<T, $Res> {
-  factory $ErrorCopyWith(Error<T> value, $Res Function(Error<T>) then) =
-      _$ErrorCopyWithImpl<T, $Res>;
+abstract class _$$ErrorCopyWith<T, $Res> {
+  factory _$$ErrorCopyWith(_$Error<T> value, $Res Function(_$Error<T>) then) =
+      __$$ErrorCopyWithImpl<T, $Res>;
+  @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class _$ErrorCopyWithImpl<T, $Res> extends _$UiStateCopyWithImpl<T, $Res>
-    implements $ErrorCopyWith<T, $Res> {
-  _$ErrorCopyWithImpl(Error<T> _value, $Res Function(Error<T>) _then)
-      : super(_value, (v) => _then(v as Error<T>));
+class __$$ErrorCopyWithImpl<T, $Res>
+    extends _$UiStateCopyWithImpl<T, $Res, _$Error<T>>
+    implements _$$ErrorCopyWith<T, $Res> {
+  __$$ErrorCopyWithImpl(_$Error<T> _value, $Res Function(_$Error<T>) _then)
+      : super(_value, _then);
 
-  @override
-  Error<T> get _value => super._value as Error<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? message = null,
   }) {
-    return _then(Error<T>(
-      message == freezed
+    return _then(_$Error<T>(
+      null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
@@ -413,7 +395,7 @@ class _$Error<T> with DiagnosticableTreeMixin implements Error<T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is Error<T> &&
+            other is _$Error<T> &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -422,8 +404,9 @@ class _$Error<T> with DiagnosticableTreeMixin implements Error<T> {
 
   @JsonKey(ignore: true)
   @override
-  $ErrorCopyWith<T, Error<T>> get copyWith =>
-      _$ErrorCopyWithImpl<T, Error<T>>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$ErrorCopyWith<T, _$Error<T>> get copyWith =>
+      __$$ErrorCopyWithImpl<T, _$Error<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -438,9 +421,9 @@ class _$Error<T> with DiagnosticableTreeMixin implements Error<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? data)? success,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
+    TResult? Function(T? data)? success,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
   }) {
     return error?.call(message);
   }
@@ -472,9 +455,9 @@ class _$Error<T> with DiagnosticableTreeMixin implements Error<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Error<T> value)? error,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Error<T> value)? error,
   }) {
     return error?.call(this);
   }
@@ -495,10 +478,10 @@ class _$Error<T> with DiagnosticableTreeMixin implements Error<T> {
 }
 
 abstract class Error<T> implements UiState<T> {
-  const factory Error(String message) = _$Error<T>;
+  const factory Error(final String message) = _$Error<T>;
 
   String get message;
   @JsonKey(ignore: true)
-  $ErrorCopyWith<T, Error<T>> get copyWith =>
+  _$$ErrorCopyWith<T, _$Error<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

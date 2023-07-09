@@ -1,6 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'search_models.dart';
 
@@ -11,33 +12,7 @@ part of 'search_models.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SearchUiStateTearOff {
-  const _$SearchUiStateTearOff();
-
-  LoadingSearchUiState loading() {
-    return const LoadingSearchUiState();
-  }
-
-  SuccessSearchUiState success(List<SearchItem> items) {
-    return SuccessSearchUiState(
-      items,
-    );
-  }
-
-  NoResultsSearchUiState noResults() {
-    return const NoResultsSearchUiState();
-  }
-
-  WaitingForInputSearchUiState searchForMovies() {
-    return const WaitingForInputSearchUiState();
-  }
-}
-
-/// @nodoc
-const $SearchUiState = _$SearchUiStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SearchUiState {
@@ -51,10 +26,10 @@ mixin _$SearchUiState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<SearchItem> items)? success,
-    TResult Function()? noResults,
-    TResult Function()? searchForMovies,
+    TResult? Function()? loading,
+    TResult? Function(List<SearchItem> items)? success,
+    TResult? Function()? noResults,
+    TResult? Function()? searchForMovies,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,10 +52,10 @@ mixin _$SearchUiState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(LoadingSearchUiState value)? loading,
-    TResult Function(SuccessSearchUiState value)? success,
-    TResult Function(NoResultsSearchUiState value)? noResults,
-    TResult Function(WaitingForInputSearchUiState value)? searchForMovies,
+    TResult? Function(LoadingSearchUiState value)? loading,
+    TResult? Function(SuccessSearchUiState value)? success,
+    TResult? Function(NoResultsSearchUiState value)? noResults,
+    TResult? Function(WaitingForInputSearchUiState value)? searchForMovies,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,36 +73,34 @@ mixin _$SearchUiState {
 abstract class $SearchUiStateCopyWith<$Res> {
   factory $SearchUiStateCopyWith(
           SearchUiState value, $Res Function(SearchUiState) then) =
-      _$SearchUiStateCopyWithImpl<$Res>;
+      _$SearchUiStateCopyWithImpl<$Res, SearchUiState>;
 }
 
 /// @nodoc
-class _$SearchUiStateCopyWithImpl<$Res>
+class _$SearchUiStateCopyWithImpl<$Res, $Val extends SearchUiState>
     implements $SearchUiStateCopyWith<$Res> {
   _$SearchUiStateCopyWithImpl(this._value, this._then);
 
-  final SearchUiState _value;
   // ignore: unused_field
-  final $Res Function(SearchUiState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $LoadingSearchUiStateCopyWith<$Res> {
-  factory $LoadingSearchUiStateCopyWith(LoadingSearchUiState value,
-          $Res Function(LoadingSearchUiState) then) =
-      _$LoadingSearchUiStateCopyWithImpl<$Res>;
+abstract class _$$LoadingSearchUiStateCopyWith<$Res> {
+  factory _$$LoadingSearchUiStateCopyWith(_$LoadingSearchUiState value,
+          $Res Function(_$LoadingSearchUiState) then) =
+      __$$LoadingSearchUiStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LoadingSearchUiStateCopyWithImpl<$Res>
-    extends _$SearchUiStateCopyWithImpl<$Res>
-    implements $LoadingSearchUiStateCopyWith<$Res> {
-  _$LoadingSearchUiStateCopyWithImpl(
-      LoadingSearchUiState _value, $Res Function(LoadingSearchUiState) _then)
-      : super(_value, (v) => _then(v as LoadingSearchUiState));
-
-  @override
-  LoadingSearchUiState get _value => super._value as LoadingSearchUiState;
+class __$$LoadingSearchUiStateCopyWithImpl<$Res>
+    extends _$SearchUiStateCopyWithImpl<$Res, _$LoadingSearchUiState>
+    implements _$$LoadingSearchUiStateCopyWith<$Res> {
+  __$$LoadingSearchUiStateCopyWithImpl(_$LoadingSearchUiState _value,
+      $Res Function(_$LoadingSearchUiState) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -143,7 +116,7 @@ class _$LoadingSearchUiState implements LoadingSearchUiState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is LoadingSearchUiState);
+        (other.runtimeType == runtimeType && other is _$LoadingSearchUiState);
   }
 
   @override
@@ -163,10 +136,10 @@ class _$LoadingSearchUiState implements LoadingSearchUiState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<SearchItem> items)? success,
-    TResult Function()? noResults,
-    TResult Function()? searchForMovies,
+    TResult? Function()? loading,
+    TResult? Function(List<SearchItem> items)? success,
+    TResult? Function()? noResults,
+    TResult? Function()? searchForMovies,
   }) {
     return loading?.call();
   }
@@ -201,10 +174,10 @@ class _$LoadingSearchUiState implements LoadingSearchUiState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(LoadingSearchUiState value)? loading,
-    TResult Function(SuccessSearchUiState value)? success,
-    TResult Function(NoResultsSearchUiState value)? noResults,
-    TResult Function(WaitingForInputSearchUiState value)? searchForMovies,
+    TResult? Function(LoadingSearchUiState value)? loading,
+    TResult? Function(SuccessSearchUiState value)? success,
+    TResult? Function(NoResultsSearchUiState value)? noResults,
+    TResult? Function(WaitingForInputSearchUiState value)? searchForMovies,
   }) {
     return loading?.call(this);
   }
@@ -230,31 +203,30 @@ abstract class LoadingSearchUiState implements SearchUiState {
 }
 
 /// @nodoc
-abstract class $SuccessSearchUiStateCopyWith<$Res> {
-  factory $SuccessSearchUiStateCopyWith(SuccessSearchUiState value,
-          $Res Function(SuccessSearchUiState) then) =
-      _$SuccessSearchUiStateCopyWithImpl<$Res>;
+abstract class _$$SuccessSearchUiStateCopyWith<$Res> {
+  factory _$$SuccessSearchUiStateCopyWith(_$SuccessSearchUiState value,
+          $Res Function(_$SuccessSearchUiState) then) =
+      __$$SuccessSearchUiStateCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<SearchItem> items});
 }
 
 /// @nodoc
-class _$SuccessSearchUiStateCopyWithImpl<$Res>
-    extends _$SearchUiStateCopyWithImpl<$Res>
-    implements $SuccessSearchUiStateCopyWith<$Res> {
-  _$SuccessSearchUiStateCopyWithImpl(
-      SuccessSearchUiState _value, $Res Function(SuccessSearchUiState) _then)
-      : super(_value, (v) => _then(v as SuccessSearchUiState));
+class __$$SuccessSearchUiStateCopyWithImpl<$Res>
+    extends _$SearchUiStateCopyWithImpl<$Res, _$SuccessSearchUiState>
+    implements _$$SuccessSearchUiStateCopyWith<$Res> {
+  __$$SuccessSearchUiStateCopyWithImpl(_$SuccessSearchUiState _value,
+      $Res Function(_$SuccessSearchUiState) _then)
+      : super(_value, _then);
 
-  @override
-  SuccessSearchUiState get _value => super._value as SuccessSearchUiState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = freezed,
+    Object? items = null,
   }) {
-    return _then(SuccessSearchUiState(
-      items == freezed
-          ? _value.items
+    return _then(_$SuccessSearchUiState(
+      null == items
+          ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<SearchItem>,
     ));
@@ -264,10 +236,15 @@ class _$SuccessSearchUiStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessSearchUiState implements SuccessSearchUiState {
-  const _$SuccessSearchUiState(this.items);
+  const _$SuccessSearchUiState(final List<SearchItem> items) : _items = items;
 
+  final List<SearchItem> _items;
   @override
-  final List<SearchItem> items;
+  List<SearchItem> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @override
   String toString() {
@@ -278,18 +255,19 @@ class _$SuccessSearchUiState implements SuccessSearchUiState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SuccessSearchUiState &&
-            const DeepCollectionEquality().equals(other.items, items));
+            other is _$SuccessSearchUiState &&
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(items));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
   @JsonKey(ignore: true)
   @override
-  $SuccessSearchUiStateCopyWith<SuccessSearchUiState> get copyWith =>
-      _$SuccessSearchUiStateCopyWithImpl<SuccessSearchUiState>(
+  @pragma('vm:prefer-inline')
+  _$$SuccessSearchUiStateCopyWith<_$SuccessSearchUiState> get copyWith =>
+      __$$SuccessSearchUiStateCopyWithImpl<_$SuccessSearchUiState>(
           this, _$identity);
 
   @override
@@ -306,10 +284,10 @@ class _$SuccessSearchUiState implements SuccessSearchUiState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<SearchItem> items)? success,
-    TResult Function()? noResults,
-    TResult Function()? searchForMovies,
+    TResult? Function()? loading,
+    TResult? Function(List<SearchItem> items)? success,
+    TResult? Function()? noResults,
+    TResult? Function()? searchForMovies,
   }) {
     return success?.call(items);
   }
@@ -344,10 +322,10 @@ class _$SuccessSearchUiState implements SuccessSearchUiState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(LoadingSearchUiState value)? loading,
-    TResult Function(SuccessSearchUiState value)? success,
-    TResult Function(NoResultsSearchUiState value)? noResults,
-    TResult Function(WaitingForInputSearchUiState value)? searchForMovies,
+    TResult? Function(LoadingSearchUiState value)? loading,
+    TResult? Function(SuccessSearchUiState value)? success,
+    TResult? Function(NoResultsSearchUiState value)? noResults,
+    TResult? Function(WaitingForInputSearchUiState value)? searchForMovies,
   }) {
     return success?.call(this);
   }
@@ -369,32 +347,29 @@ class _$SuccessSearchUiState implements SuccessSearchUiState {
 }
 
 abstract class SuccessSearchUiState implements SearchUiState {
-  const factory SuccessSearchUiState(List<SearchItem> items) =
+  const factory SuccessSearchUiState(final List<SearchItem> items) =
       _$SuccessSearchUiState;
 
   List<SearchItem> get items;
   @JsonKey(ignore: true)
-  $SuccessSearchUiStateCopyWith<SuccessSearchUiState> get copyWith =>
+  _$$SuccessSearchUiStateCopyWith<_$SuccessSearchUiState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NoResultsSearchUiStateCopyWith<$Res> {
-  factory $NoResultsSearchUiStateCopyWith(NoResultsSearchUiState value,
-          $Res Function(NoResultsSearchUiState) then) =
-      _$NoResultsSearchUiStateCopyWithImpl<$Res>;
+abstract class _$$NoResultsSearchUiStateCopyWith<$Res> {
+  factory _$$NoResultsSearchUiStateCopyWith(_$NoResultsSearchUiState value,
+          $Res Function(_$NoResultsSearchUiState) then) =
+      __$$NoResultsSearchUiStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$NoResultsSearchUiStateCopyWithImpl<$Res>
-    extends _$SearchUiStateCopyWithImpl<$Res>
-    implements $NoResultsSearchUiStateCopyWith<$Res> {
-  _$NoResultsSearchUiStateCopyWithImpl(NoResultsSearchUiState _value,
-      $Res Function(NoResultsSearchUiState) _then)
-      : super(_value, (v) => _then(v as NoResultsSearchUiState));
-
-  @override
-  NoResultsSearchUiState get _value => super._value as NoResultsSearchUiState;
+class __$$NoResultsSearchUiStateCopyWithImpl<$Res>
+    extends _$SearchUiStateCopyWithImpl<$Res, _$NoResultsSearchUiState>
+    implements _$$NoResultsSearchUiStateCopyWith<$Res> {
+  __$$NoResultsSearchUiStateCopyWithImpl(_$NoResultsSearchUiState _value,
+      $Res Function(_$NoResultsSearchUiState) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -410,7 +385,7 @@ class _$NoResultsSearchUiState implements NoResultsSearchUiState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is NoResultsSearchUiState);
+        (other.runtimeType == runtimeType && other is _$NoResultsSearchUiState);
   }
 
   @override
@@ -430,10 +405,10 @@ class _$NoResultsSearchUiState implements NoResultsSearchUiState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<SearchItem> items)? success,
-    TResult Function()? noResults,
-    TResult Function()? searchForMovies,
+    TResult? Function()? loading,
+    TResult? Function(List<SearchItem> items)? success,
+    TResult? Function()? noResults,
+    TResult? Function()? searchForMovies,
   }) {
     return noResults?.call();
   }
@@ -468,10 +443,10 @@ class _$NoResultsSearchUiState implements NoResultsSearchUiState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(LoadingSearchUiState value)? loading,
-    TResult Function(SuccessSearchUiState value)? success,
-    TResult Function(NoResultsSearchUiState value)? noResults,
-    TResult Function(WaitingForInputSearchUiState value)? searchForMovies,
+    TResult? Function(LoadingSearchUiState value)? loading,
+    TResult? Function(SuccessSearchUiState value)? success,
+    TResult? Function(NoResultsSearchUiState value)? noResults,
+    TResult? Function(WaitingForInputSearchUiState value)? searchForMovies,
   }) {
     return noResults?.call(this);
   }
@@ -497,25 +472,21 @@ abstract class NoResultsSearchUiState implements SearchUiState {
 }
 
 /// @nodoc
-abstract class $WaitingForInputSearchUiStateCopyWith<$Res> {
-  factory $WaitingForInputSearchUiStateCopyWith(
-          WaitingForInputSearchUiState value,
-          $Res Function(WaitingForInputSearchUiState) then) =
-      _$WaitingForInputSearchUiStateCopyWithImpl<$Res>;
+abstract class _$$WaitingForInputSearchUiStateCopyWith<$Res> {
+  factory _$$WaitingForInputSearchUiStateCopyWith(
+          _$WaitingForInputSearchUiState value,
+          $Res Function(_$WaitingForInputSearchUiState) then) =
+      __$$WaitingForInputSearchUiStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$WaitingForInputSearchUiStateCopyWithImpl<$Res>
-    extends _$SearchUiStateCopyWithImpl<$Res>
-    implements $WaitingForInputSearchUiStateCopyWith<$Res> {
-  _$WaitingForInputSearchUiStateCopyWithImpl(
-      WaitingForInputSearchUiState _value,
-      $Res Function(WaitingForInputSearchUiState) _then)
-      : super(_value, (v) => _then(v as WaitingForInputSearchUiState));
-
-  @override
-  WaitingForInputSearchUiState get _value =>
-      super._value as WaitingForInputSearchUiState;
+class __$$WaitingForInputSearchUiStateCopyWithImpl<$Res>
+    extends _$SearchUiStateCopyWithImpl<$Res, _$WaitingForInputSearchUiState>
+    implements _$$WaitingForInputSearchUiStateCopyWith<$Res> {
+  __$$WaitingForInputSearchUiStateCopyWithImpl(
+      _$WaitingForInputSearchUiState _value,
+      $Res Function(_$WaitingForInputSearchUiState) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -532,7 +503,7 @@ class _$WaitingForInputSearchUiState implements WaitingForInputSearchUiState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is WaitingForInputSearchUiState);
+            other is _$WaitingForInputSearchUiState);
   }
 
   @override
@@ -552,10 +523,10 @@ class _$WaitingForInputSearchUiState implements WaitingForInputSearchUiState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<SearchItem> items)? success,
-    TResult Function()? noResults,
-    TResult Function()? searchForMovies,
+    TResult? Function()? loading,
+    TResult? Function(List<SearchItem> items)? success,
+    TResult? Function()? noResults,
+    TResult? Function()? searchForMovies,
   }) {
     return searchForMovies?.call();
   }
@@ -590,10 +561,10 @@ class _$WaitingForInputSearchUiState implements WaitingForInputSearchUiState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(LoadingSearchUiState value)? loading,
-    TResult Function(SuccessSearchUiState value)? success,
-    TResult Function(NoResultsSearchUiState value)? noResults,
-    TResult Function(WaitingForInputSearchUiState value)? searchForMovies,
+    TResult? Function(LoadingSearchUiState value)? loading,
+    TResult? Function(SuccessSearchUiState value)? success,
+    TResult? Function(NoResultsSearchUiState value)? noResults,
+    TResult? Function(WaitingForInputSearchUiState value)? searchForMovies,
   }) {
     return searchForMovies?.call(this);
   }

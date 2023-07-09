@@ -31,6 +31,7 @@ _$MovieEntity _$$MovieEntityFromJson(Map<String, dynamic> json) =>
       backdropPath: json['backdrop_path'] as String?,
       posterPath: json['poster_path'] as String?,
       releaseDate: json['release_date'] as String?,
+      $type: json['media_type'] as String?,
     );
 
 Map<String, dynamic> _$$MovieEntityToJson(_$MovieEntity instance) =>
@@ -40,6 +41,7 @@ Map<String, dynamic> _$$MovieEntityToJson(_$MovieEntity instance) =>
       'backdrop_path': instance.backdropPath,
       'poster_path': instance.posterPath,
       'release_date': instance.releaseDate,
+      'media_type': instance.$type,
     };
 
 _$TvShowEntity _$$TvShowEntityFromJson(Map<String, dynamic> json) =>
@@ -49,6 +51,7 @@ _$TvShowEntity _$$TvShowEntityFromJson(Map<String, dynamic> json) =>
       backdropPath: json['backdrop_path'] as String?,
       posterPath: json['poster_path'] as String?,
       firstAirDate: json['first_air_date'] as String?,
+      $type: json['media_type'] as String?,
     );
 
 Map<String, dynamic> _$$TvShowEntityToJson(_$TvShowEntity instance) =>
@@ -58,6 +61,7 @@ Map<String, dynamic> _$$TvShowEntityToJson(_$TvShowEntity instance) =>
       'backdrop_path': instance.backdropPath,
       'poster_path': instance.posterPath,
       'first_air_date': instance.firstAirDate,
+      'media_type': instance.$type,
     };
 
 _$PersonEntity _$$PersonEntityFromJson(Map<String, dynamic> json) =>
@@ -65,6 +69,7 @@ _$PersonEntity _$$PersonEntityFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       name: json['name'] as String,
       profilePath: json['profile_path'] as String?,
+      $type: json['media_type'] as String?,
     );
 
 Map<String, dynamic> _$$PersonEntityToJson(_$PersonEntity instance) =>
@@ -72,4 +77,5 @@ Map<String, dynamic> _$$PersonEntityToJson(_$PersonEntity instance) =>
       'id': instance.id,
       'name': instance.name,
       'profile_path': instance.profilePath,
+      'media_type': instance.$type,
     };

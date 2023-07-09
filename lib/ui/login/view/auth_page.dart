@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -15,11 +13,18 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
+  late final WebViewController webviewController;
+
   @override
   void initState() {
     super.initState();
 
-    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+    webviewController = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(const Color(0x00000000))
+      ..loadRequest(Uri.parse(
+        'https://www.themoviedb.org/authenticate/${widget.requestToken}',
+      ));
   }
 
   @override
@@ -28,11 +33,7 @@ class _AuthPageState extends State<AuthPage> {
       appBar: AppBar(
         title: const Text('Login with TMDB'),
       ),
-      body: WebView(
-        javascriptMode: JavascriptMode.unrestricted,
-        initialUrl:
-            'https://www.themoviedb.org/authenticate/${widget.requestToken}',
-      ),
+      body: WebViewWidget(controller: webviewController),
     );
   }
 }

@@ -79,9 +79,9 @@ class _SearchPageState extends State<SearchPage>
           Expanded(
               child: Selector<SearchViewModel, SearchUiState>(
             builder: (context, value, child) => value.map(
-              loading: (value) => Column(
+              loading: (value) => const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [CircularProgressIndicator()],
+                children: [CircularProgressIndicator()],
               ),
               success: (value) => ListView.separated(
                 itemBuilder: (context, index) => SearchItemWidget(
@@ -114,10 +114,10 @@ class _SearchPageState extends State<SearchPage>
                     const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               ),
               noResults: (value) => const Center(child: Text('No Results')),
-              searchForMovies: (value) => Center(
+              searchForMovies: (value) => const Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Icon(
                       Icons.search,
                       size: 64,

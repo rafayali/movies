@@ -6,25 +6,25 @@ const lightColorScheme =
 const darkColorScehem = ColorScheme.dark();
 
 final lightTheme = ThemeData(
+  useMaterial3: true,
   brightness: Brightness.light,
-  colorScheme: lightColorScheme,
-  backgroundColor: backgroundColor,
   pageTransitionsTheme: pageTransitionsTheme,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
   ),
+  colorScheme: lightColorScheme.copyWith(background: backgroundColor),
 );
 
 final darkTheme = ThemeData(
+  useMaterial3: true,
   brightness: Brightness.dark,
-  colorScheme: darkColorScehem,
-  backgroundColor: backgroundColorDark,
   pageTransitionsTheme: pageTransitionsTheme,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       elevation: MaterialStateProperty.all(0),
     ),
   ),
+  colorScheme: darkColorScehem.copyWith(background: backgroundColorDark),
 );
 
 const pageTransitionsTheme = PageTransitionsTheme(

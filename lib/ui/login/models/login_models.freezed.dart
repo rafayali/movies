@@ -1,6 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'login_models.dart';
 
@@ -11,23 +12,7 @@ part of 'login_models.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$LoginStateTearOff {
-  const _$LoginStateTearOff();
-
-  LoadingLoginState loading() {
-    return const LoadingLoginState();
-  }
-
-  OkLoginState ok() {
-    return const OkLoginState();
-  }
-}
-
-/// @nodoc
-const $LoginState = _$LoginStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$LoginState {
@@ -39,8 +24,8 @@ mixin _$LoginState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? ok,
+    TResult? Function()? loading,
+    TResult? Function()? ok,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,8 +43,8 @@ mixin _$LoginState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(LoadingLoginState value)? loading,
-    TResult Function(OkLoginState value)? ok,
+    TResult? Function(LoadingLoginState value)? loading,
+    TResult? Function(OkLoginState value)? ok,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,35 +60,34 @@ mixin _$LoginState {
 abstract class $LoginStateCopyWith<$Res> {
   factory $LoginStateCopyWith(
           LoginState value, $Res Function(LoginState) then) =
-      _$LoginStateCopyWithImpl<$Res>;
+      _$LoginStateCopyWithImpl<$Res, LoginState>;
 }
 
 /// @nodoc
-class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
+class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
+    implements $LoginStateCopyWith<$Res> {
   _$LoginStateCopyWithImpl(this._value, this._then);
 
-  final LoginState _value;
   // ignore: unused_field
-  final $Res Function(LoginState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $LoadingLoginStateCopyWith<$Res> {
-  factory $LoadingLoginStateCopyWith(
-          LoadingLoginState value, $Res Function(LoadingLoginState) then) =
-      _$LoadingLoginStateCopyWithImpl<$Res>;
+abstract class _$$LoadingLoginStateCopyWith<$Res> {
+  factory _$$LoadingLoginStateCopyWith(
+          _$LoadingLoginState value, $Res Function(_$LoadingLoginState) then) =
+      __$$LoadingLoginStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LoadingLoginStateCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res>
-    implements $LoadingLoginStateCopyWith<$Res> {
-  _$LoadingLoginStateCopyWithImpl(
-      LoadingLoginState _value, $Res Function(LoadingLoginState) _then)
-      : super(_value, (v) => _then(v as LoadingLoginState));
-
-  @override
-  LoadingLoginState get _value => super._value as LoadingLoginState;
+class __$$LoadingLoginStateCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$LoadingLoginState>
+    implements _$$LoadingLoginStateCopyWith<$Res> {
+  __$$LoadingLoginStateCopyWithImpl(
+      _$LoadingLoginState _value, $Res Function(_$LoadingLoginState) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -119,7 +103,7 @@ class _$LoadingLoginState implements LoadingLoginState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is LoadingLoginState);
+        (other.runtimeType == runtimeType && other is _$LoadingLoginState);
   }
 
   @override
@@ -137,8 +121,8 @@ class _$LoadingLoginState implements LoadingLoginState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? ok,
+    TResult? Function()? loading,
+    TResult? Function()? ok,
   }) {
     return loading?.call();
   }
@@ -168,8 +152,8 @@ class _$LoadingLoginState implements LoadingLoginState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(LoadingLoginState value)? loading,
-    TResult Function(OkLoginState value)? ok,
+    TResult? Function(LoadingLoginState value)? loading,
+    TResult? Function(OkLoginState value)? ok,
   }) {
     return loading?.call(this);
   }
@@ -193,21 +177,19 @@ abstract class LoadingLoginState implements LoginState {
 }
 
 /// @nodoc
-abstract class $OkLoginStateCopyWith<$Res> {
-  factory $OkLoginStateCopyWith(
-          OkLoginState value, $Res Function(OkLoginState) then) =
-      _$OkLoginStateCopyWithImpl<$Res>;
+abstract class _$$OkLoginStateCopyWith<$Res> {
+  factory _$$OkLoginStateCopyWith(
+          _$OkLoginState value, $Res Function(_$OkLoginState) then) =
+      __$$OkLoginStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$OkLoginStateCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
-    implements $OkLoginStateCopyWith<$Res> {
-  _$OkLoginStateCopyWithImpl(
-      OkLoginState _value, $Res Function(OkLoginState) _then)
-      : super(_value, (v) => _then(v as OkLoginState));
-
-  @override
-  OkLoginState get _value => super._value as OkLoginState;
+class __$$OkLoginStateCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$OkLoginState>
+    implements _$$OkLoginStateCopyWith<$Res> {
+  __$$OkLoginStateCopyWithImpl(
+      _$OkLoginState _value, $Res Function(_$OkLoginState) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -223,7 +205,7 @@ class _$OkLoginState implements OkLoginState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is OkLoginState);
+        (other.runtimeType == runtimeType && other is _$OkLoginState);
   }
 
   @override
@@ -241,8 +223,8 @@ class _$OkLoginState implements OkLoginState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? ok,
+    TResult? Function()? loading,
+    TResult? Function()? ok,
   }) {
     return ok?.call();
   }
@@ -272,8 +254,8 @@ class _$OkLoginState implements OkLoginState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(LoadingLoginState value)? loading,
-    TResult Function(OkLoginState value)? ok,
+    TResult? Function(LoadingLoginState value)? loading,
+    TResult? Function(OkLoginState value)? ok,
   }) {
     return ok?.call(this);
   }
@@ -297,26 +279,6 @@ abstract class OkLoginState implements LoginState {
 }
 
 /// @nodoc
-class _$LoginEventTearOff {
-  const _$LoginEventTearOff();
-
-  LoginEventAuthorize authorize(String requestToken) {
-    return LoginEventAuthorize(
-      requestToken,
-    );
-  }
-
-  LoginEventSuccess success(String sessionId) {
-    return LoginEventSuccess(
-      sessionId,
-    );
-  }
-}
-
-/// @nodoc
-const $LoginEvent = _$LoginEventTearOff();
-
-/// @nodoc
 mixin _$LoginEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -326,8 +288,8 @@ mixin _$LoginEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String requestToken)? authorize,
-    TResult Function(String sessionId)? success,
+    TResult? Function(String requestToken)? authorize,
+    TResult? Function(String sessionId)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -345,8 +307,8 @@ mixin _$LoginEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(LoginEventAuthorize value)? authorize,
-    TResult Function(LoginEventSuccess value)? success,
+    TResult? Function(LoginEventAuthorize value)? authorize,
+    TResult? Function(LoginEventSuccess value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -362,43 +324,44 @@ mixin _$LoginEvent {
 abstract class $LoginEventCopyWith<$Res> {
   factory $LoginEventCopyWith(
           LoginEvent value, $Res Function(LoginEvent) then) =
-      _$LoginEventCopyWithImpl<$Res>;
+      _$LoginEventCopyWithImpl<$Res, LoginEvent>;
 }
 
 /// @nodoc
-class _$LoginEventCopyWithImpl<$Res> implements $LoginEventCopyWith<$Res> {
+class _$LoginEventCopyWithImpl<$Res, $Val extends LoginEvent>
+    implements $LoginEventCopyWith<$Res> {
   _$LoginEventCopyWithImpl(this._value, this._then);
 
-  final LoginEvent _value;
   // ignore: unused_field
-  final $Res Function(LoginEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $LoginEventAuthorizeCopyWith<$Res> {
-  factory $LoginEventAuthorizeCopyWith(
-          LoginEventAuthorize value, $Res Function(LoginEventAuthorize) then) =
-      _$LoginEventAuthorizeCopyWithImpl<$Res>;
+abstract class _$$LoginEventAuthorizeCopyWith<$Res> {
+  factory _$$LoginEventAuthorizeCopyWith(_$LoginEventAuthorize value,
+          $Res Function(_$LoginEventAuthorize) then) =
+      __$$LoginEventAuthorizeCopyWithImpl<$Res>;
+  @useResult
   $Res call({String requestToken});
 }
 
 /// @nodoc
-class _$LoginEventAuthorizeCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res>
-    implements $LoginEventAuthorizeCopyWith<$Res> {
-  _$LoginEventAuthorizeCopyWithImpl(
-      LoginEventAuthorize _value, $Res Function(LoginEventAuthorize) _then)
-      : super(_value, (v) => _then(v as LoginEventAuthorize));
+class __$$LoginEventAuthorizeCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$LoginEventAuthorize>
+    implements _$$LoginEventAuthorizeCopyWith<$Res> {
+  __$$LoginEventAuthorizeCopyWithImpl(
+      _$LoginEventAuthorize _value, $Res Function(_$LoginEventAuthorize) _then)
+      : super(_value, _then);
 
-  @override
-  LoginEventAuthorize get _value => super._value as LoginEventAuthorize;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? requestToken = freezed,
+    Object? requestToken = null,
   }) {
-    return _then(LoginEventAuthorize(
-      requestToken == freezed
+    return _then(_$LoginEventAuthorize(
+      null == requestToken
           ? _value.requestToken
           : requestToken // ignore: cast_nullable_to_non_nullable
               as String,
@@ -423,7 +386,7 @@ class _$LoginEventAuthorize implements LoginEventAuthorize {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is LoginEventAuthorize &&
+            other is _$LoginEventAuthorize &&
             (identical(other.requestToken, requestToken) ||
                 other.requestToken == requestToken));
   }
@@ -433,8 +396,10 @@ class _$LoginEventAuthorize implements LoginEventAuthorize {
 
   @JsonKey(ignore: true)
   @override
-  $LoginEventAuthorizeCopyWith<LoginEventAuthorize> get copyWith =>
-      _$LoginEventAuthorizeCopyWithImpl<LoginEventAuthorize>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$LoginEventAuthorizeCopyWith<_$LoginEventAuthorize> get copyWith =>
+      __$$LoginEventAuthorizeCopyWithImpl<_$LoginEventAuthorize>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -448,8 +413,8 @@ class _$LoginEventAuthorize implements LoginEventAuthorize {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String requestToken)? authorize,
-    TResult Function(String sessionId)? success,
+    TResult? Function(String requestToken)? authorize,
+    TResult? Function(String sessionId)? success,
   }) {
     return authorize?.call(requestToken);
   }
@@ -479,8 +444,8 @@ class _$LoginEventAuthorize implements LoginEventAuthorize {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(LoginEventAuthorize value)? authorize,
-    TResult Function(LoginEventSuccess value)? success,
+    TResult? Function(LoginEventAuthorize value)? authorize,
+    TResult? Function(LoginEventSuccess value)? success,
   }) {
     return authorize?.call(this);
   }
@@ -500,40 +465,39 @@ class _$LoginEventAuthorize implements LoginEventAuthorize {
 }
 
 abstract class LoginEventAuthorize implements LoginEvent {
-  const factory LoginEventAuthorize(String requestToken) =
+  const factory LoginEventAuthorize(final String requestToken) =
       _$LoginEventAuthorize;
 
   String get requestToken;
   @JsonKey(ignore: true)
-  $LoginEventAuthorizeCopyWith<LoginEventAuthorize> get copyWith =>
+  _$$LoginEventAuthorizeCopyWith<_$LoginEventAuthorize> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginEventSuccessCopyWith<$Res> {
-  factory $LoginEventSuccessCopyWith(
-          LoginEventSuccess value, $Res Function(LoginEventSuccess) then) =
-      _$LoginEventSuccessCopyWithImpl<$Res>;
+abstract class _$$LoginEventSuccessCopyWith<$Res> {
+  factory _$$LoginEventSuccessCopyWith(
+          _$LoginEventSuccess value, $Res Function(_$LoginEventSuccess) then) =
+      __$$LoginEventSuccessCopyWithImpl<$Res>;
+  @useResult
   $Res call({String sessionId});
 }
 
 /// @nodoc
-class _$LoginEventSuccessCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res>
-    implements $LoginEventSuccessCopyWith<$Res> {
-  _$LoginEventSuccessCopyWithImpl(
-      LoginEventSuccess _value, $Res Function(LoginEventSuccess) _then)
-      : super(_value, (v) => _then(v as LoginEventSuccess));
+class __$$LoginEventSuccessCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$LoginEventSuccess>
+    implements _$$LoginEventSuccessCopyWith<$Res> {
+  __$$LoginEventSuccessCopyWithImpl(
+      _$LoginEventSuccess _value, $Res Function(_$LoginEventSuccess) _then)
+      : super(_value, _then);
 
-  @override
-  LoginEventSuccess get _value => super._value as LoginEventSuccess;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sessionId = freezed,
+    Object? sessionId = null,
   }) {
-    return _then(LoginEventSuccess(
-      sessionId == freezed
+    return _then(_$LoginEventSuccess(
+      null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
               as String,
@@ -558,7 +522,7 @@ class _$LoginEventSuccess implements LoginEventSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is LoginEventSuccess &&
+            other is _$LoginEventSuccess &&
             (identical(other.sessionId, sessionId) ||
                 other.sessionId == sessionId));
   }
@@ -568,8 +532,9 @@ class _$LoginEventSuccess implements LoginEventSuccess {
 
   @JsonKey(ignore: true)
   @override
-  $LoginEventSuccessCopyWith<LoginEventSuccess> get copyWith =>
-      _$LoginEventSuccessCopyWithImpl<LoginEventSuccess>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$LoginEventSuccessCopyWith<_$LoginEventSuccess> get copyWith =>
+      __$$LoginEventSuccessCopyWithImpl<_$LoginEventSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -583,8 +548,8 @@ class _$LoginEventSuccess implements LoginEventSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String requestToken)? authorize,
-    TResult Function(String sessionId)? success,
+    TResult? Function(String requestToken)? authorize,
+    TResult? Function(String sessionId)? success,
   }) {
     return success?.call(sessionId);
   }
@@ -614,8 +579,8 @@ class _$LoginEventSuccess implements LoginEventSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(LoginEventAuthorize value)? authorize,
-    TResult Function(LoginEventSuccess value)? success,
+    TResult? Function(LoginEventAuthorize value)? authorize,
+    TResult? Function(LoginEventSuccess value)? success,
   }) {
     return success?.call(this);
   }
@@ -635,10 +600,10 @@ class _$LoginEventSuccess implements LoginEventSuccess {
 }
 
 abstract class LoginEventSuccess implements LoginEvent {
-  const factory LoginEventSuccess(String sessionId) = _$LoginEventSuccess;
+  const factory LoginEventSuccess(final String sessionId) = _$LoginEventSuccess;
 
   String get sessionId;
   @JsonKey(ignore: true)
-  $LoginEventSuccessCopyWith<LoginEventSuccess> get copyWith =>
+  _$$LoginEventSuccessCopyWith<_$LoginEventSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
