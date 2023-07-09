@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movies_flutter/resources/resources.dart' as res;
 
 import '../../../../domain/detail/entities/movie_detail.dart';
 import '../../../movie_detail/view/movie_detail_page.dart';
@@ -142,7 +143,7 @@ class MainHeader extends StatelessWidget {
     if (_imageUrl == null) {
       avatar = CircleAvatar(
         radius: 24,
-        child: Image.asset('assets/icons/ic_user.png'),
+        child: Image.asset(res.Icons.icPngUser),
       );
     } else {
       avatar = CachedNetworkImage(
@@ -156,6 +157,7 @@ class MainHeader extends StatelessWidget {
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Column(

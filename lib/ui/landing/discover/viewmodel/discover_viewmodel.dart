@@ -15,7 +15,6 @@ class HomeViewModel extends ViewModel<UiState<HomeModel>> {
   }) : super(const UiState.loading());
 
   final LoadHomeUsecase loadHomeUsecase;
-
   final CheckLoginUsecase checkLoginUsecase;
 
   Future<void> load() async {
@@ -25,6 +24,12 @@ class HomeViewModel extends ViewModel<UiState<HomeModel>> {
     } else {
       setState(const UiState.error('Error loading movies data'));
     }
+  }
+
+  Future<void> refresh() async {
+    final homeModel = await loadHomeUsecase.invoke(Nothing());
+    if (!homeModel.isValue) return;
+    setState(UiState.success(homeModel.asValue!.value));
   }
 
   void retry() {

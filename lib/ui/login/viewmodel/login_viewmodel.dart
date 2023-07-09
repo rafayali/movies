@@ -15,7 +15,6 @@ class LoginViewModel extends ViewModel<LoginState> {
         super(const LoginState.ok());
 
   final NewTokenUsecase _newTokenUseCase;
-
   final GenerateSessionIdUsecase _generateSessionIdUsecase;
 
   final _events = StreamController<LoginEvent>.broadcast();

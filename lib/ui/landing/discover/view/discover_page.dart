@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:movies_flutter/core/ui_state.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
-import 'package:movies_flutter/ui/login/view/login_page.dart';
+import 'package:movies_flutter/ui/login/view/login_dialog.dart';
 import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
 import 'package:movies_flutter/widgets/movie_widget.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +10,8 @@ import 'package:provider/provider.dart';
 import '../viewmodel/discover_viewmodel.dart';
 import '../models/home_ui_model.dart';
 import 'widgets.dart';
+
+const _listHeight = 290.0;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -33,8 +35,6 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     super.build(context);
 
-    final navigator = Navigator.of(context);
-
     return Scaffold(
       body: Selector<HomeViewModel, UiState<HomeModel>>(
         builder: (_, value, child) => value.when(
@@ -43,8 +43,12 @@ class _HomePageState extends State<HomePage>
               homeUiModel: data!,
               onTapHeader: () async {
                 final canOpen = await viewModel.openProfile();
-                if (!canOpen) {
-                  await navigator.pushNamed(LoginPage.routeName);
+
+                if (context.mounted && !canOpen) {
+                  final loggedIn = await showLoginDialog(context);
+                  if (loggedIn) {
+                    viewModel.refresh();
+                  }
                 }
               },
             ),
@@ -126,7 +130,7 @@ class _HomePageContent extends StatelessWidget {
             onPress: () {},
           ),
           SizedBox(
-            height: 284,
+            height: _listHeight,
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               scrollDirection: Axis.horizontal,
@@ -160,7 +164,7 @@ class _HomePageContent extends StatelessWidget {
             onPress: () {},
           ),
           SizedBox(
-              height: 284,
+              height: _listHeight,
               child: ListView.separated(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 scrollDirection: Axis.horizontal,

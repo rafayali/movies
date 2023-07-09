@@ -1,6 +1,6 @@
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_flutter/app/routes.dart';
+import 'package:movies_flutter/app/route_generator.dart';
 import 'package:movies_flutter/app/theme.dart';
 import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/data/auth_store.dart';
