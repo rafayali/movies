@@ -21,7 +21,6 @@ class _AuthPageState extends State<AuthPage> {
 
     webviewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(const Color(0x00000000))
       ..loadRequest(Uri.parse(
         'https://www.themoviedb.org/authenticate/${widget.requestToken}',
       ));
