@@ -10,6 +10,7 @@ import 'package:movies_flutter/data/remote/services/tmdb_service.dart'
     as chopper;
 import 'package:movies_flutter/data/remote/http_client/http_client.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MoviesApp extends StatelessWidget {
   const MoviesApp({Key? key, required this.params}) : super(key: key);
@@ -38,6 +39,9 @@ class MoviesApp extends StatelessWidget {
         initialRoute: HomePageTabs.routeName,
         onGenerateInitialRoutes: generateInitialRoute,
         onGenerateRoute: generateRoute,
+        locale: const Locale('en'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
       ),
     );
   }

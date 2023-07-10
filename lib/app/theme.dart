@@ -76,12 +76,6 @@ final lightTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
   ),
-  appBarTheme: AppBarTheme(
-    systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
-      statusBarIconBrightness: Brightness.light,
-      systemNavigationBarColor: Colors.transparent,
-    ),
-  ),
 );
 
 final darkTheme = ThemeData(
@@ -90,12 +84,6 @@ final darkTheme = ThemeData(
   pageTransitionsTheme: pageTransitionsTheme,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
-  ),
-  appBarTheme: AppBarTheme(
-    systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
-      statusBarIconBrightness: Brightness.light,
-      systemNavigationBarColor: Colors.transparent,
-    ),
   ),
 );
 

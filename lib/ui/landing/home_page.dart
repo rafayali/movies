@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_flutter/ui/common/common.dart';
 
 class HomePageTabs extends StatefulWidget {
   const HomePageTabs({Key? key, required List<HomePageTab> tabs})
@@ -41,12 +42,14 @@ class _HomePageTabsState extends State<HomePageTabs> {
     return DefaultTabController(
       length: bottomNavigationBarItems.length,
       child: Scaffold(
-        body: PageView(
-          controller: pageController,
-          physics: const NeverScrollableScrollPhysics(),
-          onPageChanged: (index) =>
-              WidgetsBinding.instance.focusManager.primaryFocus?.unfocus(),
-          children: pages,
+        body: ThemedAnnotatedRegion(
+          child: PageView(
+            controller: pageController,
+            physics: const NeverScrollableScrollPhysics(),
+            onPageChanged: (index) =>
+                WidgetsBinding.instance.focusManager.primaryFocus?.unfocus(),
+            children: pages,
+          ),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: bottomNavigationBarItems,
