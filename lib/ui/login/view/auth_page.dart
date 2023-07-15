@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AuthPage extends StatefulWidget {
   static const routeName = '/auth';
@@ -30,7 +31,7 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login with TMDB'),
+        title: Text(AppLocalizations.of(context)!.loginDialogTitle),
       ),
       body: WebViewWidget(controller: webviewController),
     );

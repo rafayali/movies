@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_flutter/resources/resources.dart' as res;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:movies_flutter/utils/constants.dart';
 
 import '../../../../domain/detail/entities/movie_detail.dart';
 import '../../../movie_detail/view/movie_detail_page.dart';
@@ -22,21 +24,27 @@ class SectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            _headerTitle,
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge!
-                .copyWith(fontWeight: FontWeight.bold),
-          ),
-          TextButton(
-            onPressed: _onPress,
-            child: const Text('See More'),
-          )
-        ],
+      child: SizedBox(
+        height: 48,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              _headerTitle,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge!
+                  .copyWith(fontWeight: FontWeight.bold),
+            ),
+            Visibility(
+              visible: false,
+              child: TextButton(
+                onPressed: _onPress,
+                child: Text(AppLocalizations.of(context)!.seeMoreButtonText),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -104,7 +112,7 @@ class PopularMoviesCarouselItem extends StatelessWidget {
                             .copyWith(color: Colors.white),
                       ),
                       Text(
-                        movie.genres ?? '',
+                        movie.genres ?? emptyString,
                         style: const TextStyle(
                           color: Colors.white,
                         ),
@@ -165,7 +173,9 @@ class MainHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                'Hello ${_name ?? 'Guest User'}',
+                AppLocalizations.of(context)!.discoverPageTitle(
+                  _name ?? AppLocalizations.of(context)!.guestUser,
+                ),
                 textAlign: TextAlign.start,
                 style: Theme.of(context)
                     .textTheme
@@ -175,8 +185,8 @@ class MainHeader extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 _name == null
-                    ? 'Login to see your favorites and recommendations'
-                    : 'Lets explore your favorite movies',
+                    ? AppLocalizations.of(context)!.discoverGuestUserDesc
+                    : AppLocalizations.of(context)!.discoverLoggedInUserDesc,
                 textAlign: TextAlign.start,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),

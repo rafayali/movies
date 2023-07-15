@@ -8,9 +8,9 @@ import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
 
 List<Route<dynamic>> generateInitialRoute(String initialRoute) {
   switch (initialRoute) {
-    case HomePageTabs.routeName:
+    case HomePageHost.routeName:
       return [
-        generateRoute(const RouteSettings(name: HomePageTabs.routeName))!,
+        generateRoute(const RouteSettings(name: HomePageHost.routeName))!,
       ];
     default:
       return List.empty();
@@ -23,7 +23,7 @@ Route<dynamic>? generateRoute(RouteSettings settings) {
       return AuthRoute(settings: settings);
     case MovieDetailPage.routeName:
       return MovieDetailRoute(settings: settings);
-    case HomePageTabs.routeName:
+    case HomePageHost.routeName:
       return HomePageRoute(settings: settings);
   }
 

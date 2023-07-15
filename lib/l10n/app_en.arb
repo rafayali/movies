@@ -1,6 +1,29 @@
 {
-  "helloWorld": "Hello World!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  }
+  "discoverPageTitle": "Hello {userName}",
+  "@discoverPageTitle": {
+    "description": "Greeting title in Discover page",
+    "placeholders": {
+        "userName": {
+            "type": "String",
+            "example": "Rafay Ali"
+        }
+    }
+  },
+  "guestUser": "Guest User",
+  "discoverGuestUserDesc": "Login to see your favorite movies and recommendations",
+  "discoverLoggedInUserDesc": "Lets explore your favorite movies and tv shows",
+  "popularMoviesTitle": "Popular Movies",
+  "tvShowsTitle": "TV Shows",
+  "discoverTitle": "Discover",
+  "loginDialogTitle": "Login with TMDB",
+  "loginButtonText": "Login",
+  "castTitle": "Cast",
+  "errorLoadingMovies": "Error loading movies, please try again.",
+  "retryButtonText": "Retry",
+  "seeMoreButtonText": "See More",
+  "noResults": "No Results",
+  "searchPageSearchTextFieldHint": "Search Movies, TvShows and People",
+  "searchPagePlaceholder": "Search for your favorite movie, tvshow and cast",
+  "homeDiscoverTitle": "Discover",
+  "homeSearchTitle": "Search"
 }

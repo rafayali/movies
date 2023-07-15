@@ -1,0 +1,29 @@
+{
+  "discoverPageTitle": "Hallo {userName}",
+  "@discoverPageTitle": {
+    "description": "Greeting title in Discover page",
+    "placeholders": {
+        "userName": {
+            "type": "String",
+            "example": "Rafay Ali"
+        }
+    }
+  },
+  "guestUser": "Gastbenutzer",
+  "discoverGuestUserDesc": "Melden Sie sich an, um Ihre Lieblingsfilme und Empfehlungen zu sehen",
+  "discoverLoggedInUserDesc": "Entdecken Sie Ihre Lieblingsfilme und -fernsehsendungen",
+  "popularMoviesTitle": "Beliebte Filme",
+  "tvShowsTitle": "Fernsehshows",
+  "discoverTitle": "Entdecken",
+  "loginDialogTitle": "Melden Sie sich mit TMDB an",
+  "loginButtonText": "Anmeldung",
+  "castTitle": "Besetzung",
+  "errorLoadingMovies": "Beim Laden der Filme ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+  "retryButtonText": "Retry",
+  "seeMoreButtonText": "Mehr sehen",
+  "noResults": "Keine Ergebnisse",
+  "searchPageSearchTextFieldHint": "Suchen Sie nach Filmen, Fernsehsendungen und Personen",
+  "searchPagePlaceholder": "Suchen Sie nach Ihrem Lieblingsfilm, Ihrer Lieblingsserie und Ihrer Lieblingsbesetzung",
+  "homeDiscoverTitle": "Entdecken",
+  "homeSearchTitle": "Suchen"
+}

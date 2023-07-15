@@ -6,6 +6,7 @@ import 'package:movies_flutter/ui/login/view/login_dialog.dart';
 import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
 import 'package:movies_flutter/widgets/movie_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../viewmodel/discover_viewmodel.dart';
 import '../models/home_ui_model.dart';
@@ -13,15 +14,15 @@ import 'widgets.dart';
 
 const _listHeight = 290.0;
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class DiscoverPage extends StatefulWidget {
+  const DiscoverPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<DiscoverPage> createState() => _DiscoverPageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with AutomaticKeepAliveClientMixin<HomePage> {
+class _DiscoverPageState extends State<DiscoverPage>
+    with AutomaticKeepAliveClientMixin<DiscoverPage> {
   late final HomeViewModel viewModel = context.read();
 
   @override
@@ -58,10 +59,10 @@ class _HomePageState extends State<HomePage>
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Error loading movies. Please try again.'),
+                Text(AppLocalizations.of(context)!.errorLoadingMovies),
                 ElevatedButton(
                   onPressed: () => context.read<HomeViewModel>().retry(),
-                  child: const Text('Retry'),
+                  child: Text(AppLocalizations.of(context)!.retryButtonText),
                 )
               ],
             ),
@@ -107,7 +108,7 @@ class _HomePageContent extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           SectionHeader(
-            headerTitle: 'Popular Movies',
+            headerTitle: AppLocalizations.of(context)!.popularMoviesTitle,
             onPress: () {},
           ),
           SizedBox(
@@ -126,7 +127,7 @@ class _HomePageContent extends StatelessWidget {
               )),
           const SizedBox(height: 8),
           SectionHeader(
-            headerTitle: 'Tv Shows',
+            headerTitle: AppLocalizations.of(context)!.tvShowsTitle,
             onPress: () {},
           ),
           SizedBox(
@@ -160,7 +161,7 @@ class _HomePageContent extends StatelessWidget {
             ),
           ),
           SectionHeader(
-            headerTitle: 'Discover',
+            headerTitle: AppLocalizations.of(context)!.discoverTitle,
             onPress: () {},
           ),
           SizedBox(
