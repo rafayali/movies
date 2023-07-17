@@ -7,6 +7,7 @@ import 'package:movies_flutter/ui/login/models/login_models.dart';
 import 'package:movies_flutter/ui/login/view/auth_page.dart';
 import 'package:movies_flutter/ui/login/viewmodel/login_viewmodel.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginDialog extends StatefulWidget {
   const LoginDialog({super.key});
@@ -41,8 +42,8 @@ class _LoginDialogState extends State<LoginDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text(
-        'Login with TMDB',
+      title: Text(
+        AppLocalizations.of(context)!.loginDialogTitle,
         textAlign: TextAlign.center,
       ),
       content: Column(
@@ -55,8 +56,8 @@ class _LoginDialogState extends State<LoginDialog> {
             height: 64,
           ),
           const SizedBox(height: 16),
-          const Text(
-            'Login to see your favorite movies and recommendations',
+          Text(
+            AppLocalizations.of(context)!.discoverGuestUserDesc,
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
@@ -78,7 +79,7 @@ class _LoginDialogState extends State<LoginDialog> {
                   onPressed: () {
                     _loginViewModel.login();
                   },
-                  child: const Text('Login'),
+                  child: Text(AppLocalizations.of(context)!.loginButtonText),
                 );
               },
             ),

@@ -7,6 +7,7 @@ import 'package:movies_flutter/ui/landing/search/viewmodel/search_viewmodel.dart
 import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
 import 'package:movies_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 part 'widgets/search_item.dart';
 
@@ -66,7 +67,8 @@ class _SearchPageState extends State<SearchPage>
                         )
                       : null,
                   isDense: true,
-                  hintText: 'Search Movies, TvShows and People',
+                  hintText: AppLocalizations.of(context)!
+                      .searchPageSearchTextFieldHint,
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(8),
@@ -113,18 +115,25 @@ class _SearchPageState extends State<SearchPage>
                 padding:
                     const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               ),
-              noResults: (value) => const Center(child: Text('No Results')),
-              searchForMovies: (value) => const Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.search,
-                      size: 64,
-                      color: Colors.grey,
-                    ),
-                    Text('Search for your favorite movie, tvshow and cast'),
-                  ],
+              noResults: (value) =>
+                  Center(child: Text(AppLocalizations.of(context)!.noResults)),
+              searchForMovies: (value) => Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.search,
+                        size: 64,
+                        color: Colors.grey,
+                      ),
+                      Text(
+                        AppLocalizations.of(context)!.searchPagePlaceholder,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
