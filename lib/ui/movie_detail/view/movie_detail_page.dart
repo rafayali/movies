@@ -19,13 +19,11 @@ class MovieDetailPage extends StatefulWidget {
 }
 
 class _MovieDetailPageState extends State<MovieDetailPage> {
-  late final MovieDetailViewModel _viewModel;
+  late final MovieDetailViewModel _viewModel = context.read();
 
   @override
   void initState() {
     super.initState();
-    _viewModel = context.read();
-
     _viewModel.load();
   }
 
@@ -55,12 +53,14 @@ class MovieContent extends StatelessWidget {
               Stack(
                 alignment: Alignment.topLeft,
                 children: [
-                  CachedNetworkImage(
-                    imageUrl: _movieDetailUiModel.backdrop ?? emptyString,
-                    height: 372,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                    errorWidget: (_, __, ___) => Container(color: Colors.grey),
+                  AspectRatio(
+                    aspectRatio: 1,
+                    child: CachedNetworkImage(
+                      imageUrl: _movieDetailUiModel.backdrop ?? emptyString,
+                      fit: BoxFit.cover,
+                      errorWidget: (_, __, ___) =>
+                          Container(color: Colors.grey),
+                    ),
                   ),
                   Positioned.fill(
                     child: Align(
@@ -93,29 +93,36 @@ class MovieContent extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 8),
-                            Builder(
-                              builder: (context) {
-                                if (_movieDetailUiModel.runtime == null ||
-                                    _movieDetailUiModel.releaseDate == null ||
-                                    _movieDetailUiModel.genre == null) {
-                                  return const Text(emptyString);
-                                } else {
-                                  final year =
-                                      _movieDetailUiModel.releaseDate!.year;
-                                  final genre =
-                                      _movieDetailUiModel.genre!.first;
-                                  final minutes =
-                                      _movieDetailUiModel.runtime! % 60;
-                                  final hours =
-                                      _movieDetailUiModel.runtime! ~/ 60;
-                                  return Text(
-                                    '$year • $genre • ${hours}h ${minutes}m',
-                                    style:
-                                        Theme.of(context).textTheme.bodyLarge,
-                                    textAlign: TextAlign.center,
-                                  );
-                                }
-                              },
+                            SizedBox(
+                              height: 24,
+                              child: Center(
+                                child: Builder(
+                                  builder: (context) {
+                                    if (_movieDetailUiModel.runtime == null ||
+                                        _movieDetailUiModel.releaseDate ==
+                                            null ||
+                                        _movieDetailUiModel.genre == null) {
+                                      return const Text(emptyString);
+                                    } else {
+                                      final year =
+                                          _movieDetailUiModel.releaseDate!.year;
+                                      final genre =
+                                          _movieDetailUiModel.genre!.first;
+                                      final minutes =
+                                          _movieDetailUiModel.runtime! % 60;
+                                      final hours =
+                                          _movieDetailUiModel.runtime! ~/ 60;
+                                      return Text(
+                                        '$year • $genre • ${hours}h ${minutes}m',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge,
+                                        textAlign: TextAlign.center,
+                                      );
+                                    }
+                                  },
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -145,7 +152,7 @@ class MovieContent extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
                     child: Text(
                       _movieDetailUiModel.description!,
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.bodyMedium,
                       textAlign: TextAlign.center,
                     ),
                   );
