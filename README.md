@@ -1,6 +1,7 @@
 # Movies
 
 [![Deploy](https://github.com/rafayali/movies/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/rafayali/movies/actions/workflows/deploy.yml)
+[![Deploy](https://img.shields.io/badge/GooglePlay-Download-blue?logo=googleplay)](https://play.google.com/store/apps/details?id=com.rafay.moviesflutter)
 
 A movie app showcase built using [The Movie Database][1] api in Flutter
 
