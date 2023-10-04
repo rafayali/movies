@@ -50,92 +50,94 @@ class MovieContent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Stack(
-                alignment: Alignment.topLeft,
-                children: [
-                  AspectRatio(
-                    aspectRatio: 1,
-                    child: CachedNetworkImage(
-                      imageUrl: _movieDetailUiModel.backdrop ?? emptyString,
-                      fit: BoxFit.cover,
-                      errorWidget: (_, __, ___) =>
-                          Container(color: Colors.grey),
+              AspectRatio(
+                aspectRatio: 1,
+                child: Stack(
+                  alignment: Alignment.topLeft,
+                  children: [
+                    Positioned.fill(
+                      child: CachedNetworkImage(
+                        imageUrl: _movieDetailUiModel.backdrop ?? emptyString,
+                        fit: BoxFit.cover,
+                        errorWidget: (_, __, ___) =>
+                            Container(color: Colors.grey),
+                      ),
                     ),
-                  ),
-                  Positioned.fill(
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.transparent,
-                              Theme.of(context).colorScheme.background,
-                            ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                          ),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 16, right: 16),
-                              child: Text(
-                                _movieDetailUiModel.title,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineSmall!
-                                    .copyWith(fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.center,
-                              ),
+                    Positioned.fill(
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.transparent,
+                                Theme.of(context).colorScheme.background,
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
                             ),
-                            const SizedBox(height: 8),
-                            SizedBox(
-                              height: 24,
-                              child: Center(
-                                child: Builder(
-                                  builder: (context) {
-                                    if (_movieDetailUiModel.runtime == null ||
-                                        _movieDetailUiModel.releaseDate ==
-                                            null ||
-                                        _movieDetailUiModel.genre == null) {
-                                      return const Text(emptyString);
-                                    } else {
-                                      final year =
-                                          _movieDetailUiModel.releaseDate!.year;
-                                      final genre =
-                                          _movieDetailUiModel.genre!.first;
-                                      final minutes =
-                                          _movieDetailUiModel.runtime! % 60;
-                                      final hours =
-                                          _movieDetailUiModel.runtime! ~/ 60;
-                                      return Text(
-                                        '$year • $genre • ${hours}h ${minutes}m',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge,
-                                        textAlign: TextAlign.center,
-                                      );
-                                    }
-                                  },
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 16, right: 16),
+                                child: Text(
+                                  _movieDetailUiModel.title,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineSmall!
+                                      .copyWith(fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
-                            ),
-                          ],
+                              const SizedBox(height: 8),
+                              SizedBox(
+                                height: 24,
+                                child: Center(
+                                  child: Builder(
+                                    builder: (context) {
+                                      if (_movieDetailUiModel.runtime == null ||
+                                          _movieDetailUiModel.releaseDate ==
+                                              null ||
+                                          _movieDetailUiModel.genre == null) {
+                                        return const Text(emptyString);
+                                      } else {
+                                        final year = _movieDetailUiModel
+                                            .releaseDate!.year;
+                                        final genre =
+                                            _movieDetailUiModel.genre!.first;
+                                        final minutes =
+                                            _movieDetailUiModel.runtime! % 60;
+                                        final hours =
+                                            _movieDetailUiModel.runtime! ~/ 60;
+                                        return Text(
+                                          '$year • $genre • ${hours}h ${minutes}m',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge,
+                                          textAlign: TextAlign.center,
+                                        );
+                                      }
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  SafeArea(
-                    minimum: const EdgeInsets.only(top: 32),
-                    child: MoviesBackButton(
-                      onPressed: () => Navigator.pop(context),
+                    SafeArea(
+                      minimum: const EdgeInsets.only(top: 32),
+                      child: MoviesBackButton(
+                        onPressed: () => Navigator.pop(context),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               Builder(builder: (context) {
                 if (_movieDetailUiModel.rating == null) {

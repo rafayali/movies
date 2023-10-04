@@ -6,7 +6,7 @@ import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 import 'package:movies_flutter/data/remote/services/entities/movie_credits/movie_credits.dart'
     as credits;
 
-class LoadTvShowDetailUsecase extends UseCase<int, MovieDetail> {
+class LoadTvShowDetailUsecase extends UseCase<MovieDetailParams, MovieDetail> {
   LoadTvShowDetailUsecase({
     required this.tmdbService,
     required this.buildConfig,
@@ -17,24 +17,24 @@ class LoadTvShowDetailUsecase extends UseCase<int, MovieDetail> {
   final BuildConfig buildConfig;
 
   @override
-  Future<MovieDetail> execute(int params) async {
+  Future<MovieDetail> execute(MovieDetailParams params) async {
     final tvShow =
-        (await tmdbService.getTvShow(buildConfig.tmdbApiKey, params)).body!;
+        (await tmdbService.getTvShow(buildConfig.tmdbApiKey, params.id)).body!;
     final credits =
-        (await tmdbService.getTvShowCredits(buildConfig.tmdbApiKey, params))
+        (await tmdbService.getTvShowCredits(buildConfig.tmdbApiKey, params.id))
             .body!;
-    return _createMovieDetailFromTvShow(tvShow, credits, buildConfig);
+    return _createMovieDetailFromTvShow(tvShow, credits, buildConfig, params);
   }
 
   MovieDetail _createMovieDetailFromTvShow(
-    TvShow tvShow,
-    credits.Credits credits,
-    BuildConfig buildConfig,
-  ) {
+      TvShow tvShow,
+      credits.Credits credits,
+      BuildConfig buildConfig,
+      MovieDetailParams params) {
     return MovieDetail(
       id: tvShow.id,
       title: tvShow.name,
-      backdrop: '${buildConfig.baseImageUrlOriginal}${tvShow.backdropPath}',
+      backdrop: params.backdropUrl,
       description: tvShow.overview,
       rating: tvShow.voteAverage,
       genre: tvShow.genres?.map((e) => e.name).toList() ?? List.empty(),

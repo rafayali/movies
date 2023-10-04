@@ -7,7 +7,7 @@ import 'package:movies_flutter/data/remote/services/tmdb_service.dart';
 import '../../config.dart';
 import 'entities/movie_detail.dart';
 
-class LoadMovieDetailUsecase extends UseCase<int, MovieDetail> {
+class LoadMovieDetailUsecase extends UseCase<MovieDetailParams, MovieDetail> {
   LoadMovieDetailUsecase(
       {required this.tmdbService, required this.buildConfig});
 
@@ -16,13 +16,13 @@ class LoadMovieDetailUsecase extends UseCase<int, MovieDetail> {
   final BuildConfig buildConfig;
 
   @override
-  Future<MovieDetail> execute(int params) async {
+  Future<MovieDetail> execute(MovieDetailParams params) async {
     final movie =
-        (await tmdbService.getMovie(buildConfig.tmdbApiKey, params)).body!;
+        (await tmdbService.getMovie(buildConfig.tmdbApiKey, params.id)).body!;
     final credits =
-        (await tmdbService.getMovieCredits(buildConfig.tmdbApiKey, params))
+        (await tmdbService.getMovieCredits(buildConfig.tmdbApiKey, params.id))
             .body!;
-    return _createMovieDetailFromMovie(movie, credits, buildConfig);
+    return _createMovieDetailFromMovie(movie, credits, buildConfig, params);
   }
 }
 
@@ -30,11 +30,12 @@ MovieDetail _createMovieDetailFromMovie(
   Movie movie,
   credits.Credits credits,
   BuildConfig buildConfig,
+  MovieDetailParams params,
 ) {
   return MovieDetail(
     id: movie.id,
     title: movie.title,
-    backdrop: '${buildConfig.baseImageUrlOriginal}${movie.backdropPath}',
+    backdrop: params.backdropUrl,
     description: movie.overview,
     rating: movie.voteAverage,
     genre: movie.genres?.map((e) => e.name).toList() ?? List.empty(),

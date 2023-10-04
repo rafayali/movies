@@ -23,4 +23,8 @@ abstract class UseCase<Input, Output> {
 }
 
 /// Placeholder class for situations where no arguments needs to be passed
-class Nothing {}
+class Nothing {
+  const Nothing();
+}
+
+const nothing = Nothing();

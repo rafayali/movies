@@ -37,14 +37,15 @@ class _HomePageHostState extends State<HomePageHost> {
           case HomePageTab.discover:
             return ChangeNotifierProvider(
               create: (context) => HomeViewModel(
-                  loadHomeUsecase: LoadHomeUsecase(
-                    tmdbService: context.read(),
-                    authStore: context.read(),
-                    buildConfig: context.read(),
-                  ),
-                  checkLoginUsecase: CheckLoginUsecase(
-                    authStore: context.read(),
-                  )),
+                loadHomeUsecase: LoadHomeUsecase(
+                  tmdbService: context.read(),
+                  authStore: context.read(),
+                  buildConfig: context.read(),
+                ),
+                checkLoginUsecase: CheckLoginUsecase(
+                  authStore: context.read(),
+                ),
+              ),
               child: Builder(builder: (context) {
                 return const DiscoverPage();
               }),

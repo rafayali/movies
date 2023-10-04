@@ -33,10 +33,10 @@ class MovieDetailViewModel extends ViewModel<MovieDetail> {
 
     switch (_params.type) {
       case Type.movie:
-        result = await _loadMovieDetailUsecase.invoke(_params.id);
+        result = await _loadMovieDetailUsecase.invoke(_params);
         break;
       case Type.tvShow:
-        result = await _loadTvShowDetailUsecase.invoke(_params.id);
+        result = await _loadTvShowDetailUsecase.invoke(_params);
         break;
     }
 

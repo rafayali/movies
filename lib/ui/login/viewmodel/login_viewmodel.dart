@@ -23,7 +23,7 @@ class LoginViewModel extends ViewModel<LoginState> {
   Future<void> login() async {
     setState(const LoginState.loading());
 
-    var token = await _newTokenUseCase.invoke(Nothing());
+    var token = await _newTokenUseCase.invoke(nothing);
 
     if (token.isError) {
       setState(const LoginState.ok());
