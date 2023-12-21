@@ -26,7 +26,7 @@ jobs:
       - name: Create APK
         run: flutter pub get && flutter build apk --release --flavor demo
           
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: Upload APK
           path: build/app/outputs/flutter-apk/app-demo-release.apk
