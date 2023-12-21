@@ -18,7 +18,7 @@ class HomeViewModel extends ViewModel<UiState<HomeModel>> {
   final CheckLoginUsecase checkLoginUsecase;
 
   Future<void> load() async {
-    final homeModel = await loadHomeUsecase.invoke(Nothing());
+    final homeModel = await loadHomeUsecase.invoke(nothing);
     if (homeModel.isValue) {
       setState(UiState.success(homeModel.asValue!.value));
     } else {
@@ -27,7 +27,7 @@ class HomeViewModel extends ViewModel<UiState<HomeModel>> {
   }
 
   Future<void> refresh() async {
-    final homeModel = await loadHomeUsecase.invoke(Nothing());
+    final homeModel = await loadHomeUsecase.invoke(nothing);
     if (!homeModel.isValue) return;
     setState(UiState.success(homeModel.asValue!.value));
   }
@@ -38,7 +38,7 @@ class HomeViewModel extends ViewModel<UiState<HomeModel>> {
   }
 
   Future<bool> openProfile() async {
-    final check = await checkLoginUsecase.invoke(Nothing());
+    final check = await checkLoginUsecase.invoke(nothing);
     if (check.isValue) {
       return check.asValue!.value;
     } else {

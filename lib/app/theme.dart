@@ -71,7 +71,6 @@ const darkColorScheme = ColorScheme(
 final lightTheme = ThemeData(
   useMaterial3: true,
   colorScheme: lightColorScheme,
-  pageTransitionsTheme: pageTransitionsTheme,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
   ),
@@ -80,18 +79,7 @@ final lightTheme = ThemeData(
 final darkTheme = ThemeData(
   useMaterial3: true,
   colorScheme: darkColorScheme,
-  pageTransitionsTheme: pageTransitionsTheme,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
   ),
-);
-
-const pageTransitionsTheme = PageTransitionsTheme(
-  builders: {
-    TargetPlatform.android: ZoomPageTransitionsBuilder(),
-    TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-    TargetPlatform.linux: ZoomPageTransitionsBuilder(),
-    TargetPlatform.macOS: CupertinoPageTransitionsBuilder(),
-    TargetPlatform.windows: ZoomPageTransitionsBuilder(),
-  },
 );
