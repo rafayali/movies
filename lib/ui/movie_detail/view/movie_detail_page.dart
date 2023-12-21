@@ -58,7 +58,7 @@ class MovieContent extends StatelessWidget {
                     Positioned.fill(
                       child: CachedNetworkImage(
                         imageUrl: _movieDetailUiModel.backdrop ?? emptyString,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fitHeight,
                         errorWidget: (_, __, ___) =>
                             Container(color: Colors.grey),
                       ),

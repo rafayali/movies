@@ -165,35 +165,36 @@ class _HomePageContent extends StatelessWidget {
             onPress: () {},
           ),
           SizedBox(
-              height: _listHeight,
-              child: ListView.separated(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                scrollDirection: Axis.horizontal,
-                itemCount: homeUiModel.discoverMovies.length,
-                itemBuilder: (context, index) {
-                  return MovieWidget(
-                    homeUiModel.discoverMovies[index].id,
-                    homeUiModel.discoverMovies[index].name,
-                    homeUiModel.discoverMovies[index].poster,
-                    homeUiModel.discoverMovies[index].date == null
-                        ? 'Not Available'
-                        : DateFormat.yMMMMd()
-                            .format(homeUiModel.discoverMovies[index].date!),
-                    onClickListener: (movieId) =>
-                        Navigator.of(context).pushNamed(
-                      MovieDetailPage.routeName,
-                      arguments: MovieDetailParams(
-                        id: homeUiModel.discoverMovies[index].id,
-                        title: homeUiModel.discoverMovies[index].name,
-                        backdropUrl: homeUiModel.discoverMovies[index].backdrop,
-                        type: Type.movie,
-                      ),
+            height: _listHeight,
+            child: ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              scrollDirection: Axis.horizontal,
+              itemCount: homeUiModel.discoverMovies.length,
+              itemBuilder: (context, index) {
+                return MovieWidget(
+                  homeUiModel.discoverMovies[index].id,
+                  homeUiModel.discoverMovies[index].name,
+                  homeUiModel.discoverMovies[index].poster,
+                  homeUiModel.discoverMovies[index].date == null
+                      ? 'Not Available'
+                      : DateFormat.yMMMMd()
+                          .format(homeUiModel.discoverMovies[index].date!),
+                  onClickListener: (movieId) => Navigator.of(context).pushNamed(
+                    MovieDetailPage.routeName,
+                    arguments: MovieDetailParams(
+                      id: homeUiModel.discoverMovies[index].id,
+                      title: homeUiModel.discoverMovies[index].name,
+                      backdropUrl: homeUiModel.discoverMovies[index].backdrop,
+                      type: Type.movie,
                     ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) =>
-                    const SizedBox(width: 8),
-              )),
+                  ),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) =>
+                  const SizedBox(width: 8),
+            ),
+          ),
+          const SizedBox(height: 16),
           const SafeArea(
             top: false,
             child: SizedBox(),
