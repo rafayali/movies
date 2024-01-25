@@ -2,10 +2,10 @@ part of '../search_page.dart';
 
 class SearchItemWidget extends StatelessWidget {
   const SearchItemWidget({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.searchItem,
-  }) : super(key: key);
+  });
 
   final SearchItem searchItem;
 

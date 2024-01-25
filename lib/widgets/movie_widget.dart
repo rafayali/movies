@@ -13,9 +13,9 @@ class MovieWidget extends StatelessWidget {
     this.title,
     this.coverArt,
     this.date, {
-    Key? key,
+    super.key,
     this.onClickListener,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

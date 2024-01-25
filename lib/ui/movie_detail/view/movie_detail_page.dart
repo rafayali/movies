@@ -10,7 +10,7 @@ import 'widgets/cast.dart';
 import 'widgets/rating.dart';
 
 class MovieDetailPage extends StatefulWidget {
-  const MovieDetailPage({Key? key}) : super(key: key);
+  const MovieDetailPage({super.key});
 
   static const routeName = '/detail';
 
@@ -39,7 +39,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
 class MovieContent extends StatelessWidget {
   final MovieDetail _movieDetailUiModel;
 
-  const MovieContent(this._movieDetailUiModel, {Key? key}) : super(key: key);
+  const MovieContent(this._movieDetailUiModel, {super.key});
 
   @override
   Widget build(BuildContext context) {

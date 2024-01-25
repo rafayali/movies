@@ -15,7 +15,7 @@ import 'widgets.dart';
 const _listHeight = 290.0;
 
 class DiscoverPage extends StatefulWidget {
-  const DiscoverPage({Key? key}) : super(key: key);
+  const DiscoverPage({super.key});
 
   @override
   State<DiscoverPage> createState() => _DiscoverPageState();
@@ -79,10 +79,9 @@ class _DiscoverPageState extends State<DiscoverPage>
 
 class _HomePageContent extends StatelessWidget {
   const _HomePageContent({
-    Key? key,
     required this.homeUiModel,
     required this.onTapHeader,
-  }) : super(key: key);
+  });
 
   final HomeModel homeUiModel;
   final VoidCallback onTapHeader;
