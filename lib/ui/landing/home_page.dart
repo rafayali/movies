@@ -11,7 +11,7 @@ import 'package:movies_flutter/ui/landing/search/viewmodel/search_viewmodel.dart
 import 'package:provider/provider.dart';
 
 class HomePageHost extends StatefulWidget {
-  const HomePageHost({Key? key}) : super(key: key);
+  const HomePageHost({super.key});
 
   static const String routeName = '/';
 

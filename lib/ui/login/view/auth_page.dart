@@ -5,7 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AuthPage extends StatefulWidget {
   static const routeName = '/auth';
 
-  const AuthPage({Key? key, required this.requestToken}) : super(key: key);
+  const AuthPage({super.key, required this.requestToken});
 
   final String requestToken;
 

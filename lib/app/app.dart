@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MoviesApp extends StatelessWidget {
-  const MoviesApp({Key? key, required this.params}) : super(key: key);
+  const MoviesApp({super.key, required this.params});
 
   final MoviesAppParams params;
 

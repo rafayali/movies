@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 
 class ThemedAnnotatedRegion extends StatelessWidget {
   const ThemedAnnotatedRegion({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Widget child;
 

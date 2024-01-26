@@ -10,12 +10,11 @@ import '../models/movie_item.dart';
 
 class SectionHeader extends StatelessWidget {
   const SectionHeader({
-    Key? key,
+    super.key,
     required String headerTitle,
     VoidCallback? onPress,
   })  : _headerTitle = headerTitle,
-        _onPress = onPress,
-        super(key: key);
+        _onPress = onPress;
 
   final String _headerTitle;
   final VoidCallback? _onPress;
@@ -52,9 +51,9 @@ class SectionHeader extends StatelessWidget {
 
 class PopularMoviesCarouselItem extends StatelessWidget {
   const PopularMoviesCarouselItem({
-    Key? key,
+    super.key,
     required this.movie,
-  }) : super(key: key);
+  });
 
   final MovieItem movie;
 
@@ -131,14 +130,13 @@ class PopularMoviesCarouselItem extends StatelessWidget {
 
 class MainHeader extends StatelessWidget {
   const MainHeader({
-    Key? key,
+    super.key,
     required String? name,
     required String? imageUrl,
     required VoidCallback onTapImage,
   })  : _name = name,
         _imageUrl = imageUrl,
-        _onTapImage = onTapImage,
-        super(key: key);
+        _onTapImage = onTapImage;
 
   final String? _name;
   final String? _imageUrl;
