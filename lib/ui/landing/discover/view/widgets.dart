@@ -153,7 +153,7 @@ class MainHeader extends StatelessWidget {
       );
     } else {
       avatar = CachedNetworkImage(
-        imageUrl: _imageUrl!,
+        imageUrl: _imageUrl,
         imageBuilder: (context, imageProvider) => CircleAvatar(
           radius: 24,
           backgroundImage: imageProvider,
