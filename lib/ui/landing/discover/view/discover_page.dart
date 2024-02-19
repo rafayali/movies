@@ -7,7 +7,7 @@ import 'package:movies_flutter/ui/landing/discover/view/widgets/main_header_widg
 import 'package:movies_flutter/ui/landing/discover/view/widgets/popular_movie_widget.dart';
 import 'package:movies_flutter/ui/landing/discover/view/widgets/section_header_widget.dart';
 import 'package:movies_flutter/ui/landing/discover/viewmodel/discover_viewmodel.dart';
-import 'package:movies_flutter/ui/login/view/login_dialog.dart';
+import 'package:movies_flutter/ui/login/view/dialogs/login_dialog.dart';
 import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
 import 'package:movies_flutter/ui/landing/discover/view/widgets/movie_widget.dart';
 import 'package:provider/provider.dart';
