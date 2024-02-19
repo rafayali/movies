@@ -1,5 +1,5 @@
 import 'package:movies_flutter/config.dart';
-import 'package:movies_flutter/data/auth_store.dart';
+import 'package:movies_flutter/data/local/auth_store.dart';
 import 'package:movies_flutter/core/usecase.dart';
 import 'package:movies_flutter/data/remote/services/entities/account/account.dart';
 import 'package:movies_flutter/data/remote/services/entities/discover_movies/discover_movies.dart';

@@ -6,8 +6,8 @@ part of 'multi_search.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MultiSearch _$$_MultiSearchFromJson(Map<String, dynamic> json) =>
-    _$_MultiSearch(
+_$MultiSearchImpl _$$MultiSearchImplFromJson(Map<String, dynamic> json) =>
+    _$MultiSearchImpl(
       page: json['page'] as int,
       results: (json['results'] as List<dynamic>)
           .map((e) => Entity.fromJson(e as Map<String, dynamic>))
@@ -16,7 +16,7 @@ _$_MultiSearch _$$_MultiSearchFromJson(Map<String, dynamic> json) =>
       totalResults: json['total_results'] as int,
     );
 
-Map<String, dynamic> _$$_MultiSearchToJson(_$_MultiSearch instance) =>
+Map<String, dynamic> _$$MultiSearchImplToJson(_$MultiSearchImpl instance) =>
     <String, dynamic>{
       'page': instance.page,
       'results': instance.results,
@@ -24,8 +24,8 @@ Map<String, dynamic> _$$_MultiSearchToJson(_$_MultiSearch instance) =>
       'total_results': instance.totalResults,
     };
 
-_$MovieEntity _$$MovieEntityFromJson(Map<String, dynamic> json) =>
-    _$MovieEntity(
+_$MovieEntityImpl _$$MovieEntityImplFromJson(Map<String, dynamic> json) =>
+    _$MovieEntityImpl(
       id: json['id'] as int,
       title: json['title'] as String,
       backdropPath: json['backdrop_path'] as String?,
@@ -34,7 +34,7 @@ _$MovieEntity _$$MovieEntityFromJson(Map<String, dynamic> json) =>
       $type: json['media_type'] as String?,
     );
 
-Map<String, dynamic> _$$MovieEntityToJson(_$MovieEntity instance) =>
+Map<String, dynamic> _$$MovieEntityImplToJson(_$MovieEntityImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
@@ -44,8 +44,8 @@ Map<String, dynamic> _$$MovieEntityToJson(_$MovieEntity instance) =>
       'media_type': instance.$type,
     };
 
-_$TvShowEntity _$$TvShowEntityFromJson(Map<String, dynamic> json) =>
-    _$TvShowEntity(
+_$TvShowEntityImpl _$$TvShowEntityImplFromJson(Map<String, dynamic> json) =>
+    _$TvShowEntityImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       backdropPath: json['backdrop_path'] as String?,
@@ -54,7 +54,7 @@ _$TvShowEntity _$$TvShowEntityFromJson(Map<String, dynamic> json) =>
       $type: json['media_type'] as String?,
     );
 
-Map<String, dynamic> _$$TvShowEntityToJson(_$TvShowEntity instance) =>
+Map<String, dynamic> _$$TvShowEntityImplToJson(_$TvShowEntityImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -64,15 +64,15 @@ Map<String, dynamic> _$$TvShowEntityToJson(_$TvShowEntity instance) =>
       'media_type': instance.$type,
     };
 
-_$PersonEntity _$$PersonEntityFromJson(Map<String, dynamic> json) =>
-    _$PersonEntity(
+_$PersonEntityImpl _$$PersonEntityImplFromJson(Map<String, dynamic> json) =>
+    _$PersonEntityImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       profilePath: json['profile_path'] as String?,
       $type: json['media_type'] as String?,
     );
 
-Map<String, dynamic> _$$PersonEntityToJson(_$PersonEntity instance) =>
+Map<String, dynamic> _$$PersonEntityImplToJson(_$PersonEntityImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

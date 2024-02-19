@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:movies_flutter/core/ui_state.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
+import 'package:movies_flutter/ui/landing/discover/models/home_ui_model.dart';
+import 'package:movies_flutter/ui/landing/discover/view/widgets/main_header_widget.dart';
+import 'package:movies_flutter/ui/landing/discover/view/widgets/popular_movie_widget.dart';
+import 'package:movies_flutter/ui/landing/discover/view/widgets/section_header_widget.dart';
+import 'package:movies_flutter/ui/landing/discover/viewmodel/discover_viewmodel.dart';
 import 'package:movies_flutter/ui/login/view/login_dialog.dart';
 import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
-import 'package:movies_flutter/widgets/movie_widget.dart';
+import 'package:movies_flutter/ui/landing/discover/view/widgets/movie_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../viewmodel/discover_viewmodel.dart';
-import '../models/home_ui_model.dart';
-import 'widgets.dart';
-
-const _listHeight = 290.0;
+const _sectionHeight = 292.0;
 
 class DiscoverPage extends StatefulWidget {
   const DiscoverPage({super.key});
@@ -28,7 +29,6 @@ class _DiscoverPageState extends State<DiscoverPage>
   @override
   void initState() {
     super.initState();
-
     viewModel.load();
   }
 
@@ -99,14 +99,14 @@ class _HomePageContent extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: MainHeader(
+            child: MainHeaderWidget(
               name: homeUiModel.name,
               imageUrl: homeUiModel.imageUrl,
               onTapImage: onTapHeader,
             ),
           ),
           const SizedBox(height: 16),
-          SectionHeader(
+          SectionHeaderWidget(
             headerTitle: AppLocalizations.of(context)!.popularMoviesTitle,
             onPress: () {},
           ),
@@ -119,18 +119,18 @@ class _HomePageContent extends StatelessWidget {
                 itemCount: homeUiModel.popularMovies.length,
                 separatorBuilder: (context, index) => const SizedBox(width: 8),
                 itemBuilder: (context, index) {
-                  return PopularMoviesCarouselItem(
+                  return PopularMovieWidget(
                     movie: homeUiModel.popularMovies[index],
                   );
                 },
               )),
           const SizedBox(height: 8),
-          SectionHeader(
+          SectionHeaderWidget(
             headerTitle: AppLocalizations.of(context)!.tvShowsTitle,
             onPress: () {},
           ),
           SizedBox(
-            height: _listHeight,
+            height: _sectionHeight,
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               scrollDirection: Axis.horizontal,
@@ -159,12 +159,12 @@ class _HomePageContent extends StatelessWidget {
                   const SizedBox(width: 8),
             ),
           ),
-          SectionHeader(
+          SectionHeaderWidget(
             headerTitle: AppLocalizations.of(context)!.discoverTitle,
             onPress: () {},
           ),
           SizedBox(
-            height: _listHeight,
+            height: _sectionHeight,
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               scrollDirection: Axis.horizontal,

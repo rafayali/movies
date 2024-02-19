@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:async/async.dart';
 import 'package:flutter/foundation.dart';
 
@@ -10,7 +11,7 @@ abstract class UseCase<Input, Output> {
     try {
       return Result.value(await execute(params));
     } catch (exception, stackTrace) {
-      debugPrint(stackTrace.toString());
+      log(stackTrace.toString());
       return Result.error(exception, stackTrace);
     }
   }

@@ -12,7 +12,7 @@ part of 'movie_detail.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Cast {
@@ -61,18 +61,20 @@ class _$CastCopyWithImpl<$Res, $Val extends Cast>
 }
 
 /// @nodoc
-abstract class _$$_CastCopyWith<$Res> implements $CastCopyWith<$Res> {
-  factory _$$_CastCopyWith(_$_Cast value, $Res Function(_$_Cast) then) =
-      __$$_CastCopyWithImpl<$Res>;
+abstract class _$$CastImplCopyWith<$Res> implements $CastCopyWith<$Res> {
+  factory _$$CastImplCopyWith(
+          _$CastImpl value, $Res Function(_$CastImpl) then) =
+      __$$CastImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String avatarUrl});
 }
 
 /// @nodoc
-class __$$_CastCopyWithImpl<$Res> extends _$CastCopyWithImpl<$Res, _$_Cast>
-    implements _$$_CastCopyWith<$Res> {
-  __$$_CastCopyWithImpl(_$_Cast _value, $Res Function(_$_Cast) _then)
+class __$$CastImplCopyWithImpl<$Res>
+    extends _$CastCopyWithImpl<$Res, _$CastImpl>
+    implements _$$CastImplCopyWith<$Res> {
+  __$$CastImplCopyWithImpl(_$CastImpl _value, $Res Function(_$CastImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -81,7 +83,7 @@ class __$$_CastCopyWithImpl<$Res> extends _$CastCopyWithImpl<$Res, _$_Cast>
     Object? name = null,
     Object? avatarUrl = null,
   }) {
-    return _then(_$_Cast(
+    return _then(_$CastImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -96,8 +98,8 @@ class __$$_CastCopyWithImpl<$Res> extends _$CastCopyWithImpl<$Res, _$_Cast>
 
 /// @nodoc
 
-class _$_Cast implements _Cast {
-  _$_Cast({required this.name, required this.avatarUrl});
+class _$CastImpl implements _Cast {
+  _$CastImpl({required this.name, required this.avatarUrl});
 
   @override
   final String name;
@@ -110,10 +112,10 @@ class _$_Cast implements _Cast {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Cast &&
+            other is _$CastImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.avatarUrl, avatarUrl) ||
                 other.avatarUrl == avatarUrl));
@@ -125,13 +127,13 @@ class _$_Cast implements _Cast {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CastCopyWith<_$_Cast> get copyWith =>
-      __$$_CastCopyWithImpl<_$_Cast>(this, _$identity);
+  _$$CastImplCopyWith<_$CastImpl> get copyWith =>
+      __$$CastImplCopyWithImpl<_$CastImpl>(this, _$identity);
 }
 
 abstract class _Cast implements Cast {
   factory _Cast({required final String name, required final String avatarUrl}) =
-      _$_Cast;
+      _$CastImpl;
 
   @override
   String get name;
@@ -139,7 +141,8 @@ abstract class _Cast implements Cast {
   String get avatarUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_CastCopyWith<_$_Cast> get copyWith => throw _privateConstructorUsedError;
+  _$$CastImplCopyWith<_$CastImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -242,11 +245,11 @@ class _$MovieDetailCopyWithImpl<$Res, $Val extends MovieDetail>
 }
 
 /// @nodoc
-abstract class _$$_MovieDetailCopyWith<$Res>
+abstract class _$$MovieDetailImplCopyWith<$Res>
     implements $MovieDetailCopyWith<$Res> {
-  factory _$$_MovieDetailCopyWith(
-          _$_MovieDetail value, $Res Function(_$_MovieDetail) then) =
-      __$$_MovieDetailCopyWithImpl<$Res>;
+  factory _$$MovieDetailImplCopyWith(
+          _$MovieDetailImpl value, $Res Function(_$MovieDetailImpl) then) =
+      __$$MovieDetailImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -262,11 +265,11 @@ abstract class _$$_MovieDetailCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MovieDetailCopyWithImpl<$Res>
-    extends _$MovieDetailCopyWithImpl<$Res, _$_MovieDetail>
-    implements _$$_MovieDetailCopyWith<$Res> {
-  __$$_MovieDetailCopyWithImpl(
-      _$_MovieDetail _value, $Res Function(_$_MovieDetail) _then)
+class __$$MovieDetailImplCopyWithImpl<$Res>
+    extends _$MovieDetailCopyWithImpl<$Res, _$MovieDetailImpl>
+    implements _$$MovieDetailImplCopyWith<$Res> {
+  __$$MovieDetailImplCopyWithImpl(
+      _$MovieDetailImpl _value, $Res Function(_$MovieDetailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -282,7 +285,7 @@ class __$$_MovieDetailCopyWithImpl<$Res>
     Object? cast = freezed,
     Object? releaseDate = freezed,
   }) {
-    return _then(_$_MovieDetail(
+    return _then(_$MovieDetailImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -325,8 +328,8 @@ class __$$_MovieDetailCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MovieDetail implements _MovieDetail {
-  _$_MovieDetail(
+class _$MovieDetailImpl implements _MovieDetail {
+  _$MovieDetailImpl(
       {required this.id,
       required this.title,
       required this.backdrop,
@@ -380,10 +383,10 @@ class _$_MovieDetail implements _MovieDetail {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MovieDetail &&
+            other is _$MovieDetailImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.backdrop, backdrop) ||
@@ -414,8 +417,8 @@ class _$_MovieDetail implements _MovieDetail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MovieDetailCopyWith<_$_MovieDetail> get copyWith =>
-      __$$_MovieDetailCopyWithImpl<_$_MovieDetail>(this, _$identity);
+  _$$MovieDetailImplCopyWith<_$MovieDetailImpl> get copyWith =>
+      __$$MovieDetailImplCopyWithImpl<_$MovieDetailImpl>(this, _$identity);
 }
 
 abstract class _MovieDetail implements MovieDetail {
@@ -428,7 +431,7 @@ abstract class _MovieDetail implements MovieDetail {
       final List<String>? genre,
       final int? runtime,
       final List<Cast>? cast,
-      final DateTime? releaseDate}) = _$_MovieDetail;
+      final DateTime? releaseDate}) = _$MovieDetailImpl;
 
   @override
   int get id;
@@ -450,7 +453,7 @@ abstract class _MovieDetail implements MovieDetail {
   DateTime? get releaseDate;
   @override
   @JsonKey(ignore: true)
-  _$$_MovieDetailCopyWith<_$_MovieDetail> get copyWith =>
+  _$$MovieDetailImplCopyWith<_$MovieDetailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -515,22 +518,22 @@ class _$MovieDetailParamsCopyWithImpl<$Res, $Val extends MovieDetailParams>
 }
 
 /// @nodoc
-abstract class _$$_MovieDetailParamsCopyWith<$Res>
+abstract class _$$MovieDetailParamsImplCopyWith<$Res>
     implements $MovieDetailParamsCopyWith<$Res> {
-  factory _$$_MovieDetailParamsCopyWith(_$_MovieDetailParams value,
-          $Res Function(_$_MovieDetailParams) then) =
-      __$$_MovieDetailParamsCopyWithImpl<$Res>;
+  factory _$$MovieDetailParamsImplCopyWith(_$MovieDetailParamsImpl value,
+          $Res Function(_$MovieDetailParamsImpl) then) =
+      __$$MovieDetailParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String title, String? backdropUrl, Type type});
 }
 
 /// @nodoc
-class __$$_MovieDetailParamsCopyWithImpl<$Res>
-    extends _$MovieDetailParamsCopyWithImpl<$Res, _$_MovieDetailParams>
-    implements _$$_MovieDetailParamsCopyWith<$Res> {
-  __$$_MovieDetailParamsCopyWithImpl(
-      _$_MovieDetailParams _value, $Res Function(_$_MovieDetailParams) _then)
+class __$$MovieDetailParamsImplCopyWithImpl<$Res>
+    extends _$MovieDetailParamsCopyWithImpl<$Res, _$MovieDetailParamsImpl>
+    implements _$$MovieDetailParamsImplCopyWith<$Res> {
+  __$$MovieDetailParamsImplCopyWithImpl(_$MovieDetailParamsImpl _value,
+      $Res Function(_$MovieDetailParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -541,7 +544,7 @@ class __$$_MovieDetailParamsCopyWithImpl<$Res>
     Object? backdropUrl = freezed,
     Object? type = null,
   }) {
-    return _then(_$_MovieDetailParams(
+    return _then(_$MovieDetailParamsImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -564,8 +567,8 @@ class __$$_MovieDetailParamsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MovieDetailParams implements _MovieDetailParams {
-  _$_MovieDetailParams(
+class _$MovieDetailParamsImpl implements _MovieDetailParams {
+  _$MovieDetailParamsImpl(
       {required this.id,
       required this.title,
       required this.backdropUrl,
@@ -586,10 +589,10 @@ class _$_MovieDetailParams implements _MovieDetailParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MovieDetailParams &&
+            other is _$MovieDetailParamsImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.backdropUrl, backdropUrl) ||
@@ -603,8 +606,8 @@ class _$_MovieDetailParams implements _MovieDetailParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MovieDetailParamsCopyWith<_$_MovieDetailParams> get copyWith =>
-      __$$_MovieDetailParamsCopyWithImpl<_$_MovieDetailParams>(
+  _$$MovieDetailParamsImplCopyWith<_$MovieDetailParamsImpl> get copyWith =>
+      __$$MovieDetailParamsImplCopyWithImpl<_$MovieDetailParamsImpl>(
           this, _$identity);
 }
 
@@ -613,7 +616,7 @@ abstract class _MovieDetailParams implements MovieDetailParams {
       {required final int id,
       required final String title,
       required final String? backdropUrl,
-      required final Type type}) = _$_MovieDetailParams;
+      required final Type type}) = _$MovieDetailParamsImpl;
 
   @override
   int get id;
@@ -625,6 +628,6 @@ abstract class _MovieDetailParams implements MovieDetailParams {
   Type get type;
   @override
   @JsonKey(ignore: true)
-  _$$_MovieDetailParamsCopyWith<_$_MovieDetailParams> get copyWith =>
+  _$$MovieDetailParamsImplCopyWith<_$MovieDetailParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

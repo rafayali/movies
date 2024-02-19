@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_flutter/data/auth_store.dart';
+import 'package:movies_flutter/data/local/auth_store.dart';
 
 import 'app/app.dart';
 

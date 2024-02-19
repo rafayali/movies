@@ -6,15 +6,16 @@ part of 'tmdb_service.dart';
 // ChopperGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations, unnecessary_brace_in_string_interps
-class _$TmdbService extends TmdbService {
+// coverage:ignore-file
+// ignore_for_file: type=lint
+final class _$TmdbService extends TmdbService {
   _$TmdbService([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
   }
 
   @override
-  final definitionType = TmdbService;
+  final Type definitionType = TmdbService;
 
   @override
   Future<Response<PopularMovies>> getPopularMovies(String apiKey) {

@@ -12,7 +12,7 @@ part of 'home_ui_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$HomeModel {
@@ -85,10 +85,11 @@ class _$HomeModelCopyWithImpl<$Res, $Val extends HomeModel>
 }
 
 /// @nodoc
-abstract class _$$_HomeModelCopyWith<$Res> implements $HomeModelCopyWith<$Res> {
-  factory _$$_HomeModelCopyWith(
-          _$_HomeModel value, $Res Function(_$_HomeModel) then) =
-      __$$_HomeModelCopyWithImpl<$Res>;
+abstract class _$$HomeModelImplCopyWith<$Res>
+    implements $HomeModelCopyWith<$Res> {
+  factory _$$HomeModelImplCopyWith(
+          _$HomeModelImpl value, $Res Function(_$HomeModelImpl) then) =
+      __$$HomeModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -100,11 +101,11 @@ abstract class _$$_HomeModelCopyWith<$Res> implements $HomeModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_HomeModelCopyWithImpl<$Res>
-    extends _$HomeModelCopyWithImpl<$Res, _$_HomeModel>
-    implements _$$_HomeModelCopyWith<$Res> {
-  __$$_HomeModelCopyWithImpl(
-      _$_HomeModel _value, $Res Function(_$_HomeModel) _then)
+class __$$HomeModelImplCopyWithImpl<$Res>
+    extends _$HomeModelCopyWithImpl<$Res, _$HomeModelImpl>
+    implements _$$HomeModelImplCopyWith<$Res> {
+  __$$HomeModelImplCopyWithImpl(
+      _$HomeModelImpl _value, $Res Function(_$HomeModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -116,7 +117,7 @@ class __$$_HomeModelCopyWithImpl<$Res>
     Object? popularTvShows = null,
     Object? discoverMovies = null,
   }) {
-    return _then(_$_HomeModel(
+    return _then(_$HomeModelImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -143,8 +144,8 @@ class __$$_HomeModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HomeModel implements _HomeModel {
-  _$_HomeModel(
+class _$HomeModelImpl implements _HomeModel {
+  _$HomeModelImpl(
       {required this.name,
       required this.imageUrl,
       required final List<MovieItem> popularMovies,
@@ -188,10 +189,10 @@ class _$_HomeModel implements _HomeModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeModel &&
+            other is _$HomeModelImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
@@ -215,8 +216,8 @@ class _$_HomeModel implements _HomeModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeModelCopyWith<_$_HomeModel> get copyWith =>
-      __$$_HomeModelCopyWithImpl<_$_HomeModel>(this, _$identity);
+  _$$HomeModelImplCopyWith<_$HomeModelImpl> get copyWith =>
+      __$$HomeModelImplCopyWithImpl<_$HomeModelImpl>(this, _$identity);
 }
 
 abstract class _HomeModel implements HomeModel {
@@ -225,7 +226,7 @@ abstract class _HomeModel implements HomeModel {
       required final String? imageUrl,
       required final List<MovieItem> popularMovies,
       required final List<TvShowItem> popularTvShows,
-      required final List<MovieItem> discoverMovies}) = _$_HomeModel;
+      required final List<MovieItem> discoverMovies}) = _$HomeModelImpl;
 
   @override
   String? get name;
@@ -239,6 +240,6 @@ abstract class _HomeModel implements HomeModel {
   List<MovieItem> get discoverMovies;
   @override
   @JsonKey(ignore: true)
-  _$$_HomeModelCopyWith<_$_HomeModel> get copyWith =>
+  _$$HomeModelImplCopyWith<_$HomeModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

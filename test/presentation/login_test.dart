@@ -12,7 +12,7 @@ import 'package:movies_flutter/data/remote/services/entities/session/session.dar
 import 'package:movies_flutter/data/remote/services/entities/token/token.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart'
     as chopper;
-import 'package:movies_flutter/data/auth_store.dart';
+import 'package:movies_flutter/data/local/auth_store.dart';
 import 'package:movies_flutter/ui/login/viewmodel/login_viewmodel.dart';
 
 import '../utils/random_string.dart';

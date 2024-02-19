@@ -12,7 +12,7 @@ part of 'search_movies_entities.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SearchParams {
@@ -63,22 +63,22 @@ class _$SearchParamsCopyWithImpl<$Res, $Val extends SearchParams>
 }
 
 /// @nodoc
-abstract class _$$_SearchParamsCopyWith<$Res>
+abstract class _$$SearchParamsImplCopyWith<$Res>
     implements $SearchParamsCopyWith<$Res> {
-  factory _$$_SearchParamsCopyWith(
-          _$_SearchParams value, $Res Function(_$_SearchParams) then) =
-      __$$_SearchParamsCopyWithImpl<$Res>;
+  factory _$$SearchParamsImplCopyWith(
+          _$SearchParamsImpl value, $Res Function(_$SearchParamsImpl) then) =
+      __$$SearchParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String query, bool reset});
 }
 
 /// @nodoc
-class __$$_SearchParamsCopyWithImpl<$Res>
-    extends _$SearchParamsCopyWithImpl<$Res, _$_SearchParams>
-    implements _$$_SearchParamsCopyWith<$Res> {
-  __$$_SearchParamsCopyWithImpl(
-      _$_SearchParams _value, $Res Function(_$_SearchParams) _then)
+class __$$SearchParamsImplCopyWithImpl<$Res>
+    extends _$SearchParamsCopyWithImpl<$Res, _$SearchParamsImpl>
+    implements _$$SearchParamsImplCopyWith<$Res> {
+  __$$SearchParamsImplCopyWithImpl(
+      _$SearchParamsImpl _value, $Res Function(_$SearchParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_SearchParamsCopyWithImpl<$Res>
     Object? query = null,
     Object? reset = null,
   }) {
-    return _then(_$_SearchParams(
+    return _then(_$SearchParamsImpl(
       query: null == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_SearchParamsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SearchParams implements _SearchParams {
-  const _$_SearchParams({required this.query, required this.reset});
+class _$SearchParamsImpl implements _SearchParams {
+  const _$SearchParamsImpl({required this.query, required this.reset});
 
   @override
   final String query;
@@ -116,10 +116,10 @@ class _$_SearchParams implements _SearchParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchParams &&
+            other is _$SearchParamsImpl &&
             (identical(other.query, query) || other.query == query) &&
             (identical(other.reset, reset) || other.reset == reset));
   }
@@ -130,14 +130,14 @@ class _$_SearchParams implements _SearchParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchParamsCopyWith<_$_SearchParams> get copyWith =>
-      __$$_SearchParamsCopyWithImpl<_$_SearchParams>(this, _$identity);
+  _$$SearchParamsImplCopyWith<_$SearchParamsImpl> get copyWith =>
+      __$$SearchParamsImplCopyWithImpl<_$SearchParamsImpl>(this, _$identity);
 }
 
 abstract class _SearchParams implements SearchParams {
   const factory _SearchParams(
       {required final String query,
-      required final bool reset}) = _$_SearchParams;
+      required final bool reset}) = _$SearchParamsImpl;
 
   @override
   String get query;
@@ -145,7 +145,7 @@ abstract class _SearchParams implements SearchParams {
   bool get reset;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchParamsCopyWith<_$_SearchParams> get copyWith =>
+  _$$SearchParamsImplCopyWith<_$SearchParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -198,22 +198,22 @@ class _$SearchResultCopyWithImpl<$Res, $Val extends SearchResult>
 }
 
 /// @nodoc
-abstract class _$$_SearchResultCopyWith<$Res>
+abstract class _$$SearchResultImplCopyWith<$Res>
     implements $SearchResultCopyWith<$Res> {
-  factory _$$_SearchResultCopyWith(
-          _$_SearchResult value, $Res Function(_$_SearchResult) then) =
-      __$$_SearchResultCopyWithImpl<$Res>;
+  factory _$$SearchResultImplCopyWith(
+          _$SearchResultImpl value, $Res Function(_$SearchResultImpl) then) =
+      __$$SearchResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int page, List<SearchItem> results});
 }
 
 /// @nodoc
-class __$$_SearchResultCopyWithImpl<$Res>
-    extends _$SearchResultCopyWithImpl<$Res, _$_SearchResult>
-    implements _$$_SearchResultCopyWith<$Res> {
-  __$$_SearchResultCopyWithImpl(
-      _$_SearchResult _value, $Res Function(_$_SearchResult) _then)
+class __$$SearchResultImplCopyWithImpl<$Res>
+    extends _$SearchResultCopyWithImpl<$Res, _$SearchResultImpl>
+    implements _$$SearchResultImplCopyWith<$Res> {
+  __$$SearchResultImplCopyWithImpl(
+      _$SearchResultImpl _value, $Res Function(_$SearchResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -222,7 +222,7 @@ class __$$_SearchResultCopyWithImpl<$Res>
     Object? page = null,
     Object? results = null,
   }) {
-    return _then(_$_SearchResult(
+    return _then(_$SearchResultImpl(
       page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -237,8 +237,9 @@ class __$$_SearchResultCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SearchResult implements _SearchResult {
-  _$_SearchResult({required this.page, required final List<SearchItem> results})
+class _$SearchResultImpl implements _SearchResult {
+  _$SearchResultImpl(
+      {required this.page, required final List<SearchItem> results})
       : _results = results;
 
   @override
@@ -257,10 +258,10 @@ class _$_SearchResult implements _SearchResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchResult &&
+            other is _$SearchResultImpl &&
             (identical(other.page, page) || other.page == page) &&
             const DeepCollectionEquality().equals(other._results, _results));
   }
@@ -272,14 +273,14 @@ class _$_SearchResult implements _SearchResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchResultCopyWith<_$_SearchResult> get copyWith =>
-      __$$_SearchResultCopyWithImpl<_$_SearchResult>(this, _$identity);
+  _$$SearchResultImplCopyWith<_$SearchResultImpl> get copyWith =>
+      __$$SearchResultImplCopyWithImpl<_$SearchResultImpl>(this, _$identity);
 }
 
 abstract class _SearchResult implements SearchResult {
   factory _SearchResult(
       {required final int page,
-      required final List<SearchItem> results}) = _$_SearchResult;
+      required final List<SearchItem> results}) = _$SearchResultImpl;
 
   @override
   int get page;
@@ -287,7 +288,7 @@ abstract class _SearchResult implements SearchResult {
   List<SearchItem> get results;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchResultCopyWith<_$_SearchResult> get copyWith =>
+  _$$SearchResultImplCopyWith<_$SearchResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -397,11 +398,11 @@ class _$SearchItemCopyWithImpl<$Res, $Val extends SearchItem>
 }
 
 /// @nodoc
-abstract class _$$MovieSearchItemCopyWith<$Res>
+abstract class _$$MovieSearchItemImplCopyWith<$Res>
     implements $SearchItemCopyWith<$Res> {
-  factory _$$MovieSearchItemCopyWith(
-          _$MovieSearchItem value, $Res Function(_$MovieSearchItem) then) =
-      __$$MovieSearchItemCopyWithImpl<$Res>;
+  factory _$$MovieSearchItemImplCopyWith(_$MovieSearchItemImpl value,
+          $Res Function(_$MovieSearchItemImpl) then) =
+      __$$MovieSearchItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -414,11 +415,11 @@ abstract class _$$MovieSearchItemCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MovieSearchItemCopyWithImpl<$Res>
-    extends _$SearchItemCopyWithImpl<$Res, _$MovieSearchItem>
-    implements _$$MovieSearchItemCopyWith<$Res> {
-  __$$MovieSearchItemCopyWithImpl(
-      _$MovieSearchItem _value, $Res Function(_$MovieSearchItem) _then)
+class __$$MovieSearchItemImplCopyWithImpl<$Res>
+    extends _$SearchItemCopyWithImpl<$Res, _$MovieSearchItemImpl>
+    implements _$$MovieSearchItemImplCopyWith<$Res> {
+  __$$MovieSearchItemImplCopyWithImpl(
+      _$MovieSearchItemImpl _value, $Res Function(_$MovieSearchItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -431,7 +432,7 @@ class __$$MovieSearchItemCopyWithImpl<$Res>
     Object? id = null,
     Object? backdropThumb = freezed,
   }) {
-    return _then(_$MovieSearchItem(
+    return _then(_$MovieSearchItemImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -462,8 +463,8 @@ class __$$MovieSearchItemCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MovieSearchItem implements MovieSearchItem {
-  const _$MovieSearchItem(
+class _$MovieSearchItemImpl implements MovieSearchItem {
+  const _$MovieSearchItemImpl(
       {required this.name,
       required this.date,
       required this.poster,
@@ -490,10 +491,10 @@ class _$MovieSearchItem implements MovieSearchItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MovieSearchItem &&
+            other is _$MovieSearchItemImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.poster, poster) || other.poster == poster) &&
@@ -511,8 +512,9 @@ class _$MovieSearchItem implements MovieSearchItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MovieSearchItemCopyWith<_$MovieSearchItem> get copyWith =>
-      __$$MovieSearchItemCopyWithImpl<_$MovieSearchItem>(this, _$identity);
+  _$$MovieSearchItemImplCopyWith<_$MovieSearchItemImpl> get copyWith =>
+      __$$MovieSearchItemImplCopyWithImpl<_$MovieSearchItemImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -603,7 +605,7 @@ abstract class MovieSearchItem implements SearchItem {
       required final String? poster,
       required final String? backdrop,
       required final int id,
-      required final String? backdropThumb}) = _$MovieSearchItem;
+      required final String? backdropThumb}) = _$MovieSearchItemImpl;
 
   @override
   String get name;
@@ -615,16 +617,16 @@ abstract class MovieSearchItem implements SearchItem {
   String? get backdropThumb;
   @override
   @JsonKey(ignore: true)
-  _$$MovieSearchItemCopyWith<_$MovieSearchItem> get copyWith =>
+  _$$MovieSearchItemImplCopyWith<_$MovieSearchItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TvShowSearchItemCopyWith<$Res>
+abstract class _$$TvShowSearchItemImplCopyWith<$Res>
     implements $SearchItemCopyWith<$Res> {
-  factory _$$TvShowSearchItemCopyWith(
-          _$TvShowSearchItem value, $Res Function(_$TvShowSearchItem) then) =
-      __$$TvShowSearchItemCopyWithImpl<$Res>;
+  factory _$$TvShowSearchItemImplCopyWith(_$TvShowSearchItemImpl value,
+          $Res Function(_$TvShowSearchItemImpl) then) =
+      __$$TvShowSearchItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -637,11 +639,11 @@ abstract class _$$TvShowSearchItemCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TvShowSearchItemCopyWithImpl<$Res>
-    extends _$SearchItemCopyWithImpl<$Res, _$TvShowSearchItem>
-    implements _$$TvShowSearchItemCopyWith<$Res> {
-  __$$TvShowSearchItemCopyWithImpl(
-      _$TvShowSearchItem _value, $Res Function(_$TvShowSearchItem) _then)
+class __$$TvShowSearchItemImplCopyWithImpl<$Res>
+    extends _$SearchItemCopyWithImpl<$Res, _$TvShowSearchItemImpl>
+    implements _$$TvShowSearchItemImplCopyWith<$Res> {
+  __$$TvShowSearchItemImplCopyWithImpl(_$TvShowSearchItemImpl _value,
+      $Res Function(_$TvShowSearchItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -654,7 +656,7 @@ class __$$TvShowSearchItemCopyWithImpl<$Res>
     Object? id = null,
     Object? backdropThumb = freezed,
   }) {
-    return _then(_$TvShowSearchItem(
+    return _then(_$TvShowSearchItemImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -685,8 +687,8 @@ class __$$TvShowSearchItemCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TvShowSearchItem implements TvShowSearchItem {
-  const _$TvShowSearchItem(
+class _$TvShowSearchItemImpl implements TvShowSearchItem {
+  const _$TvShowSearchItemImpl(
       {required this.name,
       required this.date,
       required this.poster,
@@ -713,10 +715,10 @@ class _$TvShowSearchItem implements TvShowSearchItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TvShowSearchItem &&
+            other is _$TvShowSearchItemImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.poster, poster) || other.poster == poster) &&
@@ -734,8 +736,9 @@ class _$TvShowSearchItem implements TvShowSearchItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TvShowSearchItemCopyWith<_$TvShowSearchItem> get copyWith =>
-      __$$TvShowSearchItemCopyWithImpl<_$TvShowSearchItem>(this, _$identity);
+  _$$TvShowSearchItemImplCopyWith<_$TvShowSearchItemImpl> get copyWith =>
+      __$$TvShowSearchItemImplCopyWithImpl<_$TvShowSearchItemImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -826,7 +829,7 @@ abstract class TvShowSearchItem implements SearchItem {
       required final String? poster,
       required final String? backdrop,
       required final int id,
-      required final String? backdropThumb}) = _$TvShowSearchItem;
+      required final String? backdropThumb}) = _$TvShowSearchItemImpl;
 
   @override
   String get name;
@@ -838,27 +841,27 @@ abstract class TvShowSearchItem implements SearchItem {
   String? get backdropThumb;
   @override
   @JsonKey(ignore: true)
-  _$$TvShowSearchItemCopyWith<_$TvShowSearchItem> get copyWith =>
+  _$$TvShowSearchItemImplCopyWith<_$TvShowSearchItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersonSearchItemCopyWith<$Res>
+abstract class _$$PersonSearchItemImplCopyWith<$Res>
     implements $SearchItemCopyWith<$Res> {
-  factory _$$PersonSearchItemCopyWith(
-          _$PersonSearchItem value, $Res Function(_$PersonSearchItem) then) =
-      __$$PersonSearchItemCopyWithImpl<$Res>;
+  factory _$$PersonSearchItemImplCopyWith(_$PersonSearchItemImpl value,
+          $Res Function(_$PersonSearchItemImpl) then) =
+      __$$PersonSearchItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String name, String? profilePicture});
 }
 
 /// @nodoc
-class __$$PersonSearchItemCopyWithImpl<$Res>
-    extends _$SearchItemCopyWithImpl<$Res, _$PersonSearchItem>
-    implements _$$PersonSearchItemCopyWith<$Res> {
-  __$$PersonSearchItemCopyWithImpl(
-      _$PersonSearchItem _value, $Res Function(_$PersonSearchItem) _then)
+class __$$PersonSearchItemImplCopyWithImpl<$Res>
+    extends _$SearchItemCopyWithImpl<$Res, _$PersonSearchItemImpl>
+    implements _$$PersonSearchItemImplCopyWith<$Res> {
+  __$$PersonSearchItemImplCopyWithImpl(_$PersonSearchItemImpl _value,
+      $Res Function(_$PersonSearchItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -868,7 +871,7 @@ class __$$PersonSearchItemCopyWithImpl<$Res>
     Object? name = null,
     Object? profilePicture = freezed,
   }) {
-    return _then(_$PersonSearchItem(
+    return _then(_$PersonSearchItemImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -887,8 +890,8 @@ class __$$PersonSearchItemCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PersonSearchItem implements PersonSearchItem {
-  const _$PersonSearchItem(
+class _$PersonSearchItemImpl implements PersonSearchItem {
+  const _$PersonSearchItemImpl(
       {required this.id, required this.name, required this.profilePicture});
 
   @override
@@ -904,10 +907,10 @@ class _$PersonSearchItem implements PersonSearchItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersonSearchItem &&
+            other is _$PersonSearchItemImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.profilePicture, profilePicture) ||
@@ -920,8 +923,9 @@ class _$PersonSearchItem implements PersonSearchItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersonSearchItemCopyWith<_$PersonSearchItem> get copyWith =>
-      __$$PersonSearchItemCopyWithImpl<_$PersonSearchItem>(this, _$identity);
+  _$$PersonSearchItemImplCopyWith<_$PersonSearchItemImpl> get copyWith =>
+      __$$PersonSearchItemImplCopyWithImpl<_$PersonSearchItemImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1009,7 +1013,7 @@ abstract class PersonSearchItem implements SearchItem {
   const factory PersonSearchItem(
       {required final int id,
       required final String name,
-      required final String? profilePicture}) = _$PersonSearchItem;
+      required final String? profilePicture}) = _$PersonSearchItemImpl;
 
   @override
   int get id;
@@ -1018,6 +1022,6 @@ abstract class PersonSearchItem implements SearchItem {
   String? get profilePicture;
   @override
   @JsonKey(ignore: true)
-  _$$PersonSearchItemCopyWith<_$PersonSearchItem> get copyWith =>
+  _$$PersonSearchItemImplCopyWith<_$PersonSearchItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
