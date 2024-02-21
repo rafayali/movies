@@ -30,5 +30,16 @@
                 "title": "${debugType} iOS",
             },
         },
+        {
+            "name": "web",
+            "request": "launch",
+            "type": "dart",
+            "codeLens": {
+                "for": [
+                    "debug-file",
+                ],
+                "title": "${debugType} Web(Demo)",
+            },
+        },
     ]
 }
