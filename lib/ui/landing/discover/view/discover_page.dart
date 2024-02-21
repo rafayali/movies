@@ -39,20 +39,18 @@ class _DiscoverPageState extends State<DiscoverPage>
     return Scaffold(
       body: Selector<HomeViewModel, UiState<HomeModel>>(
         builder: (_, value, child) => value.when(
-          success: (data) => Center(
-            child: _HomePageContent(
-              homeUiModel: data!,
-              onTapHeader: () async {
-                final canOpen = await viewModel.openProfile();
+          success: (data) => _HomePageContent(
+            homeUiModel: data!,
+            onTapHeader: () async {
+              final canOpen = await viewModel.openProfile();
 
-                if (context.mounted && !canOpen) {
-                  final loggedIn = await showLoginDialog(context);
-                  if (loggedIn) {
-                    viewModel.refresh();
-                  }
+              if (context.mounted && !canOpen) {
+                final loggedIn = await showLoginDialog(context);
+                if (loggedIn) {
+                  viewModel.refresh();
                 }
-              },
-            ),
+              }
+            },
           ),
           loading: () => const Center(child: CircularProgressIndicator()),
           error: (message) => Center(
