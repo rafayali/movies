@@ -9,7 +9,7 @@ import 'package:movies_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-part 'widgets/search_item.dart';
+part 'widgets/search_item_widget.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

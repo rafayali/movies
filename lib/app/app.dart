@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_flutter/app/route_generator.dart';
 import 'package:movies_flutter/app/theme.dart';
 import 'package:movies_flutter/config.dart';
-import 'package:movies_flutter/data/auth_store.dart';
+import 'package:movies_flutter/data/local/auth_store.dart';
 import 'package:movies_flutter/ui/landing/home_page.dart';
 import 'package:movies_flutter/main.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart'

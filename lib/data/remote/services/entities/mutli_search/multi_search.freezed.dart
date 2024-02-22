@@ -12,7 +12,7 @@ part of 'multi_search.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MultiSearch _$MultiSearchFromJson(Map<String, dynamic> json) {
   return _MultiSearch.fromJson(json);
@@ -80,22 +80,22 @@ class _$MultiSearchCopyWithImpl<$Res, $Val extends MultiSearch>
 }
 
 /// @nodoc
-abstract class _$$_MultiSearchCopyWith<$Res>
+abstract class _$$MultiSearchImplCopyWith<$Res>
     implements $MultiSearchCopyWith<$Res> {
-  factory _$$_MultiSearchCopyWith(
-          _$_MultiSearch value, $Res Function(_$_MultiSearch) then) =
-      __$$_MultiSearchCopyWithImpl<$Res>;
+  factory _$$MultiSearchImplCopyWith(
+          _$MultiSearchImpl value, $Res Function(_$MultiSearchImpl) then) =
+      __$$MultiSearchImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int page, List<Entity> results, int totalPages, int totalResults});
 }
 
 /// @nodoc
-class __$$_MultiSearchCopyWithImpl<$Res>
-    extends _$MultiSearchCopyWithImpl<$Res, _$_MultiSearch>
-    implements _$$_MultiSearchCopyWith<$Res> {
-  __$$_MultiSearchCopyWithImpl(
-      _$_MultiSearch _value, $Res Function(_$_MultiSearch) _then)
+class __$$MultiSearchImplCopyWithImpl<$Res>
+    extends _$MultiSearchCopyWithImpl<$Res, _$MultiSearchImpl>
+    implements _$$MultiSearchImplCopyWith<$Res> {
+  __$$MultiSearchImplCopyWithImpl(
+      _$MultiSearchImpl _value, $Res Function(_$MultiSearchImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,7 +106,7 @@ class __$$_MultiSearchCopyWithImpl<$Res>
     Object? totalPages = null,
     Object? totalResults = null,
   }) {
-    return _then(_$_MultiSearch(
+    return _then(_$MultiSearchImpl(
       page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -130,16 +130,16 @@ class __$$_MultiSearchCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$_MultiSearch implements _MultiSearch {
-  _$_MultiSearch(
+class _$MultiSearchImpl implements _MultiSearch {
+  _$MultiSearchImpl(
       {required this.page,
       required final List<Entity> results,
       required this.totalPages,
       required this.totalResults})
       : _results = results;
 
-  factory _$_MultiSearch.fromJson(Map<String, dynamic> json) =>
-      _$$_MultiSearchFromJson(json);
+  factory _$MultiSearchImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MultiSearchImplFromJson(json);
 
   @override
   final int page;
@@ -162,10 +162,10 @@ class _$_MultiSearch implements _MultiSearch {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MultiSearch &&
+            other is _$MultiSearchImpl &&
             (identical(other.page, page) || other.page == page) &&
             const DeepCollectionEquality().equals(other._results, _results) &&
             (identical(other.totalPages, totalPages) ||
@@ -182,12 +182,12 @@ class _$_MultiSearch implements _MultiSearch {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MultiSearchCopyWith<_$_MultiSearch> get copyWith =>
-      __$$_MultiSearchCopyWithImpl<_$_MultiSearch>(this, _$identity);
+  _$$MultiSearchImplCopyWith<_$MultiSearchImpl> get copyWith =>
+      __$$MultiSearchImplCopyWithImpl<_$MultiSearchImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MultiSearchToJson(
+    return _$$MultiSearchImplToJson(
       this,
     );
   }
@@ -198,10 +198,10 @@ abstract class _MultiSearch implements MultiSearch {
       {required final int page,
       required final List<Entity> results,
       required final int totalPages,
-      required final int totalResults}) = _$_MultiSearch;
+      required final int totalResults}) = _$MultiSearchImpl;
 
   factory _MultiSearch.fromJson(Map<String, dynamic> json) =
-      _$_MultiSearch.fromJson;
+      _$MultiSearchImpl.fromJson;
 
   @override
   int get page;
@@ -213,7 +213,7 @@ abstract class _MultiSearch implements MultiSearch {
   int get totalResults;
   @override
   @JsonKey(ignore: true)
-  _$$_MultiSearchCopyWith<_$_MultiSearch> get copyWith =>
+  _$$MultiSearchImplCopyWith<_$MultiSearchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -329,10 +329,11 @@ class _$EntityCopyWithImpl<$Res, $Val extends Entity>
 }
 
 /// @nodoc
-abstract class _$$MovieEntityCopyWith<$Res> implements $EntityCopyWith<$Res> {
-  factory _$$MovieEntityCopyWith(
-          _$MovieEntity value, $Res Function(_$MovieEntity) then) =
-      __$$MovieEntityCopyWithImpl<$Res>;
+abstract class _$$MovieEntityImplCopyWith<$Res>
+    implements $EntityCopyWith<$Res> {
+  factory _$$MovieEntityImplCopyWith(
+          _$MovieEntityImpl value, $Res Function(_$MovieEntityImpl) then) =
+      __$$MovieEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -344,11 +345,11 @@ abstract class _$$MovieEntityCopyWith<$Res> implements $EntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$MovieEntityCopyWithImpl<$Res>
-    extends _$EntityCopyWithImpl<$Res, _$MovieEntity>
-    implements _$$MovieEntityCopyWith<$Res> {
-  __$$MovieEntityCopyWithImpl(
-      _$MovieEntity _value, $Res Function(_$MovieEntity) _then)
+class __$$MovieEntityImplCopyWithImpl<$Res>
+    extends _$EntityCopyWithImpl<$Res, _$MovieEntityImpl>
+    implements _$$MovieEntityImplCopyWith<$Res> {
+  __$$MovieEntityImplCopyWithImpl(
+      _$MovieEntityImpl _value, $Res Function(_$MovieEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -360,7 +361,7 @@ class __$$MovieEntityCopyWithImpl<$Res>
     Object? posterPath = freezed,
     Object? releaseDate = freezed,
   }) {
-    return _then(_$MovieEntity(
+    return _then(_$MovieEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -388,8 +389,8 @@ class __$$MovieEntityCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$MovieEntity implements MovieEntity {
-  const _$MovieEntity(
+class _$MovieEntityImpl implements MovieEntity {
+  const _$MovieEntityImpl(
       {required this.id,
       required this.title,
       required this.backdropPath,
@@ -398,8 +399,8 @@ class _$MovieEntity implements MovieEntity {
       final String? $type})
       : $type = $type ?? 'movie';
 
-  factory _$MovieEntity.fromJson(Map<String, dynamic> json) =>
-      _$$MovieEntityFromJson(json);
+  factory _$MovieEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MovieEntityImplFromJson(json);
 
   @override
   final int id;
@@ -421,10 +422,10 @@ class _$MovieEntity implements MovieEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MovieEntity &&
+            other is _$MovieEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.backdropPath, backdropPath) ||
@@ -443,8 +444,8 @@ class _$MovieEntity implements MovieEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MovieEntityCopyWith<_$MovieEntity> get copyWith =>
-      __$$MovieEntityCopyWithImpl<_$MovieEntity>(this, _$identity);
+  _$$MovieEntityImplCopyWith<_$MovieEntityImpl> get copyWith =>
+      __$$MovieEntityImplCopyWithImpl<_$MovieEntityImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -528,7 +529,7 @@ class _$MovieEntity implements MovieEntity {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MovieEntityToJson(
+    return _$$MovieEntityImplToJson(
       this,
     );
   }
@@ -540,10 +541,10 @@ abstract class MovieEntity implements Entity {
       required final String title,
       required final String? backdropPath,
       required final String? posterPath,
-      required final String? releaseDate}) = _$MovieEntity;
+      required final String? releaseDate}) = _$MovieEntityImpl;
 
   factory MovieEntity.fromJson(Map<String, dynamic> json) =
-      _$MovieEntity.fromJson;
+      _$MovieEntityImpl.fromJson;
 
   @override
   int get id;
@@ -553,15 +554,16 @@ abstract class MovieEntity implements Entity {
   String? get releaseDate;
   @override
   @JsonKey(ignore: true)
-  _$$MovieEntityCopyWith<_$MovieEntity> get copyWith =>
+  _$$MovieEntityImplCopyWith<_$MovieEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TvShowEntityCopyWith<$Res> implements $EntityCopyWith<$Res> {
-  factory _$$TvShowEntityCopyWith(
-          _$TvShowEntity value, $Res Function(_$TvShowEntity) then) =
-      __$$TvShowEntityCopyWithImpl<$Res>;
+abstract class _$$TvShowEntityImplCopyWith<$Res>
+    implements $EntityCopyWith<$Res> {
+  factory _$$TvShowEntityImplCopyWith(
+          _$TvShowEntityImpl value, $Res Function(_$TvShowEntityImpl) then) =
+      __$$TvShowEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -573,11 +575,11 @@ abstract class _$$TvShowEntityCopyWith<$Res> implements $EntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$TvShowEntityCopyWithImpl<$Res>
-    extends _$EntityCopyWithImpl<$Res, _$TvShowEntity>
-    implements _$$TvShowEntityCopyWith<$Res> {
-  __$$TvShowEntityCopyWithImpl(
-      _$TvShowEntity _value, $Res Function(_$TvShowEntity) _then)
+class __$$TvShowEntityImplCopyWithImpl<$Res>
+    extends _$EntityCopyWithImpl<$Res, _$TvShowEntityImpl>
+    implements _$$TvShowEntityImplCopyWith<$Res> {
+  __$$TvShowEntityImplCopyWithImpl(
+      _$TvShowEntityImpl _value, $Res Function(_$TvShowEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -589,7 +591,7 @@ class __$$TvShowEntityCopyWithImpl<$Res>
     Object? posterPath = freezed,
     Object? firstAirDate = freezed,
   }) {
-    return _then(_$TvShowEntity(
+    return _then(_$TvShowEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -617,8 +619,8 @@ class __$$TvShowEntityCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$TvShowEntity implements TvShowEntity {
-  const _$TvShowEntity(
+class _$TvShowEntityImpl implements TvShowEntity {
+  const _$TvShowEntityImpl(
       {required this.id,
       required this.name,
       required this.backdropPath,
@@ -627,8 +629,8 @@ class _$TvShowEntity implements TvShowEntity {
       final String? $type})
       : $type = $type ?? 'tv';
 
-  factory _$TvShowEntity.fromJson(Map<String, dynamic> json) =>
-      _$$TvShowEntityFromJson(json);
+  factory _$TvShowEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TvShowEntityImplFromJson(json);
 
   @override
   final int id;
@@ -650,10 +652,10 @@ class _$TvShowEntity implements TvShowEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TvShowEntity &&
+            other is _$TvShowEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.backdropPath, backdropPath) ||
@@ -672,8 +674,8 @@ class _$TvShowEntity implements TvShowEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TvShowEntityCopyWith<_$TvShowEntity> get copyWith =>
-      __$$TvShowEntityCopyWithImpl<_$TvShowEntity>(this, _$identity);
+  _$$TvShowEntityImplCopyWith<_$TvShowEntityImpl> get copyWith =>
+      __$$TvShowEntityImplCopyWithImpl<_$TvShowEntityImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -757,7 +759,7 @@ class _$TvShowEntity implements TvShowEntity {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TvShowEntityToJson(
+    return _$$TvShowEntityImplToJson(
       this,
     );
   }
@@ -769,10 +771,10 @@ abstract class TvShowEntity implements Entity {
       required final String name,
       required final String? backdropPath,
       required final String? posterPath,
-      required final String? firstAirDate}) = _$TvShowEntity;
+      required final String? firstAirDate}) = _$TvShowEntityImpl;
 
   factory TvShowEntity.fromJson(Map<String, dynamic> json) =
-      _$TvShowEntity.fromJson;
+      _$TvShowEntityImpl.fromJson;
 
   @override
   int get id;
@@ -782,26 +784,27 @@ abstract class TvShowEntity implements Entity {
   String? get firstAirDate;
   @override
   @JsonKey(ignore: true)
-  _$$TvShowEntityCopyWith<_$TvShowEntity> get copyWith =>
+  _$$TvShowEntityImplCopyWith<_$TvShowEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PersonEntityCopyWith<$Res> implements $EntityCopyWith<$Res> {
-  factory _$$PersonEntityCopyWith(
-          _$PersonEntity value, $Res Function(_$PersonEntity) then) =
-      __$$PersonEntityCopyWithImpl<$Res>;
+abstract class _$$PersonEntityImplCopyWith<$Res>
+    implements $EntityCopyWith<$Res> {
+  factory _$$PersonEntityImplCopyWith(
+          _$PersonEntityImpl value, $Res Function(_$PersonEntityImpl) then) =
+      __$$PersonEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String name, String? profilePath});
 }
 
 /// @nodoc
-class __$$PersonEntityCopyWithImpl<$Res>
-    extends _$EntityCopyWithImpl<$Res, _$PersonEntity>
-    implements _$$PersonEntityCopyWith<$Res> {
-  __$$PersonEntityCopyWithImpl(
-      _$PersonEntity _value, $Res Function(_$PersonEntity) _then)
+class __$$PersonEntityImplCopyWithImpl<$Res>
+    extends _$EntityCopyWithImpl<$Res, _$PersonEntityImpl>
+    implements _$$PersonEntityImplCopyWith<$Res> {
+  __$$PersonEntityImplCopyWithImpl(
+      _$PersonEntityImpl _value, $Res Function(_$PersonEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -811,7 +814,7 @@ class __$$PersonEntityCopyWithImpl<$Res>
     Object? name = null,
     Object? profilePath = freezed,
   }) {
-    return _then(_$PersonEntity(
+    return _then(_$PersonEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -831,16 +834,16 @@ class __$$PersonEntityCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$PersonEntity implements PersonEntity {
-  const _$PersonEntity(
+class _$PersonEntityImpl implements PersonEntity {
+  const _$PersonEntityImpl(
       {required this.id,
       required this.name,
       required this.profilePath,
       final String? $type})
       : $type = $type ?? 'person';
 
-  factory _$PersonEntity.fromJson(Map<String, dynamic> json) =>
-      _$$PersonEntityFromJson(json);
+  factory _$PersonEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PersonEntityImplFromJson(json);
 
   @override
   final int id;
@@ -858,10 +861,10 @@ class _$PersonEntity implements PersonEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PersonEntity &&
+            other is _$PersonEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.profilePath, profilePath) ||
@@ -875,8 +878,8 @@ class _$PersonEntity implements PersonEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PersonEntityCopyWith<_$PersonEntity> get copyWith =>
-      __$$PersonEntityCopyWithImpl<_$PersonEntity>(this, _$identity);
+  _$$PersonEntityImplCopyWith<_$PersonEntityImpl> get copyWith =>
+      __$$PersonEntityImplCopyWithImpl<_$PersonEntityImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -960,7 +963,7 @@ class _$PersonEntity implements PersonEntity {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PersonEntityToJson(
+    return _$$PersonEntityImplToJson(
       this,
     );
   }
@@ -970,10 +973,10 @@ abstract class PersonEntity implements Entity {
   const factory PersonEntity(
       {required final int id,
       required final String name,
-      required final String? profilePath}) = _$PersonEntity;
+      required final String? profilePath}) = _$PersonEntityImpl;
 
   factory PersonEntity.fromJson(Map<String, dynamic> json) =
-      _$PersonEntity.fromJson;
+      _$PersonEntityImpl.fromJson;
 
   @override
   int get id;
@@ -981,6 +984,6 @@ abstract class PersonEntity implements Entity {
   String? get profilePath;
   @override
   @JsonKey(ignore: true)
-  _$$PersonEntityCopyWith<_$PersonEntity> get copyWith =>
+  _$$PersonEntityImplCopyWith<_$PersonEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

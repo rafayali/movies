@@ -12,7 +12,7 @@ part of 'search_models.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SearchUiState {
@@ -88,25 +88,25 @@ class _$SearchUiStateCopyWithImpl<$Res, $Val extends SearchUiState>
 }
 
 /// @nodoc
-abstract class _$$LoadingSearchUiStateCopyWith<$Res> {
-  factory _$$LoadingSearchUiStateCopyWith(_$LoadingSearchUiState value,
-          $Res Function(_$LoadingSearchUiState) then) =
-      __$$LoadingSearchUiStateCopyWithImpl<$Res>;
+abstract class _$$LoadingSearchUiStateImplCopyWith<$Res> {
+  factory _$$LoadingSearchUiStateImplCopyWith(_$LoadingSearchUiStateImpl value,
+          $Res Function(_$LoadingSearchUiStateImpl) then) =
+      __$$LoadingSearchUiStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingSearchUiStateCopyWithImpl<$Res>
-    extends _$SearchUiStateCopyWithImpl<$Res, _$LoadingSearchUiState>
-    implements _$$LoadingSearchUiStateCopyWith<$Res> {
-  __$$LoadingSearchUiStateCopyWithImpl(_$LoadingSearchUiState _value,
-      $Res Function(_$LoadingSearchUiState) _then)
+class __$$LoadingSearchUiStateImplCopyWithImpl<$Res>
+    extends _$SearchUiStateCopyWithImpl<$Res, _$LoadingSearchUiStateImpl>
+    implements _$$LoadingSearchUiStateImplCopyWith<$Res> {
+  __$$LoadingSearchUiStateImplCopyWithImpl(_$LoadingSearchUiStateImpl _value,
+      $Res Function(_$LoadingSearchUiStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingSearchUiState implements LoadingSearchUiState {
-  const _$LoadingSearchUiState();
+class _$LoadingSearchUiStateImpl implements LoadingSearchUiState {
+  const _$LoadingSearchUiStateImpl();
 
   @override
   String toString() {
@@ -114,9 +114,10 @@ class _$LoadingSearchUiState implements LoadingSearchUiState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingSearchUiState);
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingSearchUiStateImpl);
   }
 
   @override
@@ -199,24 +200,24 @@ class _$LoadingSearchUiState implements LoadingSearchUiState {
 }
 
 abstract class LoadingSearchUiState implements SearchUiState {
-  const factory LoadingSearchUiState() = _$LoadingSearchUiState;
+  const factory LoadingSearchUiState() = _$LoadingSearchUiStateImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessSearchUiStateCopyWith<$Res> {
-  factory _$$SuccessSearchUiStateCopyWith(_$SuccessSearchUiState value,
-          $Res Function(_$SuccessSearchUiState) then) =
-      __$$SuccessSearchUiStateCopyWithImpl<$Res>;
+abstract class _$$SuccessSearchUiStateImplCopyWith<$Res> {
+  factory _$$SuccessSearchUiStateImplCopyWith(_$SuccessSearchUiStateImpl value,
+          $Res Function(_$SuccessSearchUiStateImpl) then) =
+      __$$SuccessSearchUiStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<SearchItem> items});
 }
 
 /// @nodoc
-class __$$SuccessSearchUiStateCopyWithImpl<$Res>
-    extends _$SearchUiStateCopyWithImpl<$Res, _$SuccessSearchUiState>
-    implements _$$SuccessSearchUiStateCopyWith<$Res> {
-  __$$SuccessSearchUiStateCopyWithImpl(_$SuccessSearchUiState _value,
-      $Res Function(_$SuccessSearchUiState) _then)
+class __$$SuccessSearchUiStateImplCopyWithImpl<$Res>
+    extends _$SearchUiStateCopyWithImpl<$Res, _$SuccessSearchUiStateImpl>
+    implements _$$SuccessSearchUiStateImplCopyWith<$Res> {
+  __$$SuccessSearchUiStateImplCopyWithImpl(_$SuccessSearchUiStateImpl _value,
+      $Res Function(_$SuccessSearchUiStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -224,7 +225,7 @@ class __$$SuccessSearchUiStateCopyWithImpl<$Res>
   $Res call({
     Object? items = null,
   }) {
-    return _then(_$SuccessSearchUiState(
+    return _then(_$SuccessSearchUiStateImpl(
       null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
@@ -235,8 +236,9 @@ class __$$SuccessSearchUiStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessSearchUiState implements SuccessSearchUiState {
-  const _$SuccessSearchUiState(final List<SearchItem> items) : _items = items;
+class _$SuccessSearchUiStateImpl implements SuccessSearchUiState {
+  const _$SuccessSearchUiStateImpl(final List<SearchItem> items)
+      : _items = items;
 
   final List<SearchItem> _items;
   @override
@@ -252,10 +254,10 @@ class _$SuccessSearchUiState implements SuccessSearchUiState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessSearchUiState &&
+            other is _$SuccessSearchUiStateImpl &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
@@ -266,9 +268,10 @@ class _$SuccessSearchUiState implements SuccessSearchUiState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessSearchUiStateCopyWith<_$SuccessSearchUiState> get copyWith =>
-      __$$SuccessSearchUiStateCopyWithImpl<_$SuccessSearchUiState>(
-          this, _$identity);
+  _$$SuccessSearchUiStateImplCopyWith<_$SuccessSearchUiStateImpl>
+      get copyWith =>
+          __$$SuccessSearchUiStateImplCopyWithImpl<_$SuccessSearchUiStateImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -348,34 +351,36 @@ class _$SuccessSearchUiState implements SuccessSearchUiState {
 
 abstract class SuccessSearchUiState implements SearchUiState {
   const factory SuccessSearchUiState(final List<SearchItem> items) =
-      _$SuccessSearchUiState;
+      _$SuccessSearchUiStateImpl;
 
   List<SearchItem> get items;
   @JsonKey(ignore: true)
-  _$$SuccessSearchUiStateCopyWith<_$SuccessSearchUiState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SuccessSearchUiStateImplCopyWith<_$SuccessSearchUiStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NoResultsSearchUiStateCopyWith<$Res> {
-  factory _$$NoResultsSearchUiStateCopyWith(_$NoResultsSearchUiState value,
-          $Res Function(_$NoResultsSearchUiState) then) =
-      __$$NoResultsSearchUiStateCopyWithImpl<$Res>;
+abstract class _$$NoResultsSearchUiStateImplCopyWith<$Res> {
+  factory _$$NoResultsSearchUiStateImplCopyWith(
+          _$NoResultsSearchUiStateImpl value,
+          $Res Function(_$NoResultsSearchUiStateImpl) then) =
+      __$$NoResultsSearchUiStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$NoResultsSearchUiStateCopyWithImpl<$Res>
-    extends _$SearchUiStateCopyWithImpl<$Res, _$NoResultsSearchUiState>
-    implements _$$NoResultsSearchUiStateCopyWith<$Res> {
-  __$$NoResultsSearchUiStateCopyWithImpl(_$NoResultsSearchUiState _value,
-      $Res Function(_$NoResultsSearchUiState) _then)
+class __$$NoResultsSearchUiStateImplCopyWithImpl<$Res>
+    extends _$SearchUiStateCopyWithImpl<$Res, _$NoResultsSearchUiStateImpl>
+    implements _$$NoResultsSearchUiStateImplCopyWith<$Res> {
+  __$$NoResultsSearchUiStateImplCopyWithImpl(
+      _$NoResultsSearchUiStateImpl _value,
+      $Res Function(_$NoResultsSearchUiStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$NoResultsSearchUiState implements NoResultsSearchUiState {
-  const _$NoResultsSearchUiState();
+class _$NoResultsSearchUiStateImpl implements NoResultsSearchUiState {
+  const _$NoResultsSearchUiStateImpl();
 
   @override
   String toString() {
@@ -383,9 +388,10 @@ class _$NoResultsSearchUiState implements NoResultsSearchUiState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NoResultsSearchUiState);
+        (other.runtimeType == runtimeType &&
+            other is _$NoResultsSearchUiStateImpl);
   }
 
   @override
@@ -468,31 +474,33 @@ class _$NoResultsSearchUiState implements NoResultsSearchUiState {
 }
 
 abstract class NoResultsSearchUiState implements SearchUiState {
-  const factory NoResultsSearchUiState() = _$NoResultsSearchUiState;
+  const factory NoResultsSearchUiState() = _$NoResultsSearchUiStateImpl;
 }
 
 /// @nodoc
-abstract class _$$WaitingForInputSearchUiStateCopyWith<$Res> {
-  factory _$$WaitingForInputSearchUiStateCopyWith(
-          _$WaitingForInputSearchUiState value,
-          $Res Function(_$WaitingForInputSearchUiState) then) =
-      __$$WaitingForInputSearchUiStateCopyWithImpl<$Res>;
+abstract class _$$WaitingForInputSearchUiStateImplCopyWith<$Res> {
+  factory _$$WaitingForInputSearchUiStateImplCopyWith(
+          _$WaitingForInputSearchUiStateImpl value,
+          $Res Function(_$WaitingForInputSearchUiStateImpl) then) =
+      __$$WaitingForInputSearchUiStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WaitingForInputSearchUiStateCopyWithImpl<$Res>
-    extends _$SearchUiStateCopyWithImpl<$Res, _$WaitingForInputSearchUiState>
-    implements _$$WaitingForInputSearchUiStateCopyWith<$Res> {
-  __$$WaitingForInputSearchUiStateCopyWithImpl(
-      _$WaitingForInputSearchUiState _value,
-      $Res Function(_$WaitingForInputSearchUiState) _then)
+class __$$WaitingForInputSearchUiStateImplCopyWithImpl<$Res>
+    extends _$SearchUiStateCopyWithImpl<$Res,
+        _$WaitingForInputSearchUiStateImpl>
+    implements _$$WaitingForInputSearchUiStateImplCopyWith<$Res> {
+  __$$WaitingForInputSearchUiStateImplCopyWithImpl(
+      _$WaitingForInputSearchUiStateImpl _value,
+      $Res Function(_$WaitingForInputSearchUiStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$WaitingForInputSearchUiState implements WaitingForInputSearchUiState {
-  const _$WaitingForInputSearchUiState();
+class _$WaitingForInputSearchUiStateImpl
+    implements WaitingForInputSearchUiState {
+  const _$WaitingForInputSearchUiStateImpl();
 
   @override
   String toString() {
@@ -500,10 +508,10 @@ class _$WaitingForInputSearchUiState implements WaitingForInputSearchUiState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WaitingForInputSearchUiState);
+            other is _$WaitingForInputSearchUiStateImpl);
   }
 
   @override
@@ -586,5 +594,6 @@ class _$WaitingForInputSearchUiState implements WaitingForInputSearchUiState {
 }
 
 abstract class WaitingForInputSearchUiState implements SearchUiState {
-  const factory WaitingForInputSearchUiState() = _$WaitingForInputSearchUiState;
+  const factory WaitingForInputSearchUiState() =
+      _$WaitingForInputSearchUiStateImpl;
 }

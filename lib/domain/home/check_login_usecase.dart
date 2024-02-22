@@ -1,4 +1,4 @@
-import 'package:movies_flutter/data/auth_store.dart';
+import 'package:movies_flutter/data/local/auth_store.dart';
 
 import '../../core/usecase.dart';
 

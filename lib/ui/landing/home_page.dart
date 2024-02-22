@@ -46,9 +46,11 @@ class _HomePageHostState extends State<HomePageHost> {
                   authStore: context.read(),
                 ),
               ),
-              child: Builder(builder: (context) {
-                return const DiscoverPage();
-              }),
+              child: Builder(
+                builder: (context) {
+                  return const DiscoverPage();
+                },
+              ),
             );
           case HomePageTab.search:
             return ChangeNotifierProvider(
