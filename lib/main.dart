@@ -5,10 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
 import 'package:flutter/material.dart';
+import 'package:movies_flutter/app/app.dart';
 import 'package:movies_flutter/data/local/auth_store.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-
-import 'app/app.dart';
+import 'package:movies_flutter/utils/platform_configuration/platform_configuration.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +23,8 @@ Future<void> main() async {
   final state = await _initializeState();
 
   _setupLogging();
-  usePathUrlStrategy();
+
+  PlatformConfiguration().configure();
 
   runApp(MoviesApp(params: state));
 }

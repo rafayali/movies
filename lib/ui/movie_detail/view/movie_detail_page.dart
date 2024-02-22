@@ -2,12 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 import 'package:movies_flutter/ui/common/common.dart';
+import 'package:movies_flutter/ui/movie_detail/view/widgets/cast.dart';
+import 'package:movies_flutter/ui/movie_detail/view/widgets/rating.dart';
 import 'package:movies_flutter/ui/movie_detail/viewmodel/movie_detail_viewmodel.dart';
 import 'package:movies_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
-
-import 'widgets/cast.dart';
-import 'widgets/rating.dart';
 
 class MovieDetailPage extends StatefulWidget {
   const MovieDetailPage({super.key});
@@ -131,7 +130,7 @@ class MovieContent extends StatelessWidget {
                       ),
                     ),
                     SafeArea(
-                      minimum: const EdgeInsets.only(top: 32),
+                      minimum: const EdgeInsets.only(top: 16),
                       child: MoviesBackButton(
                         onPressed: () => Navigator.pop(context),
                       ),
