@@ -6,17 +6,6 @@ import 'package:movies_flutter/ui/landing/home_page.dart';
 import 'package:movies_flutter/ui/login/view/auth_page.dart';
 import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
 
-List<Route<dynamic>> generateInitialRoute(String initialRoute) {
-  switch (initialRoute) {
-    case HomePageHost.routeName:
-      return [
-        generateRoute(const RouteSettings(name: HomePageHost.routeName))!,
-      ];
-    default:
-      return List.empty();
-  }
-}
-
 Route<dynamic>? generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case AuthPage.routeName:
