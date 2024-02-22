@@ -10,13 +10,9 @@ class MoviesBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return IconButton.filledTonal(
       onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        shape: const CircleBorder(),
-        elevation: 4,
-      ),
-      child: const Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
     );
   }
 }

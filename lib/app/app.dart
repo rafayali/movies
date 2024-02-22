@@ -37,7 +37,6 @@ class MoviesApp extends StatelessWidget {
         darkTheme: darkTheme,
         themeMode: ThemeMode.system,
         initialRoute: HomePageHost.routeName,
-        onGenerateInitialRoutes: generateInitialRoute,
         onGenerateRoute: generateRoute,
         locale: const Locale('en'),
         localizationsDelegates: AppLocalizations.localizationsDelegates,

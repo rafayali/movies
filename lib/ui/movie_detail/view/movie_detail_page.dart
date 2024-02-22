@@ -130,7 +130,7 @@ class MovieContent extends StatelessWidget {
                       ),
                     ),
                     SafeArea(
-                      minimum: const EdgeInsets.only(top: 16),
+                      minimum: const EdgeInsets.only(top: 16, left: 16),
                       child: MoviesBackButton(
                         onPressed: () => Navigator.pop(context),
                       ),
