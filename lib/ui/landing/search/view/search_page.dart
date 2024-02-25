@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 import 'package:movies_flutter/domain/search/entities/search_movies_entities.dart';
 import 'package:movies_flutter/ui/landing/search/models/search_models.dart';
 import 'package:movies_flutter/ui/landing/search/viewmodel/search_viewmodel.dart';
-import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
 import 'package:movies_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -89,24 +89,32 @@ class _SearchPageState extends State<SearchPage>
                 itemBuilder: (context, index) => SearchItemWidget(
                   searchItem: value.items[index],
                   onPressed: () {
-                    final args = value.items[index].maybeMap(
-                      movie: (movie) => MovieDetailParams(
-                        id: movie.id,
-                        title: movie.name,
-                        backdropUrl: movie.backdrop,
-                        type: Type.movie,
-                      ),
-                      tvShow: (tvShow) => MovieDetailParams(
-                        id: tvShow.id,
-                        title: tvShow.name,
-                        backdropUrl: tvShow.backdrop,
-                        type: Type.tvShow,
-                      ),
-                      orElse: () {},
-                    );
-                    Navigator.of(context).pushNamed(
-                      MovieDetailPage.routeName,
-                      arguments: args,
+                    final args = value.items[index].map(
+                        movie: (movie) => MovieDetailParams(
+                              id: movie.id,
+                              title: movie.name,
+                              backdropUrl: movie.backdrop,
+                              type: Type.movie,
+                            ),
+                        tvShow: (tvShow) => MovieDetailParams(
+                              id: tvShow.id,
+                              title: tvShow.name,
+                              backdropUrl: tvShow.backdrop,
+                              type: Type.tvShow,
+                            ),
+                        //TODO Add support for viewing person profile
+                        person: (person) => null);
+
+                    if (args == null) return;
+
+                    context.goNamed(
+                      'movie',
+                      pathParameters: {'movieId': args.id.toString()},
+                      queryParameters: {
+                        'title': args.title,
+                        'backdropUrl': args.backdropUrl,
+                        'type': args.type.value,
+                      },
                     );
                   },
                 ),

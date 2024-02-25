@@ -8,13 +8,13 @@ import 'package:movies_flutter/domain/login/new_auth_token_usecase.dart';
 
 class LoginViewModel extends ViewModel<LoginState> {
   LoginViewModel({
-    required NewTokenUsecase newTokenUseCase,
+    required NewRequestTokenUsecase newTokenUseCase,
     required GenerateSessionIdUsecase generateSessionIdUsecase,
   })  : _newTokenUseCase = newTokenUseCase,
         _generateSessionIdUsecase = generateSessionIdUsecase,
         super(const LoginState.ok());
 
-  final NewTokenUsecase _newTokenUseCase;
+  final NewRequestTokenUsecase _newTokenUseCase;
   final GenerateSessionIdUsecase _generateSessionIdUsecase;
 
   final _events = StreamController<LoginEvent>.broadcast();
@@ -23,7 +23,7 @@ class LoginViewModel extends ViewModel<LoginState> {
   Future<void> login() async {
     setState(const LoginState.loading());
 
-    var token = await _newTokenUseCase.invoke(nothing);
+    final token = await _newTokenUseCase.invoke(nothing);
 
     if (token.isError) {
       setState(const LoginState.ok());

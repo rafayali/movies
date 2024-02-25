@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AuthPage extends StatefulWidget {
-  static const routeName = '/auth';
-
   const AuthPage({super.key, required this.requestToken});
 
   final String requestToken;
@@ -22,9 +21,11 @@ class _AuthPageState extends State<AuthPage> {
 
     webviewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadRequest(Uri.parse(
-        'https://www.themoviedb.org/authenticate/${widget.requestToken}',
-      ));
+      ..loadRequest(
+        Uri.parse(
+          'https://www.themoviedb.org/authenticate/${widget.requestToken}',
+        ),
+      );
   }
 
   @override
@@ -32,6 +33,14 @@ class _AuthPageState extends State<AuthPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.loginDialogTitle),
+        actions: [
+          IconButton.outlined(
+            onPressed: () {
+              context.goNamed('home', queryParameters: {'success': '${true}'});
+            },
+            icon: const Icon(Icons.settings),
+          )
+        ],
       ),
       body: WebViewWidget(controller: webviewController),
     );

@@ -13,8 +13,6 @@ import 'package:provider/provider.dart';
 class HomePageHost extends StatefulWidget {
   const HomePageHost({super.key});
 
-  static const String routeName = '/';
-
   @override
   State<HomePageHost> createState() => _HomePageHostState();
 }

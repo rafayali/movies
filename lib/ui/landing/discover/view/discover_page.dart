@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:movies_flutter/core/ui_state.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
@@ -8,7 +9,6 @@ import 'package:movies_flutter/ui/landing/discover/view/widgets/popular_movie_wi
 import 'package:movies_flutter/ui/landing/discover/view/widgets/section_header_widget.dart';
 import 'package:movies_flutter/ui/landing/discover/viewmodel/discover_viewmodel.dart';
 import 'package:movies_flutter/ui/login/view/dialogs/login_dialog.dart';
-import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
 import 'package:movies_flutter/ui/landing/discover/view/widgets/movie_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -142,14 +142,16 @@ class _HomePageContent extends StatelessWidget {
                   date != null
                       ? DateFormat.yMMMMd().format(date)
                       : 'Not Available',
-                  onClickListener: (movieId) => Navigator.of(context).pushNamed(
-                    MovieDetailPage.routeName,
-                    arguments: MovieDetailParams(
-                      id: homeUiModel.popularTvShows[index].id,
-                      title: homeUiModel.popularTvShows[index].name,
-                      backdropUrl: homeUiModel.popularTvShows[index].backdrop,
-                      type: Type.tvShow,
-                    ),
+                  onClickListener: (movieId) => context.goNamed(
+                    'movie',
+                    pathParameters: {
+                      'movieId': '${homeUiModel.popularTvShows[index].id}',
+                    },
+                    queryParameters: {
+                      'title': homeUiModel.popularTvShows[index].name,
+                      'backdropUrl': homeUiModel.popularTvShows[index].backdrop,
+                      'type': Type.tvShow.value,
+                    },
                   ),
                 );
               },
@@ -176,14 +178,16 @@ class _HomePageContent extends StatelessWidget {
                       ? 'Not Available'
                       : DateFormat.yMMMMd()
                           .format(homeUiModel.discoverMovies[index].date!),
-                  onClickListener: (movieId) => Navigator.of(context).pushNamed(
-                    MovieDetailPage.routeName,
-                    arguments: MovieDetailParams(
-                      id: homeUiModel.discoverMovies[index].id,
-                      title: homeUiModel.discoverMovies[index].name,
-                      backdropUrl: homeUiModel.discoverMovies[index].backdrop,
-                      type: Type.movie,
-                    ),
+                  onClickListener: (movieId) => context.goNamed(
+                    'movie',
+                    pathParameters: {
+                      'movieId': '${homeUiModel.discoverMovies[index].id}',
+                    },
+                    queryParameters: {
+                      'title': homeUiModel.discoverMovies[index].name,
+                      'backdropUrl': homeUiModel.discoverMovies[index].backdrop,
+                      'type': Type.movie.value,
+                    },
                   ),
                 );
               },
