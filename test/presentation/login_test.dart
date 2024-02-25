@@ -30,7 +30,7 @@ void main() {
 
     setUp(() {
       loginViewModel = LoginViewModel(
-        newTokenUseCase: NewTokenUsecase(
+        newTokenUseCase: NewRequestTokenUsecase(
           tmdbService: tmdbService,
           buildConfig: buildConfig,
         ),

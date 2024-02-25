@@ -35,4 +35,19 @@ class MovieDetailParams with _$MovieDetailParams {
   }) = _MovieDetailParams;
 }
 
-enum Type { movie, tvShow }
+enum Type {
+  movie('movie'),
+  tvShow('tvShow');
+
+  const Type(this.value);
+
+  final String value;
+}
+
+extension TypeExt on String {
+  Type toType() => switch (this) {
+        'movie' => Type.movie,
+        'tvShow' => Type.tvShow,
+        String() => throw Exception('invalid value for type: $this'),
+      };
+}

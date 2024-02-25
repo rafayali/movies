@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 import 'package:movies_flutter/ui/common/common.dart';
 import 'package:movies_flutter/ui/movie_detail/view/widgets/cast.dart';
@@ -10,8 +11,6 @@ import 'package:provider/provider.dart';
 
 class MovieDetailPage extends StatefulWidget {
   const MovieDetailPage({super.key});
-
-  static const routeName = '/detail';
 
   @override
   State<MovieDetailPage> createState() => _MovieDetailPageState();
@@ -130,9 +129,15 @@ class MovieContent extends StatelessWidget {
                       ),
                     ),
                     SafeArea(
-                      minimum: const EdgeInsets.only(top: 16, left: 16),
-                      child: MoviesBackButton(
-                        onPressed: () => Navigator.pop(context),
+                      minimum: const EdgeInsets.only(top: 8, left: 8, right: 8),
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.only(
+                          start: 8,
+                          top: 8,
+                        ),
+                        child: MoviesBackButton(
+                          onPressed: () => context.goNamed('home'),
+                        ),
                       ),
                     ),
                   ],

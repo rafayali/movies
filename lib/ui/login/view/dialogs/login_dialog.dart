@@ -1,18 +1,18 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movies_flutter/domain/login/generate_session_id_usecase.dart';
 import 'package:movies_flutter/domain/login/new_auth_token_usecase.dart';
 import 'package:movies_flutter/resources/resources.dart';
 import 'package:movies_flutter/ui/login/models/login_models.dart';
-import 'package:movies_flutter/ui/login/view/auth_page.dart';
 import 'package:movies_flutter/ui/login/viewmodel/login_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginDialog extends StatefulWidget {
   const LoginDialog({super.key});
-
-  static const route = '/login';
 
   @override
   State<LoginDialog> createState() => _LoginDialogState();
@@ -28,12 +28,18 @@ class _LoginDialogState extends State<LoginDialog> {
     _loginViewModel.events.listen((event) async {
       await event.when(
         authorize: (requestToken) async {
-          await Navigator.of(context)
-              .pushNamed(AuthPage.routeName, arguments: requestToken);
+          context.goNamed(
+            'auth',
+            queryParameters: {
+              'requestToken': requestToken,
+            },
+          );
           _loginViewModel.generateSessionId(requestToken);
         },
         success: (sessionId) {
-          Navigator.of(context).pop(true);
+          //TODO refactor to go_router
+          log('success called');
+          context.goNamed('home', queryParameters: {'success': true});
         },
       );
     });
@@ -96,7 +102,7 @@ Future<bool> showLoginDialog(BuildContext context) async {
     builder: (context) {
       return ChangeNotifierProvider(
         create: (context) => LoginViewModel(
-          newTokenUseCase: NewTokenUsecase(
+          newTokenUseCase: NewRequestTokenUsecase(
             tmdbService: context.read(),
             buildConfig: context.read(),
           ),
@@ -109,7 +115,6 @@ Future<bool> showLoginDialog(BuildContext context) async {
         child: const LoginDialog(),
       );
     },
-    routeSettings: const RouteSettings(name: LoginDialog.route),
   );
   return loggedIn ?? false;
 }

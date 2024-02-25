@@ -1,10 +1,9 @@
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_flutter/app/route_generator.dart';
+import 'package:movies_flutter/app/router/router_config.dart';
 import 'package:movies_flutter/app/theme.dart';
 import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/data/local/auth_store.dart';
-import 'package:movies_flutter/ui/landing/home_page.dart';
 import 'package:movies_flutter/main.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart'
     as chopper;
@@ -32,12 +31,11 @@ class MoviesApp extends StatelessWidget {
         ),
         Provider<AuthStore>(create: (context) => AuthStore()),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: routerConfig,
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: ThemeMode.system,
-        initialRoute: HomePageHost.routeName,
-        onGenerateRoute: generateRoute,
         locale: const Locale('en'),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
