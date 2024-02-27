@@ -67,7 +67,7 @@ class _DiscoverPageState extends State<DiscoverPage>
             ),
           ),
         ),
-        selector: (context, viewModel) => viewModel.state,
+        selector: (context, viewModel) => viewModel.value,
       ),
     );
   }

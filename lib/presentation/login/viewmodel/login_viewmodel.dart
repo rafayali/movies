@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:movies_flutter/core/usecase.dart';
-import 'package:movies_flutter/core/viewmodel.dart';
 import 'package:movies_flutter/domain/login/generate_session_id_usecase.dart';
 import 'package:movies_flutter/presentation/login/models/login_models.dart';
 import 'package:movies_flutter/domain/login/new_auth_token_usecase.dart';
 
-class LoginViewModel extends ViewModel<LoginState> {
+class LoginViewModel extends ValueNotifier<LoginState> {
   LoginViewModel({
     required NewRequestTokenUsecase newTokenUseCase,
     required GenerateSessionIdUsecase generateSessionIdUsecase,
@@ -21,12 +21,12 @@ class LoginViewModel extends ViewModel<LoginState> {
   Stream<LoginEvent> get events => _events.stream;
 
   Future<void> login() async {
-    setState(const LoginState.loading());
+    value = const LoginState.loading();
 
     final token = await _newTokenUseCase.invoke(nothing);
 
     if (token.isError) {
-      setState(const LoginState.ok());
+      value = const LoginState.ok();
       return;
     }
 
@@ -37,7 +37,7 @@ class LoginViewModel extends ViewModel<LoginState> {
     final sessionId = await _generateSessionIdUsecase.invoke(requestToken);
 
     if (sessionId.isError) {
-      setState(const LoginState.ok());
+      value = const LoginState.ok();
     } else {
       _events.add(LoginEvent.success(sessionId.asValue!.value));
     }
