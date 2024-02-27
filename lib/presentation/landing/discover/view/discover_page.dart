@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:movies_flutter/app/router/router/movie_detail_route.dart';
 import 'package:movies_flutter/core/ui_state.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
-import 'package:movies_flutter/ui/landing/discover/models/home_ui_model.dart';
-import 'package:movies_flutter/ui/landing/discover/view/widgets/main_header_widget.dart';
-import 'package:movies_flutter/ui/landing/discover/view/widgets/popular_movie_widget.dart';
-import 'package:movies_flutter/ui/landing/discover/view/widgets/section_header_widget.dart';
-import 'package:movies_flutter/ui/landing/discover/viewmodel/discover_viewmodel.dart';
-import 'package:movies_flutter/ui/login/view/dialogs/login_dialog.dart';
-import 'package:movies_flutter/ui/landing/discover/view/widgets/movie_widget.dart';
+import 'package:movies_flutter/presentation/landing/discover/models/home_ui_model.dart';
+import 'package:movies_flutter/presentation/landing/discover/view/widgets/main_header_widget.dart';
+import 'package:movies_flutter/presentation/landing/discover/view/widgets/popular_movie_widget.dart';
+import 'package:movies_flutter/presentation/landing/discover/view/widgets/section_header_widget.dart';
+import 'package:movies_flutter/presentation/landing/discover/viewmodel/discover_viewmodel.dart';
+import 'package:movies_flutter/presentation/login/view/dialogs/login_dialog.dart';
+import 'package:movies_flutter/presentation/landing/discover/view/widgets/movie_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -143,7 +144,7 @@ class _HomePageContent extends StatelessWidget {
                       ? DateFormat.yMMMMd().format(date)
                       : 'Not Available',
                   onClickListener: (movieId) => context.goNamed(
-                    'movie',
+                    MovieDetailRoute.routeName,
                     pathParameters: {
                       'movieId': '${homeUiModel.popularTvShows[index].id}',
                     },
@@ -179,7 +180,7 @@ class _HomePageContent extends StatelessWidget {
                       : DateFormat.yMMMMd()
                           .format(homeUiModel.discoverMovies[index].date!),
                   onClickListener: (movieId) => context.goNamed(
-                    'movie',
+                    MovieDetailRoute.routeName,
                     pathParameters: {
                       'movieId': '${homeUiModel.discoverMovies[index].id}',
                     },

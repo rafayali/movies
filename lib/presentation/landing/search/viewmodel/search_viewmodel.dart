@@ -1,7 +1,7 @@
 import 'package:movies_flutter/core/viewmodel.dart';
 import 'package:movies_flutter/domain/search/entities/search_movies_entities.dart';
 import 'package:movies_flutter/domain/search/multi_search_usecase.dart';
-import 'package:movies_flutter/ui/landing/search/models/search_models.dart';
+import 'package:movies_flutter/presentation/landing/search/models/search_models.dart';
 import 'package:movies_flutter/utils/constants.dart';
 
 class SearchViewModel extends ViewModel<SearchUiState> {
