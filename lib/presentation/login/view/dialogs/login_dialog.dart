@@ -71,7 +71,7 @@ class _LoginDialogState extends State<LoginDialog> {
           ),
           const SizedBox(height: 16),
           Selector<LoginViewModel, LoginState>(
-            selector: (_, vm) => vm.state,
+            selector: (_, vm) => vm.value,
             builder: (context, value, child) => value.when(
               loading: () {
                 return const ElevatedButton(

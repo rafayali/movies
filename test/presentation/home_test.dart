@@ -65,10 +65,10 @@ void main() {
         )).thenAnswer(
       (invocation) => _getFakeAccount(),
     );
-    homeViewModel.addListener(() => stateValues.add(homeViewModel.state));
+    homeViewModel.addListener(() => stateValues.add(homeViewModel.value));
 
     // verify initial state to be UiState.loading
-    expect(homeViewModel.state, isA<Loading>());
+    expect(homeViewModel.value, isA<Loading>());
 
     // then
     await homeViewModel.load();

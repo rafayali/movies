@@ -35,6 +35,7 @@ class MovieDetailRoute extends GoRoute {
 }
 
 MovieDetailParams _createMovieDetailParam(GoRouterState state) {
+  //TODO handle optional deep link params
   final movieId = state.pathParameters['movieId']!.toInt();
   final title = state.uri.queryParameters['title']!;
   final backdropUrl = state.uri.queryParameters['backdropUrl'];

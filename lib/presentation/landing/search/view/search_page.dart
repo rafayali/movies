@@ -146,7 +146,7 @@ class _SearchPageState extends State<SearchPage>
                 ),
               ),
             ),
-            selector: (context, value) => value.state,
+            selector: (context, value) => value.value,
           )),
         ],
       ),

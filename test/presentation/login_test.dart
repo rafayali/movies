@@ -77,16 +77,16 @@ void main() {
         emits(LoginEvent.authorize(fakeToken)),
       );
 
-      expect(loginViewModel.state, equals(const LoginState.ok()));
+      expect(loginViewModel.value, equals(const LoginState.ok()));
 
       await loginViewModel.login();
 
-      expect(loginViewModel.state, equals(const LoginState.loading()));
+      expect(loginViewModel.value, equals(const LoginState.loading()));
       verify(() => tmdbService.getNewToken(any())).called(1);
 
       await loginViewModel.generateSessionId(fakeToken);
 
-      expect(loginViewModel.state, equals(const LoginState.loading()));
+      expect(loginViewModel.value, equals(const LoginState.loading()));
       verify(() => tmdbService.newSession(any(), any())).called(1);
     });
 
@@ -107,7 +107,7 @@ void main() {
       );
 
       loginViewModel.addListener(() {
-        states.add(loginViewModel.state);
+        states.add(loginViewModel.value);
       });
 
       await loginViewModel.login();
