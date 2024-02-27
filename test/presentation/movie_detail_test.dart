@@ -12,7 +12,7 @@ import 'package:movies_flutter/data/remote/services/entities/movie_credits/movie
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 import 'package:movies_flutter/domain/detail/load_movie_detail_usecase.dart';
 import 'package:movies_flutter/domain/detail/load_tv_show_detail_usecase.dart';
-import 'package:movies_flutter/ui/movie_detail/viewmodel/movie_detail_viewmodel.dart';
+import 'package:movies_flutter/presentation/movie_detail/viewmodel/movie_detail_viewmodel.dart';
 
 import '../utils/random_string.dart';
 
@@ -63,10 +63,10 @@ void main() {
         (_) => _getFakeMovieCredits(),
       );
 
-      viewModel.addListener(() => states.add(viewModel.state));
+      viewModel.addListener(() => states.add(viewModel.value));
 
       expect(
-        viewModel.state,
+        viewModel.value,
         equals(MovieDetail(id: id, title: title, backdrop: backdropUrl)),
       );
 

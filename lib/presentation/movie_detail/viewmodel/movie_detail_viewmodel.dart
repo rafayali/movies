@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:async/async.dart';
-import 'package:movies_flutter/core/viewmodel.dart';
+import 'package:flutter/foundation.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 import 'package:movies_flutter/domain/detail/load_movie_detail_usecase.dart';
 import 'package:movies_flutter/domain/detail/load_tv_show_detail_usecase.dart';
 
-class MovieDetailViewModel extends ViewModel<MovieDetail> {
+class MovieDetailViewModel extends ValueNotifier<MovieDetail> {
   MovieDetailViewModel({
     required MovieDetailParams params,
     required LoadMovieDetailUsecase loadMovieDetailUsecase,
@@ -41,7 +41,7 @@ class MovieDetailViewModel extends ViewModel<MovieDetail> {
     }
 
     if (result.isValue) {
-      setState(result.asValue!.value);
+      value = (result.asValue!.value);
     }
   }
 }

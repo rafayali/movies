@@ -3,11 +3,13 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movies_flutter/app/router/router/auth_route.dart';
+import 'package:movies_flutter/app/router/router/home_page_route.dart';
 import 'package:movies_flutter/domain/login/generate_session_id_usecase.dart';
 import 'package:movies_flutter/domain/login/new_auth_token_usecase.dart';
 import 'package:movies_flutter/resources/resources.dart';
-import 'package:movies_flutter/ui/login/models/login_models.dart';
-import 'package:movies_flutter/ui/login/viewmodel/login_viewmodel.dart';
+import 'package:movies_flutter/presentation/login/models/login_models.dart';
+import 'package:movies_flutter/presentation/login/viewmodel/login_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -29,9 +31,9 @@ class _LoginDialogState extends State<LoginDialog> {
       await event.when(
         authorize: (requestToken) async {
           context.goNamed(
-            'auth',
+            AuthRoute.routeName,
             queryParameters: {
-              'requestToken': requestToken,
+              AuthRoute.requestTokenParam: requestToken,
             },
           );
           _loginViewModel.generateSessionId(requestToken);
@@ -39,7 +41,8 @@ class _LoginDialogState extends State<LoginDialog> {
         success: (sessionId) {
           //TODO refactor to go_router
           log('success called');
-          context.goNamed('home', queryParameters: {'success': true});
+          context.goNamed(HomePageRoute.routeName,
+              queryParameters: {'success': true});
         },
       );
     });

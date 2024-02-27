@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movies_flutter/app/router/router/movie_detail_route.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
-import 'package:movies_flutter/ui/landing/discover/models/movie_item.dart';
+import 'package:movies_flutter/presentation/landing/discover/models/movie_item.dart';
 import 'package:movies_flutter/utils/constants.dart';
 
 class PopularMovieWidget extends StatelessWidget {
@@ -19,7 +20,7 @@ class PopularMovieWidget extends StatelessWidget {
       width: 348,
       child: GestureDetector(
         onTap: () => context.goNamed(
-          'movie',
+          MovieDetailRoute.routeName,
           pathParameters: {
             'movieId': movie.id.toString(),
           },

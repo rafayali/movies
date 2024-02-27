@@ -7,13 +7,13 @@ import 'package:mocktail/mocktail.dart';
 import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/domain/login/generate_session_id_usecase.dart';
 import 'package:movies_flutter/domain/login/new_auth_token_usecase.dart';
-import 'package:movies_flutter/ui/login/models/login_models.dart';
+import 'package:movies_flutter/presentation/login/models/login_models.dart';
 import 'package:movies_flutter/data/remote/services/entities/session/session.dart';
 import 'package:movies_flutter/data/remote/services/entities/token/token.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart'
     as chopper;
 import 'package:movies_flutter/data/local/auth_store.dart';
-import 'package:movies_flutter/ui/login/viewmodel/login_viewmodel.dart';
+import 'package:movies_flutter/presentation/login/viewmodel/login_viewmodel.dart';
 
 import '../utils/random_string.dart';
 

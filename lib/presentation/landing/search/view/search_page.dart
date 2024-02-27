@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movies_flutter/app/router/router/movie_detail_route.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 import 'package:movies_flutter/domain/search/entities/search_movies_entities.dart';
-import 'package:movies_flutter/ui/landing/search/models/search_models.dart';
-import 'package:movies_flutter/ui/landing/search/viewmodel/search_viewmodel.dart';
+import 'package:movies_flutter/presentation/landing/search/models/search_models.dart';
+import 'package:movies_flutter/presentation/landing/search/viewmodel/search_viewmodel.dart';
 import 'package:movies_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -108,7 +109,7 @@ class _SearchPageState extends State<SearchPage>
                     if (args == null) return;
 
                     context.goNamed(
-                      'movie',
+                      MovieDetailRoute.routeName,
                       pathParameters: {'movieId': args.id.toString()},
                       queryParameters: {
                         'title': args.title,

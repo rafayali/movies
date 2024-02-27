@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:movies_flutter/core/usecase.dart';
 import 'package:movies_flutter/core/viewmodel.dart';
 import 'package:movies_flutter/domain/login/generate_session_id_usecase.dart';
-import 'package:movies_flutter/ui/login/models/login_models.dart';
+import 'package:movies_flutter/presentation/login/models/login_models.dart';
 import 'package:movies_flutter/domain/login/new_auth_token_usecase.dart';
 
 class LoginViewModel extends ViewModel<LoginState> {

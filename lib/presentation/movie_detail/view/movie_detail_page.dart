@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movies_flutter/app/router/router/home_page_route.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
-import 'package:movies_flutter/ui/common/common.dart';
-import 'package:movies_flutter/ui/movie_detail/view/widgets/cast.dart';
-import 'package:movies_flutter/ui/movie_detail/view/widgets/rating.dart';
-import 'package:movies_flutter/ui/movie_detail/viewmodel/movie_detail_viewmodel.dart';
+import 'package:movies_flutter/presentation/common/common.dart';
+import 'package:movies_flutter/presentation/movie_detail/view/widgets/cast.dart';
+import 'package:movies_flutter/presentation/movie_detail/view/widgets/rating.dart';
+import 'package:movies_flutter/presentation/movie_detail/viewmodel/movie_detail_viewmodel.dart';
 import 'package:movies_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +30,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   Widget build(BuildContext context) {
     return Selector<MovieDetailViewModel, MovieDetail>(
       builder: (context, value, child) => MovieContent(value),
-      selector: (context, viewModel) => viewModel.state,
+      selector: (context, viewModel) => viewModel.value,
     );
   }
 }
@@ -130,26 +131,23 @@ class MovieContent extends StatelessWidget {
                     ),
                     SafeArea(
                       minimum: const EdgeInsets.only(top: 8, left: 8, right: 8),
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.only(
-                          start: 8,
-                          top: 8,
-                        ),
-                        child: MoviesBackButton(
-                          onPressed: () => context.goNamed('home'),
-                        ),
+                      child: MoviesBackButton(
+                        onPressed: () =>
+                            context.goNamed(HomePageRoute.routeName),
                       ),
                     ),
                   ],
                 ),
               ),
-              Builder(builder: (context) {
-                if (_movieDetailUiModel.rating == null) {
-                  return const SizedBox();
-                } else {
-                  return RatingWidget(_movieDetailUiModel.rating!);
-                }
-              }),
+              Builder(
+                builder: (context) {
+                  if (_movieDetailUiModel.rating == null) {
+                    return const SizedBox();
+                  } else {
+                    return RatingWidget(_movieDetailUiModel.rating!);
+                  }
+                },
+              ),
               Builder(builder: (context) {
                 if (_movieDetailUiModel.description == null) {
                   return const SizedBox();

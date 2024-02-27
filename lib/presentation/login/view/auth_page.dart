@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movies_flutter/app/router/router/home_page_route.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -36,7 +37,8 @@ class _AuthPageState extends State<AuthPage> {
         actions: [
           IconButton.outlined(
             onPressed: () {
-              context.goNamed('home', queryParameters: {'success': '${true}'});
+              context.goNamed(HomePageRoute.routeName,
+                  queryParameters: {'success': '${true}'});
             },
             icon: const Icon(Icons.settings),
           )
