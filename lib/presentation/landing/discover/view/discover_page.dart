@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:movies_flutter/app/router/router/movie_detail_route.dart';
+import 'package:movies_flutter/app/router/routes/movie_detail_route.dart';
 import 'package:movies_flutter/core/ui_state.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 import 'package:movies_flutter/presentation/landing/discover/models/home_ui_model.dart';

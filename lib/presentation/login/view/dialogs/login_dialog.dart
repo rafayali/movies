@@ -1,10 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movies_flutter/app/router/router/auth_route.dart';
-import 'package:movies_flutter/app/router/router/home_page_route.dart';
+import 'package:movies_flutter/app/router/routes/auth_route.dart';
+import 'package:movies_flutter/app/router/routes/home_page_route.dart';
 import 'package:movies_flutter/domain/login/generate_session_id_usecase.dart';
 import 'package:movies_flutter/domain/login/new_auth_token_usecase.dart';
 import 'package:movies_flutter/resources/resources.dart';
@@ -39,10 +37,10 @@ class _LoginDialogState extends State<LoginDialog> {
           _loginViewModel.generateSessionId(requestToken);
         },
         success: (sessionId) {
-          //TODO refactor to go_router
-          log('success called');
-          context.goNamed(HomePageRoute.routeName,
-              queryParameters: {'success': true});
+          context.goNamed(
+            HomePageRoute.routeName,
+            queryParameters: {HomePageRoute.successQueryParam: true},
+          );
         },
       );
     });
@@ -119,5 +117,6 @@ Future<bool> showLoginDialog(BuildContext context) async {
       );
     },
   );
+
   return loggedIn ?? false;
 }

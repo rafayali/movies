@@ -5,7 +5,7 @@ part 'login_models.freezed.dart';
 @freezed
 class LoginState with _$LoginState {
   const factory LoginState.loading() = LoadingLoginState;
-  const factory LoginState.ok() = OkLoginState;
+  const factory LoginState.ready() = OkLoginState;
 }
 
 @freezed

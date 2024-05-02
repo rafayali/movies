@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movies_flutter/app/router/router/home_page_route.dart';
+import 'package:movies_flutter/app/router/routes/home_page_route.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 import 'package:movies_flutter/presentation/common/common.dart';
 import 'package:movies_flutter/presentation/movie_detail/view/widgets/cast.dart';

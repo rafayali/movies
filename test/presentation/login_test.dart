@@ -77,7 +77,7 @@ void main() {
         emits(LoginEvent.authorize(fakeToken)),
       );
 
-      expect(loginViewModel.value, equals(const LoginState.ok()));
+      expect(loginViewModel.value, equals(const LoginState.ready()));
 
       await loginViewModel.login();
 
@@ -117,7 +117,7 @@ void main() {
         states,
         containsAllInOrder([
           const LoginState.loading(),
-          const LoginState.ok(),
+          const LoginState.ready(),
         ]),
       );
     });

@@ -12,7 +12,7 @@ class LoginViewModel extends ValueNotifier<LoginState> {
     required GenerateSessionIdUsecase generateSessionIdUsecase,
   })  : _newTokenUseCase = newTokenUseCase,
         _generateSessionIdUsecase = generateSessionIdUsecase,
-        super(const LoginState.ok());
+        super(const LoginState.ready());
 
   final NewRequestTokenUsecase _newTokenUseCase;
   final GenerateSessionIdUsecase _generateSessionIdUsecase;
@@ -26,7 +26,7 @@ class LoginViewModel extends ValueNotifier<LoginState> {
     final token = await _newTokenUseCase.invoke(nothing);
 
     if (token.isError) {
-      value = const LoginState.ok();
+      value = const LoginState.ready();
       return;
     }
 
@@ -37,7 +37,7 @@ class LoginViewModel extends ValueNotifier<LoginState> {
     final sessionId = await _generateSessionIdUsecase.invoke(requestToken);
 
     if (sessionId.isError) {
-      value = const LoginState.ok();
+      value = const LoginState.ready();
     } else {
       _events.add(LoginEvent.success(sessionId.asValue!.value));
     }
