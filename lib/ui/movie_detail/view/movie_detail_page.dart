@@ -160,13 +160,19 @@ class MovieContent extends StatelessWidget {
                   );
                 }
               }),
-              Builder(builder: (context) {
-                if (_movieDetailUiModel.cast == null) {
-                  return const SizedBox();
-                } else {
-                  return CastWidget(_movieDetailUiModel.cast!);
-                }
-              }),
+              Builder(
+                builder: (context) {
+                  if (_movieDetailUiModel.cast == null) {
+                    return const SizedBox();
+                  } else {
+                    return CastWidget(_movieDetailUiModel.cast!);
+                  }
+                },
+              ),
+              const SafeArea(
+                top: false,
+                child: SizedBox(),
+              ),
             ],
           ),
         ),
