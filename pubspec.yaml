@@ -60,7 +60,7 @@ dev_dependencies:
   freezed: ^2.2.0
   flutter_launcher_icons: ^0.13.1
   mocktail: ^1.0.0
-  chopper_generator: ^7.0.1
+  chopper_generator: ^8.0.0
   flutter_lints: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
