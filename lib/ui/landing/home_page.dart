@@ -81,29 +81,6 @@ class _HomePageHostState extends State<HomePageHost> {
             children: pages,
           ),
         ),
-        /* bottomNavigationBar: BottomNavigationBar(
-          items: HomePageTab.values.map((tab) {
-            switch (tab) {
-              case HomePageTab.discover:
-                return BottomNavigationBarItem(
-                  icon: const Icon(Icons.home),
-                  label: AppLocalizations.of(context)!.homeDiscoverTitle,
-                );
-              case HomePageTab.search:
-                return BottomNavigationBarItem(
-                  icon: const Icon(Icons.search),
-                  label: AppLocalizations.of(context)!.homeDiscoverTitle,
-                );
-            }
-          }).toList(),
-          currentIndex: _selectedIndex,
-          onTap: (index) {
-            setState(() {
-              pageController.jumpToPage(index);
-              _selectedIndex = index;
-            });
-          },
-        ), */
         bottomNavigationBar: NavigationBar(
           destinations: HomePageTab.values.map((tab) {
             switch (tab) {
