@@ -81,7 +81,7 @@ class _HomePageHostState extends State<HomePageHost> {
             children: pages,
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
+        /* bottomNavigationBar: BottomNavigationBar(
           items: HomePageTab.values.map((tab) {
             switch (tab) {
               case HomePageTab.discover:
@@ -98,6 +98,30 @@ class _HomePageHostState extends State<HomePageHost> {
           }).toList(),
           currentIndex: _selectedIndex,
           onTap: (index) {
+            setState(() {
+              pageController.jumpToPage(index);
+              _selectedIndex = index;
+            });
+          },
+        ), */
+        bottomNavigationBar: NavigationBar(
+          destinations: HomePageTab.values.map((tab) {
+            switch (tab) {
+              case HomePageTab.discover:
+                return NavigationDestination(
+                  icon: const Icon(Icons.home),
+                  label: AppLocalizations.of(context)!.homeDiscoverTitle,
+                );
+              case HomePageTab.search:
+                return NavigationDestination(
+                  icon: const Icon(Icons.search),
+                  label: AppLocalizations.of(context)!.homeDiscoverTitle,
+                );
+            }
+          }).toList(),
+          indicatorColor: Colors.deepPurple,
+          selectedIndex: _selectedIndex,
+          onDestinationSelected: (index) {
             setState(() {
               pageController.jumpToPage(index);
               _selectedIndex = index;
