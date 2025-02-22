@@ -18,11 +18,9 @@ const lightColorScheme = ColorScheme(
   errorContainer: Color(0xFFFFDAD6),
   onError: Color(0xFFFFFFFF),
   onErrorContainer: Color(0xFF410002),
-  background: Color(0xFFFFFBFF),
-  onBackground: Color(0xFF1D1B1E),
   surface: Color(0xFFFFFBFF),
   onSurface: Color(0xFF1D1B1E),
-  surfaceVariant: Color(0xFFEADFEA),
+  surfaceContainerHighest: Color(0xFFEADFEA),
   onSurfaceVariant: Color(0xFF4B454D),
   outline: Color(0xFF7C747E),
   onInverseSurface: Color(0xFFF6EFF3),
@@ -52,11 +50,9 @@ const darkColorScheme = ColorScheme(
   errorContainer: Color(0xFF93000A),
   onError: Color(0xFF690005),
   onErrorContainer: Color(0xFFFFDAD6),
-  background: Color(0xFF1D1B1E),
-  onBackground: Color(0xFFE7E0E5),
   surface: Color(0xFF1D1B1E),
   onSurface: Color(0xFFE7E0E5),
-  surfaceVariant: Color(0xFF4B454D),
+  surfaceContainerHighest: Color(0xFF4B454D),
   onSurfaceVariant: Color(0xFFCDC3CE),
   outline: Color(0xFF978E98),
   onInverseSurface: Color(0xFF1D1B1E),
@@ -72,7 +68,7 @@ final lightTheme = ThemeData(
   useMaterial3: true,
   colorScheme: lightColorScheme,
   elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
+    style: ButtonStyle(elevation: WidgetStateProperty.all(0)),
   ),
 );
 
@@ -80,6 +76,6 @@ final darkTheme = ThemeData(
   useMaterial3: true,
   colorScheme: darkColorScheme,
   elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ButtonStyle(elevation: MaterialStateProperty.all(0)),
+    style: ButtonStyle(elevation: WidgetStateProperty.all(0)),
   ),
 );

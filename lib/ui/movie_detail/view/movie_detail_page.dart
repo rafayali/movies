@@ -71,7 +71,7 @@ class MovieContent extends StatelessWidget {
                             gradient: LinearGradient(
                               colors: [
                                 Colors.transparent,
-                                Theme.of(context).colorScheme.background,
+                                Theme.of(context).colorScheme.surface,
                               ],
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,

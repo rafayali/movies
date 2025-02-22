@@ -4,13 +4,13 @@ import 'package:movies_flutter/app/route_generator.dart';
 import 'package:movies_flutter/app/theme.dart';
 import 'package:movies_flutter/config.dart';
 import 'package:movies_flutter/data/local/auth_store.dart';
+import 'package:movies_flutter/l10n/app_localizations.dart';
 import 'package:movies_flutter/ui/landing/home_page.dart';
 import 'package:movies_flutter/main.dart';
 import 'package:movies_flutter/data/remote/services/tmdb_service.dart'
     as chopper;
 import 'package:movies_flutter/data/remote/http_client/http_client.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MoviesApp extends StatelessWidget {
   const MoviesApp({super.key, required this.params});

@@ -2,12 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_flutter/domain/detail/entities/movie_detail.dart';
 import 'package:movies_flutter/domain/search/entities/search_movies_entities.dart';
+import 'package:movies_flutter/l10n/app_localizations.dart';
 import 'package:movies_flutter/ui/landing/search/models/search_models.dart';
 import 'package:movies_flutter/ui/landing/search/viewmodel/search_viewmodel.dart';
 import 'package:movies_flutter/ui/movie_detail/view/movie_detail_page.dart';
 import 'package:movies_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 part 'widgets/search_item_widget.dart';
 
