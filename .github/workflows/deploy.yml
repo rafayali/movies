@@ -17,7 +17,7 @@ jobs:
           java-version: "11"
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.19.x"
+          flutter-version: "3.29.x"
           channel: "stable"
       - name: Tests
         run: flutter test
