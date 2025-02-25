@@ -42,6 +42,7 @@ android {
     }
 
     defaultConfig {
+        applicationId "com.rafay.moviesflutter"
         minSdkVersion 24
         targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
