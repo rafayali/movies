@@ -17,10 +17,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get guestUser => 'Gastbenutzer';
 
   @override
-  String get discoverGuestUserDesc => 'Melden Sie sich an, um Ihre Lieblingsfilme und Empfehlungen zu sehen';
+  String get discoverGuestUserDesc =>
+      'Melden Sie sich an, um Ihre Lieblingsfilme und Empfehlungen zu sehen';
 
   @override
-  String get discoverLoggedInUserDesc => 'Entdecken Sie Ihre Lieblingsfilme und -fernsehsendungen';
+  String get discoverLoggedInUserDesc =>
+      'Entdecken Sie Ihre Lieblingsfilme und -fernsehsendungen';
 
   @override
   String get popularMoviesTitle => 'Beliebte Filme';
@@ -41,7 +43,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get castTitle => 'Besetzung';
 
   @override
-  String get errorLoadingMovies => 'Beim Laden der Filme ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
+  String get errorLoadingMovies =>
+      'Beim Laden der Filme ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
 
   @override
   String get retryButtonText => 'Retry';
@@ -53,10 +56,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get noResults => 'Keine Ergebnisse';
 
   @override
-  String get searchPageSearchTextFieldHint => 'Suchen Sie nach Filmen, Fernsehsendungen und Personen';
+  String get searchPageSearchTextFieldHint =>
+      'Suchen Sie nach Filmen, Fernsehsendungen und Personen';
 
   @override
-  String get searchPagePlaceholder => 'Suchen Sie nach Ihrem Lieblingsfilm, Ihrer Lieblingsserie und Ihrer Lieblingsbesetzung';
+  String get searchPagePlaceholder =>
+      'Suchen Sie nach Ihrem Lieblingsfilm, Ihrer Lieblingsserie und Ihrer Lieblingsbesetzung';
 
   @override
   String get homeDiscoverTitle => 'Entdecken';

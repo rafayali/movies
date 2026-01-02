@@ -4,7 +4,7 @@ part 'multi_search.g.dart';
 part 'multi_search.freezed.dart';
 
 @Freezed()
-class MultiSearch with _$MultiSearch {
+abstract class MultiSearch with _$MultiSearch {
   @JsonSerializable(fieldRename: FieldRename.snake)
   factory MultiSearch({
     required int page,
@@ -20,7 +20,7 @@ class MultiSearch with _$MultiSearch {
 }
 
 @Freezed(unionKey: 'media_type', unionValueCase: FreezedUnionCase.snake)
-class Entity with _$Entity {
+abstract class Entity with _$Entity {
   @FreezedUnionValue('movie')
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Entity.movie({

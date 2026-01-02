@@ -7,11 +7,11 @@ part of 'genres.dart';
 // **************************************************************************
 
 Genres _$GenresFromJson(Map<String, dynamic> json) => Genres(
-      genres: (json['genres'] as List<dynamic>)
-          .map((e) => Genre.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+  genres: (json['genres'] as List<dynamic>)
+      .map((e) => Genre.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
 Map<String, dynamic> _$GenresToJson(Genres instance) => <String, dynamic>{
-      'genres': instance.genres,
-    };
+  'genres': instance.genres,
+};

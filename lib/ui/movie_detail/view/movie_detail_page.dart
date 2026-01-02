@@ -59,8 +59,7 @@ class MovieContent extends StatelessWidget {
                       child: CachedNetworkImage(
                         imageUrl: _movieDetailUiModel.backdrop ?? emptyString,
                         fit: BoxFit.fitHeight,
-                        errorWidget: (_, __, ___) =>
-                            Container(color: Colors.grey),
+                        errorWidget: (_, _, _) => Container(color: Colors.grey),
                       ),
                     ),
                     Positioned.fill(
@@ -82,8 +81,10 @@ class MovieContent extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 16, right: 16),
+                                padding: const EdgeInsets.only(
+                                  left: 16,
+                                  right: 16,
+                                ),
                                 child: Text(
                                   _movieDetailUiModel.title,
                                   style: Theme.of(context)
@@ -106,7 +107,8 @@ class MovieContent extends StatelessWidget {
                                         return const Text(emptyString);
                                       } else {
                                         final year = _movieDetailUiModel
-                                            .releaseDate!.year;
+                                            .releaseDate!
+                                            .year;
                                         final genre =
                                             _movieDetailUiModel.genre!.first;
                                         final minutes =
@@ -115,9 +117,9 @@ class MovieContent extends StatelessWidget {
                                             _movieDetailUiModel.runtime! ~/ 60;
                                         return Text(
                                           '$year • $genre • ${hours}h ${minutes}m',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyLarge,
+                                          style: Theme.of(
+                                            context,
+                                          ).textTheme.bodyLarge,
                                           textAlign: TextAlign.center,
                                         );
                                       }
@@ -139,27 +141,35 @@ class MovieContent extends StatelessWidget {
                   ],
                 ),
               ),
-              Builder(builder: (context) {
-                if (_movieDetailUiModel.rating == null) {
-                  return const SizedBox();
-                } else {
-                  return RatingWidget(_movieDetailUiModel.rating!);
-                }
-              }),
-              Builder(builder: (context) {
-                if (_movieDetailUiModel.description == null) {
-                  return const SizedBox();
-                } else {
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
-                    child: Text(
-                      _movieDetailUiModel.description!,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                      textAlign: TextAlign.center,
-                    ),
-                  );
-                }
-              }),
+              Builder(
+                builder: (context) {
+                  if (_movieDetailUiModel.rating == null) {
+                    return const SizedBox();
+                  } else {
+                    return RatingWidget(_movieDetailUiModel.rating!);
+                  }
+                },
+              ),
+              Builder(
+                builder: (context) {
+                  if (_movieDetailUiModel.description == null) {
+                    return const SizedBox();
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                        left: 16,
+                        right: 16,
+                        top: 8,
+                      ),
+                      child: Text(
+                        _movieDetailUiModel.description!,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                    );
+                  }
+                },
+              ),
               Builder(
                 builder: (context) {
                   if (_movieDetailUiModel.cast == null) {
@@ -169,10 +179,7 @@ class MovieContent extends StatelessWidget {
                   }
                 },
               ),
-              const SafeArea(
-                top: false,
-                child: SizedBox(),
-              ),
+              const SafeArea(top: false, child: SizedBox()),
             ],
           ),
         ),

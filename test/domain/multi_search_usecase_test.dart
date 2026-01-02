@@ -12,7 +12,7 @@ import 'package:movies_flutter/domain/search/multi_search_usecase.dart';
 
 import '../utils/random_string.dart';
 
-main() {
+void main() {
   group('when MultiSearchUsecase is invoked', () {
     test(
         '''page number should reset to 1 if it was increamented by a previous query''',

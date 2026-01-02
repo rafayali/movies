@@ -3,15 +3,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'movie_detail.freezed.dart';
 
 @freezed
-class Cast with _$Cast {
-  factory Cast({
-    required String name,
-    required String avatarUrl,
-  }) = _Cast;
+sealed class Cast with _$Cast {
+  factory Cast({required String name, required String avatarUrl}) = _Cast;
 }
 
 @freezed
-class MovieDetail with _$MovieDetail {
+sealed class MovieDetail with _$MovieDetail {
   factory MovieDetail({
     required int id,
     required String title,
@@ -26,7 +23,7 @@ class MovieDetail with _$MovieDetail {
 }
 
 @freezed
-class MovieDetailParams with _$MovieDetailParams {
+sealed class MovieDetailParams with _$MovieDetailParams {
   factory MovieDetailParams({
     required int id,
     required String title,

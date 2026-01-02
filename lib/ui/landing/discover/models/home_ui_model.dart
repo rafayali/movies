@@ -6,7 +6,7 @@ import 'tv_item.dart';
 part 'home_ui_model.freezed.dart';
 
 @freezed
-class HomeModel with _$HomeModel {
+sealed class HomeModel with _$HomeModel {
   factory HomeModel({
     required String? name,
     required String? imageUrl,

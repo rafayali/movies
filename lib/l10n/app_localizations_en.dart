@@ -17,10 +17,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get guestUser => 'Guest User';
 
   @override
-  String get discoverGuestUserDesc => 'Login to see your favorite movies and recommendations';
+  String get discoverGuestUserDesc =>
+      'Login to see your favorite movies and recommendations';
 
   @override
-  String get discoverLoggedInUserDesc => 'Lets explore your favorite movies and tv shows';
+  String get discoverLoggedInUserDesc =>
+      'Lets explore your favorite movies and tv shows';
 
   @override
   String get popularMoviesTitle => 'Popular Movies';
@@ -53,10 +55,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noResults => 'No Results';
 
   @override
-  String get searchPageSearchTextFieldHint => 'Search Movies, TvShows and People';
+  String get searchPageSearchTextFieldHint =>
+      'Search Movies, TvShows and People';
 
   @override
-  String get searchPagePlaceholder => 'Search for your favorite movie, tvshow and cast';
+  String get searchPagePlaceholder =>
+      'Search for your favorite movie, tvshow and cast';
 
   @override
   String get homeDiscoverTitle => 'Discover';

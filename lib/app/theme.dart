@@ -70,6 +70,12 @@ final lightTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(elevation: WidgetStateProperty.all(0)),
   ),
+  navigationBarTheme: NavigationBarThemeData(
+    indicatorColor: Colors.deepPurple,
+    iconTheme: WidgetStateProperty.fromMap({
+      WidgetState.selected: const IconThemeData(color: Colors.white),
+    }),
+  ),
 );
 
 final darkTheme = ThemeData(
@@ -77,5 +83,11 @@ final darkTheme = ThemeData(
   colorScheme: darkColorScheme,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(elevation: WidgetStateProperty.all(0)),
+  ),
+  navigationBarTheme: NavigationBarThemeData(
+    indicatorColor: Colors.deepPurple,
+    iconTheme: WidgetStateProperty.fromMap({
+      WidgetState.selected: const IconThemeData(color: Colors.white),
+    }),
   ),
 );

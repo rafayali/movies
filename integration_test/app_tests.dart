@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:movies_flutter/app/app.dart';
@@ -12,9 +11,10 @@ void main(List<String> args) {
 
     await tester.pumpWidget(MoviesApp(params: state));
 
-    await tester.pumpAndSettle(const Duration(seconds: 5));
+    await tester.pumpAndSettle();
 
-    expect(find.byType(ElevatedButton), findsOneWidget);
-    expect(find.text('Login'), findsOneWidget);
+    final finder = find.text('Movies');
+
+    expect(finder, findsOneWidget);
   });
 }

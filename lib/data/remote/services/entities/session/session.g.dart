@@ -7,21 +7,17 @@ part of 'session.dart';
 // **************************************************************************
 
 SessionRequest _$SessionRequestFromJson(Map<String, dynamic> json) =>
-    SessionRequest(
-      requestToken: json['request_token'] as String,
-    );
+    SessionRequest(requestToken: json['request_token'] as String);
 
 Map<String, dynamic> _$SessionRequestToJson(SessionRequest instance) =>
-    <String, dynamic>{
-      'request_token': instance.requestToken,
-    };
+    <String, dynamic>{'request_token': instance.requestToken};
 
 Session _$SessionFromJson(Map<String, dynamic> json) => Session(
-      success: json['success'] as bool,
-      sessionId: json['session_id'] as String?,
-    );
+  success: json['success'] as bool,
+  sessionId: json['session_id'] as String?,
+);
 
 Map<String, dynamic> _$SessionToJson(Session instance) => <String, dynamic>{
-      'success': instance.success,
-      'session_id': instance.sessionId,
-    };
+  'success': instance.success,
+  'session_id': instance.sessionId,
+};

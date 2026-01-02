@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,981 +9,756 @@ part of 'multi_search.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-MultiSearch _$MultiSearchFromJson(Map<String, dynamic> json) {
-  return _MultiSearch.fromJson(json);
-}
 
 /// @nodoc
 mixin _$MultiSearch {
-  int get page => throw _privateConstructorUsedError;
-  List<Entity> get results => throw _privateConstructorUsedError;
-  int get totalPages => throw _privateConstructorUsedError;
-  int get totalResults => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $MultiSearchCopyWith<MultiSearch> get copyWith =>
-      throw _privateConstructorUsedError;
+ int get page; List<Entity> get results; int get totalPages; int get totalResults;
+/// Create a copy of MultiSearch
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MultiSearchCopyWith<MultiSearch> get copyWith => _$MultiSearchCopyWithImpl<MultiSearch>(this as MultiSearch, _$identity);
+
+  /// Serializes this MultiSearch to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MultiSearch&&(identical(other.page, page) || other.page == page)&&const DeepCollectionEquality().equals(other.results, results)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&(identical(other.totalResults, totalResults) || other.totalResults == totalResults));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,page,const DeepCollectionEquality().hash(results),totalPages,totalResults);
+
+@override
+String toString() {
+  return 'MultiSearch(page: $page, results: $results, totalPages: $totalPages, totalResults: $totalResults)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $MultiSearchCopyWith<$Res> {
-  factory $MultiSearchCopyWith(
-          MultiSearch value, $Res Function(MultiSearch) then) =
-      _$MultiSearchCopyWithImpl<$Res, MultiSearch>;
-  @useResult
-  $Res call({int page, List<Entity> results, int totalPages, int totalResults});
-}
+abstract mixin class $MultiSearchCopyWith<$Res>  {
+  factory $MultiSearchCopyWith(MultiSearch value, $Res Function(MultiSearch) _then) = _$MultiSearchCopyWithImpl;
+@useResult
+$Res call({
+ int page, List<Entity> results, int totalPages, int totalResults
+});
 
+
+
+
+}
 /// @nodoc
-class _$MultiSearchCopyWithImpl<$Res, $Val extends MultiSearch>
+class _$MultiSearchCopyWithImpl<$Res>
     implements $MultiSearchCopyWith<$Res> {
-  _$MultiSearchCopyWithImpl(this._value, this._then);
+  _$MultiSearchCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final MultiSearch _self;
+  final $Res Function(MultiSearch) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? page = null,
-    Object? results = null,
-    Object? totalPages = null,
-    Object? totalResults = null,
-  }) {
-    return _then(_value.copyWith(
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      results: null == results
-          ? _value.results
-          : results // ignore: cast_nullable_to_non_nullable
-              as List<Entity>,
-      totalPages: null == totalPages
-          ? _value.totalPages
-          : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalResults: null == totalResults
-          ? _value.totalResults
-          : totalResults // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
+/// Create a copy of MultiSearch
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? page = null,Object? results = null,Object? totalPages = null,Object? totalResults = null,}) {
+  return _then(_self.copyWith(
+page: null == page ? _self.page : page // ignore: cast_nullable_to_non_nullable
+as int,results: null == results ? _self.results : results // ignore: cast_nullable_to_non_nullable
+as List<Entity>,totalPages: null == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
+as int,totalResults: null == totalResults ? _self.totalResults : totalResults // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-abstract class _$$MultiSearchImplCopyWith<$Res>
-    implements $MultiSearchCopyWith<$Res> {
-  factory _$$MultiSearchImplCopyWith(
-          _$MultiSearchImpl value, $Res Function(_$MultiSearchImpl) then) =
-      __$$MultiSearchImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int page, List<Entity> results, int totalPages, int totalResults});
 }
 
-/// @nodoc
-class __$$MultiSearchImplCopyWithImpl<$Res>
-    extends _$MultiSearchCopyWithImpl<$Res, _$MultiSearchImpl>
-    implements _$$MultiSearchImplCopyWith<$Res> {
-  __$$MultiSearchImplCopyWithImpl(
-      _$MultiSearchImpl _value, $Res Function(_$MultiSearchImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? page = null,
-    Object? results = null,
-    Object? totalPages = null,
-    Object? totalResults = null,
-  }) {
-    return _then(_$MultiSearchImpl(
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      results: null == results
-          ? _value._results
-          : results // ignore: cast_nullable_to_non_nullable
-              as List<Entity>,
-      totalPages: null == totalPages
-          ? _value.totalPages
-          : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalResults: null == totalResults
-          ? _value.totalResults
-          : totalResults // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
+/// Adds pattern-matching-related methods to [MultiSearch].
+extension MultiSearchPatterns on MultiSearch {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MultiSearch value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _MultiSearch() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MultiSearch value)  $default,){
+final _that = this;
+switch (_that) {
+case _MultiSearch():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MultiSearch value)?  $default,){
+final _that = this;
+switch (_that) {
+case _MultiSearch() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int page,  List<Entity> results,  int totalPages,  int totalResults)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _MultiSearch() when $default != null:
+return $default(_that.page,_that.results,_that.totalPages,_that.totalResults);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int page,  List<Entity> results,  int totalPages,  int totalResults)  $default,) {final _that = this;
+switch (_that) {
+case _MultiSearch():
+return $default(_that.page,_that.results,_that.totalPages,_that.totalResults);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int page,  List<Entity> results,  int totalPages,  int totalResults)?  $default,) {final _that = this;
+switch (_that) {
+case _MultiSearch() when $default != null:
+return $default(_that.page,_that.results,_that.totalPages,_that.totalResults);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$MultiSearchImpl implements _MultiSearch {
-  _$MultiSearchImpl(
-      {required this.page,
-      required final List<Entity> results,
-      required this.totalPages,
-      required this.totalResults})
-      : _results = results;
+class _MultiSearch implements MultiSearch {
+   _MultiSearch({required this.page, required final  List<Entity> results, required this.totalPages, required this.totalResults}): _results = results;
+  factory _MultiSearch.fromJson(Map<String, dynamic> json) => _$MultiSearchFromJson(json);
 
-  factory _$MultiSearchImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MultiSearchImplFromJson(json);
-
-  @override
-  final int page;
-  final List<Entity> _results;
-  @override
-  List<Entity> get results {
-    if (_results is EqualUnmodifiableListView) return _results;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_results);
-  }
-
-  @override
-  final int totalPages;
-  @override
-  final int totalResults;
-
-  @override
-  String toString() {
-    return 'MultiSearch(page: $page, results: $results, totalPages: $totalPages, totalResults: $totalResults)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MultiSearchImpl &&
-            (identical(other.page, page) || other.page == page) &&
-            const DeepCollectionEquality().equals(other._results, _results) &&
-            (identical(other.totalPages, totalPages) ||
-                other.totalPages == totalPages) &&
-            (identical(other.totalResults, totalResults) ||
-                other.totalResults == totalResults));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, page,
-      const DeepCollectionEquality().hash(_results), totalPages, totalResults);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MultiSearchImplCopyWith<_$MultiSearchImpl> get copyWith =>
-      __$$MultiSearchImplCopyWithImpl<_$MultiSearchImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MultiSearchImplToJson(
-      this,
-    );
-  }
+@override final  int page;
+ final  List<Entity> _results;
+@override List<Entity> get results {
+  if (_results is EqualUnmodifiableListView) return _results;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_results);
 }
 
-abstract class _MultiSearch implements MultiSearch {
-  factory _MultiSearch(
-      {required final int page,
-      required final List<Entity> results,
-      required final int totalPages,
-      required final int totalResults}) = _$MultiSearchImpl;
+@override final  int totalPages;
+@override final  int totalResults;
 
-  factory _MultiSearch.fromJson(Map<String, dynamic> json) =
-      _$MultiSearchImpl.fromJson;
+/// Create a copy of MultiSearch
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$MultiSearchCopyWith<_MultiSearch> get copyWith => __$MultiSearchCopyWithImpl<_MultiSearch>(this, _$identity);
 
-  @override
-  int get page;
-  @override
-  List<Entity> get results;
-  @override
-  int get totalPages;
-  @override
-  int get totalResults;
-  @override
-  @JsonKey(ignore: true)
-  _$$MultiSearchImplCopyWith<_$MultiSearchImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$MultiSearchToJson(this, );
 }
 
-Entity _$EntityFromJson(Map<String, dynamic> json) {
-  switch (json['media_type']) {
-    case 'movie':
-      return MovieEntity.fromJson(json);
-    case 'tv':
-      return TvShowEntity.fromJson(json);
-    case 'person':
-      return PersonEntity.fromJson(json);
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MultiSearch&&(identical(other.page, page) || other.page == page)&&const DeepCollectionEquality().equals(other._results, _results)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&(identical(other.totalResults, totalResults) || other.totalResults == totalResults));
+}
 
-    default:
-      throw CheckedFromJsonException(json, 'media_type', 'Entity',
-          'Invalid union type "${json['media_type']}"!');
-  }
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,page,const DeepCollectionEquality().hash(_results),totalPages,totalResults);
+
+@override
+String toString() {
+  return 'MultiSearch(page: $page, results: $results, totalPages: $totalPages, totalResults: $totalResults)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$MultiSearchCopyWith<$Res> implements $MultiSearchCopyWith<$Res> {
+  factory _$MultiSearchCopyWith(_MultiSearch value, $Res Function(_MultiSearch) _then) = __$MultiSearchCopyWithImpl;
+@override @useResult
+$Res call({
+ int page, List<Entity> results, int totalPages, int totalResults
+});
+
+
+
+
+}
+/// @nodoc
+class __$MultiSearchCopyWithImpl<$Res>
+    implements _$MultiSearchCopyWith<$Res> {
+  __$MultiSearchCopyWithImpl(this._self, this._then);
+
+  final _MultiSearch _self;
+  final $Res Function(_MultiSearch) _then;
+
+/// Create a copy of MultiSearch
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? page = null,Object? results = null,Object? totalPages = null,Object? totalResults = null,}) {
+  return _then(_MultiSearch(
+page: null == page ? _self.page : page // ignore: cast_nullable_to_non_nullable
+as int,results: null == results ? _self._results : results // ignore: cast_nullable_to_non_nullable
+as List<Entity>,totalPages: null == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
+as int,totalResults: null == totalResults ? _self.totalResults : totalResults // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+Entity _$EntityFromJson(
+  Map<String, dynamic> json
+) {
+        switch (json['media_type']) {
+                  case 'movie':
+          return MovieEntity.fromJson(
+            json
+          );
+                case 'tv':
+          return TvShowEntity.fromJson(
+            json
+          );
+                case 'person':
+          return PersonEntity.fromJson(
+            json
+          );
+        
+          default:
+            throw CheckedFromJsonException(
+  json,
+  'media_type',
+  'Entity',
+  'Invalid union type "${json['media_type']}"!'
+);
+        }
+      
 }
 
 /// @nodoc
 mixin _$Entity {
-  int get id => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int id, String title, String? backdropPath,
-            String? posterPath, String? releaseDate)
-        movie,
-    required TResult Function(int id, String name, String? backdropPath,
-            String? posterPath, String? firstAirDate)
-        tvShow,
-    required TResult Function(int id, String name, String? profilePath) person,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int id, String title, String? backdropPath,
-            String? posterPath, String? releaseDate)?
-        movie,
-    TResult? Function(int id, String name, String? backdropPath,
-            String? posterPath, String? firstAirDate)?
-        tvShow,
-    TResult? Function(int id, String name, String? profilePath)? person,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int id, String title, String? backdropPath,
-            String? posterPath, String? releaseDate)?
-        movie,
-    TResult Function(int id, String name, String? backdropPath,
-            String? posterPath, String? firstAirDate)?
-        tvShow,
-    TResult Function(int id, String name, String? profilePath)? person,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(MovieEntity value) movie,
-    required TResult Function(TvShowEntity value) tvShow,
-    required TResult Function(PersonEntity value) person,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MovieEntity value)? movie,
-    TResult? Function(TvShowEntity value)? tvShow,
-    TResult? Function(PersonEntity value)? person,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(MovieEntity value)? movie,
-    TResult Function(TvShowEntity value)? tvShow,
-    TResult Function(PersonEntity value)? person,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $EntityCopyWith<Entity> get copyWith => throw _privateConstructorUsedError;
+
+ int get id;
+/// Create a copy of Entity
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$EntityCopyWith<Entity> get copyWith => _$EntityCopyWithImpl<Entity>(this as Entity, _$identity);
+
+  /// Serializes this Entity to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Entity&&(identical(other.id, id) || other.id == id));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id);
+
+@override
+String toString() {
+  return 'Entity(id: $id)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $EntityCopyWith<$Res> {
-  factory $EntityCopyWith(Entity value, $Res Function(Entity) then) =
-      _$EntityCopyWithImpl<$Res, Entity>;
-  @useResult
-  $Res call({int id});
-}
+abstract mixin class $EntityCopyWith<$Res>  {
+  factory $EntityCopyWith(Entity value, $Res Function(Entity) _then) = _$EntityCopyWithImpl;
+@useResult
+$Res call({
+ int id
+});
 
+
+
+
+}
 /// @nodoc
-class _$EntityCopyWithImpl<$Res, $Val extends Entity>
+class _$EntityCopyWithImpl<$Res>
     implements $EntityCopyWith<$Res> {
-  _$EntityCopyWithImpl(this._value, this._then);
+  _$EntityCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Entity _self;
+  final $Res Function(Entity) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
+/// Create a copy of Entity
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-abstract class _$$MovieEntityImplCopyWith<$Res>
-    implements $EntityCopyWith<$Res> {
-  factory _$$MovieEntityImplCopyWith(
-          _$MovieEntityImpl value, $Res Function(_$MovieEntityImpl) then) =
-      __$$MovieEntityImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int id,
-      String title,
-      String? backdropPath,
-      String? posterPath,
-      String? releaseDate});
 }
 
-/// @nodoc
-class __$$MovieEntityImplCopyWithImpl<$Res>
-    extends _$EntityCopyWithImpl<$Res, _$MovieEntityImpl>
-    implements _$$MovieEntityImplCopyWith<$Res> {
-  __$$MovieEntityImplCopyWithImpl(
-      _$MovieEntityImpl _value, $Res Function(_$MovieEntityImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? title = null,
-    Object? backdropPath = freezed,
-    Object? posterPath = freezed,
-    Object? releaseDate = freezed,
-  }) {
-    return _then(_$MovieEntityImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      backdropPath: freezed == backdropPath
-          ? _value.backdropPath
-          : backdropPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      posterPath: freezed == posterPath
-          ? _value.posterPath
-          : posterPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      releaseDate: freezed == releaseDate
-          ? _value.releaseDate
-          : releaseDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Entity].
+extension EntityPatterns on Entity {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( MovieEntity value)?  movie,TResult Function( TvShowEntity value)?  tvShow,TResult Function( PersonEntity value)?  person,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case MovieEntity() when movie != null:
+return movie(_that);case TvShowEntity() when tvShow != null:
+return tvShow(_that);case PersonEntity() when person != null:
+return person(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( MovieEntity value)  movie,required TResult Function( TvShowEntity value)  tvShow,required TResult Function( PersonEntity value)  person,}){
+final _that = this;
+switch (_that) {
+case MovieEntity():
+return movie(_that);case TvShowEntity():
+return tvShow(_that);case PersonEntity():
+return person(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( MovieEntity value)?  movie,TResult? Function( TvShowEntity value)?  tvShow,TResult? Function( PersonEntity value)?  person,}){
+final _that = this;
+switch (_that) {
+case MovieEntity() when movie != null:
+return movie(_that);case TvShowEntity() when tvShow != null:
+return tvShow(_that);case PersonEntity() when person != null:
+return person(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( int id,  String title,  String? backdropPath,  String? posterPath,  String? releaseDate)?  movie,TResult Function( int id,  String name,  String? backdropPath,  String? posterPath,  String? firstAirDate)?  tvShow,TResult Function( int id,  String name,  String? profilePath)?  person,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case MovieEntity() when movie != null:
+return movie(_that.id,_that.title,_that.backdropPath,_that.posterPath,_that.releaseDate);case TvShowEntity() when tvShow != null:
+return tvShow(_that.id,_that.name,_that.backdropPath,_that.posterPath,_that.firstAirDate);case PersonEntity() when person != null:
+return person(_that.id,_that.name,_that.profilePath);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( int id,  String title,  String? backdropPath,  String? posterPath,  String? releaseDate)  movie,required TResult Function( int id,  String name,  String? backdropPath,  String? posterPath,  String? firstAirDate)  tvShow,required TResult Function( int id,  String name,  String? profilePath)  person,}) {final _that = this;
+switch (_that) {
+case MovieEntity():
+return movie(_that.id,_that.title,_that.backdropPath,_that.posterPath,_that.releaseDate);case TvShowEntity():
+return tvShow(_that.id,_that.name,_that.backdropPath,_that.posterPath,_that.firstAirDate);case PersonEntity():
+return person(_that.id,_that.name,_that.profilePath);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( int id,  String title,  String? backdropPath,  String? posterPath,  String? releaseDate)?  movie,TResult? Function( int id,  String name,  String? backdropPath,  String? posterPath,  String? firstAirDate)?  tvShow,TResult? Function( int id,  String name,  String? profilePath)?  person,}) {final _that = this;
+switch (_that) {
+case MovieEntity() when movie != null:
+return movie(_that.id,_that.title,_that.backdropPath,_that.posterPath,_that.releaseDate);case TvShowEntity() when tvShow != null:
+return tvShow(_that.id,_that.name,_that.backdropPath,_that.posterPath,_that.firstAirDate);case PersonEntity() when person != null:
+return person(_that.id,_that.name,_that.profilePath);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$MovieEntityImpl implements MovieEntity {
-  const _$MovieEntityImpl(
-      {required this.id,
-      required this.title,
-      required this.backdropPath,
-      required this.posterPath,
-      required this.releaseDate,
-      final String? $type})
-      : $type = $type ?? 'movie';
+class MovieEntity implements Entity {
+  const MovieEntity({required this.id, required this.title, required this.backdropPath, required this.posterPath, required this.releaseDate, final  String? $type}): $type = $type ?? 'movie';
+  factory MovieEntity.fromJson(Map<String, dynamic> json) => _$MovieEntityFromJson(json);
 
-  factory _$MovieEntityImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MovieEntityImplFromJson(json);
+@override final  int id;
+ final  String title;
+ final  String? backdropPath;
+ final  String? posterPath;
+ final  String? releaseDate;
 
-  @override
-  final int id;
-  @override
-  final String title;
-  @override
-  final String? backdropPath;
-  @override
-  final String? posterPath;
-  @override
-  final String? releaseDate;
+@JsonKey(name: 'media_type')
+final String $type;
 
-  @JsonKey(name: 'media_type')
-  final String $type;
 
-  @override
-  String toString() {
-    return 'Entity.movie(id: $id, title: $title, backdropPath: $backdropPath, posterPath: $posterPath, releaseDate: $releaseDate)';
-  }
+/// Create a copy of Entity
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MovieEntityCopyWith<MovieEntity> get copyWith => _$MovieEntityCopyWithImpl<MovieEntity>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MovieEntityImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.backdropPath, backdropPath) ||
-                other.backdropPath == backdropPath) &&
-            (identical(other.posterPath, posterPath) ||
-                other.posterPath == posterPath) &&
-            (identical(other.releaseDate, releaseDate) ||
-                other.releaseDate == releaseDate));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, backdropPath, posterPath, releaseDate);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MovieEntityImplCopyWith<_$MovieEntityImpl> get copyWith =>
-      __$$MovieEntityImplCopyWithImpl<_$MovieEntityImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int id, String title, String? backdropPath,
-            String? posterPath, String? releaseDate)
-        movie,
-    required TResult Function(int id, String name, String? backdropPath,
-            String? posterPath, String? firstAirDate)
-        tvShow,
-    required TResult Function(int id, String name, String? profilePath) person,
-  }) {
-    return movie(id, title, backdropPath, posterPath, releaseDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int id, String title, String? backdropPath,
-            String? posterPath, String? releaseDate)?
-        movie,
-    TResult? Function(int id, String name, String? backdropPath,
-            String? posterPath, String? firstAirDate)?
-        tvShow,
-    TResult? Function(int id, String name, String? profilePath)? person,
-  }) {
-    return movie?.call(id, title, backdropPath, posterPath, releaseDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int id, String title, String? backdropPath,
-            String? posterPath, String? releaseDate)?
-        movie,
-    TResult Function(int id, String name, String? backdropPath,
-            String? posterPath, String? firstAirDate)?
-        tvShow,
-    TResult Function(int id, String name, String? profilePath)? person,
-    required TResult orElse(),
-  }) {
-    if (movie != null) {
-      return movie(id, title, backdropPath, posterPath, releaseDate);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(MovieEntity value) movie,
-    required TResult Function(TvShowEntity value) tvShow,
-    required TResult Function(PersonEntity value) person,
-  }) {
-    return movie(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MovieEntity value)? movie,
-    TResult? Function(TvShowEntity value)? tvShow,
-    TResult? Function(PersonEntity value)? person,
-  }) {
-    return movie?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(MovieEntity value)? movie,
-    TResult Function(TvShowEntity value)? tvShow,
-    TResult Function(PersonEntity value)? person,
-    required TResult orElse(),
-  }) {
-    if (movie != null) {
-      return movie(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MovieEntityImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$MovieEntityToJson(this, );
 }
 
-abstract class MovieEntity implements Entity {
-  const factory MovieEntity(
-      {required final int id,
-      required final String title,
-      required final String? backdropPath,
-      required final String? posterPath,
-      required final String? releaseDate}) = _$MovieEntityImpl;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.backdropPath, backdropPath) || other.backdropPath == backdropPath)&&(identical(other.posterPath, posterPath) || other.posterPath == posterPath)&&(identical(other.releaseDate, releaseDate) || other.releaseDate == releaseDate));
+}
 
-  factory MovieEntity.fromJson(Map<String, dynamic> json) =
-      _$MovieEntityImpl.fromJson;
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,title,backdropPath,posterPath,releaseDate);
 
-  @override
-  int get id;
-  String get title;
-  String? get backdropPath;
-  String? get posterPath;
-  String? get releaseDate;
-  @override
-  @JsonKey(ignore: true)
-  _$$MovieEntityImplCopyWith<_$MovieEntityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Entity.movie(id: $id, title: $title, backdropPath: $backdropPath, posterPath: $posterPath, releaseDate: $releaseDate)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$TvShowEntityImplCopyWith<$Res>
-    implements $EntityCopyWith<$Res> {
-  factory _$$TvShowEntityImplCopyWith(
-          _$TvShowEntityImpl value, $Res Function(_$TvShowEntityImpl) then) =
-      __$$TvShowEntityImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int id,
-      String name,
-      String? backdropPath,
-      String? posterPath,
-      String? firstAirDate});
+abstract mixin class $MovieEntityCopyWith<$Res> implements $EntityCopyWith<$Res> {
+  factory $MovieEntityCopyWith(MovieEntity value, $Res Function(MovieEntity) _then) = _$MovieEntityCopyWithImpl;
+@override @useResult
+$Res call({
+ int id, String title, String? backdropPath, String? posterPath, String? releaseDate
+});
+
+
+
+
+}
+/// @nodoc
+class _$MovieEntityCopyWithImpl<$Res>
+    implements $MovieEntityCopyWith<$Res> {
+  _$MovieEntityCopyWithImpl(this._self, this._then);
+
+  final MovieEntity _self;
+  final $Res Function(MovieEntity) _then;
+
+/// Create a copy of Entity
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? backdropPath = freezed,Object? posterPath = freezed,Object? releaseDate = freezed,}) {
+  return _then(MovieEntity(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,backdropPath: freezed == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
+as String?,posterPath: freezed == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
+as String?,releaseDate: freezed == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-class __$$TvShowEntityImplCopyWithImpl<$Res>
-    extends _$EntityCopyWithImpl<$Res, _$TvShowEntityImpl>
-    implements _$$TvShowEntityImplCopyWith<$Res> {
-  __$$TvShowEntityImplCopyWithImpl(
-      _$TvShowEntityImpl _value, $Res Function(_$TvShowEntityImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? backdropPath = freezed,
-    Object? posterPath = freezed,
-    Object? firstAirDate = freezed,
-  }) {
-    return _then(_$TvShowEntityImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      backdropPath: freezed == backdropPath
-          ? _value.backdropPath
-          : backdropPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      posterPath: freezed == posterPath
-          ? _value.posterPath
-          : posterPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      firstAirDate: freezed == firstAirDate
-          ? _value.firstAirDate
-          : firstAirDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$TvShowEntityImpl implements TvShowEntity {
-  const _$TvShowEntityImpl(
-      {required this.id,
-      required this.name,
-      required this.backdropPath,
-      required this.posterPath,
-      required this.firstAirDate,
-      final String? $type})
-      : $type = $type ?? 'tv';
+class TvShowEntity implements Entity {
+  const TvShowEntity({required this.id, required this.name, required this.backdropPath, required this.posterPath, required this.firstAirDate, final  String? $type}): $type = $type ?? 'tv';
+  factory TvShowEntity.fromJson(Map<String, dynamic> json) => _$TvShowEntityFromJson(json);
 
-  factory _$TvShowEntityImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TvShowEntityImplFromJson(json);
+@override final  int id;
+ final  String name;
+ final  String? backdropPath;
+ final  String? posterPath;
+ final  String? firstAirDate;
 
-  @override
-  final int id;
-  @override
-  final String name;
-  @override
-  final String? backdropPath;
-  @override
-  final String? posterPath;
-  @override
-  final String? firstAirDate;
+@JsonKey(name: 'media_type')
+final String $type;
 
-  @JsonKey(name: 'media_type')
-  final String $type;
 
-  @override
-  String toString() {
-    return 'Entity.tvShow(id: $id, name: $name, backdropPath: $backdropPath, posterPath: $posterPath, firstAirDate: $firstAirDate)';
-  }
+/// Create a copy of Entity
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TvShowEntityCopyWith<TvShowEntity> get copyWith => _$TvShowEntityCopyWithImpl<TvShowEntity>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TvShowEntityImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.backdropPath, backdropPath) ||
-                other.backdropPath == backdropPath) &&
-            (identical(other.posterPath, posterPath) ||
-                other.posterPath == posterPath) &&
-            (identical(other.firstAirDate, firstAirDate) ||
-                other.firstAirDate == firstAirDate));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, backdropPath, posterPath, firstAirDate);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TvShowEntityImplCopyWith<_$TvShowEntityImpl> get copyWith =>
-      __$$TvShowEntityImplCopyWithImpl<_$TvShowEntityImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int id, String title, String? backdropPath,
-            String? posterPath, String? releaseDate)
-        movie,
-    required TResult Function(int id, String name, String? backdropPath,
-            String? posterPath, String? firstAirDate)
-        tvShow,
-    required TResult Function(int id, String name, String? profilePath) person,
-  }) {
-    return tvShow(id, name, backdropPath, posterPath, firstAirDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int id, String title, String? backdropPath,
-            String? posterPath, String? releaseDate)?
-        movie,
-    TResult? Function(int id, String name, String? backdropPath,
-            String? posterPath, String? firstAirDate)?
-        tvShow,
-    TResult? Function(int id, String name, String? profilePath)? person,
-  }) {
-    return tvShow?.call(id, name, backdropPath, posterPath, firstAirDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int id, String title, String? backdropPath,
-            String? posterPath, String? releaseDate)?
-        movie,
-    TResult Function(int id, String name, String? backdropPath,
-            String? posterPath, String? firstAirDate)?
-        tvShow,
-    TResult Function(int id, String name, String? profilePath)? person,
-    required TResult orElse(),
-  }) {
-    if (tvShow != null) {
-      return tvShow(id, name, backdropPath, posterPath, firstAirDate);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(MovieEntity value) movie,
-    required TResult Function(TvShowEntity value) tvShow,
-    required TResult Function(PersonEntity value) person,
-  }) {
-    return tvShow(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MovieEntity value)? movie,
-    TResult? Function(TvShowEntity value)? tvShow,
-    TResult? Function(PersonEntity value)? person,
-  }) {
-    return tvShow?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(MovieEntity value)? movie,
-    TResult Function(TvShowEntity value)? tvShow,
-    TResult Function(PersonEntity value)? person,
-    required TResult orElse(),
-  }) {
-    if (tvShow != null) {
-      return tvShow(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TvShowEntityImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$TvShowEntityToJson(this, );
 }
 
-abstract class TvShowEntity implements Entity {
-  const factory TvShowEntity(
-      {required final int id,
-      required final String name,
-      required final String? backdropPath,
-      required final String? posterPath,
-      required final String? firstAirDate}) = _$TvShowEntityImpl;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TvShowEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.backdropPath, backdropPath) || other.backdropPath == backdropPath)&&(identical(other.posterPath, posterPath) || other.posterPath == posterPath)&&(identical(other.firstAirDate, firstAirDate) || other.firstAirDate == firstAirDate));
+}
 
-  factory TvShowEntity.fromJson(Map<String, dynamic> json) =
-      _$TvShowEntityImpl.fromJson;
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,name,backdropPath,posterPath,firstAirDate);
 
-  @override
-  int get id;
-  String get name;
-  String? get backdropPath;
-  String? get posterPath;
-  String? get firstAirDate;
-  @override
-  @JsonKey(ignore: true)
-  _$$TvShowEntityImplCopyWith<_$TvShowEntityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Entity.tvShow(id: $id, name: $name, backdropPath: $backdropPath, posterPath: $posterPath, firstAirDate: $firstAirDate)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$PersonEntityImplCopyWith<$Res>
-    implements $EntityCopyWith<$Res> {
-  factory _$$PersonEntityImplCopyWith(
-          _$PersonEntityImpl value, $Res Function(_$PersonEntityImpl) then) =
-      __$$PersonEntityImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int id, String name, String? profilePath});
+abstract mixin class $TvShowEntityCopyWith<$Res> implements $EntityCopyWith<$Res> {
+  factory $TvShowEntityCopyWith(TvShowEntity value, $Res Function(TvShowEntity) _then) = _$TvShowEntityCopyWithImpl;
+@override @useResult
+$Res call({
+ int id, String name, String? backdropPath, String? posterPath, String? firstAirDate
+});
+
+
+
+
+}
+/// @nodoc
+class _$TvShowEntityCopyWithImpl<$Res>
+    implements $TvShowEntityCopyWith<$Res> {
+  _$TvShowEntityCopyWithImpl(this._self, this._then);
+
+  final TvShowEntity _self;
+  final $Res Function(TvShowEntity) _then;
+
+/// Create a copy of Entity
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? backdropPath = freezed,Object? posterPath = freezed,Object? firstAirDate = freezed,}) {
+  return _then(TvShowEntity(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,backdropPath: freezed == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
+as String?,posterPath: freezed == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
+as String?,firstAirDate: freezed == firstAirDate ? _self.firstAirDate : firstAirDate // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-class __$$PersonEntityImplCopyWithImpl<$Res>
-    extends _$EntityCopyWithImpl<$Res, _$PersonEntityImpl>
-    implements _$$PersonEntityImplCopyWith<$Res> {
-  __$$PersonEntityImplCopyWithImpl(
-      _$PersonEntityImpl _value, $Res Function(_$PersonEntityImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? profilePath = freezed,
-  }) {
-    return _then(_$PersonEntityImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      profilePath: freezed == profilePath
-          ? _value.profilePath
-          : profilePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$PersonEntityImpl implements PersonEntity {
-  const _$PersonEntityImpl(
-      {required this.id,
-      required this.name,
-      required this.profilePath,
-      final String? $type})
-      : $type = $type ?? 'person';
+class PersonEntity implements Entity {
+  const PersonEntity({required this.id, required this.name, required this.profilePath, final  String? $type}): $type = $type ?? 'person';
+  factory PersonEntity.fromJson(Map<String, dynamic> json) => _$PersonEntityFromJson(json);
 
-  factory _$PersonEntityImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PersonEntityImplFromJson(json);
+@override final  int id;
+ final  String name;
+ final  String? profilePath;
 
-  @override
-  final int id;
-  @override
-  final String name;
-  @override
-  final String? profilePath;
+@JsonKey(name: 'media_type')
+final String $type;
 
-  @JsonKey(name: 'media_type')
-  final String $type;
 
-  @override
-  String toString() {
-    return 'Entity.person(id: $id, name: $name, profilePath: $profilePath)';
-  }
+/// Create a copy of Entity
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PersonEntityCopyWith<PersonEntity> get copyWith => _$PersonEntityCopyWithImpl<PersonEntity>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PersonEntityImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.profilePath, profilePath) ||
-                other.profilePath == profilePath));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, name, profilePath);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PersonEntityImplCopyWith<_$PersonEntityImpl> get copyWith =>
-      __$$PersonEntityImplCopyWithImpl<_$PersonEntityImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int id, String title, String? backdropPath,
-            String? posterPath, String? releaseDate)
-        movie,
-    required TResult Function(int id, String name, String? backdropPath,
-            String? posterPath, String? firstAirDate)
-        tvShow,
-    required TResult Function(int id, String name, String? profilePath) person,
-  }) {
-    return person(id, name, profilePath);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int id, String title, String? backdropPath,
-            String? posterPath, String? releaseDate)?
-        movie,
-    TResult? Function(int id, String name, String? backdropPath,
-            String? posterPath, String? firstAirDate)?
-        tvShow,
-    TResult? Function(int id, String name, String? profilePath)? person,
-  }) {
-    return person?.call(id, name, profilePath);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int id, String title, String? backdropPath,
-            String? posterPath, String? releaseDate)?
-        movie,
-    TResult Function(int id, String name, String? backdropPath,
-            String? posterPath, String? firstAirDate)?
-        tvShow,
-    TResult Function(int id, String name, String? profilePath)? person,
-    required TResult orElse(),
-  }) {
-    if (person != null) {
-      return person(id, name, profilePath);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(MovieEntity value) movie,
-    required TResult Function(TvShowEntity value) tvShow,
-    required TResult Function(PersonEntity value) person,
-  }) {
-    return person(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MovieEntity value)? movie,
-    TResult? Function(TvShowEntity value)? tvShow,
-    TResult? Function(PersonEntity value)? person,
-  }) {
-    return person?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(MovieEntity value)? movie,
-    TResult Function(TvShowEntity value)? tvShow,
-    TResult Function(PersonEntity value)? person,
-    required TResult orElse(),
-  }) {
-    if (person != null) {
-      return person(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PersonEntityImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$PersonEntityToJson(this, );
 }
 
-abstract class PersonEntity implements Entity {
-  const factory PersonEntity(
-      {required final int id,
-      required final String name,
-      required final String? profilePath}) = _$PersonEntityImpl;
-
-  factory PersonEntity.fromJson(Map<String, dynamic> json) =
-      _$PersonEntityImpl.fromJson;
-
-  @override
-  int get id;
-  String get name;
-  String? get profilePath;
-  @override
-  @JsonKey(ignore: true)
-  _$$PersonEntityImplCopyWith<_$PersonEntityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PersonEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.profilePath, profilePath) || other.profilePath == profilePath));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,name,profilePath);
+
+@override
+String toString() {
+  return 'Entity.person(id: $id, name: $name, profilePath: $profilePath)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PersonEntityCopyWith<$Res> implements $EntityCopyWith<$Res> {
+  factory $PersonEntityCopyWith(PersonEntity value, $Res Function(PersonEntity) _then) = _$PersonEntityCopyWithImpl;
+@override @useResult
+$Res call({
+ int id, String name, String? profilePath
+});
+
+
+
+
+}
+/// @nodoc
+class _$PersonEntityCopyWithImpl<$Res>
+    implements $PersonEntityCopyWith<$Res> {
+  _$PersonEntityCopyWithImpl(this._self, this._then);
+
+  final PersonEntity _self;
+  final $Res Function(PersonEntity) _then;
+
+/// Create a copy of Entity
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? profilePath = freezed,}) {
+  return _then(PersonEntity(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,profilePath: freezed == profilePath ? _self.profilePath : profilePath // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

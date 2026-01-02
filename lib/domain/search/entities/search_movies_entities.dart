@@ -3,21 +3,19 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'search_movies_entities.freezed.dart';
 
 @freezed
-class SearchParams with _$SearchParams {
+sealed class SearchParams with _$SearchParams {
   const factory SearchParams({required String query, required bool reset}) =
       _SearchParams;
 }
 
 @freezed
-class SearchResult with _$SearchResult {
-  factory SearchResult({
-    required int page,
-    required List<SearchItem> results,
-  }) = _SearchResult;
+sealed class SearchResult with _$SearchResult {
+  factory SearchResult({required int page, required List<SearchItem> results}) =
+      _SearchResult;
 }
 
 @freezed
-class SearchItem with _$SearchItem {
+sealed class SearchItem with _$SearchItem {
   const factory SearchItem.movie({
     required String name,
     required DateTime? date,

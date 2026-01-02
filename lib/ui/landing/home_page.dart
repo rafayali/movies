@@ -22,8 +22,9 @@ class HomePageHost extends StatefulWidget {
 class _HomePageHostState extends State<HomePageHost> {
   final List<Widget> pages = [];
 
-  final pageController =
-      PageController(initialPage: HomePageTab.discover.index);
+  final pageController = PageController(
+    initialPage: HomePageTab.discover.index,
+  );
 
   var _selectedIndex = 0;
 
@@ -42,9 +43,7 @@ class _HomePageHostState extends State<HomePageHost> {
                   authStore: context.read(),
                   buildConfig: context.read(),
                 ),
-                checkLoginUsecase: CheckLoginUsecase(
-                  authStore: context.read(),
-                ),
+                checkLoginUsecase: CheckLoginUsecase(authStore: context.read()),
               ),
               child: Builder(
                 builder: (context) {
@@ -96,7 +95,6 @@ class _HomePageHostState extends State<HomePageHost> {
                 );
             }
           }).toList(),
-          indicatorColor: Colors.deepPurple,
           selectedIndex: _selectedIndex,
           onDestinationSelected: (index) {
             setState(() {
