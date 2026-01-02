@@ -1,12 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+typedef OnTapMovie = void Function(int movieId);
+
 class MovieWidget extends StatelessWidget {
   final int movieId;
   final String coverArt;
   final String title;
   final String date;
-  final Function(int movieId)? onClickListener;
+  final OnTapMovie? onTap;
 
   const MovieWidget(
     this.movieId,
@@ -14,15 +16,17 @@ class MovieWidget extends StatelessWidget {
     this.coverArt,
     this.date, {
     super.key,
-    this.onClickListener,
+    this.onTap,
   });
+
+  // onTap!(movieId);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (onClickListener != null) {
-          onClickListener?.call(movieId);
+        if (onTap != null) {
+          onTap!(movieId);
         }
       },
       child: SizedBox(
@@ -37,11 +41,18 @@ class MovieWidget extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: CachedNetworkImage(
+              child: Ink.image(
+                image: CachedNetworkImageProvider(coverArt),
                 width: 148,
                 height: 210,
-                imageUrl: coverArt,
                 fit: BoxFit.cover,
+                child: InkWell(
+                  onTap: () {
+                    if (onTap != null) {
+                      onTap!(movieId);
+                    }
+                  },
+                ),
               ),
             ),
             const SizedBox(height: 4),

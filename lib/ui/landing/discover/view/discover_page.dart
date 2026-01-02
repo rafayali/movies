@@ -63,7 +63,7 @@ class _DiscoverPageState extends State<DiscoverPage>
                 ElevatedButton(
                   onPressed: () => context.read<HomeViewModel>().retry(),
                   child: Text(AppLocalizations.of(context)!.retryButtonText),
-                )
+                ),
               ],
             ),
           ),
@@ -93,10 +93,7 @@ class _HomePageContent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const SafeArea(
-            bottom: false,
-            child: SizedBox(height: 16),
-          ),
+          const SafeArea(bottom: false, child: SizedBox(height: 16)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: MainHeaderWidget(
@@ -111,19 +108,20 @@ class _HomePageContent extends StatelessWidget {
             onPress: () {},
           ),
           SizedBox(
-              height: 196,
-              child: ListView.separated(
-                shrinkWrap: true,
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                scrollDirection: Axis.horizontal,
-                itemCount: homeUiModel.popularMovies.length,
-                separatorBuilder: (context, index) => const SizedBox(width: 8),
-                itemBuilder: (context, index) {
-                  return PopularMovieWidget(
-                    movie: homeUiModel.popularMovies[index],
-                  );
-                },
-              )),
+            height: 196,
+            child: ListView.separated(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              scrollDirection: Axis.horizontal,
+              itemCount: homeUiModel.popularMovies.length,
+              separatorBuilder: (context, index) => const SizedBox(width: 8),
+              itemBuilder: (context, index) {
+                return PopularMovieWidget(
+                  movie: homeUiModel.popularMovies[index],
+                );
+              },
+            ),
+          ),
           const SizedBox(height: 8),
           SectionHeaderWidget(
             headerTitle: AppLocalizations.of(context)!.tvShowsTitle,
@@ -144,7 +142,7 @@ class _HomePageContent extends StatelessWidget {
                   date != null
                       ? DateFormat.yMMMMd().format(date)
                       : 'Not Available',
-                  onClickListener: (movieId) => Navigator.of(context).pushNamed(
+                  onTap: (movieId) => Navigator.of(context).pushNamed(
                     MovieDetailPage.routeName,
                     arguments: MovieDetailParams(
                       id: homeUiModel.popularTvShows[index].id,
@@ -176,9 +174,10 @@ class _HomePageContent extends StatelessWidget {
                   homeUiModel.discoverMovies[index].poster,
                   homeUiModel.discoverMovies[index].date == null
                       ? 'Not Available'
-                      : DateFormat.yMMMMd()
-                          .format(homeUiModel.discoverMovies[index].date!),
-                  onClickListener: (movieId) => Navigator.of(context).pushNamed(
+                      : DateFormat.yMMMMd().format(
+                          homeUiModel.discoverMovies[index].date!,
+                        ),
+                  onTap: (movieId) => Navigator.of(context).pushNamed(
                     MovieDetailPage.routeName,
                     arguments: MovieDetailParams(
                       id: homeUiModel.discoverMovies[index].id,
@@ -194,10 +193,7 @@ class _HomePageContent extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          const SafeArea(
-            top: false,
-            child: SizedBox(),
-          ),
+          const SafeArea(top: false, child: SizedBox()),
         ],
       ),
     );
